@@ -1,3 +1,5 @@
 {
-  "status": "rendering"
+  "status": "failed",
+  "error": "[art] command failed:\n/Users/narasimhareddyvalam/.local/share/mise/installs/python/3.14.7/bin/python3 /Users/narasimhareddyvalam/Desktop/brutalist.art/runtime/qc/final_frame_check.py /Users/narasimhareddyvalam/Desktop/csye-7270-building-virtual-environments/fall-2026/narasimha-v/assignment-2/walker-houseghost-narasimha-v/youtube/claude-liam-houseghost-gamedev --mp4 /Users/narasimhareddyvalam/Desktop/csye-7270-building-virtual-environments/fall-2026/narasimha-v/assignment-2/walker-houseghost-narasimha-v/youtube/claude-liam-houseghost-gamedev/exports/landscape/.claude-liam-houseghost-gamedev-candidate-3yb9w19x/candidate.mp4 --sheet /Users/narasimhareddyvalam/Desktop/csye-7270-building-virtual-environments/fall-2026/narasimha-v/assignment-2/walker-houseghost-narasimha-v/youtube/claude-liam-houseghost-gamedev/clips/_work/resolved-sheet.json\n",
+  "at": "2026-10-08T05:41:21.569489-04:00"
 }

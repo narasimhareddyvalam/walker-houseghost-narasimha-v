@@ -11,6 +11,7 @@ extends SceneTree
 
 const RELIC_X := 1548.0
 const RELIC2_X := 3150.0   ## his shoes, still by the door
+const RELIC3_X := 5120.0   ## the loose floorboard — the third and last
 ## Where the floor stops. Measured from the scene's own collision shapes, not
 ## guessed: segments run -200..1180, 1350..2520, 2690..3860, 4030..5960, so the
 ## three gaps open at these x positions and are 170 px wide.
@@ -33,6 +34,7 @@ var _days_before_fall := 99
 var _stroll_log := 0.0
 var _last_x := -1.0
 var _stuck_for := 0.0
+var _jumped_3860 := false
 var _jump_cooldown := 0.0
 ## The jump is height-modulated: releasing early multiplies the rise by
 ## JUMP_CUT (0.45). A press-and-release in the same frame is therefore the
@@ -206,9 +208,9 @@ func _process(delta: float) -> bool:
 			# player down again short of the same hole, so they walk straight
 			# back into it until the nights run out.
 			for g in GAP_STARTS:
-				if _player.position.x > g - 110.0 and _player.position.x < g - 30.0 and _jump_cooldown <= 0.0:
+				if _player.position.x > g - 72.0 and _player.position.x < g - 34.0 and _jump_cooldown <= 0.0 and _player.is_on_floor():
 					_jump()
-					_jump_cooldown = 0.55
+					_jump_cooldown = 2.0
 					_note("jump_gap", {"gap_x": g, "x": snappedf(_player.position.x, 1.0)})
 			if _meters.ended:
 				_fail("the night ended before reaching the relic (fell into a gap)")
@@ -287,9 +289,9 @@ func _process(delta: float) -> bool:
 			if not _held.has("move_right"):
 				_press("move_right")
 			for g in GAP_STARTS:
-				if _player.position.x > g - 110.0 and _player.position.x < g - 30.0 and _jump_cooldown <= 0.0:
+				if _player.position.x > g - 72.0 and _player.position.x < g - 34.0 and _jump_cooldown <= 0.0 and _player.is_on_floor():
 					_jump()
-					_jump_cooldown = 0.55
+					_jump_cooldown = 2.0
 					_note("jump_gap", {"gap_x": g, "x": snappedf(_player.position.x, 1.0)})
 			if _meters.ended:
 				_fail("the night ended during the walk to the second relic")
@@ -388,8 +390,99 @@ func _process(delta: float) -> bool:
 			# be farmed.
 			if not _held.has("move_left"):
 				_press("move_left")
-			if _phase_t > 3.5:
+			if _phase_t > 3.0:
 				_release_all()
+				_go("done")
+
+		"to_relic3":
+			# An explicit route, not stuck-detection. The level alternates which
+			# world is passable: his shelves are solid on the floor at 2200 and
+			# 4600, their crate is solid on the ceiling at 3400. Getting to the
+			# last relic means switching worlds at the right places, which is the
+			# mechanic the whole game is built on.
+			#   floor 1100 -> flip to the truth -> ceiling right to 3250
+			#   -> flip back to the memory -> floor right, jumping the 3860 gap
+			#   -> blocked by the shelf at 4600 -> flip -> ceiling right to 5120
+			if not _scene.is_inverted:
+				if _press_cooldown <= 0.0:
+					_tap("flip_world"); _press_cooldown = 1.2
+			else:
+				_note("to_the_truth", {"x": snappedf(_player.position.x,1.0)})
+				_go("ceiling_run")
+			if _phase_t > 8.0:
+				_fail("could not flip after recovering")
+
+		"ceiling_run":
+			# The ceiling is unbroken here, so this stretch is smooth walking.
+			if not _held.has("move_right"):
+				_press("move_right")
+			if _player.position.x >= 3250.0:
+				_release_all()
+				_note("before_their_crate", {"x": snappedf(_player.position.x,1.0)})
+				_go("back_to_floor")
+			elif _phase_t > 25.0:
+				_fail("never crossed the ceiling")
+
+		"back_to_floor":
+			if _scene.is_inverted:
+				if _press_cooldown <= 0.0:
+					_tap("flip_world"); _press_cooldown = 1.2
+			else:
+				_note("back_to_the_memory", {"x": snappedf(_player.position.x,1.0)})
+				_go("floor_run")
+			if _phase_t > 8.0:
+				_fail("could not flip back to the floor")
+
+		"floor_run":
+			# One gap left at 3860. Jump it once, at the lip, and do not retrigger.
+			if not _held.has("move_right"):
+				_press("move_right")
+			if not _jumped_3860 and _player.position.x > 3760.0 and _player.position.x < 3830.0 and _player.is_on_floor():
+				_jump(); _jumped_3860 = true
+				_note("jump_gap", {"gap_x": 3860.0, "x": snappedf(_player.position.x,1.0)})
+			if _meters.ended:
+				_fail("the night ended on the way to the last relic")
+			if _player.position.x >= 4480.0:
+				_release_all()
+				_note("at_his_shelf", {"x": snappedf(_player.position.x,1.0)})
+				_go("flip3")
+			elif _phase_t > 25.0:
+				_fail("never reached the last shelf")
+
+		"flip3":
+			if not _scene.is_inverted:
+				if _press_cooldown <= 0.0:
+					_tap("flip_world"); _press_cooldown = 1.2
+			else:
+				_go("walk3")
+			if _phase_t > 8.0:
+				_fail("world never inverted for the third relic")
+
+		"walk3":
+			var d3: float = RELIC3_X - _player.position.x
+			if absf(d3) > 35.0:
+				var w3 := "move_right" if d3 > 0.0 else "move_left"
+				_release("move_left" if d3 > 0.0 else "move_right")
+				if not _held.has(w3): _press(w3)
+			else:
+				_release_all(); _go("reach3")
+			if _phase_t > 25.0:
+				_fail("never crossed to the third relic")
+
+		"reach3":
+			if _jump_cooldown <= 0.0:
+				_jump(); _jump_cooldown = 0.9
+			if _press_cooldown <= 0.0:
+				_reach_out(); _press_cooldown = 0.22
+			if _meters.recognition >= 3:
+				_release_all()
+				_note("SEEN", {"recognition": _meters.recognition, "days_left": _meters.days_left})
+				_go("ending")
+			if _phase_t > 25.0:
+				_fail("the third contact never landed")
+
+		"ending":
+			if _phase_t > 7.0:
 				_go("done")
 
 		"done":
