@@ -156,22 +156,24 @@ def step_lid():
 
 # ==== STEP 3: key shaft — 12-vertex cylinder along +X out of the right face =======
 # Origin on the right face at z = 0.05, on the shaft's axis: the point a key turns on.
+# Revised 2026-10-14 from r 0.005 x 0.025: see CHANGE-BRIEF.md, revision A3-1.
 def step_key_shaft():
     bm = bmesh.new()
     bmesh.ops.create_cone(bm, cap_ends=True, cap_tris=False, segments=12,
-                          radius1=0.005, radius2=0.005, depth=0.025)
+                          radius1=0.006, radius2=0.006, depth=0.030)
     bmesh.ops.rotate(bm, cent=(0, 0, 0), matrix=Matrix.Rotation(math.radians(90), 3, "Y"),
                      verts=bm.verts)
-    # Runs x = -0.002 .. 0.023 from the face: 2 mm sunk into the body, no visible seam.
-    bmesh.ops.translate(bm, vec=(0.0105, 0, 0), verts=bm.verts)
+    # Runs x = -0.002 .. 0.028 from the face: 2 mm sunk into the body, no visible seam.
+    bmesh.ops.translate(bm, vec=(0.013, 0, 0), verts=bm.verts)
     report(finish("MB_KeyShaft", bm, "M_Brass", (0.12, 0, 0.05)))
 
 
-# ==== STEP 4: key handle — flat bow, 0.006 x 0.035 x 0.025, 1-segment bevel ========
+# ==== STEP 4: key handle — flat bow, 0.008 x 0.050 x 0.040, 1-segment bevel ========
+# Revised 2026-10-14 from 0.006 x 0.035 x 0.025: see CHANGE-BRIEF.md, revision A3-1.
 def step_key_handle():
-    bm = box((0.006, 0.035, 0.025), bevel=0.0015, segments=1)
+    bm = box((0.008, 0.050, 0.040), bevel=0.0015, segments=1)
     # Centred on the shaft axis, overlapping the shaft end by 1 mm.
-    report(finish("MB_KeyHandle", bm, "M_Brass", (0.145, 0, 0.05)))
+    report(finish("MB_KeyHandle", bm, "M_Brass", (0.151, 0, 0.05)))
 
 
 # ==== STEP 5: clasp — 0.024 x 0.004 x 0.022, front face, top centre, no bevel ======

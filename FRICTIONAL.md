@@ -26,6 +26,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | How the music box's meshes are made | `bmesh` primitives built at final size and angle, bevels as real geometry, instead of `bpy.ops` primitives with modifiers | Approved the plan | **Accepted.** Rotation and scale never exist on the objects, so there is nothing to apply and nothing to forget. Triangle counts are exact rather than estimated, and the script runs headless without a viewport |
 | Smooth-shading threshold | Proposed 30°, then changed it to 40° before running, and said so | Did not overrule | A 12-sided shaft has exactly 30° between faces, so 30° left the result to rounding. At 40° the shaft is smooth and the 45° bevels and 90° caps stay crisp |
 | Where the `.blend` lives | `blender/musicbox.blend`, outside `godot/` | Did not overrule | Godot 4 tries to import any `.blend` inside its project folder; only the `.glb` belongs there |
+| The music box's key, and its back view | Enlarge the key at no triangle cost; add nothing to the back, because extra parts are the over-building that prediction 4 exists to catch | Left it to Claude: "whatever will help us add details to it more nicely" | **Its call, taken.** Recorded as revision A3-1 in `CHANGE-BRIEF.md`, not as an edit to the original spec. The key now shows from directly behind; from behind-left it still does not |
 
 ## Entries
 
@@ -219,10 +220,26 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
   In the viewport it reads as a music box from the front and the three-quarter view. **From behind it reads as a closed chest**, because the key is out of sight and nothing else says "music box". The key's bow is 35 mm on a 268 mm box, smaller in proportion than in `relic_musicbox.png`. Both were noted before any export, and they are what predicted failure 7 is for.
 
-- **What I did:** Asked whether the plan was best practice before approving it, and approved it with two additions: smooth shading by angle, and the lid's origin on its hinge so it could swing open later. `[TO FILL — your read of the viewport images: does the key need to be larger, and does the back view matter for where this sits in the game?]`
+- **What I did:** Asked whether the plan was best practice before approving it, and approved it with two additions: smooth shading by angle, and the lid's origin on its hinge so it could swing open later. When asked whether the key needed to be larger and whether the back view mattered, I left the call to Claude: "whatever will help us add details to it more nicely." What it chose is the next entry.
 
 - **What Claude or another person contributed:** Claude derived the lid thickness from the brief's own numbers, ran the full script headless into a scratch file before touching the live session so that any Blender 5.2 API difference would fail there instead, then sent one call per object, each followed by an independent `get_scene_info` reading. It flagged that the art shows the lid thrown wide open while the brief says ajar, and that the box in the art is nearly cubic. Both are recorded here, not changed.
 
 - **What I understand now / still do not understand:** The interesting numbers were not the ones I chose. They came from my choices combining: the height the bevel cost, the gap at the hinge, and the width the key added. Still unverified: whether the colours, the smooth shading and the +Z-up orientation survive the glTF export, and whether the box reads at game scale in Godot. Nothing has been exported yet.
 
 - **Evidence and next step:** Evidence: `tools/blender/build_musicbox.py` — the headless run (`blender -b --factory-startup -P`) and the six live calls printed identical numbers; `blender/musicbox.blend`; the four-view `look` image in material shading. The live calls sent each step without the script's `__main__` block, and the save step used a literal path where the script reads one from its arguments. Next step: build the lamp the same way.
+
+### 2026-10-14 — The key was made larger, and the back view only partly improved
+
+- **Date and what I was working on:** 2026-10-14, immediately after the music box was built. The open question from the last entry: whether the key was large enough to do its job.
+
+- **I tried / expected:** I asked what the open marker wanted from me, then left the decision with Claude. It recommended enlarging the key and adding nothing else, expecting the larger key to help with the back view as well.
+
+- **What happened:** The key went from a 35 × 25 mm bow to 50 × 40 mm, and the shaft from r 5 mm to r 6 mm. Both live and headless, the asset now measures **0.275 × 0.1754 × 0.1795 m at 252 triangles** — the same triangle count, because only the sizes changed. Re-running the two steps replaced `MB_KeyShaft` and `MB_KeyHandle` by name; no `.001` appeared. From directly behind, the key now shows in the silhouette, where before it did not. **From behind and to the left it still reads as a plain chest**, because the key is on the far side. That part was not fixed, and it was not claimed to be.
+
+- **What I did:** Delegated the decision, quoted in the decisions table.
+
+- **What Claude or another person contributed:** The recommendation and its reasoning: the key is the brief's own named identifier, it was about 9 px tall at game scale, and enlarging it cost nothing, while adding parts to the back would have been over-building against the brief. It recorded the change as a dated revision rather than editing the specification, and it confirmed the result in two independent runs.
+
+- **What I understand now / still do not understand:** The decision changed proportion, not structure, which is why it cost nothing. Whether 50 mm is enough is still a guess until the box is seen at game scale in Godot.
+
+- **Evidence and next step:** Evidence: `CHANGE-BRIEF.md` revision A3-1; `tools/blender/build_musicbox.py` steps 3 and 4 with the revision noted inline; the second four-view `look` image (front, three-quarter, back, behind-left). Next step: the bedside lamp.
