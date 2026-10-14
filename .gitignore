@@ -1,11 +1,20 @@
 .DS_Store
 *.mp3
 *.mp4
+*.wav
 godot/.godot/
 godot/.import/
 export_presets.cfg
 REQUIREMENTS-CHECKLIST.md
 evidence/*-small.png
+
+# Blender's own incremental backups — the .blend is the source, these are not
+*.blend1
+*.blend2
+*.blend[0-9]
+
+# Personal copies of assignment prompts — working notes, never committed
+ASSIGNMENT-*-REQUIREMENTS.md
 
 # Film working media: the course rule keeps MP4 and anything over 25 MB out.
 youtube/**/capture/*.mp4
