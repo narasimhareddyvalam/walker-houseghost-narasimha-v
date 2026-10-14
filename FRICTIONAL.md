@@ -137,7 +137,21 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
   It loads and registers without complaint. **Nothing was wrong with the add-on, the path, or Blender 5.2.** The only broken thing was the Blender I had open: it scans that directory when it starts, and it had been running since before the file existed at 15:47. It was reporting, accurately, that it knew of no such module.
 
-- **What I did:** Quit Blender and reopened it. `[TO FILL — whether it then enabled cleanly, and anything the MCP panel showed]`
+- **What I did:** Quit Blender and reopened it. The add-on enabled on the first tick with no error, which settles it. Four things I then recorded from the `N`-panel rather than assumed:
+
+  - It reports **"Connected on port 9876"**, and while connected the button reads **"Disconnect"**. That is a *fourth* name for this control: the brief already notes the README says "Start MCP Server" in one place and "Connect to Claude" in another, while the add-on code says "Connect to MCP server".
+  - The add-on is listed as plain **"MCP for Blender"**, not "Interface: MCP for Blender" as the brief has it.
+  - Every remote service is off, as required and as shipped: Poly Haven, Sketchfab, Poly Pizza, Hyper3D Rodin and Tencent Hunyuan 3D all unchecked, with "No API keys?" shown beside the generation section.
+  - The panel reports **Addon 1.8 · up to date**, which is not a version the brief mentions at all. The installed package is **`mcp-for-blender` 2.1.9**, which is the version whose nine-tool list the brief describes, and the server log line `Blender addon on disk is current (protocol 13)` is the check that actually matters between the two. The add-on carries its own version number; 1.8 and 2.1.9 are not in conflict.
+
+  I also had the socket checked rather than trusting the panel, because the brief is specific that this thing has no authentication and should stay on localhost:
+
+  ```
+  COMMAND   PID    USER                FD  TYPE  NAME
+  Blender   79619  narasimhareddyvalam 8u  IPv4  TCP 127.0.0.1:9876 (LISTEN)
+  ```
+
+  Bound to `127.0.0.1`, not `0.0.0.0` — reachable only from this machine. `[TO FILL — your own note on running an unauthenticated socket, and when you intend to switch the add-on off]`
 
 - **What Claude or another person contributed:** Claude refused to act on the plausible explanation. It queried `bpy.utils.script_paths(subdir='addons')` to establish where Blender looks before arguing about whether the path was wrong, then ran `addon_utils.enable()` in a headless Blender to separate "the add-on is broken" from "my session is stale". Two commands, and the answer came back unambiguous. The decision to stop and check rather than start moving files was its call, and the right one.
 
