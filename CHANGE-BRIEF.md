@@ -119,3 +119,150 @@ Verified in engine: the duck is `DUCK_DB = -15.0` in `scripts/audio.gd`, the hus
 called from `_on_contact_landed` in `scripts/world.gd`, and the ending fade is
 `finish_music()`. The captured run shows the duck at the flip (−23.0 dBFS) and the
 post-contact hush holding at −23 dBFS while the rest of the run sits near −17.
+
+---
+
+# HOUSEGHOST — Change brief (Assignment 3: first 3D assets)
+
+**Written and committed 2026-10-14, before Claude was asked to build anything.** The
+Assignment 2 brief above is kept exactly as it was. Nothing in this section is edited
+later to make a prediction look right; corrections are appended as dated revisions, and
+the outcome of every predicted failure is recorded in the last table whatever it turns
+out to be.
+
+## The scale this brief is written in
+
+**1 metre = 250 pixels**, anchored on the player, which is what the assignment asks for
+("justified against something in your game — the player's height, a tile, a door").
+
+| Thing in the game | Pixels | Metres at 250 px/m |
+|---|---|---|
+| The boy's sprite, full height | 320 | **1.28** — correct for the eight-year-old he is |
+| His collision capsule | 250 | **1.00** |
+| Floor to ceiling, interior | 800 | 3.20 |
+| The door in `env_room_memory.png` | ~609 | 2.44 |
+
+**The known problem with this anchor, stated up front.** My own art does not agree with
+itself. Anchored on the boy it is 250 px/m; anchored on the door at a standard two metres
+it is ~300 px/m. I have taken 250 because the assignment names the player's height first
+and because it makes the character correct, which matters more than the door does. The
+cost is a 2.44 m door and a 3.2 m ceiling — tall, though not impossible in an old house.
+Nothing in Assignment 2 ever required me to measure this, because nothing in a 2D game does.
+
+A consequence worth naming: at 250 px/m the music-box sprite would be a **0.79 m** object.
+The relic art was drawn oversized so that it reads on screen, not to scale. **The 3D assets
+are built true to life rather than to the sprite dimensions**, and the gap between the two
+is expected rather than an error.
+
+## Reference
+
+The reference for all three is **my own Assignment 2 art**, in this repository:
+`godot/assets/art/env_room_memory.png`, `relic_musicbox.png` and `prop_shelf.png`. No
+downloaded model, no generated mesh, no third-party reference.
+
+Colours were sampled out of those PNGs with Pillow and then **lifted to albedo**, because
+the paintings are lit by a single warm lamp and a flat material carries no lighting. The
+bookshelf samples at `#0F0A06`, near black, which is what that wood looks like in that
+room rather than what the wood is. Both values are recorded.
+
+| Material | Shipped (albedo) | Sampled from art | Used on |
+|---|---|---|---|
+| `M_Wood_Warm` | `#6B4428` | `#61402A` music-box body | music-box body, bookshelf carcass |
+| `M_Wood_Dark` | `#4A2E19` | `#402411` bookshelf side panel | music-box lid, shelves |
+| `M_Brass` | `#9A7B3F` | — chosen; the key sits in shadow in the art | wind-up key, clasp |
+| `M_Ceramic_Amber` | `#A15A26` | `#88441A` lamp base | lamp base and neck |
+| `M_Shade_Cream` | `#F0DCA8` | `#FAE098` lit shade | lamp shade |
+
+Palette rules carried over from `CHARACTER-SHEET.md` and respected here: **no green**, which
+belongs to the boy alone, and nothing at the child's `#E9C846`. `#F0DCA8` is a pale cream
+kept deliberately clear of that yellow.
+
+## The three assets
+
+Each is built around Blender's world origin with its base on the floor at that point, and
+**each lives in its own `.blend` file**, because that origin is where Godot will place it.
+
+### 1. MusicBox — `build_musicbox.py` → `musicbox.blend` → `musicbox.glb`
+
+- **What it is in the game:** the first relic. Visible from the spawn point, out of reach
+  from the floor, calling every few seconds with its own chime — it is the whole of the
+  slice's tutorial. `relic_musicbox.png`, the `MusicBox` node at (1548, 470).
+- **Size:** body **0.24 W × 0.17 D × 0.12 H m**; **0.18 m** overall with the lid ajar.
+  Justified as roughly a seventh of the boy's 1.28 m — an object he holds in two hands.
+- **Origin:** centre of the underside. It stands on a shelf, so that is the point I want to
+  place and the point that should sit flush.
+- **Shape — 5 primitives:** cube body; cube lid, hinged open about 18°; cylinder key shaft;
+  cube key handle; small cube clasp on the front. The art shows a ballerina inside, which is
+  organic and cannot be made from primitives within budget, so it is deliberately omitted.
+  **The wind-up key is what makes this read as a music box rather than a chest**, which is
+  also why the lid is ajar rather than closed.
+- **Colours:** `M_Wood_Warm` body, `M_Wood_Dark` lid, `M_Brass` key and clasp.
+- **Budget: 320 triangles.** Estimated 274 — a 2-segment bevel on the body (~130), 1-segment
+  bevels on lid and handle (~44 each), a 12-vertex key shaft (44), unbevelled clasp (12).
+  The margin is there in case the edges read too sharp and the bevel has to go up.
+
+### 2. BedsideLamp — `build_lamp.py` → `lamp.blend` → `lamp.glb`
+
+- **What it is in the game:** the warm light beside the bed in the remembered room — the
+  reason that world looks safe. Painted into `env_room_memory.png`. **Unlike the other two
+  it is not a separate node in `Bedroom.tscn`**, and I am stating that rather than implying
+  all three are equally present. The assignment asks for assets the game *could* use, and
+  gives "a lantern" as its own example.
+- **Size:** **0.20 W × 0.20 D × 0.42 H m**. Justified as about a third of the boy's 1.28 m,
+  standing on a bedside table; in the art the shade sits a little above the mattress.
+- **Origin:** centre of the underside of the base.
+- **Shape — 3 primitives:** UV sphere squashed to 0.6 on Z for the bulbous ceramic base; a
+  thin cylinder neck; a truncated cone shade **wider at the bottom** (r1 0.10, r2 0.065),
+  which is the proportion the painting actually shows and the thing that makes it read as a
+  bedside lamp rather than a desk lamp.
+- **Colours:** `M_Ceramic_Amber` base and neck, `M_Shade_Cream` shade.
+- **Budget: 340 triangles.** Estimated 280 — sphere at 12 segments × 6 rings (144), 12-vertex
+  neck (44), 24-vertex cone (92). The shade carries 24 segments because a faceted lampshade
+  is the most obvious tell of a cheap model; the rest is made cheaper to pay for it.
+
+### 3. Bookshelf — `build_bookshelf.py` → `bookshelf.blend` → `bookshelf.glb`
+
+- **What it is in the game:** his bookshelf. Solid only in the memory and absent from the
+  truth — one half of the mechanic that forces you to turn the world over. `Memory0` at
+  (2200, 815) and `Memory1` at (4600, 815), collider 150 × 250 px.
+- **Size:** **0.64 W × 0.30 D × 1.00 H m** overall; the carcass is 0.60 wide and the top slab
+  overhangs 0.02 each side. Justified directly by the in-game collider: 150 × 250 px at
+  250 px/m is 0.60 × 1.00 m, and **1.00 m is exactly the height of the boy's collision
+  capsule**, which is why it stops him.
+- **Origin:** centre of the underside. It stands on the floor, and the Godot check places it
+  at y = 0 to see whether it sits or floats.
+- **Shape — 5 primitives:** top slab (overhanging), two side panels, two interior shelves.
+  **The overhang is the detail that makes it furniture rather than a box** — it is the first
+  thing visible in `prop_shelf.png`. Open-backed, as the art shows a dark interior. One shape
+  is left spare against the six-shape limit, deliberately, in case the viewport review wants
+  a plinth.
+- **Colours:** `M_Wood_Warm` carcass and top, `M_Wood_Dark` shelves.
+- **Budget: 360 triangles.** Estimated 306 — a 2-segment bevel on the top slab (~130) because
+  it is the most-seen edge, 1-segment bevels on the four panels (~44 each).
+
+## Rules every asset is held to
+
+1. Built around the world origin, base on the floor at that point, one `.blend` each.
+2. Rotation and scale applied before export; Godot must read node scale `1, 1, 1`.
+3. Every object, mesh and material named — no `Cube.001` anywhere.
+4. One shared five-material library across all three, not fifteen unrelated colours.
+5. Segment counts set deliberately and stated above; Blender's default 32 is never used.
+6. Normals recalculated outside before export.
+7. Exported as binary glTF with +Y Up.
+8. Every line of code Claude runs is saved to `tools/blender/build_<asset>.py`, and each
+   must rebuild its asset headless from an empty scene.
+
+## Predicted failure cases, the checks, and what actually happened
+
+**Predicted 2026-10-14, before building.** The last column is filled in as each is tested,
+whatever the result.
+
+| # | What could go wrong | How I will check it | What actually happened |
+|---|---|---|---|
+| 1 | An asset arrives lying on its side. Blender is Z-up and glTF is Y-up, and the exporter's +Y Up conversion is the only thing standing between the two. | The headless Godot script prints the standing axis and bounding-box extents per asset; in Blender the `N` sidebar must read rotation 0,0,0 before export. | *pending* |
+| 2 | Wrong by a factor of ten or a hundred — a metres/centimetres slip, or a scale left unapplied. | Three numbers side by side for every asset: this brief, Blender's `N` sidebar Dimensions, and Godot's bounding box. All three must agree. | *pending* |
+| 3 | The origin ends up in the middle, so the asset sinks half under the floor or floats above it. Blender creates every primitive centred, so this is the default outcome rather than bad luck. | Place each asset at y = 0 in the Godot scene and look at whether it sits or hovers. The lamp and the bookshelf are the obvious tells. | *pending* |
+| 4 | Claude over-builds — more detail, more primitives or more triangles than asked, so the asset stops being the thing this brief describes. | Scene Statistics in Blender's status bar after every object, against the per-asset budget above, and primitive count against the stated shape list. Over budget means rebuild the asset, not rewrite the budget. | *pending* |
+| 5 | A colour does not survive the export. glTF carries base colour rather than viewport colour, and a material left on Blender's default grey exports as grey. | Orbit each asset in the Godot scene and compare it against the five hex values in the material table. | *pending* |
+| 6 | The MCP registers but never actually drives Blender. The client reports "Connected" when the stdio process launches, which says nothing about whether it can reach a running Blender. | `get_scene_info` must return the real contents of my open scene before any build is approved. Every error string recorded verbatim in `FRICTIONAL.md`. Two-hour time box, then the script route. | *pending* |
+| 7 | The assets are correct and still look wrong — right size, right way up, and reading as three grey boxes beside the painted room they came out of. | The human check the rubric reserves for me: orbit each one in Godot from behind and below, at game scale, and judge whether it reads as what it is. No headless check can answer this. | *pending* |
