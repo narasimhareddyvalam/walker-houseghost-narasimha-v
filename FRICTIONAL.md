@@ -23,6 +23,9 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | Which three assets | The music box, a bedside lamp and the bookshelf — one collectible, one prop, one piece of environment, at three different scales | *Open* | *Undecided as this is written.* Its other candidate was the three relics, which it then argued against itself: shoes and a floorboard lying nearly flat will not read as what they are when they are built from six boxes |
 | Which scale the metre is | 250 px per metre, anchored on the boy, because the brief says to justify sizes against the player | *Open* | *Undecided.* See the entry below — my own art does not agree with itself about this |
 | Which identity commits carry | Had been committing with whatever Git defaulted to, which on this machine was a hostname address | "Commit to GitHub under only `narasimhareddyvalam`, not `narasimhareddyvalamm`" | **A standing instruction.** Checking it is what exposed the hostname address — see the entry below. The repo's local config now sets `valam.n@northeastern.edu`, which GitHub resolves to the single-m account |
+| How the music box's meshes are made | `bmesh` primitives built at final size and angle, bevels as real geometry, instead of `bpy.ops` primitives with modifiers | Approved the plan | **Accepted.** Rotation and scale never exist on the objects, so there is nothing to apply and nothing to forget. Triangle counts are exact rather than estimated, and the script runs headless without a viewport |
+| Smooth-shading threshold | Proposed 30°, then changed it to 40° before running, and said so | Did not overrule | A 12-sided shaft has exactly 30° between faces, so 30° left the result to rounding. At 40° the shaft is smooth and the 45° bevels and 90° caps stay crisp |
+| Where the `.blend` lives | `blender/musicbox.blend`, outside `godot/` | Did not overrule | Godot 4 tries to import any `.blend` inside its project folder; only the `.glb` belongs there |
 
 ## Entries
 
@@ -189,3 +192,37 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** Case 6 is answered for reading; it is not yet answered for writing, and nothing has been built. On the commits: an unset identity is not an error Git reports. It quietly signs with a made-up address, and the work looks fine locally while appearing on GitHub under nobody. Still unresolved: whether `execute_blender_code` changes the live scene as reliably as `get_scene_info` reads it.
 
 - **Evidence and next step:** Evidence: the `get_scene_info` output above; `git log --format='%h %ae'` showing the six hostname-address commits; `gh api repos/narasimhareddyvalam/walker-houseghost-narasimha-v/commits/7fead95 --jq .author.login` returning `narasimhareddyvalam`; `git config --local user.email` now reading `valam.n@northeastern.edu`. Next step: approve the music-box build plan, then one `execute_blender_code` call per object.
+
+### 2026-10-14 — The music box, built in six calls
+
+- **Date and what I was working on:** 2026-10-14, the first asset. Five primitives under a `MusicBox` root empty, as specified in the change brief.
+
+- **I tried / expected:** I expected the brief's numbers back from Blender, and a triangle count near the 274 I had estimated.
+
+- **What happened:** It built as specified, and the numbers match in both Claude's own report and `get_scene_info`'s independent one:
+
+  ```
+  asset min [-0.12, -0.0885, 0.0] max [0.148, 0.0869, 0.1795] size [0.268, 0.1754, 0.1795]
+  tris 252 / 320 | objects 5 / 5
+  every object: rot (0,0,0) scale (1,1,1) non-manifold 0 inward-facing 0
+  meshes:    MB_Body MB_Clasp MB_KeyHandle MB_KeyShaft MB_Lid
+  materials: M_Brass M_Wood_Dark M_Wood_Warm
+  ```
+
+  The body is exactly 0.24 × 0.17 × 0.12. Four things differ from the brief, and none was hidden:
+  - **The height with the lid ajar is 0.1795 m, not 0.180.** The lid's 2 mm bevel rounds its front-top corner, which is the highest point.
+  - **The lid sits about 0.6 mm above the body at the hinge**, because the same bevel pulls the lid's back-bottom edge in off the hinge line. It is invisible at game scale, but it is a gap.
+  - **The asset is 0.268 wide, not 0.24.** The key sticks out of the right side. The brief's 0.24 is the body, and prediction 2's three-way comparison has to use the same thing in all three places.
+  - **252 triangles, not the 274 estimated.** A 2-segment bevelled cube is 108, not ~130. The estimate was wrong; the budget held.
+
+  The lid thickness of 0.008 m was not stated in the brief. It is the only thickness that makes 0.18 m overall possible at 18°.
+
+  In the viewport it reads as a music box from the front and the three-quarter view. **From behind it reads as a closed chest**, because the key is out of sight and nothing else says "music box". The key's bow is 35 mm on a 268 mm box, smaller in proportion than in `relic_musicbox.png`. Both were noted before any export, and they are what predicted failure 7 is for.
+
+- **What I did:** Asked whether the plan was best practice before approving it, and approved it with two additions: smooth shading by angle, and the lid's origin on its hinge so it could swing open later. `[TO FILL — your read of the viewport images: does the key need to be larger, and does the back view matter for where this sits in the game?]`
+
+- **What Claude or another person contributed:** Claude derived the lid thickness from the brief's own numbers, ran the full script headless into a scratch file before touching the live session so that any Blender 5.2 API difference would fail there instead, then sent one call per object, each followed by an independent `get_scene_info` reading. It flagged that the art shows the lid thrown wide open while the brief says ajar, and that the box in the art is nearly cubic. Both are recorded here, not changed.
+
+- **What I understand now / still do not understand:** The interesting numbers were not the ones I chose. They came from my choices combining: the height the bevel cost, the gap at the hinge, and the width the key added. Still unverified: whether the colours, the smooth shading and the +Z-up orientation survive the glTF export, and whether the box reads at game scale in Godot. Nothing has been exported yet.
+
+- **Evidence and next step:** Evidence: `tools/blender/build_musicbox.py` — the headless run (`blender -b --factory-startup -P`) and the six live calls printed identical numbers; `blender/musicbox.blend`; the four-view `look` image in material shading. The live calls sent each step without the script's `__main__` block, and the save step used a literal path where the script reads one from its arguments. Next step: build the lamp the same way.
