@@ -100,3 +100,51 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** A documented command is a claim about a version, not a fact. Both of these lines are probably correct for the versions the chapter ran against; neither is correct here, and one of them the chapter admits it assembled rather than copied. The second lesson is the one I will carry further: a tool that prints an error and exits 0 is worse than one that crashes, because every check downstream of it keeps passing. Still unresolved: whether the add-on installs cleanly once Blender has a user directory, and whether the server can actually drive a running Blender — everything so far has tested the client side only.
 
 - **Evidence and next step:** Evidence: the two error strings above, quoted exactly; `claude mcp get blender` output; the absence of `~/Library/Application Support/Blender/`. Next step: open Blender for the first time and do the "Learn the window" session, then re-run `uvx mcp-for-blender install-addon` and enable the add-on in Preferences.
+
+### 2026-10-14 — The add-on was never broken; Blender was holding a stale list
+
+- **Date and what I was working on:** 2026-10-14, straight after the installer finally succeeded. Opening Blender for the first time created `~/Library/Application Support/Blender/5.2/`, and re-running `uvx mcp-for-blender install-addon` wrote the file:
+
+  ```
+  Installed MCP for Blender addon to /Users/narasimhareddyvalam/Library/Application
+  Support/Blender/5.2/scripts/addons/blender_mcp.py
+  ```
+
+- **I tried / expected:** I went to Edit → Preferences → Add-ons expecting to tick one box and be done. The file was on disk, in the directory the installer named, and nothing about that looked ambiguous.
+
+- **What happened:** Enabling it failed, in the Preferences window and again in the status bar:
+
+  ```
+  Add-on not loaded: "blender_mcp", cause: No module named 'blender_mcp'
+  ```
+
+  The obvious reading is that Blender 5.2 has stopped looking in `scripts/addons` — 4.2 introduced the extensions system, and the brief has already warned me twice that this version is ahead of the one the chapter ran. That reading was wrong, and it would have cost me an afternoon.
+
+  Rather than guess, Claude asked Blender where it actually looks:
+
+  ```
+  ADDON DIRS: ['/Users/.../Blender/5.2/scripts/addons']
+  EXTENSIONS: /Users/.../Blender/5.2/extensions
+  ```
+
+  The file was in a directory Blender scans. So the next question was not "is the path right" but "can Blender load this file at all", which is a different test — and one that can be run headless, away from my session:
+
+  ```
+  blender_mcp in list: True
+  BlenderMCP addon registered
+  ENABLE RESULT: <module 'blender_mcp' from '.../scripts/addons/blender_mcp.py'>
+  ```
+
+  It loads and registers without complaint. **Nothing was wrong with the add-on, the path, or Blender 5.2.** The only broken thing was the Blender I had open: it scans that directory when it starts, and it had been running since before the file existed at 15:47. It was reporting, accurately, that it knew of no such module.
+
+- **What I did:** Quit Blender and reopened it. `[TO FILL — whether it then enabled cleanly, and anything the MCP panel showed]`
+
+- **What Claude or another person contributed:** Claude refused to act on the plausible explanation. It queried `bpy.utils.script_paths(subdir='addons')` to establish where Blender looks before arguing about whether the path was wrong, then ran `addon_utils.enable()` in a headless Blender to separate "the add-on is broken" from "my session is stale". Two commands, and the answer came back unambiguous. The decision to stop and check rather than start moving files was its call, and the right one.
+
+- **What I understand now / still do not understand:** This is the same fault I had in Assignment 2 with the Godot editor — it kept the open scene in memory and happily played a build that no longer existed, and I lost real time to it twice before we found it. **A running editor is a cache, and installing something underneath one proves nothing.** It is the second time this project has cost me an hour to that, and the general rule I should have carried over is: when a tool says something does not exist, check whether the tool has looked since it changed.
+
+  The second thing is narrower and worth keeping. "No module named X" reads like a path problem and invites you to start moving files, which would have left me with the add-on installed in two places and no idea which one loaded. The cheap test — can a *fresh* process load it — answers the real question and changes nothing on disk.
+
+  Still unresolved: whether the server, once started from the add-on's panel, can actually be driven from Claude Code. Everything so far has tested the client and the add-on separately; nothing has yet connected the two.
+
+- **Evidence and next step:** Evidence: the Preferences error quoted exactly; `ADDON DIRS` and `EXTENSIONS` output; the headless `addon_utils.enable()` result showing "BlenderMCP addon registered". Next step: enable the add-on in the restarted Blender, start the server from the `N`-panel's MCP tab with every download and generation option left off, restart Claude Code so it sees the server, and call `get_scene_info` as the first real test of the connection.
