@@ -22,6 +22,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | Narrating the work | Began running a command whose name I had already agreed to | "Tell what you are doing first" | **I overruled it.** Agreeing to a branch name is not agreeing to the moment it gets created. Intent is now stated before the action, not reported after it |
 | Which three assets | The music box, a bedside lamp and the bookshelf — one collectible, one prop, one piece of environment, at three different scales | *Open* | *Undecided as this is written.* Its other candidate was the three relics, which it then argued against itself: shoes and a floorboard lying nearly flat will not read as what they are when they are built from six boxes |
 | Which scale the metre is | 250 px per metre, anchored on the boy, because the brief says to justify sizes against the player | *Open* | *Undecided.* See the entry below — my own art does not agree with itself about this |
+| Which identity commits carry | Had been committing with whatever Git defaulted to, which on this machine was a hostname address | "Commit to GitHub under only `narasimhareddyvalam`, not `narasimhareddyvalamm`" | **A standing instruction.** Checking it is what exposed the hostname address — see the entry below. The repo's local config now sets `valam.n@northeastern.edu`, which GitHub resolves to the single-m account |
 
 ## Entries
 
@@ -162,3 +163,29 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
   Still unresolved: whether the server, once started from the add-on's panel, can actually be driven from Claude Code. Everything so far has tested the client and the add-on separately; nothing has yet connected the two.
 
 - **Evidence and next step:** Evidence: the Preferences error quoted exactly; `ADDON DIRS` and `EXTENSIONS` output; the headless `addon_utils.enable()` result showing "BlenderMCP addon registered". Next step: enable the add-on in the restarted Blender, start the server from the `N`-panel's MCP tab with every download and generation option left off, restart Claude Code so it sees the server, and call `get_scene_info` as the first real test of the connection.
+
+### 2026-10-14 — The MCP reads my real scene; my commits were signed by nobody
+
+- **Date and what I was working on:** 2026-10-14, the first call after the add-on connected — the test the brief names as predicted failure case 6, before any build is approved. Followed straight away by a check I asked for on which GitHub account my commits land under.
+
+- **I tried / expected:** The brief's worry was that "Connected" only proves a process launched. I expected `get_scene_info` either to fail outright or to return my open scene. On the commits, I expected everything to be under `narasimhareddyvalam` already, since that is the account the repository lives on.
+
+- **What happened:** The connection works end to end. `get_scene_info` returned Blender's actual default scene, unsaved, with values that only a live session could report:
+
+  ```
+  Scene 'Scene' | 1 camera, 1 light, 1 mesh | active Cube | selected Cube | mode OBJECT
+  (unsaved) | engine BLENDER_EEVEE | frames 1-250 (now 1) at 24 fps | 1920x1080 | camera Camera | HDRI none | unit scale 1.0
+  Cube   | mesh   | at (0.0, 0.0, 0.0)   | size 2.0x2.0x2.0 | 6 faces | mat Material
+  Light  | light  | at (4.08, 1.01, 5.9) | point 1000.0W
+  Camera | camera | at (7.36, -6.93, 4.96) | rot (64, 0, 47)
+  ```
+
+  The commit check found something real. This repository had no `user.email` set, locally or globally, so Git fell back to `narasimhareddyvalam@Narasimhas-MacBook-Air.local`, built from the machine's hostname. Six commits carry it — `54a86c3` and all five Assignment 3 commits. GitHub links that address to **no account at all**, single m or double. The 73 commits carried over from Assignment 2 use `valam.n@northeastern.edu`, and the GitHub API resolves one of them (`7fead95`) to `narasimhareddyvalam`.
+
+- **What I did:** Set the commit identity explicitly rather than relying on a default, and only in this repository's local config so nothing else on the machine changes. `[TO FILL — whether to rewrite the five unpushed A3 commits onto the linked address; 54a86c3 is already on origin/main and would need a force-push]`
+
+- **What Claude or another person contributed:** Claude ran `get_scene_info` before proposing any geometry, as the brief requires. On the identity, it read `git config` and `gh auth status` instead of assuming, noticed the hostname address in the log, and confirmed through the GitHub API which account the university address belongs to. The instruction to check, and the account it had to be, were mine.
+
+- **What I understand now / still do not understand:** Case 6 is answered for reading; it is not yet answered for writing, and nothing has been built. On the commits: an unset identity is not an error Git reports. It quietly signs with a made-up address, and the work looks fine locally while appearing on GitHub under nobody. Still unresolved: whether `execute_blender_code` changes the live scene as reliably as `get_scene_info` reads it.
+
+- **Evidence and next step:** Evidence: the `get_scene_info` output above; `git log --format='%h %ae'` showing the six hostname-address commits; `gh api repos/narasimhareddyvalam/walker-houseghost-narasimha-v/commits/7fead95 --jq .author.login` returning `narasimhareddyvalam`; `git config --local user.email` now reading `valam.n@northeastern.edu`. Next step: approve the music-box build plan, then one `execute_blender_code` call per object.
