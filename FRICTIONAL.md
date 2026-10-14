@@ -52,3 +52,51 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **Evidence and next step:** Evidence: the new repository at `github.com/narasimhareddyvalam/walker-houseghost-narasimha-v`, 73 commits, game at the root; commit `54a86c3` adding the ignore rules; the backup bundle at `~/Desktop/csye-7270-backup-20261014.bundle`; the course repo verified afterwards still on `narasimhaReddyValam` at `a3fbb48` with the A2 folder intact and nothing pushed to `origin`. Next step: the "Learn the window" session in Blender, then settle the scale and the three assets and commit `CHANGE-BRIEF.md` before Claude builds anything.
 
 - **Versions on this machine, 2026-10-14:** Blender **5.2.2 LTS** (build date 2026-09-15) — the chapter ran 5.1.2, so I am a version ahead, and anything that differs from the behaviour the brief describes gets recorded here rather than assumed to be my mistake. Godot **4.7.2.stable.official.ed1daf0bf**, matching the chapter. `uv` **0.13.1** via Homebrew. GNU `coreutils` for `timeout`. macOS **26.6.2**, Apple Silicon.
+
+### 2026-10-14 — Both setup lines from the chapter failed, and neither failure was the MCP's fault
+
+- **Date and what I was working on:** 2026-10-14, immediately after the repository move: the two command-line steps that register the MCP server and install the Blender add-on. The brief says to treat each line as a claim to check and to write down what differs on my machine, so this entry is that.
+
+- **I tried / expected:** I expected two copy-paste commands and a connected server. The chapter prints both lines exactly, and I had no reason to think either would need editing.
+
+- **What happened:** Both failed, for unrelated reasons, and neither was a problem with the MCP project.
+
+  **First line, verbatim from the chapter:**
+
+  ```
+  claude mcp add -e DISABLE_TELEMETRY=true blender -- uvx mcp-for-blender
+  ```
+  ```
+  Invalid environment variable format: blender, environment variables should be
+  added as: -e KEY1=value1 -e KEY2=value2
+  ```
+
+  `claude mcp add --help` gives the signature as `claude mcp add [options] <name> <commandOrUrl> [args...]`, and documents `-e, --env <env...>` as **variadic**. Because `-e` accepts a list, putting it before the server name made it swallow `blender` as a second environment variable, leaving no name for the server. The chapter's own note says this combination is "the chapter's adaptation, not a README line", which is consistent with it never having been run. Moving the name in front of the flag works:
+
+  ```
+  claude mcp add blender -e DISABLE_TELEMETRY=true --scope user -- uvx mcp-for-blender
+  ```
+
+  I added `--scope user` on top of the fix, so the server is registered for every project directory rather than only the one the session happened to start in. `claude mcp get blender` then reports `Status: ✔ Connected`, which I am treating as "the stdio process launches", not as "it can reach Blender" — Blender is not running yet, so that claim is untested.
+
+  **Second line, verbatim from the chapter:**
+
+  ```
+  uvx mcp-for-blender install-addon
+  ```
+  ```
+  Could not find a Blender user addons directory. Set BLENDERMCP_ADDONS_DIR to your
+  Blender scripts/addons path, or install addon.py manually from the repo.
+  ```
+
+  The cause is mine, not the tool's: I had installed Blender an hour earlier and never opened it. `~/Library/Application Support/Blender/` does not exist, because Blender creates its user directory on first launch. The installer is looking for something that cannot exist yet.
+
+  Worth recording separately: **that command exited 0.** It printed a failure and reported success to the shell. The brief warns about exactly this shape of trap with Blender's `--python-exit-code 1`, and it turns out to apply here too — a script that chained these steps would have carried on as though the add-on were installed.
+
+- **What I did:** I did not reach for `BLENDERMCP_ADDONS_DIR` or install `addon.py` by hand, which is what the error suggests. Both would have papered over a one-line cause. The fix is to open Blender once, which I have to do anyway for the "Learn the window" session, and then re-run the installer. `[TO FILL — your own reaction to the chapter's commands not working]`
+
+- **What Claude or another person contributed:** Claude ran both commands, read `claude mcp add --help` rather than guessing at the syntax, diagnosed the variadic `-e` as the cause of the first failure, checked for the Blender user directory rather than assuming the add-on installer was broken, and noticed the exit-0 behaviour. The decision not to force the add-on path manually was mine.
+
+- **What I understand now / still do not understand:** A documented command is a claim about a version, not a fact. Both of these lines are probably correct for the versions the chapter ran against; neither is correct here, and one of them the chapter admits it assembled rather than copied. The second lesson is the one I will carry further: a tool that prints an error and exits 0 is worse than one that crashes, because every check downstream of it keeps passing. Still unresolved: whether the add-on installs cleanly once Blender has a user directory, and whether the server can actually drive a running Blender — everything so far has tested the client side only.
+
+- **Evidence and next step:** Evidence: the two error strings above, quoted exactly; `claude mcp get blender` output; the absence of `~/Library/Application Support/Blender/`. Next step: open Blender for the first time and do the "Learn the window" session, then re-run `uvx mcp-for-blender install-addon` and enable the add-on in Preferences.
