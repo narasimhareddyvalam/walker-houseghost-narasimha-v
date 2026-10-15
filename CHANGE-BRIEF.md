@@ -403,3 +403,11 @@ bookshelf is now open-backed, which is what this brief first specified.
 Size unchanged at 0.64 × 0.30 × 1.00 m. `tools/blender/build_bookshelf.py` was updated to
 the edited design, and its headless rebuild matches the hand-edited `.blend` object for object.
 
+**Correction — 2026-10-15, the boy's height.** The scale table above gives the boy's sprite as
+320 px, 1.28 m. Measured on the files, his standing drawing (`char_remembered.png`) is **341 px
+of figure — 1.36 m** at 250 px/m — and his walking frames are 303–317 px, about 1.27 m; the 320
+was the walking height. The game draws him at scale 1, so 1.36 m is his true standing height.
+The scale itself is unchanged: 250 px/m, anchored on his 1.00 m collision capsule, which is why
+the 1.00 m bookshelf stops him even though his drawing stands taller than it. The showcase now
+shows him beside the assets at that size, replacing the 1 m cube and 1.00 m capsule.
+

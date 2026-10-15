@@ -49,6 +49,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | My hand edit | Suggested moving one shelf, then a two-tone recolour for something more visible on video | "I think the easiest thing I can do is to add a third shelf" | **My edit, made with the mouse.** Revision A3-8 |
 | Seven boards | Laid out the choices: drop the back panel, undo the shelf, or keep seven and break the limit | First asked for the back slab as well, then: "keep how it is now without back its fine" | **My decision.** Open-backed, six boards |
 | Tidying the edit | Re-centred the shelves at my heights in even bays, renamed the copies, merged the `.001` material back, made the shelves dark wood | Accepted | **Claude's tidy-up of my edit**, logged as such, in one recorded call |
+| The 1 m cube and the capsule in the showcase | They were not required — the assignment asks for a floor, one light, a camera and the three assets; they came from my own plan. Proposed replacing both with the boy's own sprite at game scale | "I don't like them … remove them … or change them to something related to our game and more in detail" | **My call, Claude's proposal.** The boy now stands beside his props at 1.36 m; measuring him corrected the brief's 1.28 m |
 
 ## Entries
 
@@ -468,4 +469,22 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** Four things. Dragging the white circle of the Move gizmo moves an object freely on every axis; the arrow, or pressing Z after Shift+D, locks it to one. Shift+D copies whatever is selected, so with the parent selected it copied the whole parent. Blender names every copy `.001` silently — objects, meshes and even materials — which is exactly what the brief's naming rule exists to catch. And a fixed limit forces trade-offs: a third shelf cost me the back panel.
 
 - **Evidence and next step:** Evidence: `evidence/a3-hand-edit-before.png` and `evidence/a3-hand-edit-after.png` (same camera), my three screenshots above, `CHANGE-BRIEF.md` revision A3-8, `tools/blender/build_bookshelf.py`, `blender/bookshelf.blend`, `evidence/a3-check-assets.txt`. Next step: the orbit check in Godot.
+
+### 2026-10-15 — The boy in the showcase, and his real height
+
+- **Date and what I was working on:** 2026-10-15, before the orbit check: the showcase scene's two reference objects, a grey 1 m cube and a 1.00 m capsule.
+
+- **I tried / expected:** I did not like them in the scene and asked whether they were required. I expected they were.
+
+- **What happened:** They were not. The assignment asks for "a floor, one light, a camera, and your three assets side by side at game scale"; the cube and capsule came from my own plan. Claude proposed replacing both with the boy himself — my game's own sprite, `char_remembered.png`, as a flat figure at 250 px per metre that turns to face the camera — which answers the orbit check's "at game size, beside your character" more directly than either did.
+
+  Placing him exposed an error in my brief. The scale table says his sprite is 320 px, 1.28 m. Measured, his standing figure is **341 px — 1.36 m**; 320 was his walking height (303–317 px). A throwaway headless probe put his feet at y = 0.0000 and his head at 1.3640 m, and the scene still has exactly one light. In the render he stands beside his props and is visibly taller than the 1.00 m bookshelf — consistent with the game, where his 1.00 m collision capsule, not his drawing, is what the bookshelf stops.
+
+- **What I did:** Asked whether the references were required, and chose to replace them with something from my game.
+
+- **What Claude or another person contributed:** Checked the assignment text, proposed the boy sprite, measured the figure inside its canvas rather than trusting the brief, placed him with his feet on the floor, and recorded the correction to the brief.
+
+- **What I understand now / still do not understand:** The number I anchored the whole scale on was the walking height, not the standing one. It did not change the scale, because the anchor is the collision capsule, but I had been quoting 1.28 m for a pose he never stands in.
+
+- **Evidence and next step:** Evidence: `godot/scenes/AssetShowcase.tscn`; `evidence/a3-showcase.png`; the correction at the end of `CHANGE-BRIEF.md`. Next step: the orbit check, by me, in the editor.
 

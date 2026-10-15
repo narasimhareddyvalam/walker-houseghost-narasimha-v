@@ -21,7 +21,7 @@ Three props from the game's remembered bedroom, built from Blender primitives th
 | **BedsideLamp** | The warm light that makes the remembered room look safe | 0.28 × 0.28 × 0.42 | 6 | 406 / 420 |
 | **Bookshelf** | His bookshelf — solid only in the memory, the half of the mechanic that forces the flip | 0.64 × 0.30 × 1.00 | 6 | 280 / 360 |
 
-**Open the scene:** `godot/scenes/AssetShowcase.tscn` — floor, one light, one camera, the three assets, a 1 m reference cube and the boy's 1.00 m collision capsule.
+**Open the scene:** `godot/scenes/AssetShowcase.tscn` — floor, one light, one camera and the three assets, with the boy himself standing beside them for scale: his own sprite, `char_remembered.png`, at the game's 250 px per metre, so he is 1.36 m tall. The sprite turns to face the camera and casts a shadow; it is a picture, not a fourth asset.
 
 **Run the check** (on macOS `godot` is `/Applications/Godot.app/Contents/MacOS/Godot`; `timeout` is Homebrew coreutils):
 
