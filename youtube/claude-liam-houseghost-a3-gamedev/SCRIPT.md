@@ -1,331 +1,222 @@
-# HOUSEGHOST — Three 3D Props with Claude, the Blender MCP and Blender
+# HOUSEGHOST — Building Three Game Props with Claude, Blender MCP and Godot
 
-**Film script, DRAFT for review** · `godot-gamedev walker` · Narrator: Liam, Teardown register
-**Course:** CSYE 7270 Assignment 3 · **Author:** Narasimha Reddy Valam
-**Tools shown:** Blender 5.2.2 LTS · `mcp-for-blender` 2.1.9 (add-on 1.8) · Godot 4.7.2.stable · Claude Code (Claude Opus 5.5)
-**Frame:** 3840×2160 landscape, 30 fps
-**Source revision shown:** filled at render time from the submitted commit, and shown on screen in the Verdict
-
-Every claim below is drawn from the repository, a recorded command output or one of the
-screenshots in `evidence/`. Every image on screen carries one of four labels:
-**"My screenshot"** (taken by me), **"Captured in my Blender session via the MCP"**,
-**"Godot render"**, or **"Reconstruction"** (an editor or composer view rebuilt for teaching,
-with its source file and line numbers). Nothing is presented as live footage that is not.
+**Film script — revised production draft** · `godot-gamedev walker` · Narrator: Liam, teardown register  
+**Project:** HOUSEGHOST · **Developer:** Narasimha Reddy Valam  
+**Tools shown:** Blender 5.2.2 LTS · `mcp-for-blender` 2.1.9 (add-on 1.8) · Godot 4.7.2.stable · Claude Code (Claude Opus 5.5)  
+**Frame:** 3840 × 2160 landscape, 30 fps  
+**Source revision:** Insert verified submitted source commit SHA at render time; show in Verdict.  
+**Evidence rule:** Use only genuine screenshots, captured Blender MCP views, Godot renders and labelled reconstructions from the project. Do not depict reconstructed interaction as live footage. Do not imply a check proves more than it does.
 
 ---
 
-## Assignment requirements → where the film meets them
+## Film coverage map (production reference — not narrated)
 
-| Requirement (Assignment 3, §4) | Beat |
+| Required story element | Beat |
 |---|---|
-| Identifies the game, the three assets and why the game needs each | B01, B02 |
-| Shows my real Blender session — my own screenshots, labelled | B03, B04, B08, throughout |
-| Shows at least one prompt to Claude and what it built | B04 |
-| Shows my own hand edit | B08 |
-| Shows the three assets in the running Godot scene | B10 |
-| Shows the headless numbers beside my brief, labelled as headless | B09 |
-| States what I checked, what remains uncertain, what Claude got wrong, one next step, the human and AI contributions, and the source revision shown | B11 |
-| Walker opening / summary, then Verdict → Your Turn → regular outro | Bookends 1–2, B11, B12, outro |
+| Game, three props, purpose | B01–B02 |
+| Original brief, dimensions, predictions | B03 |
+| Real Blender session, MCP connection, prompt and result | B04–B05 |
+| Model iterations and inspection | B06–B08 |
+| Developer's own manual Blender edit | B09 |
+| GLB export, headless measurements versus brief | B10 |
+| Running Godot scene, human orbit and limits | B11 |
+| What was checked, uncertainty, Claude's errors, roles, next step, source SHA | B12 |
+| Walker opening/summary, Verdict → Your Turn → regular outro | Bookends, B12–B13, Outro |
 
 ---
 
 ## Bookend 1 — Claude composer
 
-*Visual: the Claude composer, typing at reading speed. Labelled **Reconstruction**. No narration.*
+*Visual: Claude composer typing at readable speed. Label **Reconstruction**. No narration.*
 
-> Please use Walker to convert my game design document about HOUSEGHOST into three 3D props
-> for its remembered bedroom — the wind-up music box that is the first relic, the bedside lamp
-> that makes the room feel safe, and the bookshelf that is solid only in the memory. Build them
-> from Blender primitives through the Blender MCP, at true scale against the boy, export them to
-> Godot, and check that they arrived the size, the way up and the scale I specified.
+> Use Walker to turn my HOUSEGHOST bedroom design into three simple 3D props: the wind-up music box, bedside lamp and memory-only bookshelf. Work in my running Blender session through the Blender MCP. Read my committed change brief first, propose each build before executing it, keep the geometry and material budgets, then export the assets to Godot and verify their dimensions, orientation and origins. Show me what the automated checks cannot establish.
 
 ---
 
 ## Bookend 2 — Hesitant-writer summary
 
-*Visual: plain text composing, one word corrected in place.*
+*Visual: short text composing, with one revision shown.*
 
-> Three props for a 2D ghost story, built from primitives in Blender and verified in Godot —
-> by script, by the numbers, and by ~~hand~~ **eye**.
-
----
-
-## B01 — The game, and why it needs three 3D props
-
-*Visual: my A2 art, `env_room_memory.png`, the music box on its shelf and the lamp beside the bed
-highlighted in turn. Then the three finished assets, side by side. Labelled **Godot render**.*
-
-**Liam:** "HOUSEGHOST is a side-on 2D Godot game. You play the ghost of a boy the world believes
-ran away, in the bedroom a new family has emptied out. Turn the room over and it becomes the room
-he remembers — warm, lamplit, his things back where they were."
-
-"This assignment adds three objects from that remembered room, as real 3D models a Godot 3D scene
-can use. Each one is chosen because the game already depends on it."
-
-"The **music box** is the first relic: visible from the spawn point, out of reach from the floor,
-calling every few seconds. It is the whole of the slice's tutorial. The **bedside lamp** is the
-warm light that makes the remembered world read as safe. And the **bookshelf** is solid only in
-the memory — in the stripped room it is not there — so it is one half of the mechanic that forces
-you to turn the world over."
+> Three objects from a remembered bedroom. Designed to a scale, built through a live Blender session, revised by eye, and tested in Godot. The numbers tell me whether they arrived correctly. ~~The numbers tell me whether they work.~~ **The scene tells me whether they read correctly.**
 
 ---
 
-## B02 — The scale, and a brief written before anything was built
+## B01 — Open on the result
 
-*Visual: `CHANGE-BRIEF.md`, the scale table, then the seven-prediction table, with the commit
-hash and time beside it. Labelled **Repository file**.*
+*Visual: `a3-showcase.png` (**Godot render**). Slow, clean sequence of the three assets; then `env_room_memory.png` (**My A2 art**) showing their place in the room. Use genuine evidence; do not simulate new footage.*
 
-**Liam:** "A 2D game has no metres, so the first decision was a scale. The brief anchors it on the
-player: his collision capsule is 250 pixels tall, so 250 pixels is one metre. That makes the
-in-game bookshelf collider exactly one metre — the height of the capsule, which is why it stops him."
+**Liam:** “This is a small part of HOUSEGHOST: three objects from a bedroom that exists in two states. A music box, a lamp, and a bookshelf. They look ordinary. In this game, they are the difference between a room that has been emptied and a room that still remembers who lived there.”
 
-"The art does not fully agree with itself. The door implies closer to 300 pixels a metre, and when
-we later placed the boy in the 3D scene, measuring his standing drawing showed it is 341 pixels —
-1.36 metres, not the 1.28 the brief had quoted. The scale held, because it was anchored on the
-collider, not the drawing. The brief now carries that correction."
-
-"The brief was committed at commit `722658f` before Claude built anything, with seven predicted
-failure cases and the check for each — lying on its side, wrong by a factor of ten, origin in the
-middle, over-building, colour lost in export, an MCP that connects but cannot drive Blender, and
-assets that are right by every number and still look wrong. All seven now have an outcome recorded
-against them, whatever it was."
+“Rather than treat them as isolated models, I built them as game assets. Each has a visual job, a defined size, a geometry budget, an origin, and a path from Blender into Godot. This is how that path held up.”
 
 ---
 
-## B03 — Does the MCP actually drive Blender?
+## B02 — The game defines the props
 
-*Visual: the `get_scene_info` output from the first call — the unsaved default scene, cube, light,
-camera at their default positions. Then the add-on panel and the `lsof` line showing
-`127.0.0.1:9876`. Labelled **Command output** and **Repository file** (`FRICTIONAL.md`).*
+*Visual: `env_room_memory.png`, then three finished assets individually. Label original art and Godot renders accurately.*
 
-**Liam:** "Prediction six was the one that would have stopped everything: the client reports
-'connected' the moment a process starts, which says nothing about whether it can reach a running
-Blender. So the first call was not a build. It was `get_scene_info`, and it came back with the
-unsaved default scene — a two-metre cube at the origin, the light and camera at their stock
-positions. Only a live session reports that."
+**Liam:** “HOUSEGHOST is a side-on 2D story about the ghost of a boy believed to have run away. In the empty bedroom, his belongings are gone. Turn the world over, and the remembered room comes back — warmer, lit, and full of objects with meaning.”
 
-"The add-on listens on 127.0.0.1, port 9876 — localhost only, checked with `lsof` rather than
-taken from the panel, because the socket has no authentication. Every download and generation
-service stayed off. No model in this film was generated, downloaded or imported."
+“The music box is the first relic. It calls from a place the player cannot reach directly and introduces the room’s logic. The lamp establishes the warmth of memory. The bookshelf exists as solid geometry only in the remembered state, so it matters to navigation, not just decoration.”
+
+“The main game is 2D, but these props also live in a separate 3D Godot showcase. That lets me inspect their actual scale, orientation and materials without pretending they are already integrated into the side-scroller.”
 
 ---
 
-## B04 — A prompt to Claude, and what it built
+## B03 — Define the target before modeling
 
-*Visual, phase 1: `a3-prompt-to-claude-own.png` — the prompt "yes go ahead with the bookshelf" and
-Claude's build plan. Labelled **My screenshot**. Hold long enough to read the parts table.*
-*Visual, phase 2: `a3-prompt-result-bookshelf-a3-5.png` — the four views of that build. Labelled
-**Captured in my Blender session via the MCP**.*
+*Visual: `CHANGE-BRIEF.md`, its scale table and prediction table. Show original commit `722658f` and timestamp from repository evidence. Label **Repository file**.*
 
-**Liam:** "This is the working loop. Claude proposes a build in numbers — here, six boards, each
-with its size, bevel, material and triangle count, totalling 296 of a 360 budget — and nothing
-runs until it is approved."
+**Liam:** “I started by fixing a scale instead of guessing by eye. The player's collision capsule is 250 pixels high, so I used 250 pixels per metre as the working conversion. That makes the bookshelf one metre tall — the height of the capsule that it blocks.”
 
-"Then one `execute_blender_code` call per object, and after every one, `get_scene_info` reads
-back the location, size, rotation and scale. Every mesh is built at its final size and angle in
-`bmesh`, so no object ever carries a rotation or scale that needs applying."
+“The illustration isn't perfectly consistent with that measurement. A later check showed the boy's standing drawing was 341 pixels, or 1.36 metres, rather than the 1.28 metres first quoted in the brief. The brief now records that correction; the collider-based scale did not change.”
 
-"Every call body is kept, verbatim, at the end of the asset's build script in `tools/blender`. And
-each script rebuilds its asset headless from an empty scene, so the `.blend` file is reproducible,
-not just saved."
+“Before any model was built, I committed a brief with dimensions, materials, origins and triangle limits for all three objects. I also wrote down seven ways the process might fail: wrong orientation, wrong scale, misplaced origin, excess geometry, colour changes, a connected-but-unusable MCP, and an object that passes every numeric check but still looks wrong. Those predictions became the inspection plan.”
 
 ---
 
-## B05 — The music box: from too simple to a hollow box on a plinth
+## B04 — Establish a real Blender connection
 
-*Visual, phase 1: the first build — five shapes, the lid ajar at 18°. Labelled **Captured in my
-Blender session via the MCP**. Then `design/ref-musicbox-chatgpt.png`, labelled **ChatGPT
-reference (image only)**.*
+*Visual: own Blender screenshot showing the actual interface; briefly identify viewport, toolbar, Outliner, Properties, N-sidebar and mode selector using overlays based on `BLENDER-NOTES.md`. Then `get_scene_info` output, MCP panel, and `lsof` output. Label each source.*
 
-**Liam:** "The first music box met its brief exactly: five primitives, 252 triangles, the lid ajar at
-eighteen degrees. I wanted more from it — something that would read as realistic."
+**Liam:** “First, I learned the window I was about to direct: the viewport for looking, the Outliner for objects, Properties for materials and scene settings, the sidebar for exact transforms, the toolbar for interaction, and the mode selector for object-level versus mesh-level editing.”
 
-"Within the assignment's rules — flat colour, no painted textures, at most six shapes and 500
-triangles — realism has to come from shape and from light. So I generated a reference image in
-ChatGPT and we read it for exactly what six primitives can build."
+“Then I checked the connection itself. A client saying ‘connected’ is not proof it can control Blender. I asked Claude to call `get_scene_info` before building anything. It returned the live default scene — cube, camera and light. That confirmed the MCP could read the running session.”
 
-*Visual, phase 2: `build_musicbox.py`, `step_body`, the inset-and-extrude lines highlighted.
-Labelled **Reconstruction** with file path and line numbers. Then `a3-stats-musicbox.png`.*
-
-"The body became hollow: its top face inset to leave twelve-millimetre walls and pushed ten
-centimetres down, the cavity in the darker wood. A plinth took the sixth shape. The lid opened to
-seventy degrees and sits flush on its hinge. The key's bow was turned into the plane of its shaft, the way
-a real butterfly key is made. 312 triangles, against a budget of 320."
-
-"Face-weighted normals are baked into every flat-faced part, so a one-segment bevel catches light
-like a rounded edge at no triangle cost."
+“The add-on was bound to localhost on port 9876, verified with `lsof`. I left remote model-download and generation services disabled. The geometry in this film was built locally from Blender shapes, not imported from an asset library.”
 
 ---
 
-## B06 — The lamp: one light, and a shade that clipped to white
+## B05 — Directing the build
 
-*Visual, phase 1: the traditional A3-3 lamp, then `design/ref-lamp-chatgpt.png` (labelled
-**ChatGPT reference (image only)**), then the modern A3-4 lamp. Labelled **Captured in my Blender
-session via the MCP**.*
+*Visual: `a3-prompt-to-claude-own.png` (**My screenshot**), showing the real prompt and plan; `a3-prompt-result-bookshelf-a3-5.png` (**Captured in my Blender session via the MCP**). Keep the parts table legible.*
 
-**Liam:** "The lamp was developed through two designs. The first followed the painting — a gourd base and
-a cone shade. I chose a modern direction instead: a pill-shaped ceramic base, a brass collar and a
-wide drum shade open underneath, in six shapes."
+**Liam:** “Here is the collaboration in practice. I told Claude to go ahead with the bookshelf, and its first reply laid the build out in numbers: six boards, with dimensions, materials, bevels and a triangle estimate — 296 triangles against a 360-triangle target. For each redesign that followed, nothing ran until I had approved the plan.”
 
-"The budget was raised from 340 triangles to 420 — before building, with the reason written into the
-brief — because the rounded base alone costs 140. The neck runs fifteen millimetres through the top
-of the shade and becomes the finial, so the finial costs no seventh shape."
+“Claude then created the pieces through `execute_blender_code`, one object at a time. After each operation it queried the scene again to read the resulting position, dimensions, rotation and scale. The geometry was built at its intended size, with identity object transforms.”
 
-"The scene is allowed exactly one light, so the lamp's glow comes from emission on the shade's
-material, not from a second light."
-
-*Visual, phase 2: `asset_lib.py`, the `M_Shade_Cream` entry, `"emission": 1.0` highlighted. Then the
-first Godot render — the shade pure white. Then the edit to `0.4`. Then the second render, the cream
-visible. Labelled **Reconstruction** and **Godot render**.*
-
-"Godot's first render is where this was tuned. At emission 1.0 the lit cream exceeded white and the
-tonemapper clipped it — exactly the kind of colour shift prediction five was written to catch. Lowering
-it to 0.4 at the source restored the cream, and the lamp was rebuilt from its script and re-exported,
-so the file, the script and the export stay in step."
+“Every executed call body is kept in `tools/blender`, alongside scripts that rebuild each source file from an empty scene. That means the final `.blend` files are not the only record of how the objects were made.”
 
 ---
 
-## B07 — The bookshelf: every check passed, and the corners were square
+## B06 — Music box: shape carries identity
 
-*Visual, phase 1: `design/ref-bookshelf-chatgpt.png`. Labelled **ChatGPT reference (image only)**.
-Then the first A3-7 views — square corners. Labelled **Captured in my Blender session via the MCP**.*
+*Visual: first MCP capture, `design/ref-musicbox-chatgpt.png` (**ChatGPT reference — image only**), `build_musicbox.py` reconstruction with path/line numbers, final stats and final asset. Label accurately.*
 
-**Liam:** "The bookshelf's reference was modern and buildable: thick sides with rounded top corners,
-rising above a top board set between them. Six boards."
+**Liam:** “The first music box was within the limits: five basic shapes, 252 triangles, and a lid opened eighteen degrees. But it was too generic. It met the numbers without delivering the presence I wanted.”
 
-"Every numeric check passed on the first build — and the visual review still caught that the
-rounded corners had not formed. It is the reason this project checks with pictures as well as numbers."
+“I used a generated image as a design reference, not as a mesh. Then we translated only the parts six shapes could build: a hollow body with a darker cavity, a raised plinth, an opened lid and a butterfly key whose bow aligns with its shaft.”
 
-*Visual, phase 2: `side_bm()` in `build_bookshelf.py`, the two bevel calls, reordered, and the new
-assertion highlighted. Labelled **Reconstruction**. Then the rounded side profile.*
-
-"The fix was the order of two operations: rounding the corners before softening the edges. A new
-assertion now proves the rounding exists — the front face must stop at 0.97 metres — so it can never
-silently disappear again."
+“The body uses an inset and extrusion to create twelve-millimetre walls and a ten-centimetre cavity. A small gap at the lid's hinge was closed, and the new silhouette checked. The finished model uses 312 triangles against a 320-triangle budget. Small bevels catch the light; face-weighted normals help the flat faces shade cleanly.”
 
 ---
 
-## B08 — My hand edit: a third shelf
+## B07 — Lamp: light is a material decision
 
-*Visual, in sequence, each labelled: `a3-hand-edit-before.png` (**Captured in my Blender session via
-the MCP**), `a3-hand-edit-attempt-duplicate.png`, `a3-hand-edit-during-own.png`,
-`a3-hand-edit-third-shelf-own.png` (each **My screenshot**), `a3-hand-edit-after.png` (**Captured in
-my Blender session via the MCP**, same camera as "before").*
+*Visual: old and new Blender captures, `design/ref-lamp-chatgpt.png` (**ChatGPT reference — image only**), then labelled reconstruction of `asset_lib.py` and actual before/after Godot renders.*
 
-**Liam:** "One change had to be made by hand, with the mouse, in Blender's own window. I added a
-third shelf: duplicate a shelf, drag the copy down to just above the floor."
+**Liam:** “The first lamp followed the original painting: a traditional base and cone shade. I replaced it with a quieter modern silhouette — ceramic base, brass collar and broad drum shade. I revised its triangle budget from 340 to 420 before building, documenting why the curved base needed more geometry.”
 
-"Doing it by hand taught me how Blender actually behaves. Duplicating with the parent selected
-copies the parent too. Dragging the centre of the move gizmo moves on all three axes at once. And every
-copy is named `.001` — objects, meshes, even materials. My screenshots record each of those, and each
-one was then put right."
+“The showcase scene allows one light, so an internal lamp light was ruled out, and the lamp’s glow lives in its shade material instead.”
 
-"A third shelf made seven boards against a limit of six, so I made the design trade: the back panel
-came out, and the bookshelf is open-backed — which is what the brief first specified. The shelves sit at
-my heights in even bays, in dark wood against the warm frame. The build script was updated to match, and
-its headless rebuild equals the edited file object for object. 280 triangles."
+“The first Godot import exposed a problem the Blender numbers could not: emission at 1.0 pushed the cream shade to clipped white. We lowered the source emission to 0.4, rebuilt, re-exported and re-imported. The cream returned, and the source, export and rendered result agreed.”
 
 ---
 
-## B09 — Export, and a check that failed every correct asset
+## B08 — Bookshelf: the silhouette beats the spreadsheet
 
-*Visual, phase 1: `export_glb.py`, the exporter call with `export_yup=True` highlighted. Then
-`inspect_glb.py` output: nodes with no rotation or scale, height on +Y, colours as hex. Labelled
-**Reconstruction** and **Command output**.*
+*Visual: reference image, initial square-corner capture, `side_bm()` code reconstruction with file and line numbers, corrected rounded profile.*
 
-**Liam:** "Each asset exports as binary glTF with plus-Y up, headless, with `--python-exit-code 1`, so
-any error stops the pipeline instead of passing silently."
+**Liam:** “The bookshelf was deliberately simple: six boards, warm wood, a modern profile with rounded top corners. Its first version passed the dimensional and transform checks. It still missed the feature that made the design recognizable: the upper corners were square.”
 
-"A small reader parses the exported files directly, with no Blender and no Godot. Every base colour
-reads back as the exact hex in the brief, every node has no rotation and no scale, and height lies
-on plus-Y."
+“The issue was the order of bevel operations. An earlier edge bevel caused Blender's overlap clamp to reduce the intended three-centimetre rounding to about three millimetres. Reordering the operations restored the shape.”
 
-*Visual, phase 2: `check_assets.gd`, the `_walk` function, labelled **Reconstruction**. Then the
-headless output beside the brief, in a table titled **Headless check — not a visual check**:*
+“Claude added an assertion for the corrected geometry. That check initially contained its own local-versus-world coordinate mistake, which was corrected too. A passing test is useful only when the test is measuring what I think it measures.”
 
-| Asset | Brief (m) | Godot, headless (m) |
+---
+
+## B09 — The edit I made directly in Blender
+
+*Visual: `a3-hand-edit-before.png` (**MCP capture**); `a3-hand-edit-attempt-duplicate.png`, `a3-hand-edit-during-own.png`, `a3-hand-edit-third-shelf-own.png` (**My screenshots**); `a3-hand-edit-after.png` (**MCP capture**). Keep own screenshots on screen long enough to distinguish actual manual interaction.*
+
+**Liam:** “I also changed the bookshelf myself in Blender's window. I duplicated a shelf and moved the new one toward the base, so the open space felt more deliberately divided.”
+
+“That small edit taught me how precise the interface needs to be. My first duplication included the selected parent and created a second root. A free gizmo drag shifted the shelf sideways as well as vertically, and Blender made a duplicate material. Inspecting the Outliner and transforms showed each of those, and taught me that a free drag moves every axis at once, while the axis arrow keeps it to one.”
+
+“The extra shelf took the model over six boards. I chose to remove the back panel rather than lose the new shelf, preserving the open-backed direction of the original brief. Claude then re-centred the shelves at my heights, cleaned up the duplicate objects and material, and brought the reproducible build script into agreement with the edited scene. The final bookshelf uses six boards and 280 triangles.”
+
+---
+
+## B10 — Export is a separate verification step
+
+*Visual: `export_glb.py` reconstruction with `export_yup=True`; `inspect_glb.py` output; `check_assets.gd` reconstruction with file and line numbers. Then headless table beside original brief, explicitly **Headless check — not a visual check**.*
+
+| Asset | Brief (metres: W × H × D) | Godot headless (metres: W × H × D) |
 |---|---|---|
 | MusicBox | 0.316 × 0.297 × 0.190 | 0.3160 × 0.2968 × 0.1900 |
 | BedsideLamp | 0.28 × 0.42 × 0.28 | 0.2800 × 0.4200 × 0.2800 |
 | Bookshelf | 0.64 × 1.00 × 0.30 | 0.6400 × 1.0000 × 0.3000 |
 
-"In Godot, a headless script loads each asset and prints its bounding box, every node's scale, the
-axis its height lies along and its lowest point. The check itself was tested too: it composes each
-part's transform explicitly, because Godot's `global_transform` is not valid before a node is in the
-scene tree. It passes — all three within two millimetres of the brief, height along Y, lowest point at
-zero, every scale one — and run against a deliberately wrong height, it fails, which proves it can."
+**Liam:** “A Blender model is not finished when it looks good in Blender. Each asset was exported as a binary `.glb` with plus-Y up. A separate reader inspected the exported files for colours, transforms and orientation before Godot loaded them.”
 
-"And what it does not prove is written at the top of the file: nothing about how an asset looks, and
-nothing about contact with a floor."
+“Then a Godot headless script read each imported asset's bounding box, node scales, vertical axis and lowest point. Here are the results beside the original targets. All three fall within two millimetres of the specified dimensions, stand along Y, have unit scales and measure down to zero.”
+
+“The first version of that script failed every correct asset because it asked for global transforms before the objects were in the scene tree. Claude corrected it to compose transforms explicitly, and it was tested against a deliberately wrong height, which it rejects. The output is a measurement, not a substitute for looking at the scene.”
 
 ---
 
-## B10 — The running scene, and the check that had to be human
+## B11 — See the assets in Godot
 
-*Visual: `a3-showcase.png` (**Godot render**). Then `a3-godot-editor-own.png` and
-`a3-godot-inspector-bookshelf-own.png` (**My screenshot**). Then the nine orbit screenshots,
-rear / below / angled for each asset (**My screenshot**).*
+*Visual: `a3-showcase.png` (**Godot render**), `a3-godot-editor-own.png`, `a3-godot-inspector-bookshelf-own.png` (**My screenshots**), then genuine rear/below/angled orbit screenshots for each asset. Show each asset clearly before introducing limitations.*
 
-**Liam:** "The scene is what the assignment asks for — a floor, one light, a camera, the three assets
-side by side at game scale — with the boy himself beside them: his own sprite, at 250 pixels a metre,
-1.36 metres tall, turning to face the camera. He is taller than the bookshelf that stops him, because
-in the game it is his one-metre collider, not his drawing, that collides."
+**Liam:** “This is the assembled showcase: a floor, one light, a camera and all three props together at game scale. I also placed the boy's sprite alongside them to judge proportion. His standing art reads 1.36 metres at the working scale, while his one-metre collision capsule is what matters for the bookshelf's gameplay height.”
 
-"The scene uses Godot's Compatibility renderer, matching the 2D game, and is lit for the materials:
-a sky the brass and the glossy ceramic can reflect, soft shadows and filmic tonemapping."
+“The scene uses Godot's Compatibility renderer, consistent with the main 2D project. The sky lighting was adjusted when the brass appeared almost black. That was a presentation issue the geometry checks would never catch.”
 
-"Then the check no script can run. I orbited every asset in the editor, from behind and from below.
-The bookshelf reads as a bookshelf and the lamp as a lamp from every side. No holes, no missing faces,
-and every colour right. The one improvement my review identified is the music box from directly behind,
-where its key is small — recorded as my next step."
+“Finally, I inspected each object from the front, behind, below and at an angle. The bookshelf reads correctly, and the lamp keeps its intended silhouette and colour. The music box has no missing faces, but from behind its small key disappears visually, so it can read as an ordinary box. That remains a real design limitation.”
 
 ---
 
-## B11 — Verdict
+## B12 — Verdict
 
-*Visual: five panels in turn, each a short list. The submitted commit hash on screen.*
+*Visual: five concise panels: **Built**, **Verified**, **Revised**, **Still uncertain**, **Next**. Show exact submitted source SHA; label source footage and reconstructions correctly.*
 
-**Liam:** "What was checked. Size, orientation, scale and origin — in Blender, in the exported files
-and in Godot, and the three agree. Triangle counts in Blender's own statistics: 312, 406 and 280.
-Imports without errors. And a human orbit of every asset."
+**Liam:** “The result is three game-scale props, built in a live Blender workflow, exported as `.glb`, and visible together in Godot. Their final triangle counts are 312 for the music box, 406 for the lamp, and 280 for the bookshelf.”
 
-"What remains open. How the props read inside the game's own lit room rather than a showcase, and a
-review by someone other than me."
+“I verified the sizes, orientations, origins, object scales and colours across Blender, the exported files and Godot. I also inspected the actual renders and the assets from multiple angles. Those checks agree on the measurable properties; they cannot certify that an object reads correctly under every lighting condition.”
 
-"What Claude got wrong: twelve issues, every one caught by our own checks before export and listed in
-the test report — the most instructive being a bevel order that squared the bookshelf's corners, and a
-Godot check that needed to compose its own transforms."
+“The revisions were substantive. I redesigned a too-simple music box, replaced the lamp silhouette, fixed a shade that clipped to white, recovered the bookshelf's rounded corners, and cleaned up my manual shelf edit. Claude also made errors in geometry selection, normals logic, exporter validation and the Godot check itself. I kept the specific failures and corrections in the test report rather than presenting the final pass as if it happened on the first try.”
 
-"One next step: give the music box a detail that reads from behind, inside the same six shapes."
+“My role was to define the game context and brief, choose and reject designs, approve builds, edit geometry in Blender, inspect the visual results and decide which tradeoffs to keep. Claude wrote and executed the modeling and checking code under that direction, with its outputs preserved for review.”
 
-"Who did what. I set the rules, chose the account the work is credited to, pushed the music box and the
-lamp beyond their first versions, chose all three references, raised the lamp's budget, made the hand edit, chose
-an open back over a seventh board, and made the orbit judgement. Claude wrote the build scripts and the
-checks, drafted the prompts and the documents, and ran every step after I approved it. The source shown
-is commit [submitted SHA], tagged `a3`."
+“What remains uncertain is how the props will read in the finished game's actual room lighting, whether the music box is identifiable from behind, and how another viewer would interpret the scene. My next step is to improve the music box's rear silhouette without exceeding six shapes or 320 triangles.”
+
+“The demonstrated game source is commit **[INSERT VERIFIED SOURCE SHA]**, with the submitted revision identified in the accompanying source records.”
 
 ---
 
-## B12 — Your Turn
+## B13 — Your Turn
 
-*Visual: the composer, `greeting: "Your turn."`, the prompt typed in. Labelled **Reconstruction**.*
+*Visual: composer prompt typed. Label **Reconstruction**.*
 
-> Please use Walker to make my music box read as a music box from behind. Propose one change that stays
-> within six shapes and 320 triangles. Before building, predict whether it will read from behind and to
-> the left in Godot. Then build it through the MCP, export it, run `check_assets.gd`, and orbit it.
+> Use Walker to improve the music box's silhouette from behind. Keep the same six-shape and 320-triangle limits. Before editing, propose one specific geometry change and predict how it will read from behind and from the left in Godot. Build it through the Blender MCP, export the `.glb`, run `check_assets.gd`, and compare real editor views from both angles. Report what improved and what still does not read.
 
-**Liam:** "Your turn. Take one weakness your own eyes found, make one bounded change, and write down what
-you expect before you run anything. Then check it the same two ways — with a script, and by looking.
-That's it from me."
+**Liam:** “Your turn. Find the place where the numbers pass but the design still needs work. Make one controlled change, predict the result, then test it twice: with measurements and with your own eyes. That's where the next iteration begins.”
 
 ---
 
 ## Outro — locked card
 
-*Visual: `ClaudeTitleOutro` — the exact title, @NikBearBrown, one mascot. Liam re-reads the title, then
-"At Nik Bear Brown." No jingle, no game sound, no further narration.*
+*Visual: `ClaudeTitleOutro` with exact title, @NikBearBrown and one mascot. Liam re-reads the title, then says “At Nik Bear Brown.” No jingle, game audio or additional narration.*
 
 ---
 
-*Narration: roughly 1,800 words, about 11–12 minutes at Liam's pace; the final length follows the
-measured audio.*
+## Production and integrity notes (not narrated)
+
+- Verify every filename, screenshot label, version, count, measurement, code line number and commit reference against the final repository before rendering. If the actual source differs, revise the narration and evidence rather than inventing a match.
+- Keep **My screenshot**, **Captured in my Blender session via the MCP**, **Godot render**, **Repository file**, **Command output**, and **Reconstruction** visibly distinct. Do not fabricate mouse footage.
+- In the actual film, make the manual Blender edit, one real Claude prompt/result, all three Godot assets, and the brief/headless table readable at normal playback speed.
+- Include the required Walker opening and summary, Verdict → Your Turn → regular outro. Follow the installed Brutalist skill's native 4K landscape workflow and quality checks; watch the exported film.
+- Do not claim the props are already integrated into the 2D gameplay. The 3D showcase is the demonstrated result.
+- Preserve the honest unresolved rear-view music box issue and the distinction between headless and visual checks.
+- Before submission, separately verify the tagged clean clone, required documentation, matching GitHub/Canvas revision, film URL, filename, SHA-256 and reviewer access. These are source/submission requirements, not facts a narration can prove by itself.
