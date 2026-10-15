@@ -176,7 +176,7 @@ Every number below comes from a command run in this session; the raw outputs are
 
 | # | Check | Result | Evidence |
 |---|---|---|---|
-| 1 | Interface notes | **Not done yet** — `BLENDER-NOTES.md` and my own Blender screenshot are still to be made | — |
+| 1 | Interface notes | **Done.** All six parts described in `BLENDER-NOTES.md`, with how I used each, and my own screenshot of my session with a part selected and the N sidebar's Item tab open | `BLENDER-NOTES.md`; `evidence/a3-blender-window.png` |
 | 2 | Size | **Pass.** Brief, Blender and Godot agree to the millimetre for all three (table below) | `get_scene_info` after every object; `check_assets.gd` |
 | 3 | Upright and scale | **Pass.** Height lies along Y for all three; every node's scale is 1, 1, 1 in Godot; no rotation or scale on any node in the `.glb` | `check_assets.gd`; `inspect_glb.py` |
 | 4 | Origin | **Pass.** Lowest point y = 0.0000 for all three; in the render each stands on the floor with its contact shadow at its base | `check_assets.gd`; `evidence/a3-showcase.png` |
@@ -221,7 +221,7 @@ Every number below comes from a command run in this session; the raw outputs are
 
 ### Honest limitations
 
-- Checks 1 and 7 are not done; both are mine.
+- Check 7, the orbit, is not done yet; it is mine.
 - Compatibility renderer: no ambient occlusion or screen-space reflections. The brighter sky lifts the woods slightly above their hex values.
 - The music box's key is hidden from behind and to the left.
 - No other person has looked at the scene; no viewer is invented here.
