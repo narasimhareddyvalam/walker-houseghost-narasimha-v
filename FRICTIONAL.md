@@ -36,6 +36,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | Logging the call bodies | Each build script now ends with `LIVE_CALLS`, every `execute_blender_code` body verbatim, including the music box's, added retroactively | Same instruction | The assignment says to copy every body into the build script. Calls that ran the file itself already proved the code; the log also satisfies the rule as written |
 | One shared library | Moved the five materials and helpers into `tools/blender/asset_lib.py` | Approved | Verified harmless: the music box's headless geometry report is identical before and after |
 | Making the lamp more realistic | Same route as the music box: a ChatGPT prompt asking for a realistically lit render of a lamp built from at most six spheres, cylinders and cones in flat colours — a larger base and a short neck as in the painting, a view from below, the lamp switched on — so the result stays buildable | After orbiting the built lamp in Blender: "i want more realsitc one, give me prompt to give to chatgpt" | **My decision; the outcome is pending.** The reference image is to be recorded as REF-LAMP-3D and any changes as revision A3-4, proposed before building |
+| Which lamp reference to use | Wrote the first ChatGPT prompt: a realistically lit lamp from at most six simple shapes, flat colours | "chatgpt didnt give me what i like, it gave me too old styles" — **I rejected those results, regenerated it myself, and chose the one I liked** | **My call, made outside this session.** The chosen image becomes REF-LAMP-3D once it is in the repository; the rejected takes are recorded as rejected, as the A2 asset log does |
 
 ## Entries
 
@@ -312,4 +313,20 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** After orbiting it in Blender: "i want more realsitc one, give me prompt to give to chatgpt." `[TO FILL — optional: what specifically looked unrealistic to you]`
 
 - **Evidence and next step:** Evidence: `tools/blender/build_lamp.py` with its `LIVE_CALLS` log; `tools/blender/asset_lib.py`; `blender/lamp.blend`; `CHANGE-BRIEF.md` revision A3-3; the four-view `look` image including two views from below. Next step: the bookshelf.
+
+### 2026-10-14 — The first lamp references came back too old-fashioned, so I regenerated them
+
+- **Date and what I was working on:** 2026-10-14, the reference image for a more realistic lamp, generated in ChatGPT from the prompt Claude wrote.
+
+- **I tried / expected:** I expected the prompt to give me a realistic lamp I could build from.
+
+- **What happened:** In my words: "chatgpt didnt give me what i like, it gave me too old styles." The prompt described a gourd-shaped ceramic base, a brass neck and a cone shade — a traditional bedside lamp, because that is what the painting in `env_room_memory.png` shows — and the results read as dated rather than realistic. `[TO FILL — how many takes you rejected, and whether you kept any of them]`
+
+- **What I did:** Rejected those results, kept generating in ChatGPT myself, and downloaded the one I liked. `[TO FILL — what you changed in the prompt to get away from the old style]`
+
+- **What Claude or another person contributed:** Claude wrote the original prompt. The rejection, the regeneration and the choice of image were mine, done in ChatGPT outside this session. Claude has not seen the chosen image yet.
+
+- **What I understand now / still do not understand:** `[TO FILL — what "realistic" means to you for this lamp, now that you have seen what you did not want]` Still open: the lamp in my painting is a traditional one, so a modern reference moves the 3D lamp away from the 2D art. That may be the right call, but it should be stated in revision A3-4 when the lamp is rebuilt.
+
+- **Evidence and next step:** Evidence: the chosen image, to be added as `design/ref-lamp-chatgpt.png` with a `SOURCES.md` row REF-LAMP-3D. Next step: share the image, then Claude checks it against the six-shape and triangle limits and proposes revision A3-4 before building.
 
