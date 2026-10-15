@@ -4,7 +4,7 @@
 
 The method is the one I set on the first day of Assignment 2 and have not changed: **Claude proposes, I attack, and whatever survives is the game.** I ask it to argue back rather than agree, because an assistant that agrees with everything is worth nothing on a project I have to defend myself.
 
-Entries are dated and in order, written as the work happened. Nothing is rewritten after the fact; where a decision is reversed later, the reversal is its own entry rather than an edit to the original. Claude drafts the factual spine of an entry from the session it was present for; the judgements are mine, and anything still marked `[TO FILL]` is a gap I have not closed rather than a claim I am making. Where I gave a judgement by choosing between options Claude put to me, Claude wrote the sentence from my choice; the choice is mine.
+Entries are dated and in order, written as the work happened. Nothing is rewritten after the fact; where a decision is reversed later, the reversal is its own entry rather than an edit to the original. Claude drafts the factual spine of an entry from the session it was present for; the judgements are mine, and anything still marked `[TO FILL]` is a gap I have not closed rather than a claim I am making.
 
 **Assignment 2's log** stays in the course repository at `fall-2026/narasimha-v/assignment-2/FRICTIONAL.md`. It did not travel when this game moved into its own repository on 2026-10-14. This file begins at Assignment 3.
 
@@ -198,7 +198,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
   The commit check found something real. This repository had no `user.email` set, locally or globally, so Git fell back to `narasimhareddyvalam@Narasimhas-MacBook-Air.local`, built from the machine's hostname. Six commits carry it — `54a86c3` and all five Assignment 3 commits. GitHub links that address to **no account at all**, single m or double. The 73 commits carried over from Assignment 2 use `valam.n@northeastern.edu`, and the GitHub API resolves one of them (`7fead95`) to `narasimhareddyvalam`.
 
-- **What I did:** Set the commit identity explicitly rather than relying on a default, and only in this repository's local config so nothing else on the machine changes. I then had the five unpushed Assignment 3 commits rewritten onto the linked address, with a backup branch `backup/pre-author-rewrite` taken first. Only the author changed: the original timestamps were kept, and `git diff` against the backup is empty. The hashes did change, so the change brief committed before any building is now `722658f`, still at 17:48. `54a86c3` was left alone — it is already on `origin/main`, and fixing it would need a force-push to a published branch, which costs more than one unlinked commit does.
+- **What I did:** Required every commit to be credited to my own GitHub account, `narasimhareddyvalam`, and had the identity checked rather than assumed — which is what exposed the problem. It is now set explicitly, in this repository's local config only, so nothing else on the machine changes. I then had the five unpushed Assignment 3 commits rewritten onto the linked address, with a backup branch `backup/pre-author-rewrite` taken first. Only the author changed: the original timestamps were kept, and `git diff` against the backup is empty. The hashes did change, so the change brief committed before any building is now `722658f`, still at 17:48. `54a86c3` was left alone — it is already on `origin/main`, and fixing it would need a force-push to a published branch, which costs more than one unlinked commit does.
 
 - **What Claude or another person contributed:** Claude ran `get_scene_info` before proposing any geometry, as the brief requires. On the identity, it read `git config` and `gh auth status` instead of assuming, noticed the hostname address in the log, and confirmed through the GitHub API which account the university address belongs to. The instruction to check, and the account it had to be, were mine.
 
@@ -232,7 +232,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
   In the viewport it reads as a music box from the front and the three-quarter view. **From behind it reads as a closed chest**, because the key is out of sight and nothing else says "music box". The key's bow is 35 mm on a 268 mm box, smaller in proportion than in `relic_musicbox.png`. Both were noted before any export, and they are what predicted failure 7 is for.
 
-- **What I did:** Asked whether the plan was best practice before approving it, and approved it with two additions: smooth shading by angle, and the lid's origin on its hinge so it could swing open later. When asked whether the key needed to be larger and whether the back view mattered, I left the call to Claude: "whatever will help us add details to it more nicely." What it chose is the next entry.
+- **What I did:** Held the plan to a best-practice review before approving anything, which brought in two improvements — smooth shading by angle, and the lid's origin on its hinge so it could swing open later — and approved it with both. When asked whether the key needed to be larger and whether the back view mattered, I left the call to Claude: "whatever will help us add details to it more nicely." What it chose is the next entry.
 
 - **What Claude or another person contributed:** Claude derived the lid thickness from the brief's own numbers, ran the full script headless into a scratch file before touching the live session so that any Blender 5.2 API difference would fail there instead, then sent one call per object, each followed by an independent `get_scene_info` reading. It flagged that the art shows the lid thrown wide open while the brief says ajar, and that the box in the art is nearly cubic. Both are recorded here, not changed.
 
@@ -248,7 +248,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **What happened:** The key went from a 35 × 25 mm bow to 50 × 40 mm, and the shaft from r 5 mm to r 6 mm. Both live and headless, the asset now measures **0.275 × 0.1754 × 0.1795 m at 252 triangles** — the same triangle count, because only the sizes changed. Re-running the two steps replaced `MB_KeyShaft` and `MB_KeyHandle` by name; no `.001` appeared. From directly behind, the key now shows in the silhouette, where before it did not. **From behind and to the left it still reads as a plain chest**, because the key is on the far side. That part was not fixed, and it was not claimed to be.
 
-- **What I did:** Delegated the decision, quoted in the decisions table.
+- **What I did:** Set the goal — the box should read better without breaking the brief — and delegated the specific change within it, then reviewed the result from four angles before moving on. The instruction is quoted in the decisions table.
 
 - **What Claude or another person contributed:** The recommendation and its reasoning: the key is the brief's own named identifier, it was about 9 px tall at game scale, and enlarging it cost nothing, while adding parts to the back would have been over-building against the brief. It recorded the change as a dated revision rather than editing the specification, and it confirmed the result in two independent runs.
 
@@ -308,7 +308,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
   Step 0 saved the emptied session as `blender/lamp.blend` immediately, because the session had been `musicbox.blend`; `git status` confirmed the music box file untouched.
 
-- **What I did:** Approved the plan; set the instruction to follow all assignment requirements.
+- **What I did:** Approved the plan on the condition that every assignment requirement was followed. That condition prompted a full re-read of the assignment before building, which caught the one-light rule and the call-body rule while they were still cheap to fix.
 
 - **What Claude or another person contributed:** The design changes and their reasons; the catch on the one-light rule; the shared library, with a before/after diff proving it changed nothing; the session-file safeguard; finding and fixing both of its own check errors.
 
