@@ -50,6 +50,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | Seven boards | Laid out the choices: drop the back panel, undo the shelf, or keep seven and break the limit | First asked for the back slab as well, then: "keep how it is now without back its fine" | **My decision.** Open-backed, six boards |
 | Tidying the edit | Re-centred the shelves at my heights in even bays, renamed the copies, merged the `.001` material back, made the shelves dark wood | Accepted | **Claude's tidy-up of my edit**, logged as such, in one recorded call |
 | The 1 m cube and the capsule in the showcase | They were not required — the assignment asks for a floor, one light, a camera and the three assets; they came from my own plan. Proposed replacing both with the boy's own sprite at game scale | "I don't like them … remove them … or change them to something related to our game and more in detail" | **My call, Claude's proposal.** The boy now stands beside his props at 1.36 m; measuring him corrected the brief's 1.28 m |
+| The boy's texture after it appeared in 3D | Godot's "detect 3D" re-imported `char_remembered.png` with lossy VRAM compression and mipmaps — the same file the 2D game draws. Restored the lossless import and turned detect-3D off for that one texture | — | **A side-effect of using a 2D sprite in 3D, caught in `git status` before commit.** The A2 slice's own test then passed 13 / 13 |
 
 ## Entries
 
