@@ -53,6 +53,8 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | The boy's texture after it appeared in 3D | Godot's "detect 3D" re-imported `char_remembered.png` with lossy VRAM compression and mipmaps — the same file the 2D game draws. Restored the lossless import and turned detect-3D off for that one texture | — | **A side-effect of using a 2D sprite in 3D, caught in `git status` before commit.** The A2 slice's own test then passed 13 / 13 |
 | Blender's own triangle counts | The assignment says "Blender shows scene statistics"; until now the counts came from code. Opened each `.blend` in my session and saved a screenshot with the statistics overlay | "Alright, let's do it" | **Closed.** 312, 406 and 280 in Blender's overlay, matching the code. `evidence/a3-stats-musicbox.png`, `a3-stats-lamp.png` |
 | Reviewing every image before the film and the push | — | "Before the film stop … I want to review all the images we are submitting before assignment submission and pushing to GitHub" | **My rule.** Nothing goes to GitHub or into the film until I have looked at every image |
+| The 24 images for submission | Listed every A3 image with what it shows, which requirement it serves and who captured it; opened them in Preview | Reviewed them: "photos are good i guess" | **Approved by me** for the repository and the film, before any push |
+| One hand edit or three | One meets the requirement ("at least one change by hand"); more earns nothing and costs a re-export and re-check per asset | Asked whether all three assets needed one | **One — the third shelf.** The music box's weak back view stays a recorded limitation |
 
 ## Entries
 
