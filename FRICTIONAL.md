@@ -35,6 +35,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | A light inside the lamp in Godot | Proposed it at first, then withdrew it after re-reading the assignment: the showcase scene is "floor, one light, a camera" | Asked that every requirement be followed | **Claude corrected its own proposal before building.** The glow comes from emission on the material, which is not a light |
 | Logging the call bodies | Each build script now ends with `LIVE_CALLS`, every `execute_blender_code` body verbatim, including the music box's, added retroactively | Same instruction | The assignment says to copy every body into the build script. Calls that ran the file itself already proved the code; the log also satisfies the rule as written |
 | One shared library | Moved the five materials and helpers into `tools/blender/asset_lib.py` | Approved | Verified harmless: the music box's headless geometry report is identical before and after |
+| Making the lamp more realistic | Same route as the music box: a ChatGPT prompt asking for a realistically lit render of a lamp built from at most six spheres, cylinders and cones in flat colours — a larger base and a short neck as in the painting, a view from below, the lamp switched on — so the result stays buildable | After orbiting the built lamp in Blender: "i want more realsitc one, give me prompt to give to chatgpt" | **My decision; the outcome is pending.** The reference image is to be recorded as REF-LAMP-3D and any changes as revision A3-4, proposed before building |
 
 ## Entries
 
@@ -308,7 +309,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **What Claude or another person contributed:** The design changes and their reasons; the catch on the one-light rule; the shared library, with a before/after diff proving it changed nothing; the session-file safeguard; finding and fixing both of its own check errors.
 
-- **What I understand now / still do not understand:** `[TO FILL — your view of the lamp, and whether the neck proportion matters to you]`
+- **What I understand now / still do not understand:** After orbiting it in Blender: "i want more realsitc one, give me prompt to give to chatgpt." `[TO FILL — optional: what specifically looked unrealistic to you]`
 
 - **Evidence and next step:** Evidence: `tools/blender/build_lamp.py` with its `LIVE_CALLS` log; `tools/blender/asset_lib.py`; `blender/lamp.blend`; `CHANGE-BRIEF.md` revision A3-3; the four-view `look` image including two views from below. Next step: the bookshelf.
 
