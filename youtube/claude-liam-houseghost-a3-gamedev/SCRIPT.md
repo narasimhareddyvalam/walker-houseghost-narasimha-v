@@ -4,7 +4,7 @@
 **Project:** HOUSEGHOST · **Developer:** Narasimha Reddy Valam  
 **Tools shown:** Blender 5.2.2 LTS · `mcp-for-blender` 2.1.9 (add-on 1.8) · Godot 4.7.2.stable · Claude Code (Claude Opus 5.5)  
 **Frame:** 3840 × 2160 landscape, 30 fps  
-**Source revision:** Insert verified submitted source commit SHA at render time; show in Verdict.  
+**Source revision:** game source shown is commit `d331a4a` (the last commit touching `godot/`, `blender/` or `tools/`), verified identical to the working tree at render time; shown in the Verdict.  
 **Evidence rule:** Use only genuine screenshots, captured Blender MCP views, Godot renders and labelled reconstructions from the project. Do not depict reconstructed interaction as live footage. Do not imply a check proves more than it does.
 
 ---
@@ -191,7 +191,7 @@
 
 “What remains uncertain is how the props will read in the finished game's actual room lighting, whether the music box is identifiable from behind, and how another viewer would interpret the scene. My next step is to improve the music box's rear silhouette without exceeding six shapes or 320 triangles.”
 
-“The demonstrated game source is commit **[INSERT VERIFIED SOURCE SHA]**, with the submitted revision identified in the accompanying source records.”
+“The demonstrated game source is commit d331a4a, with the submitted revision identified in the accompanying source records.”
 
 ---
 

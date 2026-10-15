@@ -1,0 +1,1509 @@
+{
+  "metadata": {
+    "title": "Building Three Game Props with Claude, Blender MCP and Godot",
+    "slug": "claude-liam-houseghost-a3-gamedev",
+    "topic": "Three 3D props for HOUSEGHOST, built with Claude through the Blender MCP and checked in Godot",
+    "kind": "godot-gamedev",
+    "mode": "walker",
+    "brand": "claude",
+    "audience": "developers and game design students",
+    "register": "teardown",
+    "engine": "kokoro",
+    "voice": "am_onyx",
+    "voice_kokoro": "am_onyx",
+    "aspect_ratio": "16:9",
+    "captions": false,
+    "channel_title": "Nik Bear Brown",
+    "channel": "@NikBearBrown",
+    "presenter": "Liam",
+    "persona": "liam-in-for-bear",
+    "author": "Narasimha Reddy Valam",
+    "game": "HOUSEGHOST — Assignment 3 props",
+    "godot_version": "4.7.2.stable.official.ed1daf0bf",
+    "blender_version": "5.2.2 LTS",
+    "mcp": "mcp-for-blender 2.1.9 (add-on 1.8)",
+    "teaching_contract": "code-then-result-v1",
+    "script": "SCRIPT.md"
+  },
+  "beats": [
+    {
+      "beat_id": "B00",
+      "act": "ASK",
+      "role_note": "Reconstruction of the Claude composer; the opening prompt, typed, no narration",
+      "narration_text": "",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "type-on",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Namaste, Liam",
+            "topic": "CLAUDE CODE · BLENDER MCP · GODOT 4.7",
+            "segment": "Building Three Game Props",
+            "command": "Use Walker to turn my HOUSEGHOST bedroom design into three simple 3D props: the wind-up music box, bedside lamp and memory-only bookshelf. Work in my running Blender session through the Blender MCP. Read my committed change brief first, propose each build before executing it, keep the geometry and material budgets, then export the assets to Godot and verify their dimensions, orientation and origins. Show me what the automated checks cannot establish."
+          }
+        }
+      },
+      "estimated_duration_s": 9.0,
+      "audio_policy": "silence",
+      "silent": true,
+      "actual_duration_s": 9.0
+    },
+    {
+      "beat_id": "B01",
+      "act": "ASK",
+      "role_note": "Hesitant-writer summary, read aloud from SCRIPT.md Bookend 2 (its struck line omitted)",
+      "narration_text": "Three objects from a remembered bedroom. Designed to a scale, built through a live Blender session, revised by eye, and tested in Godot. The numbers tell me whether they arrived correctly. The scene tells me whether they read correctly.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "type-on",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "What got built",
+            "artifactHeading": "Three props from a remembered bedroom",
+            "artifactLines": [
+              "Designed to a scale, built through a live Blender session.",
+              "Revised by eye, and tested in Godot.",
+              "The numbers tell me whether they arrived correctly.",
+              "The scene tells me whether they read correctly."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 15.0,
+      "actual_duration_s": 13.06,
+      "audio_file": "mp3/beat-B01.mp3"
+    },
+    {
+      "beat_id": "B02",
+      "act": "RESULT",
+      "role_note": "",
+      "narration_text": "This is a small part of HOUSEGHOST: three objects from a bedroom that exists in two states. A music box, a lamp, and a bookshelf. They look ordinary. In this game, they are the difference between a room that has been emptied and a room that still remembers who lived there.",
+      "shot": {
+        "type": "source-cut",
+        "source": "own",
+        "capture": "capture/godot-showcase-orbit-4k.mp4",
+        "capture_kind": "Godot engine capture — scripted camera, native 4K",
+        "show": [
+          {
+            "at": "0.00",
+            "event": "label: Godot engine capture — scripted camera, native 4K"
+          }
+        ],
+        "evidence_media": "media/B02.mp4"
+      },
+      "estimated_duration_s": 19.62,
+      "actual_duration_s": 13.95,
+      "audio_file": "mp3/beat-B02.mp3"
+    },
+    {
+      "beat_id": "B03",
+      "act": "RESULT",
+      "role_note": "",
+      "narration_text": "Rather than treat them as isolated models, I built them as game assets. Each has a visual job, a defined size, a geometry budget, an origin, and a path from Blender into Godot. This is how that path held up.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Three props, one remembered room",
+            "status": "My A2 art — the room they come from",
+            "image": "houseghost-a3/env_room_memory.png",
+            "imageLabel": "env_room_memory.png",
+            "excerpt": "",
+            "source": "godot/assets/art/env_room_memory.png",
+            "cards": [
+              {
+                "label": "Music box",
+                "text": "the first relic"
+              },
+              {
+                "label": "Lamp",
+                "text": "the warm light"
+              },
+              {
+                "label": "Bookshelf",
+                "text": "solid only in memory"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 15.38,
+      "actual_duration_s": 12.82,
+      "audio_file": "mp3/beat-B03.mp3"
+    },
+    {
+      "beat_id": "B04",
+      "act": "GAME",
+      "role_note": "",
+      "narration_text": "HOUSEGHOST is a side-on 2D story about the ghost of a boy believed to have run away. In the empty bedroom, his belongings are gone. Turn the world over, and the remembered room comes back — warmer, lit, and full of objects with meaning.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "A room in two states",
+            "status": "My A2 art",
+            "image": "houseghost-a3/env_room_memory.png",
+            "imageLabel": "the remembered bedroom",
+            "excerpt": "",
+            "source": "godot/assets/art/env_room_memory.png",
+            "cards": [
+              {
+                "label": "Game",
+                "text": "side-on 2D, Godot 4.7"
+              },
+              {
+                "label": "Verb",
+                "text": "turn the world over"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 16.92,
+      "actual_duration_s": 13.18,
+      "audio_file": "mp3/beat-B04.mp3"
+    },
+    {
+      "beat_id": "B05",
+      "act": "GAME",
+      "role_note": "",
+      "narration_text": "The music box is the first relic. It calls from a place the player cannot reach directly and introduces the room’s logic. The lamp establishes the warmth of memory. The bookshelf exists as solid geometry only in the remembered state, so it matters to navigation, not just decoration.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Each prop has a job",
+            "status": "Captured in my Blender session via the MCP — final versions",
+            "image": "houseghost-a3/final-musicbox-4view.png",
+            "imageLabel": "final music box",
+            "excerpt": "",
+            "source": "stills/final-musicbox-4view.png",
+            "cards": [
+              {
+                "label": "Music box",
+                "text": "calls from out of reach"
+              },
+              {
+                "label": "Lamp",
+                "text": "warmth of memory"
+              },
+              {
+                "label": "Bookshelf",
+                "text": "blocks the way"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 18.46,
+      "actual_duration_s": 16.32,
+      "audio_file": "mp3/beat-B05.mp3"
+    },
+    {
+      "beat_id": "B06",
+      "act": "GAME",
+      "role_note": "",
+      "narration_text": "The main game is 2D, but these props also live in a separate 3D Godot showcase. That lets me inspect their actual scale, orientation and materials without pretending they are already integrated into the side-scroller.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "A separate 3D showcase",
+            "status": "Godot render",
+            "image": "houseghost-a3/a3-showcase.png",
+            "imageLabel": "godot/scenes/AssetShowcase.tscn",
+            "excerpt": "",
+            "source": "evidence/a3-showcase.png",
+            "cards": [
+              {
+                "label": "Scene",
+                "text": "floor, one light, camera"
+              },
+              {
+                "label": "Not claimed",
+                "text": "integrated into the 2D game"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 13.46,
+      "actual_duration_s": 13.06,
+      "audio_file": "mp3/beat-B06.mp3"
+    },
+    {
+      "beat_id": "B07",
+      "act": "BRIEF",
+      "role_note": "",
+      "narration_text": "I started by fixing a scale instead of guessing by eye. The player's collision capsule is 250 pixels high, so I used 250 pixels per metre as the working conversion. That makes the bookshelf one metre tall — the height of the capsule that it blocks.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "trace",
+            "title": "One metre is 250 pixels",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "CHANGE-BRIEF.md",
+            "source": "CHANGE-BRIEF.md — scale table (Repository file)",
+            "treeLabel": "CHANGE-BRIEF.md — scale table",
+            "tree": [
+              "His collision capsule — 250 px — 1.00 m",
+              "Bookshelf collider — 150 × 250 px — 0.60 × 1.00 m",
+              "Floor to ceiling, interior — 800 px — 3.20 m",
+              "The door — ~609 px — 2.44 m"
+            ],
+            "inspectorLabel": "What it shows",
+            "notes": [
+              {
+                "label": "Scale",
+                "value": "250 px = 1 m"
+              },
+              {
+                "label": "Anchor",
+                "value": "the 1.00 m collider"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 17.69,
+      "actual_duration_s": 14.89,
+      "audio_file": "mp3/beat-B07.mp3"
+    },
+    {
+      "beat_id": "B08",
+      "act": "BRIEF",
+      "role_note": "",
+      "narration_text": "The illustration isn't perfectly consistent with that measurement. A later check showed the boy's standing drawing was 341 pixels, or 1.36 metres, rather than the 1.28 metres first quoted in the brief. The brief now records that correction; the collider-based scale did not change.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "trace",
+            "title": "The art disagrees with itself",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "CHANGE-BRIEF.md",
+            "source": "CHANGE-BRIEF.md — correction, 2026-10-15 (Repository file)",
+            "treeLabel": "CHANGE-BRIEF.md — correction",
+            "tree": [
+              "Brief, as written — sprite 320 px — 1.28 m",
+              "Measured, standing — figure 341 px — 1.36 m (char_remembered.png)",
+              "Walking frames — 303–317 px — about 1.27 m"
+            ],
+            "inspectorLabel": "What it shows",
+            "notes": [
+              {
+                "label": "Scale",
+                "value": "unchanged"
+              },
+              {
+                "label": "Why",
+                "value": "anchored on the collider, not the drawing"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 16.92,
+      "actual_duration_s": 17.17,
+      "audio_file": "mp3/beat-B08.mp3"
+    },
+    {
+      "beat_id": "B09",
+      "act": "BRIEF",
+      "role_note": "",
+      "narration_text": "Before any model was built, I committed a brief with dimensions, materials, origins and triangle limits for all three objects. I also wrote down seven ways the process might fail: wrong orientation, wrong scale, misplaced origin, excess geometry, colour changes, a connected-but-unusable MCP, and an object that passes every numeric check but still looks wrong. Those predictions became the inspection plan.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "trace",
+            "title": "Seven predictions, committed first",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "CHANGE-BRIEF.md",
+            "source": "CHANGE-BRIEF.md — committed 722658f, 2026-10-14 17:48, before any build (Repository file)",
+            "treeLabel": "CHANGE-BRIEF.md — predicted failures",
+            "tree": [
+              "1 — lying on its side",
+              "2 — wrong by ×10 or ×100",
+              "3 — origin in the middle",
+              "4 — over-building",
+              "5 — colour lost in export",
+              "6 — MCP connects but cannot drive",
+              "7 — right by every number, still wrong"
+            ],
+            "inspectorLabel": "What it shows",
+            "notes": [
+              {
+                "label": "Committed",
+                "value": "722658f · 2026-10-14 17:48"
+              },
+              {
+                "label": "Before",
+                "value": "any model was built"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 23.46,
+      "actual_duration_s": 22.38,
+      "audio_file": "mp3/beat-B09.mp3"
+    },
+    {
+      "beat_id": "B10",
+      "act": "MCP",
+      "role_note": "",
+      "narration_text": "First, I learned the window I was about to direct: the viewport for looking, the Outliner for objects, Properties for materials and scene settings, the sidebar for exact transforms, the toolbar for interaction, and the mode selector for object-level versus mesh-level editing.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Learning the window first",
+            "status": "My screenshot",
+            "image": "houseghost-a3/a3-blender-window.png",
+            "imageLabel": "my Blender session, BS_Shelf_Mid selected",
+            "excerpt": "",
+            "source": "evidence/a3-blender-window.png · BLENDER-NOTES.md",
+            "cards": [
+              {
+                "label": "Viewport · Toolbar",
+                "text": "look · interact"
+              },
+              {
+                "label": "Outliner",
+                "text": "objects"
+              },
+              {
+                "label": "Properties · Sidebar",
+                "text": "materials · exact transforms"
+              },
+              {
+                "label": "Mode",
+                "text": "object vs mesh"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 16.15,
+      "actual_duration_s": 14.98,
+      "audio_file": "mp3/beat-B10.mp3"
+    },
+    {
+      "beat_id": "B11",
+      "act": "MCP",
+      "role_note": "",
+      "narration_text": "Then I checked the connection itself. A client saying ‘connected’ is not proof it can control Blender. I asked Claude to call `get_scene_info` before building anything. It returned the live default scene — cube, camera and light. That confirmed the MCP could read the running session.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "trace",
+            "title": "Connected is not controlling",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "",
+            "source": "get_scene_info — first call, before any build (Command output)",
+            "treeLabel": "get_scene_info",
+            "tree": [
+              "Scene 'Scene' | 1 camera, 1 light, 1 mesh | active Cube | mode OBJECT",
+              "(unsaved) | engine BLENDER_EEVEE | 1920x1080 | unit scale 1.0",
+              "Cube   | mesh   | at (0.0, 0.0, 0.0)     | size 2.0x2.0x2.0",
+              "Light  | light  | at (4.08, 1.01, 5.9)   | point 1000.0W",
+              "Camera | camera | at (7.36, -6.93, 4.96) | rot (64, 0, 47)"
+            ],
+            "inspectorLabel": "What it shows",
+            "notes": [
+              {
+                "label": "Proves",
+                "value": "the MCP reads my live session"
+              },
+              {
+                "label": "When",
+                "value": "before any build"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 17.69,
+      "actual_duration_s": 15.02,
+      "audio_file": "mp3/beat-B11.mp3"
+    },
+    {
+      "beat_id": "B12",
+      "act": "MCP",
+      "role_note": "",
+      "narration_text": "The add-on was bound to localhost on port 9876, verified with `lsof`. I left remote model-download and generation services disabled. The geometry in this film was built locally from Blender shapes, not imported from an asset library.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Local only, generators off",
+            "status": "My screenshot",
+            "image": "houseghost-a3/a3-mcp-panel-own.png",
+            "imageLabel": "MCP for Blender: connected on port 9876; libraries and generators off",
+            "excerpt": "",
+            "source": "evidence/a3-mcp-panel-own.png · lsof: Blender TCP 127.0.0.1:9876 (LISTEN)",
+            "cards": [
+              {
+                "label": "Socket",
+                "text": "127.0.0.1:9876"
+              },
+              {
+                "label": "Libraries",
+                "text": "all off"
+              },
+              {
+                "label": "Generators",
+                "text": "all off"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 14.23,
+      "actual_duration_s": 15.55,
+      "audio_file": "mp3/beat-B12.mp3"
+    },
+    {
+      "beat_id": "B13",
+      "act": "BUILD",
+      "role_note": "",
+      "narration_text": "Here is the collaboration in practice. I told Claude to go ahead with the bookshelf, and its first reply laid the build out in numbers: six boards, with dimensions, materials, bevels and a triangle estimate — 296 triangles against a 360-triangle target. For each redesign that followed, nothing ran until I had approved the plan.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "A prompt, and its plan",
+            "status": "My screenshot",
+            "image": "houseghost-a3/a3-prompt-to-claude-own.png",
+            "imageLabel": "“yes go ahead with the bookshelf”",
+            "excerpt": "",
+            "source": "evidence/a3-prompt-to-claude-own.png",
+            "cards": [
+              {
+                "label": "Plan",
+                "text": "six boards"
+              },
+              {
+                "label": "Budget",
+                "text": "296 / 360 tris"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 21.15,
+      "actual_duration_s": 18.97,
+      "audio_file": "mp3/beat-B13.mp3"
+    },
+    {
+      "beat_id": "B14",
+      "act": "BUILD",
+      "role_note": "",
+      "narration_text": "Claude then created the pieces through `execute_blender_code`, one object at a time. After each operation it queried the scene again to read the resulting position, dimensions, rotation and scale. The geometry was built at its intended size, with identity object transforms.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "What it built",
+            "status": "Captured in my Blender session via the MCP",
+            "image": "houseghost-a3/a3-prompt-result-bookshelf-a3-5.png",
+            "imageLabel": "the bookshelf that prompt produced (A3-5)",
+            "excerpt": "",
+            "source": "evidence/a3-prompt-result-bookshelf-a3-5.png",
+            "cards": [
+              {
+                "label": "Per object",
+                "text": "one execute_blender_code call"
+              },
+              {
+                "label": "Then",
+                "text": "get_scene_info reads it back"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 15.77,
+      "actual_duration_s": 15.64,
+      "audio_file": "mp3/beat-B14.mp3"
+    },
+    {
+      "beat_id": "B15",
+      "act": "BUILD",
+      "role_note": "",
+      "narration_text": "Every executed call body is kept in `tools/blender`, alongside scripts that rebuild each source file from an empty scene. That means the final `.blend` files are not the only record of how the objects were made.",
+      "shot": {
+        "type": "source-cut",
+        "source": "own",
+        "capture": "capture/blender-bookshelf-turntable.mp4",
+        "capture_kind": "Capture of my Blender session — camera driven via the MCP",
+        "show": [
+          {
+            "at": "0.00",
+            "event": "label: Capture of my Blender session — camera driven via the MCP"
+          }
+        ],
+        "evidence_media": "media/B15.mp4"
+      },
+      "estimated_duration_s": 13.85,
+      "actual_duration_s": 12.61,
+      "audio_file": "mp3/beat-B15.mp3"
+    },
+    {
+      "beat_id": "B16",
+      "act": "MUSICBOX",
+      "role_note": "",
+      "narration_text": "The first music box was within the limits: five basic shapes, 252 triangles, and a lid opened eighteen degrees. But it was too generic. It met the numbers without delivering the presence I wanted.",
+      "shot": {
+        "type": "source-cut",
+        "source": "own",
+        "capture": "capture/blender-musicbox-turntable.mp4",
+        "capture_kind": "Capture of my Blender session — camera driven via the MCP",
+        "show": [
+          {
+            "at": "0.00",
+            "event": "label: Capture of my Blender session — camera driven via the MCP"
+          }
+        ],
+        "evidence_media": "media/B16.mp4"
+      },
+      "estimated_duration_s": 13.08,
+      "actual_duration_s": 11.86,
+      "audio_file": "mp3/beat-B16.mp3"
+    },
+    {
+      "beat_id": "B17",
+      "act": "MUSICBOX",
+      "role_note": "",
+      "narration_text": "I used a generated image as a design reference, not as a mesh. Then we translated only the parts six shapes could build: a hollow body with a darker cavity, a raised plinth, an opened lid and a butterfly key whose bow aligns with its shaft.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "A reference, not a mesh",
+            "status": "ChatGPT reference — image only",
+            "image": "houseghost-a3/ref-musicbox-chatgpt.png",
+            "imageLabel": "read for what six shapes can build",
+            "excerpt": "",
+            "source": "design/ref-musicbox-chatgpt.png",
+            "cards": [
+              {
+                "label": "Hollow body",
+                "text": "darker cavity"
+              },
+              {
+                "label": "Plinth",
+                "text": "the sixth shape"
+              },
+              {
+                "label": "Key",
+                "text": "bow in the shaft plane"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 17.69,
+      "actual_duration_s": 13.95,
+      "audio_file": "mp3/beat-B17.mp3"
+    },
+    {
+      "beat_id": "B18",
+      "act": "MUSICBOX",
+      "role_note": "",
+      "narration_text": "The body uses an inset and extrusion to create twelve-millimetre walls and a ten-centimetre cavity. A small gap at the lid's hinge was closed, and the new silhouette checked. The finished model uses 312 triangles against a 320-triangle budget. Small bevels catch the light; face-weighted normals help the flat faces shade cleanly.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Twelve-millimetre walls",
+            "status": "Captured in my Blender session via the MCP",
+            "image": "houseghost-a3/a3-stats-musicbox.png",
+            "imageLabel": "Blender statistics: 124 / 312 triangles",
+            "excerpt": "inset_individual(thickness=0.006) → extrude_face_region → translate(z −0.10)",
+            "source": "abbreviated from tools/blender/build_musicbox.py lines 61–64",
+            "cards": [
+              {
+                "label": "Walls",
+                "text": "12 mm"
+              },
+              {
+                "label": "Cavity",
+                "text": "10 cm deep"
+              },
+              {
+                "label": "Triangles",
+                "text": "312 / 320"
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B18.mp4",
+            "at": "2026-10-15T18:01:41.365142+00:00"
+          }
+        }
+      },
+      "estimated_duration_s": 20.0,
+      "actual_duration_s": 18.69,
+      "audio_file": "mp3/beat-B18.mp3"
+    },
+    {
+      "beat_id": "B19",
+      "act": "LAMP",
+      "role_note": "",
+      "narration_text": "The first lamp followed the original painting: a traditional base and cone shade. I replaced it with a quieter modern silhouette — ceramic base, brass collar and broad drum shade. I revised its triangle budget from 340 to 420 before building, documenting why the curved base needed more geometry.",
+      "shot": {
+        "type": "source-cut",
+        "source": "own",
+        "capture": "capture/blender-lamp-turntable.mp4",
+        "capture_kind": "Capture of my Blender session — camera driven via the MCP",
+        "show": [
+          {
+            "at": "0.00",
+            "event": "label: Capture of my Blender session — camera driven via the MCP"
+          }
+        ],
+        "evidence_media": "media/B19.mp4"
+      },
+      "estimated_duration_s": 18.85,
+      "actual_duration_s": 17.92,
+      "audio_file": "mp3/beat-B19.mp3"
+    },
+    {
+      "beat_id": "B20",
+      "act": "LAMP",
+      "role_note": "",
+      "narration_text": "The showcase scene allows one light, so an internal lamp light was ruled out, and the lamp’s glow lives in its shade material instead.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "One scene light",
+            "status": "ChatGPT reference — image only",
+            "image": "houseghost-a3/ref-lamp-chatgpt.png",
+            "imageLabel": "the modern reference",
+            "excerpt": "",
+            "source": "design/ref-lamp-chatgpt.png",
+            "cards": [
+              {
+                "label": "Scene",
+                "text": "exactly one light"
+              },
+              {
+                "label": "Glow",
+                "text": "in the shade material"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 9.23,
+      "actual_duration_s": 7.72,
+      "audio_file": "mp3/beat-B20.mp3"
+    },
+    {
+      "beat_id": "B21",
+      "act": "LAMP",
+      "role_note": "",
+      "narration_text": "The first Godot import exposed a problem the Blender numbers could not: emission at 1.0 pushed the cream shade to clipped white. We lowered the source emission to 0.4, rebuilt, re-exported and re-imported. The cream returned, and the source, export and rendered result agreed.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Emission 1.0 → 0.4",
+            "status": "Godot render",
+            "image": "houseghost-a3/a3-showcase.png",
+            "imageLabel": "the final lamp, cream restored",
+            "excerpt": "\"M_Shade_Cream\": {\"hex\": \"#F0DCA8\", …, \"emission\": 0.4}",
+            "source": "abbreviated from tools/blender/asset_lib.py lines 23–24",
+            "cards": [
+              {
+                "label": "Before",
+                "text": "clipped to white"
+              },
+              {
+                "label": "After",
+                "text": "cream visible"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 16.92,
+      "actual_duration_s": 16.17,
+      "audio_file": "mp3/beat-B21.mp3"
+    },
+    {
+      "beat_id": "B22",
+      "act": "BOOKSHELF",
+      "role_note": "",
+      "narration_text": "The bookshelf was deliberately simple: six boards, warm wood, a modern profile with rounded top corners. Its first version passed the dimensional and transform checks. It still missed the feature that made the design recognizable: the upper corners were square.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Six boards, rounded corners",
+            "status": "ChatGPT reference — image only",
+            "image": "houseghost-a3/ref-bookshelf-chatgpt.png",
+            "imageLabel": "the modern reference",
+            "excerpt": "",
+            "source": "design/ref-bookshelf-chatgpt.png",
+            "cards": [
+              {
+                "label": "Boards",
+                "text": "six"
+              },
+              {
+                "label": "Detail",
+                "text": "rounded top corners"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 15.38,
+      "actual_duration_s": 14.36,
+      "audio_file": "mp3/beat-B22.mp3"
+    },
+    {
+      "beat_id": "B23",
+      "act": "BOOKSHELF",
+      "role_note": "",
+      "narration_text": "The issue was the order of bevel operations. An earlier edge bevel caused Blender's overlap clamp to reduce the intended three-centimetre rounding to about three millimetres. Reordering the operations restored the shape.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Order of operations",
+            "status": "Captured in my Blender session via the MCP — final version",
+            "image": "houseghost-a3/final-bookshelf-4view.png",
+            "imageLabel": "side view: the rounded corners",
+            "excerpt": "bevel(top_corners, offset=0.03, segments=4) — before the front-edge bevel",
+            "source": "abbreviated from tools/blender/build_bookshelf.py lines 64–65",
+            "cards": [
+              {
+                "label": "Cause",
+                "text": "bevel order"
+              },
+              {
+                "label": "Fix",
+                "text": "round the corners first"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 12.31,
+      "actual_duration_s": 12.5,
+      "audio_file": "mp3/beat-B23.mp3"
+    },
+    {
+      "beat_id": "B24",
+      "act": "BOOKSHELF",
+      "role_note": "",
+      "narration_text": "Claude added an assertion for the corrected geometry. That check initially contained its own local-versus-world coordinate mistake, which was corrected too. A passing test is useful only when the test is measuring what I think it measures.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "trace",
+            "title": "A test that measures what it means",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "",
+            "source": "tools/blender/build_bookshelf.py — side_bm() assertion (Command output)",
+            "treeLabel": "side_bm() — the rounding assertion",
+            "tree": [
+              "rounded corners: 2 | front edges: 2 | front face top z = 0.9700 (expect 0.9700)",
+              "first run: AssertionError — local height compared with world height",
+              "fixed: world height = local z + 0.5"
+            ],
+            "inspectorLabel": "What it shows",
+            "notes": [
+              {
+                "label": "Asserts",
+                "value": "front face stops 3 cm below the top"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 14.23,
+      "actual_duration_s": 13.08,
+      "audio_file": "mp3/beat-B24.mp3"
+    },
+    {
+      "beat_id": "B25",
+      "act": "HANDEDIT",
+      "role_note": "",
+      "narration_text": "I also changed the bookshelf myself in Blender's window. I duplicated a shelf and moved the new one toward the base, so the open space felt more deliberately divided.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Before my edit",
+            "status": "Captured in my Blender session via the MCP",
+            "image": "houseghost-a3/a3-hand-edit-before.png",
+            "imageLabel": "two shelves and a back panel — 248 triangles",
+            "excerpt": "",
+            "source": "evidence/a3-hand-edit-before.png",
+            "cards": [
+              {
+                "label": "Edit",
+                "text": "by hand, with the mouse"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 11.15,
+      "actual_duration_s": 9.79,
+      "audio_file": "mp3/beat-B25.mp3"
+    },
+    {
+      "beat_id": "B26",
+      "act": "HANDEDIT",
+      "role_note": "",
+      "narration_text": "That small edit taught me how precise the interface needs to be. My first duplication included the selected parent and created a second root. A free gizmo drag shifted the shelf sideways as well as vertically, and Blender made a duplicate material. Inspecting the Outliner and transforms showed each of those, and taught me that a free drag moves every axis at once, while the axis arrow keeps it to one.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "What the edit taught me",
+            "status": "My screenshots",
+            "image": "houseghost-a3/hand-edit-own-trio.png",
+            "imageLabel": "duplicate with its parent · drift on every axis · a seventh board",
+            "excerpt": "",
+            "source": "evidence/a3-hand-edit-attempt-duplicate.png · a3-hand-edit-during-own.png · a3-hand-edit-third-shelf-own.png",
+            "cards": [
+              {
+                "label": "Shift+D",
+                "text": "copies the parent too"
+              },
+              {
+                "label": "Free drag",
+                "text": "moves every axis"
+              },
+              {
+                "label": "Copies",
+                "text": ".001 names and materials"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 27.31,
+      "actual_duration_s": 20.89,
+      "audio_file": "mp3/beat-B26.mp3"
+    },
+    {
+      "beat_id": "B27",
+      "act": "HANDEDIT",
+      "role_note": "",
+      "narration_text": "The extra shelf took the model over six boards. I chose to remove the back panel rather than lose the new shelf, preserving the open-backed direction of the original brief. Claude then re-centred the shelves at my heights, cleaned up the duplicate objects and material, and brought the reproducible build script into agreement with the edited scene. The final bookshelf uses six boards and 280 triangles.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "After my edit",
+            "status": "Captured in my Blender session via the MCP — same camera",
+            "image": "houseghost-a3/a3-hand-edit-after.png",
+            "imageLabel": "three shelves, open back — 280 triangles",
+            "excerpt": "",
+            "source": "evidence/a3-hand-edit-after.png",
+            "cards": [
+              {
+                "label": "Boards",
+                "text": "six"
+              },
+              {
+                "label": "Triangles",
+                "text": "280 / 360"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 25.38,
+      "actual_duration_s": 21.25,
+      "audio_file": "mp3/beat-B27.mp3"
+    },
+    {
+      "beat_id": "B28",
+      "act": "CHECK",
+      "role_note": "",
+      "narration_text": "A Blender model is not finished when it looks good in Blender. Each asset was exported as a binary `.glb` with plus-Y up. A separate reader inspected the exported files for colours, transforms and orientation before Godot loaded them.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "trace",
+            "title": "Read the exported file itself",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "",
+            "source": "python3 tools/inspect_glb.py — bookshelf.glb (Command output)",
+            "treeLabel": "tools/inspect_glb.py — bookshelf.glb",
+            "tree": [
+              "asset: Khronos glTF Blender I/O v5.2.40 | up axis: glTF is always +Y up",
+              "node BS_Shelf_Bottom translation [0, 0.12, 0.0015] | no rotation, no scale",
+              "size x 0.64 | y (up) 1.0 | z 0.3 | lowest point y = 0.0",
+              "triangles 280",
+              "material M_Wood_Dark base #4A2E19 · M_Wood_Warm base #6B4428"
+            ],
+            "inspectorLabel": "What it shows",
+            "notes": [
+              {
+                "label": "Format",
+                "value": "binary glTF, +Y up"
+              },
+              {
+                "label": "Reader",
+                "value": "no Blender, no Godot"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 15.0,
+      "actual_duration_s": 13.78,
+      "audio_file": "mp3/beat-B28.mp3"
+    },
+    {
+      "beat_id": "B29",
+      "act": "CHECK",
+      "role_note": "",
+      "narration_text": "Then a Godot headless script read each imported asset's bounding box, node scales, vertical axis and lowest point.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "code",
+            "title": "Compose the transforms yourself",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "godot/tests/check_assets.gd:82",
+            "source": "godot/tests/check_assets.gd lines 82–95 · verbatim · Reconstruction",
+            "code": "func _walk(n: Node, parent: Transform3D, boxes: Array[AABB]) -> bool:\n\tvar ok := true\n\tvar xform := parent\n\tif n is Node3D:\n\t\tvar n3 := n as Node3D\n\t\txform = parent * n3.transform\n\t\tif not n3.scale.is_equal_approx(Vector3.ONE):\n\t\t\tok = false\n\t\t\tprint(\"  %s scale %s\" % [n.name, n3.scale])\n\tif n is MeshInstance3D:\n\t\tboxes.append(xform * (n as MeshInstance3D).get_aabb())\n\tfor c in n.get_children():\n\t\tok = _walk(c, xform, boxes) and ok\n\treturn ok",
+            "startLine": 82,
+            "codeFontSize": 28,
+            "notes": [
+              {
+                "label": "Why",
+                "value": "global_transform is identity outside the tree"
+              },
+              {
+                "label": "Checks",
+                "value": "size · scale · up axis · lowest point"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 6.92,
+      "actual_duration_s": 7.15,
+      "audio_file": "mp3/beat-B29.mp3"
+    },
+    {
+      "beat_id": "B30",
+      "act": "CHECK",
+      "role_note": "",
+      "narration_text": "Here are the results beside the original targets. All three fall within two millimetres of the specified dimensions, stand along Y, have unit scales and measure down to zero.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "trace",
+            "title": "Headless check — not a visual check",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "",
+            "source": "timeout 120 godot --headless --path godot --script res://tests/check_assets.gd (Command output)",
+            "treeLabel": "Headless — W × H × D, metres",
+            "tree": [
+              "MusicBox — brief 0.316 × 0.297 × 0.190 m — Godot 0.3160 × 0.2968 × 0.1900",
+              "BedsideLamp — brief 0.28 × 0.42 × 0.28 m — Godot 0.2800 × 0.4200 × 0.2800",
+              "Bookshelf — brief 0.64 × 1.00 × 0.30 m — Godot 0.6400 × 1.0000 × 0.3000",
+              "every node scale 1, 1, 1 · height along Y · lowest point 0.0000",
+              "RESULT: PASS (0 failures) · exit 0"
+            ],
+            "inspectorLabel": "What it shows",
+            "notes": [
+              {
+                "label": "Tolerance",
+                "value": "2 mm"
+              },
+              {
+                "label": "Not",
+                "value": "a visual check"
+              }
+            ]
+          },
+          "rendered": {
+            "out": "media/B30.mp4",
+            "at": "2026-10-15T18:02:34.770679+00:00"
+          }
+        },
+        "evidence_media": "media/B30.mp4"
+      },
+      "estimated_duration_s": 11.15,
+      "actual_duration_s": 10.11,
+      "audio_file": "mp3/beat-B30.mp3"
+    },
+    {
+      "beat_id": "B31",
+      "act": "CHECK",
+      "role_note": "",
+      "narration_text": "The first version of that script failed every correct asset because it asked for global transforms before the objects were in the scene tree. Claude corrected it to compose transforms explicitly, and it was tested against a deliberately wrong height, which it rejects. The output is a measurement, not a substitute for looking at the scene.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "trace",
+            "title": "A check must be able to fail",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "",
+            "source": "check_assets.gd against a deliberately wrong height (Command output)",
+            "treeLabel": "check_assets.gd — negative test",
+            "tree": [
+              "FAIL: Bookshelf: size differs from the brief by more than 2 mm",
+              "FAIL: Bookshelf: height does not lie along Y (lying on its side?)",
+              "RESULT: FAIL (2 failures) · exit 1",
+              "What it cannot prove: how an asset looks · contact with a floor"
+            ],
+            "inspectorLabel": "What it shows",
+            "notes": [
+              {
+                "label": "Proves",
+                "value": "the check can fail"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 21.54,
+      "actual_duration_s": 17.3,
+      "audio_file": "mp3/beat-B31.mp3"
+    },
+    {
+      "beat_id": "B32",
+      "act": "GODOT",
+      "role_note": "",
+      "narration_text": "This is the assembled showcase: a floor, one light, a camera and all three props together at game scale — exactly the scene the assignment specifies.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "code",
+        "remotion": {
+          "pattern": "GodotDevWorkbench",
+          "props": {
+            "mode": "code",
+            "title": "The whole scene",
+            "project": "HOUSEGHOST — Assignment 3",
+            "path": "godot/scenes/AssetShowcase.tscn:44",
+            "source": "godot/scenes/AssetShowcase.tscn lines 44–66 · verbatim · Reconstruction",
+            "code": "[node name=\"KeyLight\" type=\"DirectionalLight3D\" parent=\".\"]\nrotation = Vector3(-0.75, 0.65, 0)\nlight_color = Color(1, 0.94, 0.86, 1)\nlight_energy = 1.0\nshadow_enabled = true\n\n[node name=\"Camera\" type=\"Camera3D\" parent=\".\"]\nposition = Vector3(-0.1, 0.85, 2.2)\nrotation = Vector3(-0.17, 0, 0)\nfov = 40.0\ncurrent = true\n\n[node name=\"Floor\" type=\"MeshInstance3D\" parent=\".\"]\nmesh = SubResource(\"Floor_mesh\")\n\n[node name=\"Bookshelf\" parent=\".\" instance=ExtResource(\"3_bookshelf\")]\nposition = Vector3(-0.8, 0, 0)\n\n[node name=\"BedsideLamp\" parent=\".\" instance=ExtResource(\"2_lamp\")]\nposition = Vector3(0.0, 0, 0)\n\n[node name=\"MusicBox\" parent=\".\" instance=ExtResource(\"1_musicbox\")]\nposition = Vector3(0.55, 0, 0)",
+            "startLine": 44,
+            "codeFontSize": 24,
+            "notes": [
+              {
+                "label": "Lights",
+                "value": "exactly one"
+              },
+              {
+                "label": "Assets",
+                "value": "three .glb instances"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 10.0,
+      "actual_duration_s": 8.81,
+      "audio_file": "mp3/beat-B32.mp3"
+    },
+    {
+      "beat_id": "B33",
+      "act": "GODOT",
+      "role_note": "",
+      "narration_text": "I briefly placed the boy's flat sprite beside them to judge proportion; it was 2D and turned to face the camera, so I removed it from the scene.",
+      "shot": {
+        "type": "source-cut",
+        "source": "own",
+        "capture": "capture/godot-showcase-orbit-4k.mp4",
+        "capture_kind": "Godot engine capture — scripted camera, native 4K",
+        "show": [
+          {
+            "at": "0.00",
+            "event": "label: Godot engine capture — scripted camera, native 4K"
+          }
+        ],
+        "evidence_media": "media/B33.mp4"
+      },
+      "estimated_duration_s": 10.77,
+      "actual_duration_s": 8.49,
+      "audio_file": "mp3/beat-B33.mp3"
+    },
+    {
+      "beat_id": "B34",
+      "act": "GODOT",
+      "role_note": "",
+      "narration_text": "The scene uses Godot's Compatibility renderer, consistent with the main 2D project. The sky lighting was adjusted when the brass appeared almost black. That was a presentation issue the geometry checks would never catch.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Lit for the materials",
+            "status": "My screenshots",
+            "image": "houseghost-a3/a3-godot-editor-own.png",
+            "imageLabel": "the scene open in my Godot editor",
+            "excerpt": "",
+            "source": "evidence/a3-godot-editor-own.png",
+            "cards": [
+              {
+                "label": "Renderer",
+                "text": "Compatibility"
+              },
+              {
+                "label": "Brass",
+                "text": "needs a sky to reflect"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 13.08,
+      "actual_duration_s": 13.03,
+      "audio_file": "mp3/beat-B34.mp3"
+    },
+    {
+      "beat_id": "B35",
+      "act": "GODOT",
+      "role_note": "",
+      "narration_text": "Finally, I inspected each object from the front, behind, below and at an angle. The bookshelf reads correctly, and the lamp keeps its intended silhouette and colour. The music box has no missing faces, but from behind its small key disappears visually, so it can read as an ordinary box. That remains a real design limitation.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "figure",
+        "remotion": {
+          "pattern": "GodotDesignFigure",
+          "props": {
+            "title": "Behind, below, at an angle",
+            "status": "My screenshots",
+            "image": "houseghost-a3/orbit-own-grid.png",
+            "imageLabel": "my orbit check: rear · bottom · angled, for each asset",
+            "excerpt": "",
+            "source": "evidence/a3-orbit-*-own.png",
+            "cards": [
+              {
+                "label": "Bookshelf",
+                "text": "reads correctly"
+              },
+              {
+                "label": "Lamp",
+                "text": "reads correctly"
+              },
+              {
+                "label": "Music box",
+                "text": "from behind, a box"
+              }
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 21.54,
+      "actual_duration_s": 17.96,
+      "audio_file": "mp3/beat-B35.mp3"
+    },
+    {
+      "beat_id": "B36",
+      "act": "VERDICT",
+      "role_note": "",
+      "narration_text": "The result is three game-scale props, built in a live Blender workflow, exported as `.glb`, and visible together in Godot. Their final triangle counts are 312 for the music box, 406 for the lamp, and 280 for the bookshelf.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "verdict-panel",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Built",
+            "artifactHeading": "Three game-scale props",
+            "artifactLines": [
+              "Music box — 312 triangles.",
+              "Lamp — 406 triangles.",
+              "Bookshelf — 280 triangles.",
+              "Built live in Blender, exported as .glb, shown in Godot."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 15.0,
+      "actual_duration_s": 14.89,
+      "audio_file": "mp3/beat-B36.mp3"
+    },
+    {
+      "beat_id": "B37",
+      "act": "VERDICT",
+      "role_note": "",
+      "narration_text": "I verified the sizes, orientations, origins, object scales and colours across Blender, the exported files and Godot. I also inspected the actual renders and the assets from multiple angles. Those checks agree on the measurable properties; they cannot certify that an object reads correctly under every lighting condition.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "verdict-panel",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Verified",
+            "artifactHeading": "What the checks agree on",
+            "artifactLines": [
+              "Size, orientation, origin, scale and colour.",
+              "Across Blender, the exported files and Godot.",
+              "Plus renders and a human orbit from every side.",
+              "Not certified: every lighting condition."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 18.46,
+      "actual_duration_s": 18.33,
+      "audio_file": "mp3/beat-B37.mp3"
+    },
+    {
+      "beat_id": "B38",
+      "act": "VERDICT",
+      "role_note": "",
+      "narration_text": "The revisions were substantive. I redesigned a too-simple music box, replaced the lamp silhouette, fixed a shade that clipped to white, recovered the bookshelf's rounded corners, and cleaned up my manual shelf edit. Claude also made errors in geometry selection, normals logic, exporter validation and the Godot check itself. I kept the specific failures and corrections in the test report rather than presenting the final pass as if it happened on the first try.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "verdict-panel",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Revised",
+            "artifactHeading": "What changed, and why",
+            "artifactLines": [
+              "A music box rebuilt with real presence.",
+              "A lamp redesigned; its shade un-clipped.",
+              "The bookshelf's rounded corners recovered.",
+              "Claude's errors kept in the test report."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 28.46,
+      "actual_duration_s": 23.72,
+      "audio_file": "mp3/beat-B38.mp3"
+    },
+    {
+      "beat_id": "B39",
+      "act": "VERDICT",
+      "role_note": "",
+      "narration_text": "My role was to define the game context and brief, choose and reject designs, approve builds, edit geometry in Blender, inspect the visual results and decide which tradeoffs to keep. Claude wrote and executed the modeling and checking code under that direction, with its outputs preserved for review.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "verdict-panel",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Roles",
+            "artifactHeading": "Who did what",
+            "artifactLines": [
+              "Me: the brief, the designs, approvals, the hand edit,",
+              "the visual judgement and the trade-offs.",
+              "Claude: the modelling and checking code,",
+              "run under that direction, outputs preserved."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 18.46,
+      "actual_duration_s": 16.62,
+      "audio_file": "mp3/beat-B39.mp3"
+    },
+    {
+      "beat_id": "B40",
+      "act": "VERDICT",
+      "role_note": "",
+      "narration_text": "What remains uncertain is how the props will read in the finished game's actual room lighting, whether the music box is identifiable from behind, and how another viewer would interpret the scene. My next step is to improve the music box's rear silhouette without exceeding six shapes or 320 triangles.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "verdict-panel",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Still uncertain · Next",
+            "artifactHeading": "What remains open",
+            "artifactLines": [
+              "The props in the game's own room lighting.",
+              "The music box from behind.",
+              "Another viewer's reading of the scene.",
+              "Next: a rear silhouette within six shapes."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 19.23,
+      "actual_duration_s": 17.58,
+      "audio_file": "mp3/beat-B40.mp3"
+    },
+    {
+      "beat_id": "B41",
+      "act": "VERDICT",
+      "role_note": "",
+      "narration_text": "The demonstrated game source is commit d, 3, 3, 1, a, 4, a, with the submitted revision identified in the accompanying source records.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "verdict-panel",
+        "remotion": {
+          "pattern": "ClaudeVerdictArtifact",
+          "props": {
+            "artifactTitle": "Source",
+            "artifactHeading": "The demonstrated revision",
+            "artifactLines": [
+              "Game source: commit d331a4a.",
+              "Tag a3 on GitHub; SHA in SUBMISSION.md.",
+              "Footage: CAPTURE.md, with SHA-256 per file."
+            ]
+          }
+        }
+      },
+      "estimated_duration_s": 8.85,
+      "actual_duration_s": 8.75,
+      "audio_file": "mp3/beat-B41.mp3"
+    },
+    {
+      "beat_id": "B42",
+      "act": "YOUR_TURN",
+      "role_note": "",
+      "narration_text": "Your turn. Find the place where the numbers pass but the design still needs work. Make one controlled change, predict the result, then test it twice: with measurements and with your own eyes. That's where the next iteration begins.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "motion": "prompt-card",
+        "remotion": {
+          "pattern": "ClaudeComposerAsk",
+          "props": {
+            "greeting": "Your turn.",
+            "topic": "ONE BOUNDED CHANGE",
+            "segment": "Predict First, Then Test",
+            "command": "Use Walker to improve the music box's silhouette from behind. Keep the same six-shape and 320-triangle limits. Before editing, propose one specific geometry change and predict how it will read from behind and from the left in Godot. Build it through the Blender MCP, export the `.glb`, run `check_assets.gd`, and compare real editor views from both angles. Report what improved and what still does not read."
+          }
+        }
+      },
+      "estimated_duration_s": 15.0,
+      "actual_duration_s": 11.95,
+      "audio_file": "mp3/beat-B42.mp3"
+    },
+    {
+      "beat_id": "B43",
+      "act": "OUTRO",
+      "role_note": "",
+      "narration_text": "Building Three Game Props with Claude, Blender MCP and Godot. At Nik Bear Brown.",
+      "shot": {
+        "type": "GRAPHIC",
+        "source": "remotion",
+        "component": "ClaudeTitleOutro",
+        "remotion": {
+          "pattern": "ClaudeTitleOutro",
+          "props": {
+            "title": "Building Three Game Props with Claude, Blender MCP and Godot",
+            "slug": "claude-liam-houseghost-a3-gamedev"
+          }
+        }
+      },
+      "estimated_duration_s": 5.38,
+      "kind": "outro_voice",
+      "actual_duration_s": 5.65,
+      "audio_file": "mp3/beat-B43.mp3"
+    }
+  ]
+}
