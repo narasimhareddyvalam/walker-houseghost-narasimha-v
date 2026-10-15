@@ -86,26 +86,27 @@ def add(bid, act, text, shot, note=""):
     return b
 
 
+COMPOSER = {"modelLabel": "Opus 5.5", "folderLabel": "walker-houseghost-narasimha-v", "runningText": "working…"}
 # ---- Bookends -------------------------------------------------------------------
 composer = " ".join(P["Bookend:quote"]) if "Bookend:quote" in P else ""
 b00_cmd = re.search(r"## Bookend 1.*?\n> (.+?)\n", (REEL / "SCRIPT.md").read_text(), re.S).group(1)
 b00 = add("B00", "ASK", "", {"type": "GRAPHIC", "source": "remotion", "motion": "type-on",
     "remotion": {"pattern": "ClaudeComposerAsk", "props": {
         "greeting": "Namaste, Liam", "topic": "CLAUDE CODE · BLENDER MCP · GODOT 4.7",
-        "segment": "Building Three Game Props", "command": b00_cmd}}},
+        "segment": "Building Three Game Props", "command": b00_cmd, **COMPOSER}}},
     "Reconstruction of the Claude composer; the opening prompt, typed, no narration")
 b00["audio_policy"] = "silence"
 b00["silent"] = True
 
 add("B01", "ASK",
     "Three objects from a remembered bedroom. Designed to a scale, built through a live Blender "
-    "session, revised by eye, and tested in Godot. The numbers tell me whether they arrived "
+    "session, revised by Narasimha, and tested in Godot. The numbers tell me whether they arrived "
     "correctly. The scene tells me whether they read correctly.",
     {"type": "GRAPHIC", "source": "remotion", "motion": "type-on",
      "remotion": {"pattern": "ClaudeVerdictArtifact", "props": {
          "artifactTitle": "What got built", "artifactHeading": "Three props from a remembered bedroom",
          "artifactLines": ["Designed to a scale, built through a live Blender session.",
-                           "Revised by eye, and tested in Godot.",
+                           "Revised by Narasimha, and tested in Godot.",
                            "The numbers tell me whether they arrived correctly.",
                            "The scene tells me whether they read correctly."]}}},
     "Hesitant-writer summary, read aloud from SCRIPT.md Bookend 2 (its struck line omitted)")
@@ -171,9 +172,11 @@ add("B13", "BUILD", narr("B05", 0), figure("A prompt, and its plan", "My screens
     "a3-prompt-to-claude-own.png", "“yes go ahead with the bookshelf”", "evidence/a3-prompt-to-claude-own.png",
     [{"label": "Plan", "text": "six boards"}, {"label": "Budget", "text": "296 / 360 tris"}]))
 add("B14", "BUILD", narr("B05", 1), figure("What it built", "Captured in my Blender session via the MCP",
-    "a3-prompt-result-bookshelf-a3-5.png", "the bookshelf that prompt produced (A3-5)",
-    "evidence/a3-prompt-result-bookshelf-a3-5.png",
-    [{"label": "Per object", "text": "one execute_blender_code call"}, {"label": "Then", "text": "get_scene_info reads it back"}]))
+    "compare-bookshelf.png", "left: what that prompt built · right: the approved final",
+    "evidence/a3-prompt-result-bookshelf-a3-5.png · stills/final-bookshelf-4view.png",
+    [{"label": "Per object", "text": "one MCP call, then read back"},
+     {"label": "Then", "text": "my modern redesign (A3-7)"},
+     {"label": "Assignment", "text": "hand edit; back off for six shapes"}]))
 add("B15", "BUILD", narr("B05", 2), clip("capture/blender-bookshelf-turntable.mp4",
     "Capture of my Blender session — camera driven via the MCP"))
 
@@ -181,7 +184,7 @@ add("B15", "BUILD", narr("B05", 2), clip("capture/blender-bookshelf-turntable.mp
 add("B16", "MUSICBOX", narr("B06", 0), clip("capture/blender-musicbox-turntable.mp4",
     "Capture of my Blender session — camera driven via the MCP"))
 add("B17", "MUSICBOX", narr("B06", 1), figure("A reference, not a mesh", "ChatGPT reference — image only",
-    "ref-musicbox-chatgpt.png", "read for what six shapes can build", "design/ref-musicbox-chatgpt.png",
+    "compare-musicbox.png", "left: the reference · right: my final build, within six shapes", "design/ref-musicbox-chatgpt.png · stills/final-musicbox-4view.png",
     [{"label": "Hollow body", "text": "darker cavity"}, {"label": "Plinth", "text": "the sixth shape"},
      {"label": "Key", "text": "bow in the shaft plane"}]))
 s, e, _ = find_lines("tools/blender/build_musicbox.py", "inset = bmesh.ops.inset_individual", 4)
@@ -283,13 +286,13 @@ add("B34", "GODOT", narr("B11", 1), figure("Lit for the materials", "My screensh
     "a3-godot-editor-own.png", "the scene open in my Godot editor", "evidence/a3-godot-editor-own.png",
     [{"label": "Renderer", "text": "Compatibility"}, {"label": "Brass", "text": "needs a sky to reflect"}]))
 add("B35", "GODOT", narr("B11", 2), figure("Behind, below, at an angle", "My screenshots",
-    "orbit-own-grid.png", "my orbit check: rear · bottom · angled, for each asset", "evidence/a3-orbit-*-own.png",
+    "orbit-own-grid.png", "my orbit check: rear · bottom · angled, cropped to the 3D view", "evidence/a3-orbit-*-own.png",
     [{"label": "Bookshelf", "text": "reads correctly"}, {"label": "Lamp", "text": "reads correctly"},
      {"label": "Music box", "text": "from behind, a box"}]))
 
 # ---- B12 Verdict ---------------------------------------------------------------------
 verdict = [
-    ("Built", "Three game-scale props", ["Music box — 312 triangles.", "Lamp — 406 triangles.", "Bookshelf — 280 triangles.", "Built live in Blender, exported as .glb, shown in Godot."]),
+    ("Built", "Three game-scale props", ["Music box — 312 triangles, budget 320.", "Lamp — 406 triangles, budget 420.", "Bookshelf — 280 triangles, budget 360. Course limit: 500 each.", "Built live in Blender, exported as .glb, shown in Godot."]),
     ("Verified", "What the checks agree on", ["Size, orientation, origin, scale and colour.", "Across Blender, the exported files and Godot.", "Plus renders and my own look: behind, below, at an angle.", "Not certified: every lighting condition."]),
     ("Revised", "What changed, and why", ["A music box rebuilt with real presence.", "A lamp redesigned; its shade un-clipped.", "The bookshelf's rounded corners recovered.", "Claude's errors kept in the test report."]),
     ("Roles", "Who did what", ["Me: the brief, the designs, approvals, the hand edit,", "the visual judgement and the trade-offs.", "Claude: the modelling and checking code,", "run under that direction, outputs preserved."]),
@@ -306,7 +309,7 @@ yt = re.search(r"## B13.*?\n> (.+?)\n", (REEL / "SCRIPT.md").read_text(), re.S).
 add("B42", "YOUR_TURN", P["B13"][0], {"type": "GRAPHIC", "source": "remotion", "motion": "prompt-card",
     "remotion": {"pattern": "ClaudeComposerAsk", "props": {
         "greeting": "Your turn.", "topic": "ONE BOUNDED CHANGE", "segment": "Predict First, Then Test",
-        "command": yt}}})
+        "command": yt, **COMPOSER}}})
 o = add("B43", "OUTRO", f"{TITLE}. At Nik Bear Brown.", {"type": "GRAPHIC", "source": "remotion",
     "component": "ClaudeTitleOutro", "remotion": {"pattern": "ClaudeTitleOutro", "props": {
         "title": TITLE, "slug": SLUG}}})

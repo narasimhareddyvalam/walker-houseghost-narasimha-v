@@ -37,7 +37,7 @@
 
 *Visual: short text composing, with one revision shown.*
 
-> Three objects from a remembered bedroom. Designed to a scale, built through a live Blender session, revised by eye, and tested in Godot. The numbers tell me whether they arrived correctly. ~~The numbers tell me whether they work.~~ **The scene tells me whether they read correctly.**
+> Three objects from a remembered bedroom. Designed to a scale, built through a live Blender session, revised by Narasimha, and tested in Godot. The numbers tell me whether they arrived correctly. ~~The numbers tell me whether they work.~~ **The scene tells me whether they read correctly.**
 
 ---
 
@@ -181,7 +181,7 @@
 
 *Visual: five concise panels: **Built**, **Verified**, **Revised**, **Still uncertain**, **Next**. Show exact submitted source SHA; label source footage and reconstructions correctly.*
 
-**Liam:** “The result is three game-scale props, built in a live Blender workflow, exported as `.glb`, and visible together in Godot. Their final triangle counts are 312 for the music box, 406 for the lamp, and 280 for the bookshelf.”
+**Liam:** “The result is three game-scale props, built in a live Blender workflow, exported as `.glb`, and visible together in Godot. Their final triangle counts are 312 for the music box, 406 for the lamp, and 280 for the bookshelf — each within its own budget and the course limit of 500.”
 
 “I verified the sizes, orientations, origins, object scales and colours across Blender, the exported files and Godot. I also inspected the actual renders and the assets from multiple angles. Those checks agree on the measurable properties; they cannot certify that an object reads correctly under every lighting condition.”
 

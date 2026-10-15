@@ -23,7 +23,7 @@ Checked 2026-10-15 against the repository at game-source commit `d331a4a`.
 | Headless table (B30) | 0.3160 × 0.2968 × 0.1900 · 0.2800 × 0.4200 × 0.2800 · 0.6400 × 1.0000 × 0.3000; within 2 mm | `evidence/a3-check-assets.txt` (`check_assets.gd`, TOL 0.002) |
 | Negative test (B31) | FAIL, exit 1 | `FRICTIONAL.md` export entry |
 | One light (B32) | one `DirectionalLight3D` | `godot/scenes/AssetShowcase.tscn` lines 44–48 |
-| Triangle counts (B36) | 312 · 406 · 280 | `evidence/a3-stats-*.png`, `a3-hand-edit-after.png`, `inspect_glb.py` |
+| Triangle counts (B36) | 312 · 406 · 280, within budgets 320 · 420 · 360 and the course limit of 500 | `evidence/a3-stats-*.png`, `a3-hand-edit-after.png`, `inspect_glb.py` |
 | Source revision (B41) | `d331a4a` | `git log -1 -- godot blender tools`; `git diff d331a4a HEAD -- godot blender tools` empty at render time |
 
 Not claimed anywhere in the film: integration into the 2D gameplay; behaviour under every
