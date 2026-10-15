@@ -18,9 +18,10 @@ LIBRARY = {
     "M_Brass":         {"hex": "#9A7B3F", "metallic": 1.0, "roughness": 0.4},
     "M_Ceramic_Amber": {"hex": "#A15A26", "metallic": 0.0, "roughness": 0.35},
     # Revision A3-3: the shade and bulb glow, so the lamp reads as lit without a
-    # second light in the Godot scene.
+    # second light in the Godot scene. Revision A3-6: strength 1.0 clipped to pure white
+    # in Godot (emission plus the lit cream exceeds white); 0.4 keeps the cream visible.
     "M_Shade_Cream":   {"hex": "#F0DCA8", "metallic": 0.0, "roughness": 0.8,
-                        "emission": 1.0},
+                        "emission": 0.4},
 }
 # Edges sharper than this stay hard: cylinder caps (90). Bevel chamfers (45) and
 # cylinder and sphere sides (30 or less) shade smooth.

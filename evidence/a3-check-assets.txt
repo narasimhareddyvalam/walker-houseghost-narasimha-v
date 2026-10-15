@@ -1,0 +1,16 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+MusicBox
+  root scale (1.0, 1.0, 1.0) | every node scale 1,1,1: true
+  bbox size (0.3160, 0.2968, 0.1900) (expected (0.3160, 0.2968, 0.1900))
+  height 0.2968 m lies along: Y | lowest point y = 0.0000
+BedsideLamp
+  root scale (1.0, 1.0, 1.0) | every node scale 1,1,1: true
+  bbox size (0.2800, 0.4200, 0.2800) (expected (0.2800, 0.4200, 0.2800))
+  height 0.4200 m lies along: Y | lowest point y = 0.0000
+Bookshelf
+  root scale (1.0, 1.0, 1.0) | every node scale 1,1,1: true
+  bbox size (0.6400, 1.0000, 0.3000) (expected (0.6400, 1.0000, 0.3000))
+  height 1.0000 m lies along: Y | lowest point y = 0.0000
+RESULT: PASS (0 failures)
+exit 0

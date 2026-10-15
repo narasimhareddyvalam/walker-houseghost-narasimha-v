@@ -40,6 +40,8 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | The lamp's triangle budget | The modern design needs ~406; offered raising the budget to 420 before building, or fitting 340 by dropping the collar and the rounding | **Raise to 420** | **My choice.** Declared in revision A3-4 before building, with the reason; still under the course limit of 500 |
 | Committing the ChatGPT screenshot | Recorded the two follow-up prompts from it as text, and did not commit the image | — | It shows unrelated personal browser tabs and chat titles; the prompts are what `SOURCES.md` needs |
 | The bookshelf's sixth shape | A back panel, reading the art's dark interior as a back in shadow; the brief had kept the spare for a plinth | "Yes go ahead with the bookshelf" | **Approved.** Recorded as revision A3-5; the brief's size is kept exactly |
+| Fixing the white-out shade | Lower the emission at the source and rebuild, rather than override the material in Godot | — | So the `.blend`, its build script and the `.glb` still agree. Revision A3-6 |
+| Renderer for the showcase | Leave the project on Godot's Compatibility renderer, which has no SSAO or screen-space reflections | — | Changing it would change the whole 2D game. The realism comes from sky reflections, shadows and tonemapping instead; recorded as a limitation |
 
 ## Entries
 
@@ -387,4 +389,28 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** All three assets are now built. What none of the Blender checks can show is how they look at game scale beside each other and lit — that is the Godot scene.
 
 - **Evidence and next step:** Evidence: `tools/blender/build_bookshelf.py` with its call log; `blender/bookshelf.blend`; `CHANGE-BRIEF.md` revision A3-5; the four-view `look` image. Next step: export all three as binary glTF.
+
+### 2026-10-14 — Export, import and the showcase scene: one wrong check, two real findings
+
+- **Date and what I was working on:** 2026-10-14, exporting the three assets, importing them into Godot and placing them side by side with a 1 m cube and the boy's 1.00 m capsule.
+
+- **I tried / expected:** Clean exports, a clean import, a passing check, and a scene that shows the assets as realistic as flat colour allows.
+
+- **What happened:** Four things, in order.
+
+  1. **The first export failed, on purpose-built safety.** The exporter script read the list of valid formats before exporting, and the glTF exporter only fills that list in at call time, so it read empty and the script stopped itself. `--python-exit-code 1` turned that into exit code 1 and nothing was written — exactly what the assignment says the flag is for. The guard was removed; all three exported with exit 0.
+
+  2. **The exports were verified from the files themselves**, with a stdlib reader (`tools/inspect_glb.py`) independent of both Blender and Godot. Every base colour reads back as the exact hex in the brief, triangle counts match (312, 406, 296), height lies on +Y, the lowest point is at y = 0, and no node carries rotation or scale.
+
+  3. **The first Godot check failed all nine assertions, and the check was wrong, not the assets.** It measured each part with `global_transform` while the instance was not yet inside the scene tree; Godot then returns an identity transform without failing, so every part was measured at the origin — the bookshelf's "lowest point" came out at −0.4875 m, exactly half a side panel. Rewritten to compose transforms itself, it passes: all three match the brief within 2 mm, height along Y, lowest point 0, every node scale 1. **It was then run against a deliberately wrong expected height to prove it can fail** — it reported FAIL and exited 1.
+
+  4. **The first render showed two real problems.** The lamp shade clipped to pure white, losing its cream (emission 1.0 plus lighting exceeds white), and the brass read near-black, because fully metallic brass shows its colour only by reflecting its surroundings and the sky was too dim. The emission was lowered to 0.4 at the source (revision A3-6) and the sky's reflection energy raised. After both, the cream and the brass read correctly. The trade-off: the brighter sky also lifts the ambient light, so the woods read a little lighter than their hex values.
+
+- **What I did:** Required every step to follow the assignment's process, including the script route's exit-code flag and an honest account of what the check does not prove.
+
+- **What Claude or another person contributed:** The exporter and inspector scripts, the check and its fix, the negative test, the showcase scene and its two render passes. Every number above comes from a command run in this session and saved in `evidence/`.
+
+- **What I understand now / still do not understand:** A check that passes proves only what it measures, and this one nearly proved the opposite of the truth. What it cannot show at all is whether the assets read as what they are from behind and below; that is the orbit check, still to be done in the editor.
+
+- **Evidence and next step:** Evidence: `evidence/a3-inspect-glb.txt`, `evidence/a3-check-assets.txt`, `evidence/a3-showcase.png`; `godot/tests/check_assets.gd`; `godot/scenes/AssetShowcase.tscn`; `CHANGE-BRIEF.md` revision A3-6. Next step: the test report and the remaining documents.
 

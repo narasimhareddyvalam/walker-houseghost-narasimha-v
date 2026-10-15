@@ -1,0 +1,45 @@
+== godot/assets/models/musicbox.glb
+  asset: Khronos glTF Blender I/O v5.2.40 | up axis: glTF is always +Y up
+  node MB_Body        translation [0, 0.015, 0] | no rotation, no scale
+  node MB_Clasp       translation [0, 0.122, 0.0865] | no rotation, no scale
+  node MB_KeyBow      translation [0.166, 0.065, 0] | no rotation, no scale
+  node MB_KeyShaft    translation [0.12, 0.065, 0] | no rotation, no scale
+  node MB_Lid         translation [0, 0.135, -0.079] | no rotation, no scale
+  node MB_Plinth      translation [0, 0, 0] | no rotation, no scale
+  node MusicBox       translation [0, 0, 0] | no rotation, no scale
+  bounds min [-0.13, 0, -0.095] max [0.186, 0.2968, 0.095]
+  size x 0.316 | y (up) 0.2968 | z 0.19 | lowest point y = 0
+  triangles 312
+  material M_Wood_Warm      base #6B4428 metallic 0 roughness 0.6000000238418579 double-sided True
+  material M_Wood_Dark      base #4A2E19 metallic 0 roughness 0.6000000238418579 double-sided True
+  material M_Brass          base #9A7B3F metallic 1.0 roughness 0.4000000059604645 double-sided True
+== godot/assets/models/lamp.glb
+  asset: Khronos glTF Blender I/O v5.2.40 | up axis: glTF is always +Y up
+  node LP_Base        translation [0, 0.016, 0] | no rotation, no scale
+  node LP_Bulb        translation [0, 0.29, 0] | no rotation, no scale
+  node LP_Collar      translation [0, 0.156, 0] | no rotation, no scale
+  node LP_Foot        translation [0, 0, 0] | no rotation, no scale
+  node LP_Neck        translation [0, 0.16, 0] | no rotation, no scale
+  node LP_Shade       translation [0, 0.245, 0] | no rotation, no scale
+  node BedsideLamp    translation [0, 0, 0] | no rotation, no scale
+  bounds min [-0.14, 0, -0.14] max [0.14, 0.42, 0.14]
+  size x 0.28 | y (up) 0.42 | z 0.28 | lowest point y = 0
+  triangles 406
+  material M_Ceramic_Amber  base #A15A26 metallic 0 roughness 0.3499999940395355 double-sided True
+  material M_Shade_Cream    base #F0DCA8 metallic 0 roughness 0.800000011920929 double-sided True emissive #9F926E x1.0
+  material M_Brass          base #9A7B3F metallic 1.0 roughness 0.4000000059604645 double-sided True
+  material M_Wood_Dark      base #4A2E19 metallic 0 roughness 0.6000000238418579 double-sided True
+== godot/assets/models/bookshelf.glb
+  asset: Khronos glTF Blender I/O v5.2.40 | up axis: glTF is always +Y up
+  node BS_Back        translation [0, 0.5175, -0.137] | no rotation, no scale
+  node BS_Shelf_Low   translation [0, 0.07, -0.002] | no rotation, no scale
+  node BS_Shelf_Mid   translation [0, 0.51, -0.002] | no rotation, no scale
+  node BS_Side_L      translation [-0.29, 0.4875, 0] | no rotation, no scale
+  node BS_Side_R      translation [0.29, 0.4875, 0] | no rotation, no scale
+  node BS_Top         translation [0, 0.9875, 0] | no rotation, no scale
+  node Bookshelf      translation [0, 0, 0] | no rotation, no scale
+  bounds min [-0.32, 0.0, -0.15] max [0.32, 1.0, 0.15]
+  size x 0.64 | y (up) 1.0 | z 0.3 | lowest point y = 0.0
+  triangles 296
+  material M_Wood_Dark      base #4A2E19 metallic 0 roughness 0.6000000238418579 double-sided True
+  material M_Wood_Warm      base #6B4428 metallic 0 roughness 0.6000000238418579 double-sided True

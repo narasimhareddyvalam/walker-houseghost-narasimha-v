@@ -363,3 +363,10 @@ Where boards meet, their faces touch exactly; a check over every face of every p
 eleven such contacts, all facing each other and hidden inside the joints, and no two faces
 in the same plane facing the same way — so nothing can z-fight.
 
+**A3-6 — 2026-10-14, BedsideLamp: shade emission lowered from 1.0 to 0.4, found in Godot.**
+In the first showcase render the shade and bulb clipped to pure white: emission at strength
+1.0 on a cream that is also lit adds up to more than white, and the tonemapper clips it, so the
+`#F0DCA8` cream was lost — predicted failure 5 in a form the prediction did not name. Lowered in
+`tools/blender/asset_lib.py`, the lamp rebuilt headless from its script, re-exported and
+re-imported; the cream now shows. Geometry is unchanged (406 triangles, 0.28 × 0.28 × 0.42 m).
+
