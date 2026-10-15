@@ -1,7 +1,7 @@
 """Build the MusicBox asset (CHANGE-BRIEF.md, Assignment 3, asset 1, as revised by A3-2).
 
-Every live execute_blender_code call during the build sent HELPERS plus exactly one
-step_* function from this file, followed by a call to it. Run headless from an empty
+Every execute_blender_code body run for this asset is logged verbatim in LIVE_CALLS
+at the end of this file. Run headless from an empty
 scene with:
 
     blender -b --factory-startup --python-exit-code 1 -P tools/blender/build_musicbox.py [-- out.blend]
@@ -13,153 +13,35 @@ origin, which is the centre of the underside of the plinth. Meshes are built at 
 final size and orientation in bmesh, so no object carries rotation or scale to apply.
 """
 
-# ==== HELPERS ===================================================================
-import bpy, bmesh, math
+# ==== SETUP =====================================================================
+# Shared helpers and the one material library live in asset_lib.py, next to this file.
+import os, sys, importlib, math
+import bpy, bmesh
 from mathutils import Matrix, Vector
 
-# Shared library: hex is sRGB as written in CHANGE-BRIEF.md; (hex, metallic, roughness).
-LIBRARY = {
-    "M_Wood_Warm":     ("#6B4428", 0.0, 0.6),
-    "M_Wood_Dark":     ("#4A2E19", 0.0, 0.6),
-    "M_Brass":         ("#9A7B3F", 1.0, 0.4),
-    "M_Ceramic_Amber": ("#A15A26", 0.0, 0.35),
-    "M_Shade_Cream":   ("#F0DCA8", 0.0, 0.8),
-}
-# Edges sharper than this stay hard: cylinder caps (90). Bevel chamfers (45) and
-# 12-segment cylinder sides (30) shade smooth; weighted normals keep big faces flat.
-SMOOTH_ANGLE = math.radians(60)
+_here = os.path.dirname(os.path.abspath(__file__))
+if _here not in sys.path:
+    sys.path.insert(0, _here)
+import asset_lib as lib
+importlib.reload(lib)  # a live Blender session keeps old module versions otherwise
+
 ROOT = "MusicBox"
+BUDGET = 320
 PLINTH_H = 0.015  # the box stands on the plinth; every part above it is offset by this
-
-
-def srgb_to_linear(c):
-    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
-
-
-def hex_to_linear(h):
-    h = h.lstrip("#")
-    return tuple(srgb_to_linear(int(h[i:i + 2], 16) / 255) for i in (0, 2, 4))
-
-
-def material(name):
-    mat = bpy.data.materials.get(name)
-    if mat:
-        return mat
-    hexv, metallic, roughness = LIBRARY[name]
-    mat = bpy.data.materials.new(name)
-    if mat.node_tree is None:
-        mat.use_nodes = True
-    bsdf = next(n for n in mat.node_tree.nodes if n.type == "BSDF_PRINCIPLED")
-    sock = {s.identifier: s for s in bsdf.inputs}
-    lin = hex_to_linear(hexv)
-    sock["Base Color"].default_value = (*lin, 1.0)
-    sock["Metallic"].default_value = metallic
-    sock["Roughness"].default_value = roughness
-    mat.diffuse_color = (*lin, 1.0)  # viewport solid mode only
-    return mat
-
-
-def remove_existing(name):
-    obj = bpy.data.objects.get(name)
-    if obj:
-        data = obj.data
-        bpy.data.objects.remove(obj)
-        if data and data.users == 0:
-            bpy.data.meshes.remove(data)
-
-
-def box(size, bevel=0.0, segments=0):
-    """Cube scaled to size (metres) in mesh data, centred, optionally bevelled."""
-    bm = bmesh.new()
-    bmesh.ops.create_cube(bm, size=1.0)
-    bmesh.ops.scale(bm, vec=Vector(size), verts=bm.verts)
-    if segments:
-        bmesh.ops.bevel(bm, geom=list(bm.verts) + list(bm.edges), offset=bevel,
-                        offset_type="OFFSET", segments=segments, profile=0.5,
-                        affect="EDGES", clamp_overlap=True)
-    return bm
-
-
-def cylinder(radius, depth, segments=12):
-    """Capped cylinder along Z, centred. Segment count is always explicit."""
-    bm = bmesh.new()
-    bmesh.ops.create_cone(bm, cap_ends=True, cap_tris=False, segments=segments,
-                          radius1=radius, radius2=radius, depth=depth)
-    return bm
-
-
-def weighted_normals(obj):
-    """Face-area weighted normals, baked into the mesh: chamfers shade round, big faces flat."""
-    mod = obj.modifiers.new("WeightedNormal", "WEIGHTED_NORMAL")
-    mod.mode = "FACE_AREA"
-    mod.keep_sharp = True
-    bpy.context.view_layer.update()
-    dg = bpy.context.evaluated_depsgraph_get()
-    baked = bpy.data.meshes.new_from_object(obj.evaluated_get(dg),
-                                            preserve_all_data_layers=True, depsgraph=dg)
-    old = obj.data
-    obj.modifiers.remove(mod)
-    obj.data = baked
-    bpy.data.meshes.remove(old)
-    baked.name = obj.name
+box, cylinder = lib.box, lib.cylinder
 
 
 def finish(name, bm, mat_names, location):
-    """bmesh -> named mesh + named object, parented to the root, normals outside."""
-    remove_existing(name)
-    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
-    me = bpy.data.meshes.new(name)
-    bm.to_mesh(me)
-    bm.free()
-    me.shade_smooth()
-    me.set_sharp_from_angle(angle=SMOOTH_ANGLE)
-    for m in mat_names:
-        me.materials.append(material(m))
-    obj = bpy.data.objects.new(name, me)
-    bpy.context.scene.collection.objects.link(obj)
-    obj.parent = bpy.data.objects[ROOT]
-    obj.location = location
-    weighted_normals(obj)
-    return obj
-
-
-def tris(obj):
-    return sum(len(p.vertices) - 2 for p in obj.data.polygons)
+    return lib.finish(name, bm, mat_names, location, ROOT)
 
 
 def report(obj):
-    bpy.context.view_layer.update()
-    mw = obj.matrix_world
-    pts = [mw @ Vector(c) for c in obj.bound_box]
-    lo = [min(p[i] for p in pts) for i in range(3)]
-    hi = [max(p[i] for p in pts) for i in range(3)]
-    r = lambda v: tuple(round(x, 4) for x in v)
-    print(f"{obj.name} | mesh {obj.data.name} | mat {[m.name for m in obj.data.materials]}")
-    print(f"  loc {r(obj.location)} | rot_deg {r(math.degrees(a) for a in obj.rotation_euler)}"
-          f" | scale {r(obj.scale)} | dims {r(obj.dimensions)}")
-    print(f"  world min {r(lo)} max {r(hi)} | tris {tris(obj)}")
-    total = sum(tris(o) for o in bpy.data.objects if o.type == "MESH")
-    print(f"  running total {total} / 320 tris")
+    lib.report(obj, BUDGET)
 
 
 # ==== STEP 0: empty the scene, create the root ===================================
 def step_clear():
-    for obj in list(bpy.data.objects):
-        bpy.data.objects.remove(obj)
-    for coll in list(bpy.data.collections):
-        bpy.data.collections.remove(coll)
-    for block in (bpy.data.meshes, bpy.data.materials, bpy.data.cameras, bpy.data.lights):
-        for item in list(block):
-            block.remove(item)
-    scene = bpy.context.scene
-    scene.unit_settings.system = "METRIC"
-    scene.unit_settings.scale_length = 1.0
-    root = bpy.data.objects.new(ROOT, None)
-    root.empty_display_type = "PLAIN_AXES"
-    root.empty_display_size = 0.05
-    scene.collection.objects.link(root)
-    print("objects:", [o.name for o in bpy.data.objects],
-          "| meshes:", len(bpy.data.meshes), "| materials:", len(bpy.data.materials))
+    lib.clear_scene(ROOT)
 
 
 # ==== STEP 1: plinth — 0.26 x 0.19 x 0.015, 1 cm overhang, 1-segment chamfer =====
@@ -235,33 +117,10 @@ def step_clasp():
 
 # ==== STEP 7: whole-asset check and save =========================================
 def step_check_and_save(path):
-    bpy.context.view_layer.update()
-    meshes = [o for o in bpy.data.objects if o.type == "MESH"]
-    pts = [o.matrix_world @ Vector(c) for o in meshes for c in o.bound_box]
-    lo = [round(min(p[i] for p in pts), 4) for i in range(3)]
-    hi = [round(max(p[i] for p in pts), 4) for i in range(3)]
-    print("asset min", lo, "max", hi, "size", [round(hi[i] - lo[i], 4) for i in range(3)])
-    print("tris", sum(tris(o) for o in meshes), "/ 320 | objects", len(meshes), "/ 6")
-    for o in meshes:
-        bm = bmesh.new()
-        bm.from_mesh(o.data)
-        non_manifold = sum(1 for e in bm.edges if not e.is_manifold)
-        flipped = sum(1 for e in bm.edges if e.is_manifold and not e.is_contiguous)
-        bmesh.ops.triangulate(bm, faces=bm.faces)
-        volume = sum(f.verts[0].co.dot(f.verts[1].co.cross(f.verts[2].co))
-                     for f in bm.faces) / 6
-        bm.free()
-        print(f"  {o.name}: rot {tuple(o.rotation_euler)} scale {tuple(o.scale)}"
-              f" non-manifold {non_manifold} inconsistent-winding {flipped}"
-              f" signed-volume {volume:+.2e} ({'outward' if volume > 0 else 'INWARD'})")
-    print("data names:", sorted(o.name for o in bpy.data.objects),
-          sorted(m.name for m in bpy.data.meshes), sorted(m.name for m in bpy.data.materials))
-    bpy.ops.wm.save_as_mainfile(filepath=path)
-    print("saved", path)
+    lib.check_and_save(path, BUDGET, 6)
 
 
 if __name__ == "__main__":
-    import os, sys
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
     repo = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     out = os.path.abspath(argv[0]) if argv else os.path.join(repo, "blender", "musicbox.blend")
@@ -274,3 +133,89 @@ if __name__ == "__main__":
     step_key_bow()
     step_clasp()
     step_check_and_save(out)
+
+
+# ==== LIVE CALL LOG ==============================================================
+# Every execute_blender_code body run for this asset, verbatim, in order. Kept as data
+# so that git shows exactly what ran in the live session.
+LIVE_CALLS = r"""
+--- Build 1 (5 shapes, superseded by revision A3-2) and revision A3-1 (larger key) ---
+Each call sent this file's then HELPERS block plus one step function and a call to it;
+the exact text is this file as committed at dd9fdbf (build 1) and f3f4052 (A3-1). The
+save calls used a literal path, /Users/narasimhareddyvalam/Desktop/walker-houseghost-
+narasimha-v/blender/musicbox.blend, in place of the __main__ argument.
+
+--- Build 2 (revision A3-2), 2026-10-14; the file as committed at 1265b93 ---
+[step 0]
+<the then step_clear() function and ROOT = "MusicBox", pasted inline, followed by:>
+step_clear()
+
+[steps 1-6, one call each, NAME in step_plinth, step_body, step_lid, step_key_shaft,
+ step_key_bow, step_clasp]
+path = "/Users/narasimhareddyvalam/Desktop/walker-houseghost-narasimha-v/tools/blender/build_musicbox.py"
+ns = {"__name__": "build_musicbox"}
+exec(compile(open(path).read(), path, "exec"), ns)
+ns["NAME"]()
+
+[step 7]
+path = "/Users/narasimhareddyvalam/Desktop/walker-houseghost-narasimha-v/tools/blender/build_musicbox.py"
+ns = {"__name__": "build_musicbox"}
+exec(compile(open(path).read(), path, "exec"), ns)
+ns["step_check_and_save"]("/Users/narasimhareddyvalam/Desktop/walker-houseghost-narasimha-v/blender/musicbox.blend")
+
+--- View-only and read-only calls (changed no geometry, saved nothing) ---
+[frame the asset]
+import bpy
+for o in bpy.data.objects:
+    o.select_set(o.name.startswith("MB_") or o.name == "MusicBox")
+bpy.context.view_layer.objects.active = bpy.data.objects["MusicBox"]
+framed = 0
+for window in bpy.context.window_manager.windows:
+    for area in window.screen.areas:
+        if area.type == "VIEW_3D":
+            region = next(r for r in area.regions if r.type == "WINDOW")
+            area.spaces.active.shading.type = "MATERIAL"
+            with bpy.context.temp_override(window=window, area=area, region=region):
+                bpy.ops.view3d.view_selected()
+            framed += 1
+print("framed viewports:", framed)
+
+[set a three-quarter view; run three times with these values]
+import bpy, math
+from mathutils import Euler
+for window in bpy.context.window_manager.windows:
+    for area in window.screen.areas:
+        if area.type == "VIEW_3D":
+            r3d = area.spaces.active.region_3d
+            r3d.view_perspective = "PERSP"
+            r3d.view_rotation = Euler((math.radians(62), 0, math.radians(32)), "XYZ").to_quaternion()
+            r3d.view_location = (0.03, 0.0, 0.14)
+            r3d.view_distance = 0.55
+            area.tag_redraw()
+(first run used rotation (65, 0, 35) with view_selected instead of a location; the second
+also deselected every object and set distance 0.75)
+
+[deselect, hide parent lines]
+import bpy
+for window in bpy.context.window_manager.windows:
+    for area in window.screen.areas:
+        if area.type == "VIEW_3D":
+            region = next(r for r in area.regions if r.type == "WINDOW")
+            with bpy.context.temp_override(window=window, area=area, region=region):
+                bpy.ops.object.select_all(action="DESELECT")
+            space = area.spaces.active
+            space.overlay.show_relationship_lines = False
+            space.region_3d.view_distance = 0.5
+            area.tag_redraw()
+print("selected:", [o.name for o in bpy.context.selected_objects])
+
+[inspect the cavity's shading]
+import bpy
+me = bpy.data.objects["MB_Body"].data
+cav = [p for p in me.polygons if p.material_index == 1]
+for p in cav:
+    print(p.index, "verts", len(p.vertices), "normal", tuple(round(c, 3) for c in p.normal), "smooth", p.use_smooth)
+sharp = me.attributes.get("sharp_edge")
+print("sharp edges total:", sum(1 for d in sharp.data if d.value) if sharp else "no attribute")
+print("has custom normals:", me.has_custom_normals)
+"""

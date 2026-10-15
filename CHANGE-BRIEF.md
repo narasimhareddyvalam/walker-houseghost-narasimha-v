@@ -302,3 +302,25 @@ while the large faces stay flat; this costs no triangles and is a standard low-p
 side. Whether the box reads as a music box from there, and whether the colours survive
 export, are predictions 7 and 5 and are tested in Godot.
 
+**A3-3 — 2026-10-14, BedsideLamp: five shapes, a foot, and a lit shade.** Proposed before
+building and approved. The overall size is unchanged at **0.20 × 0.20 × 0.42 m**; the
+reference stays my own `env_room_memory.png`.
+
+| | Original spec | A3-3 | Why |
+|---|---|---|---|
+| Shapes | 3: base, neck, shade | **5**: adds `LP_Foot` and `LP_Bulb` | — |
+| Foot | — | 12-sided disc, r 0.055 × 0.012 m, `M_Wood_Dark` | A sphere touches the floor at one point; prediction 3 would be judged at a pole. The painting shows a foot |
+| Base | UV sphere 12 × 6, squashed to 0.6 | Same sphere, r 0.07, squashed to **0.8**: 0.14 wide × 0.112 tall, seated 8 mm into the foot | The painted base is rounder, and narrower than the shade |
+| Neck | Ceramic | **`M_Brass`**, r 0.008, rising to 1 mm under the shade's cap | Lamp hardware is metal; it repeats the music box's brass |
+| Bulb | — | UV sphere 8 × 4, r 0.028, inside the shade | Seen from below, which the Godot orbit check looks from |
+| Shade | Truncated cone, closed | Same cone (24 sides, r 0.10 → 0.065, 0.17 tall), **open at the bottom**, closed at the top; double-sided material | A closed cone shows a flat lid from below |
+| Glow | — | `M_Shade_Cream` gains emission strength 1.0, on the shade and bulb only | Reads as lit **without a second light**: the Godot scene is allowed only one |
+| Triangles | Estimate 280, budget 340 | **326**, budget unchanged | — |
+
+**The library now has emission on one material.** It is still the five-material library
+(rule 4); `M_Shade_Cream` is used only by the lamp. The library moved into
+`tools/blender/asset_lib.py`, shared by every build script, so the rule is enforced in code.
+
+**Noted, not changed:** the visible neck (0.116 to 0.25 m) is longer and thinner than in the
+painting, and the 12-segment base shows facets at close range.
+

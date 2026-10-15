@@ -31,6 +31,10 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | What to take from the ChatGPT image | The hollow box, wide lid, plinth, round key bow and dark interior; not the hinges (shapes 7 and 8), the tray lid (triangles) or the redder wood (palette) | "Follow assignment requirements and follow best practices and they should be realistic and creative to get me full marks" | **Accepted as proposed.** Recorded as revision A3-2 |
 | Hollowing the body | Two edit operations on one cube; not sculpting; within "built mainly from basic shapes" | Accepted | **A judgement call, stated in the brief so it can be disputed** |
 | How the live calls carry the code | Each call `exec`s the saved build script and runs one step from it, instead of pasting a copy | Did not overrule | The code that ran in Blender is the file, so rule 8 is proven rather than asserted |
+| The lamp's design | Five shapes: add a foot and a bulb, open the shade underneath, brass neck, glowing shade, rounder base — each change with its reason | "Yes go ahead. Make sure we are following all assignment requirements" | **Accepted.** Recorded as revision A3-3 |
+| A light inside the lamp in Godot | Proposed it at first, then withdrew it after re-reading the assignment: the showcase scene is "floor, one light, a camera" | Asked that every requirement be followed | **Claude corrected its own proposal before building.** The glow comes from emission on the material, which is not a light |
+| Logging the call bodies | Each build script now ends with `LIVE_CALLS`, every `execute_blender_code` body verbatim, including the music box's, added retroactively | Same instruction | The assignment says to copy every body into the build script. Calls that ran the file itself already proved the code; the log also satisfies the rule as written |
+| One shared library | Moved the five materials and helpers into `tools/blender/asset_lib.py` | Approved | Verified harmless: the music box's headless geometry report is identical before and after |
 
 ## Entries
 
@@ -275,4 +279,36 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** After orbiting the rebuild in Blender: "yes lets go to next. i am happy with this one." `[TO FILL — optional: whether "realistic through lighting" is what you meant; this is judged again once the box is lit in Godot]`
 
 - **Evidence and next step:** Evidence: `design/ref-musicbox-chatgpt.png`; `CHANGE-BRIEF.md` revision A3-2; `SOURCES.md` row REF-MUSICBOX-3D; `tools/blender/build_musicbox.py`, which the live calls executed directly; `blender/musicbox.blend`. Next step: the bedside lamp.
+
+### 2026-10-14 — The bedside lamp, built and seen from below
+
+- **Date and what I was working on:** 2026-10-14, the second asset, straight after approving the music box.
+
+- **I tried / expected:** I approved the five-shape plan and asked that every assignment requirement be followed.
+
+- **What happened:** It built at exactly the brief's size, and every part checks:
+
+  ```
+  asset min [-0.1, -0.1, 0.0] max [0.1, 0.1, 0.42] size [0.2, 0.2, 0.42]
+  tris 326 / 340 | objects 5 / 6
+  every part: rot (0,0,0) scale (1,1,1) non-manifold 0 inconsistent-winding 0
+  closed parts: signed volume outward | LP_Shade: 24 open edges (its open bottom, intended)
+  shade: sides facing outward 24 / 24 | cap normal z +1.00 | double-sided True
+  ```
+
+  Seen from below, the open shade shows its lit inside, the bulb and the neck — the reason it was left open. Two things are noted rather than fixed: the visible neck is longer and thinner than in the painting, and the 12-segment base shows facets close up.
+
+  **Re-reading the assignment before building changed the plan.** The showcase scene is specified as "floor, one light, a camera", and Claude had proposed a light inside the lamp. It withdrew that before anything ran; the glow comes from the material instead. The same reading showed that the assignment asks for every call *body* to be copied into the build script, so both scripts now end with a verbatim log.
+
+  **Claude's own check was wrong twice, both caught in the headless run.** It reported "cap normal z +0.20" — a side face, because it had taken the last face to be the cap — and then "24 / 25" sides, because Blender makes a new Python object for a face each time it is read, so an identity comparison never matches. Both were fixed and re-run before the live build, so the claim that the cap faces up was tested, not assumed.
+
+  Step 0 saved the emptied session as `blender/lamp.blend` immediately, because the session had been `musicbox.blend`; `git status` confirmed the music box file untouched.
+
+- **What I did:** Approved the plan; set the instruction to follow all assignment requirements.
+
+- **What Claude or another person contributed:** The design changes and their reasons; the catch on the one-light rule; the shared library, with a before/after diff proving it changed nothing; the session-file safeguard; finding and fixing both of its own check errors.
+
+- **What I understand now / still do not understand:** `[TO FILL — your view of the lamp, and whether the neck proportion matters to you]`
+
+- **Evidence and next step:** Evidence: `tools/blender/build_lamp.py` with its `LIVE_CALLS` log; `tools/blender/asset_lib.py`; `blender/lamp.blend`; `CHANGE-BRIEF.md` revision A3-3; the four-view `look` image including two views from below. Next step: the bookshelf.
 
