@@ -583,7 +583,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
   2. **My real footage** (B02, B15, B16, B19, B33) fills the frame by design, so it crosses every edge. Declared per beat as `qc.full_bleed` with a written reason, the mechanism the checker provides for edge-to-edge plates; every other check still runs on those beats.
   3. **The seven verdict cards** read as "underfilled" because the gate's ink detector cannot see a white card on the cream stage and measures only the text. Declared per beat as `qc.sparse_by_design` with that reason; edge-bleed and contrast still apply.
 
-  All three declarations live in `build_beats.py`, so a rebuild cannot lose them.
+  All three declarations live in `build_beats.py`, so a rebuild cannot lose them. The 26 cards re-rendered with no failures, and the second review cut passed every gate: beat lint clean, Gate V **0 BLOCKER, 0 MAJOR** over 88 frames, 44 / 44 slots filled, 631.7 s, −24.4 LUFS integrated. The evidence ledger was rebuilt for the re-rendered B30 and `godot-gamedev --check` passed again.
 
 - **What I did:** Chose my own script, with the accuracy fixes, as the narration; chose to show only final asset versions; asked for real recordings rather than stills; watched the pilot.
 
