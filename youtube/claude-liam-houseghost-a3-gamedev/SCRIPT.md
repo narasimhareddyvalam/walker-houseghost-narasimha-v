@@ -101,7 +101,7 @@
 
 ## B06 — Music box: shape carries identity
 
-*Visual: first MCP capture, `design/ref-musicbox-chatgpt.png` (**ChatGPT reference — image only**), `build_musicbox.py` reconstruction with path/line numbers, final stats and final asset. Label accurately.*
+*Visual: `stills/final-musicbox-4view.png` (**Captured in my Blender session via the MCP** — final version), `design/ref-musicbox-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `tools/blender/build_musicbox.py` excerpt with path and line numbers, then `evidence/a3-stats-musicbox.png`. Earlier versions are narrated, not shown.*
 
 **Liam:** “The first music box was within the limits: five basic shapes, 252 triangles, and a lid opened eighteen degrees. But it was too generic. It met the numbers without delivering the presence I wanted.”
 
@@ -113,7 +113,7 @@
 
 ## B07 — Lamp: light is a material decision
 
-*Visual: old and new Blender captures, `design/ref-lamp-chatgpt.png` (**ChatGPT reference — image only**), then labelled reconstruction of `asset_lib.py` and actual before/after Godot renders.*
+*Visual: `stills/final-lamp-4view.png` (**Captured in my Blender session via the MCP** — final version), `design/ref-lamp-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `tools/blender/asset_lib.py` excerpt showing the final `"emission": 0.4`, then the final lamp in `evidence/a3-showcase.png` (**Godot render**). Earlier versions are narrated, not shown.*
 
 **Liam:** “The first lamp followed the original painting: a traditional base and cone shade. I replaced it with a quieter modern silhouette — ceramic base, brass collar and broad drum shade. I revised its triangle budget from 340 to 420 before building, documenting why the curved base needed more geometry.”
 
@@ -125,7 +125,7 @@
 
 ## B08 — Bookshelf: the silhouette beats the spreadsheet
 
-*Visual: reference image, initial square-corner capture, `side_bm()` code reconstruction with file and line numbers, corrected rounded profile.*
+*Visual: `design/ref-bookshelf-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `side_bm()` excerpt from `tools/blender/build_bookshelf.py` with line numbers, then `stills/final-bookshelf-4view.png` (**Captured in my Blender session via the MCP** — final version; the side view shows the rounded corners). The square-corner version is narrated, not shown.*
 
 **Liam:** “The bookshelf was deliberately simple: six boards, warm wood, a modern profile with rounded top corners. Its first version passed the dimensional and transform checks. It still missed the feature that made the design recognizable: the upper corners were square.”
 
@@ -219,4 +219,5 @@
 - Include the required Walker opening and summary, Verdict → Your Turn → regular outro. Follow the installed Brutalist skill's native 4K landscape workflow and quality checks; watch the exported film.
 - Do not claim the props are already integrated into the 2D gameplay. The 3D showcase is the demonstrated result.
 - Preserve the honest unresolved rear-view music box issue and the distinction between headless and visual checks.
+- Asset visuals show the **final versions only** (`stills/final-*-4view.png`, the Godot renders and my orbit screenshots). Earlier iterations are narrated, not shown — except where the story requires a before: the hand-edit sequence (B09) and the prompt-and-result bookshelf (B05).
 - Before submission, separately verify the tagged clean clone, required documentation, matching GitHub/Canvas revision, film URL, filename, SHA-256 and reviewer access. These are source/submission requirements, not facts a narration can prove by itself.
