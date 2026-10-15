@@ -107,7 +107,7 @@
 
 **Liam:** “The first music box was within the limits: five basic shapes, 252 triangles, and a lid opened eighteen degrees. But it was too generic. It met the numbers without delivering the presence I wanted.”
 
-“I used a generated image as a design reference, not as a mesh. Then we translated only the parts six shapes could build: a hollow body with a darker cavity, a raised plinth, an opened lid and a butterfly key whose bow aligns with its shaft.”
+“I used a generated image as a design reference, not as a mesh. The assignment allows six basic shapes, and my budget was 320 triangles, so we kept only what fits: a hollow body with a darker cavity, a raised plinth, the opened lid, a clasp, and a key with a simple oval bow in line with its shaft. The hinges, the tray-shaped lid and the holes in the key were left out to stay within those limits.”
 
 “The body uses an inset and extrusion to create twelve-millimetre walls and a ten-centimetre cavity. A small gap at the lid's hinge was closed, and the new silhouette checked. The finished model uses 312 triangles against a 320-triangle budget. Small bevels catch the light; face-weighted normals help the flat faces shade cleanly.”
 

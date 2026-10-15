@@ -12,6 +12,7 @@ Checked 2026-10-15 against the repository at game-source commit `d331a4a`.
 | Socket (B12) | 127.0.0.1:9876, localhost only | `lsof` output in `FRICTIONAL.md`; `evidence/a3-mcp-panel-own.png` |
 | Bookshelf plan (B13) | six boards, 296 / 360 triangles | `evidence/a3-prompt-to-claude-own.png` |
 | First music box (B16) | five shapes, 252 triangles, lid 18° | `FRICTIONAL.md` build entry; `CHANGE-BRIEF.md` |
+| What was kept and left out of the reference (B17) | kept: body, plinth, lid, clasp, oval-bow key (6 shapes); left out: two hinges, tray lid, key holes | `SOURCES.md` REF-MUSICBOX-3D; `CHANGE-BRIEF.md` A3-2 (key bow: upright oval disc); `tools/blender/build_musicbox.py` |
 | Music box walls and cavity (B18) | 12 mm walls, 10 cm cavity | `tools/blender/build_musicbox.py` lines 61–64 (inset 0.006 + 6 mm bevel = 12 mm; translate −0.10) |
 | Music box triangles (B18) | 312 / 320 | `evidence/a3-stats-musicbox.png`; `tools/inspect_glb.py` |
 | Lamp budget (B19) | 340 → 420, before building | `CHANGE-BRIEF.md` revision A3-4 |

@@ -184,8 +184,9 @@ add("B16", "MUSICBOX", narr("B06", 0), clip("capture/blender-musicbox-turntable.
     "Capture of my Blender session — camera driven via the MCP"))
 add("B17", "MUSICBOX", narr("B06", 1), figure("A reference, not a mesh", "ChatGPT reference — image only",
     "compare-musicbox.png", "left: the reference · right: my final build, within six shapes", "design/ref-musicbox-chatgpt.png · stills/final-musicbox-4view.png",
-    [{"label": "Hollow body", "text": "darker cavity"}, {"label": "Plinth", "text": "the sixth shape"},
-     {"label": "Key", "text": "bow in the shaft plane"}]))
+    [{"label": "Kept", "text": "body, plinth, lid, clasp, key"},
+     {"label": "Left out", "text": "hinges, tray lid, holes in the key"},
+     {"label": "Why", "text": "six shapes, 320 triangles"}]))
 s, e, _ = find_lines("tools/blender/build_musicbox.py", "inset = bmesh.ops.inset_individual", 4)
 ex = "inset_individual(thickness=0.006) → extrude_face_region → translate(z −0.10)"
 add("B18", "MUSICBOX", narr("B06", 2), figure("Twelve-millimetre walls", "Captured in my Blender session via the MCP",
