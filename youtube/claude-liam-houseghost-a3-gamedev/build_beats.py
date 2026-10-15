@@ -90,13 +90,12 @@ COMPOSER = {"modelLabel": "Opus 5.5", "folderLabel": "walker-houseghost-narasimh
 # ---- Bookends -------------------------------------------------------------------
 composer = " ".join(P["Bookend:quote"]) if "Bookend:quote" in P else ""
 b00_cmd = re.search(r"## Bookend 1.*?\n> (.+?)\n", (REEL / "SCRIPT.md").read_text(), re.S).group(1)
-b00 = add("B00", "ASK", "", {"type": "GRAPHIC", "source": "remotion", "motion": "type-on",
+b00_say = re.search(r"## Bookend 1.*?\*\*Liam:\*\* “(.+?)”", (REEL / "SCRIPT.md").read_text(), re.S).group(1)
+b00 = add("B00", "ASK", b00_say, {"type": "GRAPHIC", "source": "remotion", "motion": "type-on",
     "remotion": {"pattern": "ClaudeComposerAsk", "props": {
         "greeting": "Namaste, Liam", "topic": "CLAUDE CODE · BLENDER MCP · GODOT 4.7",
         "segment": "Building Three Game Props", "command": b00_cmd, **COMPOSER}}},
-    "Reconstruction of the Claude composer; the opening prompt, typed, no narration")
-b00["audio_policy"] = "silence"
-b00["silent"] = True
+    "Reconstruction of the Claude composer; the opening prompt, typed, under a short spoken intro")
 
 add("B01", "ASK",
     "Three objects from a remembered bedroom. Designed to a scale, built through a live Blender "

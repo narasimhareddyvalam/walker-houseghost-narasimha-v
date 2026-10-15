@@ -27,9 +27,11 @@
 
 ## Bookend 1 — Claude composer
 
-*Visual: Claude composer typing at readable speed. Label **Reconstruction**. No narration.*
+*Visual: Claude composer typing at readable speed. Label **Reconstruction**. A short spoken intro over the typing (added at my review so the film does not open in silence).*
 
 > Use Walker to turn my HOUSEGHOST bedroom design into three simple 3D props: the wind-up music box, bedside lamp and memory-only bookshelf. Work in my running Blender session through the Blender MCP. Read my committed change brief first, propose each build before executing it, keep the geometry and material budgets, then export the assets to Godot and verify their dimensions, orientation and origins. Show me what the automated checks cannot establish.
+
+**Liam:** “This is HOUSEGHOST: three props from my game's remembered bedroom, built with Claude through the Blender MCP and checked in Godot. It starts with one prompt.”
 
 ---
 

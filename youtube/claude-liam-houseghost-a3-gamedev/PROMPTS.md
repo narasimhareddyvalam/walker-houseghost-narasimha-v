@@ -1,6 +1,6 @@
 # PROMPTS — what is shown or read in the film
 
-**Opening composer (B00), reconstruction, typed on screen:** the Bookend 1 prompt in `SCRIPT.md`.
+**Opening composer (B00), reconstruction, typed on screen:** the Bookend 1 prompt in `SCRIPT.md`, under a one-sentence spoken intro.
 
 **A real prompt to Claude (B13), my screenshot:** "yes go ahead with the bookshelf" —
 `evidence/a3-prompt-to-claude-own.png`, with the build plan Claude replied with.
