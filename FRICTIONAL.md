@@ -42,6 +42,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | The bookshelf's sixth shape | A back panel, reading the art's dark interior as a back in shadow; the brief had kept the spare for a plinth | "Yes go ahead with the bookshelf" | **Approved.** Recorded as revision A3-5; the brief's size is kept exactly |
 | Fixing the white-out shade | Lower the emission at the source and rebuild, rather than override the material in Godot | — | So the `.blend`, its build script and the `.glb` still agree. Revision A3-6 |
 | Renderer for the showcase | Leave the project on Godot's Compatibility renderer, which has no SSAO or screen-space reflections | — | Changing it would change the whole 2D game. The realism comes from sky reflections, shadows and tonemapping instead; recorded as a limitation |
+| How the Blender-window screenshot was taken | macOS refused a terminal capture (no Screen Recording permission), so the shot was taken inside my own running session with Blender's own Window › Save Screenshot operator, `bpy.ops.screen.screenshot`, after selecting `BS_Shelf_Mid` | Asked for it to be taken for me | **Recorded as taken through the MCP, in my session.** The hand edit and the orbit check are kept for the end, by my choice |
 
 ## Entries
 
