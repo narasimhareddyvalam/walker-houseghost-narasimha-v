@@ -1,0 +1,645 @@
+{
+ "schema_version": 1,
+ "teaching_contract": "code-then-result-v1",
+ "game": {
+  "name": "houseghost-a3",
+  "build_id": "0a5141d8dc284057fce22d1cb4c43e7d4211558c8dee18d46ce14247b22b1ffd"
+ },
+ "components": [
+  {
+   "id": "props",
+   "explanation": "The three exported props: binary glTF files built in Blender, and the import settings Godot generated for them.",
+   "beat_ids": [
+    "B28",
+    "B30"
+   ],
+   "files": [
+    "assets/models/bookshelf.glb",
+    "assets/models/bookshelf.glb.import",
+    "assets/models/lamp.glb",
+    "assets/models/lamp.glb.import",
+    "assets/models/musicbox.glb",
+    "assets/models/musicbox.glb.import"
+   ]
+  },
+  {
+   "id": "showcase",
+   "explanation": "The showcase scene the assignment specifies: a floor, one light, a camera and the three props side by side at game scale.",
+   "beat_ids": [
+    "B32",
+    "B33"
+   ],
+   "files": [
+    "scenes/AssetShowcase.tscn"
+   ]
+  },
+  {
+   "id": "headless-check",
+   "explanation": "The headless check: loads each prop, composes its transforms, and compares bounding box, node scale, up axis and lowest point with the brief.",
+   "beat_ids": [
+    "B29",
+    "B30",
+    "B31"
+   ],
+   "files": [
+    "tests/check_assets.gd"
+   ]
+  },
+  {
+   "id": "captures",
+   "explanation": "The scripts that render the showcase still and the native 4K orbit used in the film.",
+   "beat_ids": [
+    "B02",
+    "B33"
+   ],
+   "files": [
+    "tests/capture_orbit.gd",
+    "tests/capture_showcase.gd"
+   ]
+  }
+ ],
+ "files": [
+  {
+   "path": "assets/models/bookshelf.glb",
+   "sha256": "f13bd4ef30de8c104997390c41b0eb8939211b50441d3a0fe41ef247b1265fa6",
+   "role": "exported 3D prop",
+   "component_ids": [
+    "props"
+   ]
+  },
+  {
+   "path": "assets/models/bookshelf.glb.import",
+   "sha256": "9c0d620a60a9aa0742b40d8c6fe4e76727cd0b11a02dc3af8473cea81f16d9c6",
+   "role": "import settings",
+   "component_ids": [
+    "props"
+   ]
+  },
+  {
+   "path": "assets/models/lamp.glb",
+   "sha256": "4b6875f8089d0de691c65bfd9846bbe40aad5e8d657cbfabc3f7492f0453892e",
+   "role": "exported 3D prop",
+   "component_ids": [
+    "props"
+   ]
+  },
+  {
+   "path": "assets/models/lamp.glb.import",
+   "sha256": "23673a3be72c68f37935e5ab2194aea45f440e8b184050984cd2db09a416d185",
+   "role": "import settings",
+   "component_ids": [
+    "props"
+   ]
+  },
+  {
+   "path": "assets/models/musicbox.glb",
+   "sha256": "134b31ec649c89f176ce2056ff89d44332c351b8043bbe276dc86f086d5e2102",
+   "role": "exported 3D prop",
+   "component_ids": [
+    "props"
+   ]
+  },
+  {
+   "path": "assets/models/musicbox.glb.import",
+   "sha256": "d5ac2fe486298af6fc07d3ed06eaf47f2f64e591748294db836a561ccc2c0c95",
+   "role": "import settings",
+   "component_ids": [
+    "props"
+   ]
+  },
+  {
+   "path": "scenes/AssetShowcase.tscn",
+   "sha256": "251ba1b86730d57209671c9dc0dbc6ede2cea25e1210da03195d0ec6bb6007fb",
+   "role": "3D scene",
+   "component_ids": [
+    "showcase"
+   ]
+  },
+  {
+   "path": "tests/capture_orbit.gd",
+   "sha256": "debdc17f8c9afac29319ead9a4a69e804714cb04493f61d721f78c2ae4718803",
+   "role": "film capture script",
+   "component_ids": [
+    "captures"
+   ]
+  },
+  {
+   "path": "tests/capture_showcase.gd",
+   "sha256": "6dc723340cef984bd419be872ffcfe1ec295335a74d216ba54adda718ab5a379",
+   "role": "film capture script",
+   "component_ids": [
+    "captures"
+   ]
+  },
+  {
+   "path": "tests/check_assets.gd",
+   "sha256": "2561b5c757f4ee1685e7a5257e1c7260a5efd644679263b9de74e839b04a1566",
+   "role": "headless check script",
+   "component_ids": [
+    "headless-check"
+   ]
+  }
+ ],
+ "exclusions": [
+  {
+   "path": "assets/art/char_float_1.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_1.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_2.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_2.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_3.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_3.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_4.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_4.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_5.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_5.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_6.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_float_6.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_1.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_1.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_2.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_2.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_3.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_3.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_4.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_4.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_5.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_5.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_6.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_ghost_inv_6.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_jump_1.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_jump_1.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_jump_2.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_jump_2.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_jump_3.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_jump_3.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_jump_4.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_jump_4.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_remembered.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_remembered.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_1.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_1.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_2.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_2.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_3.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_3.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_4.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_4.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_5.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_5.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_6.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_6.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_7.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_7.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_8.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/char_walk_8.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/child_1.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/child_1.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/child_2.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/child_2.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/child_3.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/child_3.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/env_room_empty.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/env_room_empty.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/env_room_memory.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/env_room_memory.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/floor_hole.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/floor_hole.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/prop_boxes.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/prop_boxes.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/prop_shelf.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/prop_shelf.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/relic_board.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/relic_board.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/relic_chest.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/relic_chest.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/relic_musicbox.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/relic_musicbox.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/relic_shoes.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/relic_shoes.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/ui_glow.png",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/art/ui_glow.png.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/music/mus_memory.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/music/mus_memory.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/music/mus_upright.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/music/mus_upright.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_contact.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_contact.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_correct.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_correct.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_drift.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_drift.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_fall.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_fall.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_flip.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_flip.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_frost.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_frost.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_ghoststep.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_ghoststep.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_heart.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_heart.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_jump.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_jump.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_land.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_land.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_step.ogg",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "assets/sfx/sfx_step.ogg.import",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "project.godot",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "scenes/Bedroom.tscn",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "scenes/Player.tscn",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "scripts/audio.gd",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "scripts/contact_point.gd",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "scripts/hud.gd",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "scripts/meters.gd",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "scripts/player.gd",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "scripts/world.gd",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "tests/capture_frames.gd",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "tests/probe.gd",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  },
+  {
+   "path": "tests/test_sound_triggers.gd",
+   "reason": "Assignment 2 2D slice (scripts, scenes, art, audio, project settings), unchanged by this assignment; this film explains the three 3D props, their scene and their checks."
+  }
+ ],
+ "excerpts": [
+  {
+   "beat_id": "B29",
+   "path": "tests/check_assets.gd",
+   "start_line": 82,
+   "end_line": 95,
+   "text": "func _walk(n: Node, parent: Transform3D, boxes: Array[AABB]) -> bool:\n\tvar ok := true\n\tvar xform := parent\n\tif n is Node3D:\n\t\tvar n3 := n as Node3D\n\t\txform = parent * n3.transform\n\t\tif not n3.scale.is_equal_approx(Vector3.ONE):\n\t\t\tok = false\n\t\t\tprint(\"  %s scale %s\" % [n.name, n3.scale])\n\tif n is MeshInstance3D:\n\t\tboxes.append(xform * (n as MeshInstance3D).get_aabb())\n\tfor c in n.get_children():\n\t\tok = _walk(c, xform, boxes) and ok\n\treturn ok"
+  },
+  {
+   "beat_id": "B32",
+   "path": "scenes/AssetShowcase.tscn",
+   "start_line": 44,
+   "end_line": 66,
+   "text": "[node name=\"KeyLight\" type=\"DirectionalLight3D\" parent=\".\"]\nrotation = Vector3(-0.75, 0.65, 0)\nlight_color = Color(1, 0.94, 0.86, 1)\nlight_energy = 1.0\nshadow_enabled = true\n\n[node name=\"Camera\" type=\"Camera3D\" parent=\".\"]\nposition = Vector3(-0.1, 0.85, 2.2)\nrotation = Vector3(-0.17, 0, 0)\nfov = 40.0\ncurrent = true\n\n[node name=\"Floor\" type=\"MeshInstance3D\" parent=\".\"]\nmesh = SubResource(\"Floor_mesh\")\n\n[node name=\"Bookshelf\" parent=\".\" instance=ExtResource(\"3_bookshelf\")]\nposition = Vector3(-0.8, 0, 0)\n\n[node name=\"BedsideLamp\" parent=\".\" instance=ExtResource(\"2_lamp\")]\nposition = Vector3(0.0, 0, 0)\n\n[node name=\"MusicBox\" parent=\".\" instance=ExtResource(\"1_musicbox\")]\nposition = Vector3(0.55, 0, 0)"
+  }
+ ],
+ "code_result_pairs": [
+  {
+   "code_beat": "B29",
+   "result_beat": "B30",
+   "observation": "All three props arrive within 2 mm of the brief, height along Y, every node scale 1, lowest point at zero.",
+   "media": {
+    "path": "media/B30.mp4",
+    "sha256": "e6b5e898329908412f3f47f25a6f1dd151641a49a53bacfc65533b69584e4b79"
+   }
+  },
+  {
+   "code_beat": "B32",
+   "result_beat": "B33",
+   "observation": "The scene those lines define, rendered by Godot as the camera orbits the three props.",
+   "media": {
+    "path": "media/B33.mp4",
+    "sha256": "0c2fd5964c5be556635c9ccd8a5e575e3d9a40c3b1967327841518ead38366e8"
+   }
+  }
+ ]
+}

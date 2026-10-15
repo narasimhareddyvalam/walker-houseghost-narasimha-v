@@ -290,7 +290,7 @@ add("B35", "GODOT", narr("B11", 2), figure("Behind, below, at an angle", "My scr
 # ---- B12 Verdict ---------------------------------------------------------------------
 verdict = [
     ("Built", "Three game-scale props", ["Music box — 312 triangles.", "Lamp — 406 triangles.", "Bookshelf — 280 triangles.", "Built live in Blender, exported as .glb, shown in Godot."]),
-    ("Verified", "What the checks agree on", ["Size, orientation, origin, scale and colour.", "Across Blender, the exported files and Godot.", "Plus renders and a human orbit from every side.", "Not certified: every lighting condition."]),
+    ("Verified", "What the checks agree on", ["Size, orientation, origin, scale and colour.", "Across Blender, the exported files and Godot.", "Plus renders and my own look: behind, below, at an angle.", "Not certified: every lighting condition."]),
     ("Revised", "What changed, and why", ["A music box rebuilt with real presence.", "A lamp redesigned; its shade un-clipped.", "The bookshelf's rounded corners recovered.", "Claude's errors kept in the test report."]),
     ("Roles", "Who did what", ["Me: the brief, the designs, approvals, the hand edit,", "the visual judgement and the trade-offs.", "Claude: the modelling and checking code,", "run under that direction, outputs preserved."]),
     ("Still uncertain · Next", "What remains open", ["The props in the game's own room lighting.", "The music box from behind.", "Another viewer's reading of the scene.", "Next: a rear silhouette within six shapes."]),
@@ -338,6 +338,10 @@ if old_path.exists():
             for k in ("actual_duration_s", "audio_file", "voice", "audio_sha256"):
                 if k in o:
                     b[k] = o[k]
+        # Likewise keep the renderer's stamp while the composition it rendered is unchanged.
+        ro, rn = (o or {}).get("shot", {}).get("remotion"), b["shot"].get("remotion")
+        if ro and rn and "rendered" in ro and {k: v for k, v in ro.items() if k != "rendered"} == rn:
+            rn["rendered"] = ro["rendered"]
 old_path.write_text(json.dumps(sheet, indent=1, ensure_ascii=False) + "\n")
 words = sum(len(b["narration_text"].split()) for b in beats)
 print(f"{len(beats)} beats · {words} narrated words · ~{words / WPS / 60:.1f} min estimated")
