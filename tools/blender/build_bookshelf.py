@@ -1,4 +1,5 @@
-"""Build the Bookshelf asset (CHANGE-BRIEF.md, Assignment 3, asset 3, as revised by A3-7).
+"""Build the Bookshelf asset (CHANGE-BRIEF.md, Assignment 3, asset 3, as revised by A3-8:
+my hand edit in Blender added a third shelf; the back panel came out to stay within six).
 
 Every execute_blender_code body run for this asset is logged verbatim in LIVE_CALLS
 at the end of this file. Run headless from an empty scene with:
@@ -101,27 +102,32 @@ def step_top():
     report(finish("BS_Top", bm, "M_Wood_Warm", (0, -0.005, TOP_Z - 0.0125)))
 
 
-# ==== STEPS 4-5: shelves — 0.58 x 0.277 x 0.02 at a third and two-thirds ==========
-# Front edge 1 cm back from the sides' front (y = -0.14), back edge on the back panel.
+# ==== STEPS 4-6: shelves — 0.58 x 0.277 x 0.02, dark wood, evenly spaced ==========
+# Revision A3-8, from my hand edit: a third shelf added by duplicating one in the
+# viewport. Placed by hand at 0.118 / 0.399 / 0.700 m, then rounded to equal 26 cm bays
+# up to the top board. Front edge 1 cm back from the sides' front (y = -0.14).
 SHELF_D = 0.277
 SHELF_Y = -0.14 + SHELF_D / 2
 
 
-def step_shelf_low():
+def shelf(name, z):
     bm = board((INNER_W, SHELF_D, SHELF_T), bevel=0.002, segments=1)
-    report(finish("BS_Shelf_Low", bm, "M_Wood_Warm", (0, SHELF_Y, 0.36)))
+    report(finish(name, bm, "M_Wood_Dark", (0, SHELF_Y, z)))
 
 
-def step_shelf_mid():
-    bm = board((INNER_W, SHELF_D, SHELF_T), bevel=0.002, segments=1)
-    report(finish("BS_Shelf_Mid", bm, "M_Wood_Warm", (0, SHELF_Y, 0.65)))
+def step_shelf_bottom():
+    shelf("BS_Shelf_Bottom", 0.12)
 
 
-# ==== STEP 6: back — 0.58 x 0.008 x 0.875, inset 5 mm from the back edge =========
-# Runs z = 0.10 .. 0.975, so the bottom bay is open beneath it, as in the reference.
-def step_back():
-    bm = board((INNER_W, 0.008, TOP_Z - 0.10))
-    report(finish("BS_Back", bm, "M_Wood_Dark", (0, 0.15 - 0.005 - 0.004, 0.10 + (TOP_Z - 0.10) / 2)))
+def step_shelf_middle():
+    shelf("BS_Shelf_Middle", 0.40)
+
+
+def step_shelf_upper():
+    shelf("BS_Shelf_Upper", 0.68)
+
+
+# The back panel of A3-7 is gone: with three shelves it would be a seventh shape.
 
 
 # ==== STEP 7: whole-asset check and save =========================================
@@ -138,9 +144,9 @@ if __name__ == "__main__":
     step_side_l()
     step_side_r()
     step_top()
-    step_shelf_low()
-    step_shelf_mid()
-    step_back()
+    step_shelf_bottom()
+    step_shelf_middle()
+    step_shelf_upper()
     step_check_and_save(out)
 
 
@@ -260,5 +266,45 @@ region = next(r for r in area.regions if r.type == "WINDOW")
 with bpy.context.temp_override(window=window, area=area, region=region):
     result = bpy.ops.screen.screenshot(filepath=out)
 print(result, os.path.exists(out), os.path.getsize(out) if os.path.exists(out) else 0)
+
+--- Revision A3-8, 2026-10-15: my hand edit, then Claude's tidy-up ---
+[read-only checks between my edits (same shape as the build-1 check), which found the
+ two shelves dragged on all three axes and the duplicated root, shelf and material]
+
+[the tidy-up, one call]
+import bpy
+root = bpy.data.objects["Bookshelf"]
+new = bpy.data.objects["BS_Shelf_Mid.001"]
+new.parent = root
+new.matrix_parent_inverse.identity()
+bpy.data.objects.remove(bpy.data.objects["Bookshelf.001"])
+new.data.materials[0] = bpy.data.materials["M_Wood_Warm"]
+bpy.data.materials.remove(bpy.data.materials["M_Wood_Warm.001"])
+plan = [("BS_Shelf_Mid.001", "BS_Shelf_Bottom", 0.12),
+        ("BS_Shelf_Low", "BS_Shelf_Middle", 0.40),
+        ("BS_Shelf_Mid", "BS_Shelf_Upper", 0.68)]
+for old, name, z in plan:
+    o = bpy.data.objects[old]
+    o.name = name
+    o.data.name = name
+    o.location = (0.0, -0.0015, z)
+    o.rotation_euler = (0.0, 0.0, 0.0)
+    o.scale = (1.0, 1.0, 1.0)
+back = bpy.data.objects["BS_Back"]
+mesh = back.data
+bpy.data.objects.remove(back)
+bpy.data.meshes.remove(mesh)
+
+[two-tone]
+import bpy
+dark = bpy.data.materials["M_Wood_Dark"]
+for name in ("BS_Shelf_Bottom", "BS_Shelf_Middle", "BS_Shelf_Upper"):
+    bpy.data.objects[name].data.materials[0] = dark
+
+[step 7: the same three-line exec body as before]
+
+[before and after screenshots: Window > Save Screenshot, the same body as for
+ a3-blender-window-mcp.png, saved as evidence/a3-hand-edit-before.png and
+ evidence/a3-hand-edit-after.png from the same camera]
 """
 

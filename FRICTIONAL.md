@@ -46,6 +46,9 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | A more realistic bookshelf | A ChatGPT prompt for a modern piece built from exactly six boards, then a follow-up asking for small realistic details within that limit | "I want more realistic, let's generate a photo", then "tell it to add small realistic details unique style, modern" | **My direction.** I sent the follow-up and chose the image |
 | The bookshelf's design | Thick sides rising above an inset top, rounded corners, shelves at a third and two-thirds, open bottom bay, inset back — all six boards, 248 triangles | "Yes, build it" | **Approved.** Revision A3-7; the overall size and the 1.00 m height are unchanged |
 | Writing `BLENDER-NOTES.md` | Asked how I had used each of the six parts, then wrote the note from my answers, saying only what I said I did | "Do the blender notes" | **My usage, Claude's sentences.** Orbit, select and Material Preview in the viewport; the Outliner for the hierarchy and for selecting; the N sidebar's Item tab for every number; Object Mode throughout, with a brief look at Edit Mode |
+| My hand edit | Suggested moving one shelf, then a two-tone recolour for something more visible on video | "I think the easiest thing I can do is to add a third shelf" | **My edit, made with the mouse.** Revision A3-8 |
+| Seven boards | Laid out the choices: drop the back panel, undo the shelf, or keep seven and break the limit | First asked for the back slab as well, then: "keep how it is now without back its fine" | **My decision.** Open-backed, six boards |
+| Tidying the edit | Re-centred the shelves at my heights in even bays, renamed the copies, merged the `.001` material back, made the shelves dark wood | Accepted | **Claude's tidy-up of my edit**, logged as such, in one recorded call |
 
 ## Entries
 
@@ -443,4 +446,26 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** This is the clearest case so far of a check proving less than it seems to. Size, scale, orientation and normals were all correct, and the asset was still not the one specified. Looking at it is a check in its own right.
 
 - **Evidence and next step:** Evidence: `design/ref-bookshelf-chatgpt.png`; `SOURCES.md` row REF-BOOKSHELF-3D; `CHANGE-BRIEF.md` revision A3-7; `tools/blender/build_bookshelf.py` and its call log; `blender/bookshelf.blend`; `godot/assets/models/bookshelf.glb`; `evidence/a3-check-assets.txt`, `evidence/a3-inspect-glb.txt`, `evidence/a3-showcase.png`.
+
+### 2026-10-15 — My hand edit: a third shelf, and what dragging in the viewport actually does
+
+- **Date and what I was working on:** 2026-10-15, the hand edit the assignment asks for — one change made with the mouse in Blender's own window.
+
+- **I tried / expected:** I wanted a change that would be visible in the film, so I added a third shelf: I duplicated a shelf and dragged the copy down to just above the floor. I expected a clean new shelf.
+
+- **What happened:** It worked visibly and was messy underneath, which my own screenshots record (`evidence/a3-hand-edit-attempt-duplicate.png`, `a3-hand-edit-during-own.png`, `a3-hand-edit-third-shelf-own.png`):
+  - My first attempt duplicated the shelf **together with its parent**, so a second root, `Bookshelf.001`, appeared, and I undid it.
+  - Dragging moved the shelves on **all three axes**: up to 1 cm sideways and backwards as well as up or down, which pushed them into the side panel and through the back.
+  - The final duplicate again came with its parent, ended about 7 cm proud of the front, and brought a **copy of its material**, `M_Wood_Warm.001` — a sixth material outside the library.
+  - The bookshelf now had **seven boards**, one over the course limit.
+
+  I asked for the back panel to stay as well, then decided to keep it open-backed rather than break the limit. Claude tidied the edit in one recorded call: the copy re-parented and renamed `BS_Shelf_Bottom`, the duplicate root and material deleted, the shelves re-centred at my heights rounded to even 26 cm bays (0.12 / 0.40 / 0.68 m), made dark wood against the warm frame, and the back panel removed. Result: six boards, 280 / 360 triangles, no `.001` anywhere, the Godot check still passing. The build script was updated to match, and its headless rebuild equals the edited `.blend` object for object.
+
+- **What I did:** Made the edit with the mouse, took my own screenshots during it, chose to keep three shelves and drop the back panel.
+
+- **What Claude or another person contributed:** Read the scene after each of my changes and reported exactly what had moved; laid out the options for the seventh board; did the tidy-up, the before and after screenshots from one camera, the script update, the export and the re-check.
+
+- **What I understand now / still do not understand:** Four things. Dragging the white circle of the Move gizmo moves an object freely on every axis; the arrow, or pressing Z after Shift+D, locks it to one. Shift+D copies whatever is selected, so with the parent selected it copied the whole parent. Blender names every copy `.001` silently — objects, meshes and even materials — which is exactly what the brief's naming rule exists to catch. And a fixed limit forces trade-offs: a third shelf cost me the back panel.
+
+- **Evidence and next step:** Evidence: `evidence/a3-hand-edit-before.png` and `evidence/a3-hand-edit-after.png` (same camera), my three screenshots above, `CHANGE-BRIEF.md` revision A3-8, `tools/blender/build_bookshelf.py`, `blender/bookshelf.blend`, `evidence/a3-check-assets.txt`. Next step: the orbit check in Godot.
 

@@ -19,7 +19,7 @@ Three props from the game's remembered bedroom, built from Blender primitives th
 |---|---|---|---|---|
 | **MusicBox** | The first relic — visible from spawn, calling across the level | 0.316 × 0.190 × 0.297 | 6 | 312 / 320 |
 | **BedsideLamp** | The warm light that makes the remembered room look safe | 0.28 × 0.28 × 0.42 | 6 | 406 / 420 |
-| **Bookshelf** | His bookshelf — solid only in the memory, the half of the mechanic that forces the flip | 0.64 × 0.30 × 1.00 | 6 | 248 / 360 |
+| **Bookshelf** | His bookshelf — solid only in the memory, the half of the mechanic that forces the flip | 0.64 × 0.30 × 1.00 | 6 | 280 / 360 |
 
 **Open the scene:** `godot/scenes/AssetShowcase.tscn` — floor, one light, one camera, the three assets, a 1 m reference cube and the boy's 1.00 m collision capsule.
 

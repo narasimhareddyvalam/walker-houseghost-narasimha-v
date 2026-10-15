@@ -31,15 +31,15 @@
   material M_Wood_Dark      base #4A2E19 metallic 0 roughness 0.6000000238418579 double-sided True
 == godot/assets/models/bookshelf.glb
   asset: Khronos glTF Blender I/O v5.2.40 | up axis: glTF is always +Y up
-  node BS_Back        translation [0, 0.5375, -0.141] | no rotation, no scale
-  node BS_Shelf_Low   translation [0, 0.36, 0.0015] | no rotation, no scale
-  node BS_Shelf_Mid   translation [0, 0.65, 0.0015] | no rotation, no scale
+  node BS_Shelf_Bottom translation [0, 0.12, 0.0015] | no rotation, no scale
+  node BS_Shelf_Middle translation [0, 0.4, 0.0015] | no rotation, no scale
+  node BS_Shelf_Upper translation [0, 0.68, 0.0015] | no rotation, no scale
   node BS_Side_L      translation [-0.305, 0.5, 0] | no rotation, no scale
   node BS_Side_R      translation [0.305, 0.5, 0] | no rotation, no scale
   node BS_Top         translation [0, 0.9625, 0.005] | no rotation, no scale
   node Bookshelf      translation [0, 0, 0] | no rotation, no scale
   bounds min [-0.32, 0.0, -0.15] max [0.32, 1.0, 0.15]
   size x 0.64 | y (up) 1.0 | z 0.3 | lowest point y = 0.0
-  triangles 248
+  triangles 280
   material M_Wood_Dark      base #4A2E19 metallic 0 roughness 0.6000000238418579 double-sided True
   material M_Wood_Warm      base #6B4428 metallic 0 roughness 0.6000000238418579 double-sided True
