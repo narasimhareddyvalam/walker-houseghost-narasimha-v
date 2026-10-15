@@ -1,3 +1,47 @@
+# SUBMISSION — Assignment 3
+
+**Assignment:** Assignment 3 - Your First 3D Game Assets with Claude, the Blender MCP, and Blender
+**Student:** Narasimha Reddy Valam
+**Project name:** walker-houseghost-narasimha-v (HOUSEGHOST)
+
+**GitHub repository URL:** https://github.com/narasimhareddyvalam/walker-houseghost-narasimha-v
+
+**Git tag and submitted commit SHA:** tag `a3`. The submitted commit's SHA is given in the Canvas note, since a commit cannot contain its own SHA.
+
+**Game-source revision shown in the film:** `d331a4adc0d70385116278e16e7058132bb525ee` — the last commit that touches `godot/`, `blender/` or `tools/`. Every later commit changes documentation and film records only; `git diff d331a4a a3 -- godot blender tools` is empty.
+
+**Godot version, Blender version, and operating system:** Godot 4.7.2.stable.official.ed1daf0bf (Compatibility renderer) · Blender 5.2.2 LTS · macOS 26.6.2, Apple Silicon
+
+**The three assets and what each is for:**
+
+| Asset | For | Size (m, W × D × H) | Triangles |
+|---|---|---|---|
+| MusicBox | The first relic — visible from spawn, calling across the level | 0.316 × 0.190 × 0.297 | 312 / 320 |
+| BedsideLamp | The warm light that makes the remembered room look safe | 0.28 × 0.28 × 0.42 | 406 / 420 |
+| Bookshelf | Solid only in the memory — the half of the mechanic that forces the flip | 0.64 × 0.30 × 1.00 | 280 / 360 |
+
+**MCP project and version, or "script route":** MCP route for all three assets: `mcp-for-blender` 2.1.9 (add-on 1.8, protocol 13), connected to my live Blender on 127.0.0.1:9876, every download and generation service off. Every live call body is logged verbatim at the end of `tools/blender/build_<asset>.py`; the same scripts rebuild each asset headless, and `tools/blender/export_glb.py` exports it.
+
+**My hand edit in Blender:** On the bookshelf (revision A3-8), with the mouse in my own session: I duplicated a shelf and moved it down to make a third shelf, and decided to drop the back panel to stay at six boards. Claude then tidied the edit in one recorded call (re-centred the shelves, removed the `.001` copies, darkened the shelves). Before and after: `evidence/a3-hand-edit-before.png`, `evidence/a3-hand-edit-after.png`; the full account is in `BLENDER-NOTES.md` and `FRICTIONAL.md`.
+
+**Checks run (command and result):**
+- `godot --headless --path godot --import` — exit 0, no errors or warnings.
+- `timeout 120 godot --headless --path godot --script res://tests/check_assets.gd --fixed-fps 60` — `RESULT: PASS (0 failures)`, exit 0: all three within 2 mm of the brief, height along Y, every node scale 1, lowest point 0 (`evidence/a3-check-assets.txt`). Run once against a deliberately wrong height: FAIL, exit 1.
+- `python3 tools/inspect_glb.py godot/assets/models/*.glb` — nodes, bounds, triangles 312 / 406 / 280 and colours as sRGB hex (`evidence/a3-inspect-glb.txt`).
+- Blender's statistics overlay — 312, 406 and 280 triangles (`evidence/a3-stats-*.png`, `evidence/a3-hand-edit-after.png`).
+- My own look in the Godot editor from behind, below and at an angle — the bookshelf and lamp read clearly; the music box reads only as a box from behind (`evidence/a3-orbit-*-own.png`).
+
+**Final film URL and filename:** added with the final export.
+**Final film SHA-256:** added with the final export.
+
+**Summary of my changes:** Three props from the game's remembered bedroom, built from Blender primitives through the MCP and exported as binary glTF: `blender/` (one `.blend` per asset), `tools/blender/` (build scripts, material library, exporter), `godot/assets/models/` (three `.glb` with `.import` files), `godot/scenes/AssetShowcase.tscn` (floor, one light, camera, the three props at game scale), `godot/tests/check_assets.gd`, `CHANGE-BRIEF.md`, `BLENDER-NOTES.md`, the Assignment 3 sections of `TEST-REPORT.md`, `FRICTIONAL.md`, `SOURCES.md` and `README.md`, and the film's records in `youtube/claude-liam-houseghost-a3-gamedev/`. The 2D game from Assignment 2 is unchanged.
+
+**Known limitations:** From behind, the music box reads only as a plain box (the key is too small at that distance). The lamp is modern, while the lamp in my 2D painting is traditional. The Compatibility renderer has no ambient occlusion or screen-space reflections, and the brighter sky lifts the woods slightly above their hex values. The 12-sided lamp base shows facets close up. The 3D scene is not yet connected to the 2D game, as the assignment allows.
+
+**Changed games since Assignment 2:** no.
+
+---
+
 # SUBMISSION — Assignment 2
 
 **Assignment:** Assignment 2 — Generate Art, Sound, and Music for Your Game

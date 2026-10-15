@@ -41,7 +41,7 @@ It prints, per asset, the bounding-box size beside the brief, every node's scale
 
 (`build_lamp.py` and `build_bookshelf.py` the same way.) `python3 tools/inspect_glb.py godot/assets/models/*.glb` reads the exported files directly and prints their nodes, bounds, triangles and colours as sRGB hex.
 
-**What this assignment added:** `blender/` (one `.blend` per asset), `tools/blender/` (one build script per asset, every live call body logged verbatim at its end, the shared five-material library and the exporter), `godot/assets/models/` (three `.glb` with their `.import` files), `godot/scenes/AssetShowcase.tscn`, `godot/tests/check_assets.gd`, and the change brief, test report, Frictional log and sources sections for Assignment 3.
+**What this assignment added:** `blender/` (one `.blend` per asset), `tools/blender/` (one build script per asset, every live call body logged verbatim at its end, the shared five-material library and the exporter), `godot/assets/models/` (three `.glb` with their `.import` files), `godot/scenes/AssetShowcase.tscn`, `godot/tests/check_assets.gd`, `BLENDER-NOTES.md`, the screenshots and check outputs in `evidence/a3-*`, the film's records in `youtube/claude-liam-houseghost-a3-gamedev/`, and the change brief, test report, Frictional log and sources sections for Assignment 3.
 
 **Known limitations**
 - The lamp is modern and 0.28 m wide; the lamp in my 2D painting is traditional. Recorded in revision A3-4.
@@ -50,7 +50,15 @@ It prints, per asset, the bounding-box size beside the brief, every node's scale
 - Close up, the 12-sided lamp base shows facets on its outline.
 - The art disagrees with itself about scale (250 px/m on the boy, ~300 px/m on the door); the assets follow the boy.
 
-**Final film:** to be linked here with its filename and SHA-256 once rendered and watched.
+**Assignment 3 film:** *HOUSEGHOST — Building Three Game Props with Claude, Blender MCP and Godot*, a Brutalist `godot-gamedev walker` explainer at 3840×2160, narrated by Liam (Kokoro `am_onyx`, run locally). It shows my real Blender session, a prompt to Claude and what it built, my hand edit, the three assets in the running Godot scene, and the headless numbers beside the brief, labelled as headless. The game source it shows is commit `d331a4a`.
+
+| | |
+|---|---|
+| File | added here once the final export is watched |
+| Link | course media storage, added with the file |
+| SHA-256 | added with the file |
+
+Everything behind it is in `youtube/claude-liam-houseghost-a3-gamedev/`: the script (`SCRIPT.md`), the beat sheet, the shot list, a fact check of every number spoken, the prompts shown, the capture record with SHA-256 for every recording, the sources, and the scripts that rebuild it (`BUILD-PROMPT.md`).
 
 ## Run it
 

@@ -187,12 +187,16 @@ a rejected take of one.
 | Godot | 4.7.2.stable.official.ed1daf0bf, Compatibility renderer | Import, the showcase scene, the headless check |
 | Claude Code | Claude Opus 5.5 | Build scripts, checks, documents and prompts, working with me; every commit carries its co-author line |
 | uv / coreutils | uv 0.13.1; GNU coreutils `timeout` | Running the MCP server; stopping a check that hangs |
+| Kokoro-82M | `am_onyx` voice, run locally, $0.00 | The film's narration (Apache 2.0) |
+| Brutalist `godot-gamedev` | course-provided toolkit, `walker` modifier; Remotion compositions | The film's scenes, compile and checks |
+| ffmpeg / Pillow | system ffmpeg; Pillow | Fitting recordings to 3840×2160 with their evidence labels |
 
 ## Assignment 3 — 3D asset references
 
 Generated images used as **visual references only**. No mesh in this assignment was generated,
 downloaded or imported: every one is built from Blender primitives by the scripts in
-`tools/blender/`. Tool and version rows for Blender and the MCP are added with the export.
+`tools/blender/`. Tool and version rows are in the table above; the film's own sources are in
+`youtube/claude-liam-houseghost-a3-gamedev/SOURCES.md`.
 
 | Asset ID | Model + version | Prompt + settings | Outcome | Edits | Where used |
 |---|---|---|---|---|---|

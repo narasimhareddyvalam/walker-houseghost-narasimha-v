@@ -47,6 +47,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | The bookshelf's design | Thick sides rising above an inset top, rounded corners, shelves at a third and two-thirds, open bottom bay, inset back — all six boards, 248 triangles | "Yes, build it" | **Approved.** Revision A3-7; the overall size and the 1.00 m height are unchanged |
 | Writing `BLENDER-NOTES.md` | Asked how I had used each of the six parts, then wrote the note from my answers, saying only what I said I did | "Do the blender notes" | **First draft: my usage, Claude's sentences.** Replaced on 2026-10-15 by my own rewrite (next row) |
 | Rewriting `BLENDER-NOTES.md` in my own words | Recapped what I had done by hand in Blender and what Claude had done through the MCP, so I could write from my own memory | Wrote the whole note myself and pasted it in | **My words.** Claude kept the required header and my screenshot, and changed one sentence to match this log: the darker shelves were Claude's suggestion that I accepted, not my request |
+| Finishing everything but the video | Updated the README, test report, sources and log, wrote the Assignment 3 section of `SUBMISSION.md` and committed the film's records, leaving only the film's file, link and SHA-256 | "Make sure all the documents are updated and committed locally. I want just the video to be the final thing for assignment" | **My call.** Nothing pushed; the `a3` tag, clone check and ZIP follow the film |
 | My hand edit | Suggested moving one shelf, then a two-tone recolour for something more visible on video | "I think the easiest thing I can do is to add a third shelf" | **My edit, made with the mouse.** Revision A3-8 |
 | Seven boards | Laid out the choices: drop the back panel, undo the shelf, or keep seven and break the limit | First asked for the back slab as well, then: "keep how it is now without back its fine" | **My decision.** Open-backed, six boards |
 | Tidying the edit | Re-centred the shelves at my heights in even bays, renamed the copies, merged the `.001` material back, made the shelves dark wood | Accepted | **Claude's tidy-up of my edit**, logged as such, in one recorded call |
@@ -561,3 +562,20 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** Writing it from memory showed me which parts of the window I actually used and which I had only looked at, like the material settings.
 
 - **Evidence and next step:** Evidence: `BLENDER-NOTES.md`; `evidence/a3-blender-window.png`. Next step: finish the film render.
+
+### 2026-10-15 — The film: from my script to a beat sheet, narration and renders
+
+- **Date and what I was working on:** 2026-10-15, the required Brutalist `godot-gamedev walker` film.
+
+- **I tried / expected:** To have the film say exactly what my script says, over real footage and my own screenshots.
+
+- **What happened:** `build_beats.py` turns `SCRIPT.md` into a 44-beat sheet, taking every narrated paragraph verbatim; a check at build time confirmed the sheet's narration equals the script. Liam's narration was generated locally with Kokoro (`am_onyx`). `prepare_clips.py` fits the four recordings onto a 3840×2160 frame with their evidence labels, because the compiler would otherwise crop the 2940×1846 Blender recordings. In a first pilot render the code excerpts came out as prose and a trace's output landed in the footer; the excerpts were shortened and labelled "abbreviated from", and the output lines moved into the trace itself. The remaining compositions then rendered in the background.
+
+- **What I did:** Chose my own script, with the accuracy fixes, as the narration; chose to show only final asset versions; asked for real recordings rather than stills; watched the pilot.
+
+- **What Claude or another person contributed:** The beat-sheet, clip and evidence scripts, the narration run, the pilot fixes and the render.
+
+- **What I understand now / still do not understand:** The film is a build like the game: a script in, checked outputs out, and the evidence ledger ties each file it shows to a hash.
+
+- **Evidence and next step:** Evidence: `youtube/claude-liam-houseghost-a3-gamedev/` — `SCRIPT.md`, `beat_sheet.json`, `build_beats.py`, `prepare_clips.py`, `build_evidence.py`, `CAPTURE.md`, `FACTCHECK.md`, `SHOTLIST.md`, `PROMPTS.md`, `SOURCES.md`, `BUILD-PROMPT.md`. Next step: the evidence ledger, the skill's checks, the review cut and my watch of the final export.
+

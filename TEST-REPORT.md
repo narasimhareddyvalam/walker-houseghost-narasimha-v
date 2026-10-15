@@ -183,7 +183,7 @@ Every number below comes from a command run in this session; the raw outputs are
 | 5 | Triangle count | **Pass.** 312 / 320, 406 / 420, 280 / 360 — all under the course's 500. Read in Blender's own statistics overlay for all three, and they agree with the mesh data and the exported index buffers | `evidence/a3-stats-musicbox.png` (124 / 312), `evidence/a3-stats-lamp.png` (70 / 406), `evidence/a3-hand-edit-after.png` (280); `inspect_glb.py` |
 | 6 | Imports and appears | **Pass.** `--import` exits 0 with no errors or warnings; the scene loads with exactly one `Light3D` alongside the floor, camera and three assets, and all three render | `evidence/a3-showcase.png` |
 | 7 | HUMAN CHECK: look | **Done, by me, in the Godot editor.** From behind and below, the bookshelf reads clearly as a bookshelf and the lamp clearly as a lamp. **The music box reads only as a box from behind** — the key is too small to say "music box". No holes or missing faces from any angle; the colours looked right. At the time each asset was viewed beside the boy's sprite at game scale; the sprite was removed from the scene afterwards (it is 2D and turns to face the camera) | `evidence/a3-orbit-*-own.png` (nine of my screenshots: rear, bottom and an angled view of each) |
-| 8 | What Claude got wrong | Ten things, all caught before they shipped (list below) | `FRICTIONAL.md` |
+| 8 | What Claude got wrong | Twelve things, all caught before they shipped (list below), plus one Blender crash during film capture | `FRICTIONAL.md` |
 
 ### Size: three sources side by side (metres, W × D × H)
 
@@ -224,6 +224,9 @@ Every number below comes from a command run in this session; the raw outputs are
 
 - From behind, the music box reads only as a plain box: its identifying detail, the key, is too small at that distance. Found in my orbit check; not changed.
 - Compatibility renderer: no ambient occlusion or screen-space reflections. The brighter sky lifts the woods slightly above their hex values.
-- The music box's key is hidden from behind and to the left.
 - No other person has looked at the scene; no viewer is invented here.
+
+### The film
+
+The film is built from `youtube/claude-liam-houseghost-a3-gamedev/SCRIPT.md`, my production script, fact-checked line by line in `FACTCHECK.md`; the beat sheet's narration is taken from it verbatim by `build_beats.py`. Its footage is real: Blender turntables captured from my own session, and a native 4K orbit rendered by Godot from `AssetShowcase.tscn` (`CAPTURE.md`, with SHA-256 for each recording). Every still is my own screenshot or a capture from my session, labelled as such; the opening prompt and the Your Turn prompt are labelled reconstructions. The game source shown is commit `d331a4a`, and no later commit changes `godot/`, `blender/` or `tools/`. The skill's evidence ledger, its checks and my watch of the final export are recorded with the film's file and checksum in `README.md` and `SUBMISSION.md`.
 
