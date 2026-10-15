@@ -488,3 +488,25 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **Evidence and next step:** Evidence: `godot/scenes/AssetShowcase.tscn`; `evidence/a3-showcase.png`; the correction at the end of `CHANGE-BRIEF.md`. Next step: the orbit check, by me, in the editor.
 
+### 2026-10-15 — The orbit check: two assets pass, the music box reads only as a box
+
+- **Date and what I was working on:** 2026-10-15, the human check the rubric reserves for me — walking the camera around each asset in the Godot editor, from behind and below, beside the boy at game scale.
+
+- **I tried / expected:** I had not used Godot's 3D view before. On an Apple Magic Mouse there is no middle button, and swiping its surface zooms rather than orbits, so the usual "middle-drag to orbit" did not work. What worked: selecting each asset in the Scene panel, pressing F to follow it, the Perspective menu's Rear and Bottom views, and dragging the axis gizmo for angled views.
+
+- **What happened:** My verdict, from looking:
+  - **Bookshelf:** reads clearly as a bookshelf from behind and below — the open back shows the shelves.
+  - **Lamp:** reads clearly as a lamp from behind and below.
+  - **Music box: reads only as a box from behind.** The key, the detail my brief named as what makes it a music box, is too small to carry from that distance.
+  - No holes or missing faces from any angle, and the colours looked right.
+
+  Claude's own reading of the same screenshots: the undersides render near-black from below, because the scene's one light comes from above — lighting rather than missing faces, since nothing could be seen through — and the boy, a flat sprite, turns to face the camera even from behind. The Godot tab showed unsaved changes throughout; nothing was saved, and `git status` confirmed the scene file on disk unchanged.
+
+- **What I did:** Orbited all three, took nine screenshots, and judged each.
+
+- **What Claude or another person contributed:** Small step-by-step instructions, adjusted for the Magic Mouse once the first ones did not work; reading each screenshot back to me; recording my verdict.
+
+- **What I understand now / still do not understand:** This is the result the brief predicted in failure 7, and it only showed up by looking: every automated check passes for the music box. The key was already enlarged once (revision A3-1) for the same reason, and it is still not enough from behind. I have left it as a limitation rather than change the asset after the checks.
+
+- **Evidence and next step:** Evidence: `evidence/a3-orbit-bookshelf-*-own.png`, `a3-orbit-lamp-*-own.png`, `a3-orbit-musicbox-*-own.png`, `a3-godot-editor-own.png`, `a3-godot-inspector-bookshelf-own.png`; `TEST-REPORT.md` check 7; `CHANGE-BRIEF.md` prediction 7. Next step: the film.
+

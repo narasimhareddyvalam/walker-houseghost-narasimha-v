@@ -46,7 +46,7 @@ It prints, per asset, the bounding-box size beside the brief, every node's scale
 **Known limitations**
 - The lamp is modern and 0.28 m wide; the lamp in my 2D painting is traditional. Recorded in revision A3-4.
 - The project uses Godot's Compatibility renderer (chosen for the 2D game): no ambient occlusion, no screen-space reflections. The brighter sky that makes the brass read also lifts the woods slightly above their hex values.
-- The music box's key is on its right side; from behind and to the left it is hidden.
+- From behind, the music box reads only as a plain box: the key, its one identifying detail, is too small at that distance (found in my orbit check).
 - Close up, the 12-sided lamp base shows facets on its outline.
 - The art disagrees with itself about scale (250 px/m on the boy, ~300 px/m on the door); the assets follow the boy.
 

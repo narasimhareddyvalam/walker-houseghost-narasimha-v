@@ -182,7 +182,7 @@ Every number below comes from a command run in this session; the raw outputs are
 | 4 | Origin | **Pass.** Lowest point y = 0.0000 for all three; in the render each stands on the floor with its contact shadow at its base | `check_assets.gd`; `evidence/a3-showcase.png` |
 | 5 | Triangle count | **Pass.** 312 / 320, 406 / 420, 280 / 360 — all under the course's 500. Counted from mesh data and from the exported index buffers, which agree; not read from Blender's status bar | build-script output; `inspect_glb.py` |
 | 6 | Imports and appears | **Pass.** `--import` exits 0 with no errors or warnings; the scene loads with all nine nodes and exactly one `Light3D`, and all three render | `evidence/a3-showcase.png` |
-| 7 | HUMAN CHECK: look | **Not done yet** — orbiting each asset from behind and below in the editor is mine to do | — |
+| 7 | HUMAN CHECK: look | **Done, by me, in the Godot editor.** From behind and below, the bookshelf reads clearly as a bookshelf and the lamp clearly as a lamp. **The music box reads only as a box from behind** — the key is too small to say "music box". No holes or missing faces from any angle; the colours looked right. Each asset was viewed beside the boy at game scale | `evidence/a3-orbit-*-own.png` (nine of my screenshots: rear, bottom and an angled view of each) |
 | 8 | What Claude got wrong | Ten things, all caught before they shipped (list below) | `FRICTIONAL.md` |
 
 ### Size: three sources side by side (metres, W × D × H)
@@ -222,7 +222,7 @@ Every number below comes from a command run in this session; the raw outputs are
 
 ### Honest limitations
 
-- Check 7, the orbit, is not done yet; it is mine.
+- From behind, the music box reads only as a plain box: its identifying detail, the key, is too small at that distance. Found in my orbit check; not changed.
 - Compatibility renderer: no ambient occlusion or screen-space reflections. The brighter sky lifts the woods slightly above their hex values.
 - The music box's key is hidden from behind and to the left.
 - No other person has looked at the scene; no viewer is invented here.
