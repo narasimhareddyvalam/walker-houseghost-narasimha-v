@@ -272,7 +272,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **What Claude or another person contributed:** Claude identified that "realistic" in the textured sense would break the flat-colour rule, wrote both ChatGPT prompts, chose what to take from the image and what to leave and why, proposed baking weighted normals for rounded-edge shading at no triangle cost, corrected its own key-bow orientation (the first bow was at right angles to the shaft, like a T-handle), and found and fixed both of its own check errors before the live build. The judgement that the first build was too plain was mine.
 
-- **What I understand now / still do not understand:** `[TO FILL — what you think of the rebuild against the reference, and whether "realistic through lighting" is what you meant]`
+- **What I understand now / still do not understand:** After orbiting the rebuild in Blender: "yes lets go to next. i am happy with this one." `[TO FILL — optional: whether "realistic through lighting" is what you meant; this is judged again once the box is lit in Godot]`
 
 - **Evidence and next step:** Evidence: `design/ref-musicbox-chatgpt.png`; `CHANGE-BRIEF.md` revision A3-2; `SOURCES.md` row REF-MUSICBOX-3D; `tools/blender/build_musicbox.py`, which the live calls executed directly; `blender/musicbox.blend`. Next step: the bedside lamp.
 
