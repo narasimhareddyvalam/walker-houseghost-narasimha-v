@@ -25,7 +25,7 @@
     "teaching_contract": "code-then-result-v1",
     "script": "SCRIPT.md",
     "build": {
-      "at": "2026-10-15T16:19:19",
+      "at": "2026-10-15T16:52:39",
       "cut": "review",
       "filled": 44,
       "of": 44,
@@ -49,11 +49,14 @@
             "greeting": "Namaste, Liam",
             "topic": "CLAUDE CODE · BLENDER MCP · GODOT 4.7",
             "segment": "Building Three Game Props",
-            "command": "Use Walker to turn my HOUSEGHOST bedroom design into three simple 3D props: the wind-up music box, bedside lamp and memory-only bookshelf. Work in my running Blender session through the Blender MCP. Read my committed change brief first, propose each build before executing it, keep the geometry and material budgets, then export the assets to Godot and verify their dimensions, orientation and origins. Show me what the automated checks cannot establish."
+            "command": "Use Walker to turn my HOUSEGHOST bedroom design into three simple 3D props: the wind-up music box, bedside lamp and memory-only bookshelf. Work in my running Blender session through the Blender MCP. Read my committed change brief first, propose each build before executing it, keep the geometry and material budgets, then export the assets to Godot and verify their dimensions, orientation and origins. Show me what the automated checks cannot establish.",
+            "modelLabel": "Opus 5.5",
+            "folderLabel": "walker-houseghost-narasimha-v",
+            "runningText": "working…"
           },
           "rendered": {
             "out": "media/B00.mp4",
-            "at": "2026-10-15T18:05:50.656083+00:00"
+            "at": "2026-10-15T20:39:25.518999+00:00"
           }
         }
       },
@@ -66,14 +69,14 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
       "beat_id": "B01",
       "act": "ASK",
       "role_note": "Hesitant-writer summary, read aloud from SCRIPT.md Bookend 2 (its struck line omitted)",
-      "narration_text": "Three objects from a remembered bedroom. Designed to a scale, built through a live Blender session, revised by eye, and tested in Godot. The numbers tell me whether they arrived correctly. The scene tells me whether they read correctly.",
+      "narration_text": "Three objects from a remembered bedroom. Designed to a scale, built through a live Blender session, revised by Narasimha, and tested in Godot. The numbers tell me whether they arrived correctly. The scene tells me whether they read correctly.",
       "shot": {
         "type": "GRAPHIC",
         "source": "remotion",
@@ -85,30 +88,30 @@
             "artifactHeading": "Three props from a remembered bedroom",
             "artifactLines": [
               "Designed to a scale, built through a live Blender session.",
-              "Revised by eye, and tested in Godot.",
+              "Revised by Narasimha, and tested in Godot.",
               "The numbers tell me whether they arrived correctly.",
               "The scene tells me whether they read correctly."
             ]
           },
           "rendered": {
             "out": "media/B01.mp4",
-            "at": "2026-10-15T18:07:35.972549+00:00"
+            "at": "2026-10-15T20:40:55.490599+00:00"
           }
         }
       },
       "estimated_duration_s": 15.0,
-      "actual_duration_s": 13.06,
+      "actual_duration_s": 13.5,
       "audio_file": "mp3/beat-B01.mp3",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "The course's verdict card: short numbered lines on a white card, which the gate's ink detector cannot see against the cream stage, so it measures only the text. Not underfilled."
       },
-      "render_duration_s": 13.083333333333334,
+      "render_duration_s": 13.5,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -141,7 +144,7 @@
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -191,7 +194,7 @@
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -237,7 +240,7 @@
         "status": "VIDEO",
         "src": "media/B04.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -287,7 +290,7 @@
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -333,7 +336,7 @@
         "status": "VIDEO",
         "src": "media/B06.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -386,7 +389,7 @@
         "status": "VIDEO",
         "src": "media/B07.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -438,7 +441,7 @@
         "status": "VIDEO",
         "src": "media/B08.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -494,7 +497,7 @@
         "status": "VIDEO",
         "src": "media/B09.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -548,7 +551,7 @@
         "status": "VIDEO",
         "src": "media/B10.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -602,7 +605,7 @@
         "status": "VIDEO",
         "src": "media/B11.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -652,7 +655,7 @@
         "status": "VIDEO",
         "src": "media/B12.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -698,7 +701,7 @@
         "status": "VIDEO",
         "src": "media/B13.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -715,24 +718,28 @@
           "props": {
             "title": "What it built",
             "status": "Captured in my Blender session via the MCP",
-            "image": "houseghost-a3/a3-prompt-result-bookshelf-a3-5.png",
-            "imageLabel": "the bookshelf that prompt produced (A3-5)",
+            "image": "houseghost-a3/compare-bookshelf.png",
+            "imageLabel": "left: what that prompt built · right: the approved final",
             "excerpt": "",
-            "source": "evidence/a3-prompt-result-bookshelf-a3-5.png",
+            "source": "evidence/a3-prompt-result-bookshelf-a3-5.png · stills/final-bookshelf-4view.png",
             "cards": [
               {
                 "label": "Per object",
-                "text": "one execute_blender_code call"
+                "text": "one MCP call, then read back"
               },
               {
                 "label": "Then",
-                "text": "get_scene_info reads it back"
+                "text": "my modern redesign (A3-7)"
+              },
+              {
+                "label": "Assignment",
+                "text": "hand edit; back off for six shapes"
               }
             ]
           },
           "rendered": {
             "out": "media/B14.mp4",
-            "at": "2026-10-15T19:57:42.823087+00:00"
+            "at": "2026-10-15T20:49:31.898196+00:00"
           }
         }
       },
@@ -744,7 +751,7 @@
         "status": "VIDEO",
         "src": "media/B14.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -777,7 +784,7 @@
         "status": "VIDEO",
         "src": "media/B15.mp4",
         "filled_by": "media",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -810,7 +817,7 @@
         "status": "VIDEO",
         "src": "media/B16.mp4",
         "filled_by": "media",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -827,10 +834,10 @@
           "props": {
             "title": "A reference, not a mesh",
             "status": "ChatGPT reference — image only",
-            "image": "houseghost-a3/ref-musicbox-chatgpt.png",
-            "imageLabel": "read for what six shapes can build",
+            "image": "houseghost-a3/compare-musicbox.png",
+            "imageLabel": "left: the reference · right: my final build, within six shapes",
             "excerpt": "",
-            "source": "design/ref-musicbox-chatgpt.png",
+            "source": "design/ref-musicbox-chatgpt.png · stills/final-musicbox-4view.png",
             "cards": [
               {
                 "label": "Hollow body",
@@ -848,7 +855,7 @@
           },
           "rendered": {
             "out": "media/B17.mp4",
-            "at": "2026-10-15T19:59:15.957195+00:00"
+            "at": "2026-10-15T20:43:33.308685+00:00"
           }
         }
       },
@@ -860,7 +867,7 @@
         "status": "VIDEO",
         "src": "media/B17.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -910,7 +917,7 @@
         "status": "VIDEO",
         "src": "media/B18.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -943,7 +950,7 @@
         "status": "VIDEO",
         "src": "media/B19.mp4",
         "filled_by": "media",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -989,7 +996,7 @@
         "status": "VIDEO",
         "src": "media/B20.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1035,7 +1042,7 @@
         "status": "VIDEO",
         "src": "media/B21.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1081,7 +1088,7 @@
         "status": "VIDEO",
         "src": "media/B22.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1127,7 +1134,7 @@
         "status": "VIDEO",
         "src": "media/B23.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1175,7 +1182,7 @@
         "status": "VIDEO",
         "src": "media/B24.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1217,7 +1224,7 @@
         "status": "VIDEO",
         "src": "media/B25.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1267,7 +1274,7 @@
         "status": "VIDEO",
         "src": "media/B26.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1313,7 +1320,7 @@
         "status": "VIDEO",
         "src": "media/B27.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1367,7 +1374,7 @@
         "status": "VIDEO",
         "src": "media/B28.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1415,7 +1422,7 @@
         "status": "VIDEO",
         "src": "media/B29.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1470,7 +1477,7 @@
         "status": "VIDEO",
         "src": "media/B30.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1519,7 +1526,7 @@
         "status": "VIDEO",
         "src": "media/B31.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1567,7 +1574,7 @@
         "status": "VIDEO",
         "src": "media/B32.mp4",
         "filled_by": "remotion:GodotDevWorkbench",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1600,7 +1607,7 @@
         "status": "VIDEO",
         "src": "media/B33.mp4",
         "filled_by": "media",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1646,7 +1653,7 @@
         "status": "VIDEO",
         "src": "media/B34.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1664,7 +1671,7 @@
             "title": "Behind, below, at an angle",
             "status": "My screenshots",
             "image": "houseghost-a3/orbit-own-grid.png",
-            "imageLabel": "my orbit check: rear · bottom · angled, for each asset",
+            "imageLabel": "my orbit check: rear · bottom · angled, cropped to the 3D view",
             "excerpt": "",
             "source": "evidence/a3-orbit-*-own.png",
             "cards": [
@@ -1684,7 +1691,7 @@
           },
           "rendered": {
             "out": "media/B35.mp4",
-            "at": "2026-10-15T20:16:48.116185+00:00"
+            "at": "2026-10-15T20:50:39.627523+00:00"
           }
         }
       },
@@ -1696,14 +1703,14 @@
         "status": "VIDEO",
         "src": "media/B35.mp4",
         "filled_by": "remotion:GodotDesignFigure",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
       "beat_id": "B36",
       "act": "VERDICT",
       "role_note": "",
-      "narration_text": "The result is three game-scale props, built in a live Blender workflow, exported as `.glb`, and visible together in Godot. Their final triangle counts are 312 for the music box, 406 for the lamp, and 280 for the bookshelf.",
+      "narration_text": "The result is three game-scale props, built in a live Blender workflow, exported as `.glb`, and visible together in Godot. Their final triangle counts are 312 for the music box, 406 for the lamp, and 280 for the bookshelf — each within its own budget and the course limit of 500.",
       "shot": {
         "type": "GRAPHIC",
         "source": "remotion",
@@ -1714,31 +1721,31 @@
             "artifactTitle": "Built",
             "artifactHeading": "Three game-scale props",
             "artifactLines": [
-              "Music box — 312 triangles.",
-              "Lamp — 406 triangles.",
-              "Bookshelf — 280 triangles.",
+              "Music box — 312 triangles, budget 320.",
+              "Lamp — 406 triangles, budget 420.",
+              "Bookshelf — 280 triangles, budget 360. Course limit: 500 each.",
               "Built live in Blender, exported as .glb, shown in Godot."
             ]
           },
           "rendered": {
             "out": "media/B36.mp4",
-            "at": "2026-10-15T18:55:02.061184+00:00"
+            "at": "2026-10-15T20:46:05.995633+00:00"
           }
         }
       },
-      "estimated_duration_s": 15.0,
-      "actual_duration_s": 14.89,
+      "estimated_duration_s": 19.62,
+      "actual_duration_s": 17.56,
       "audio_file": "mp3/beat-B36.mp3",
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "The course's verdict card: short numbered lines on a white card, which the gate's ink detector cannot see against the cream stage, so it measures only the text. Not underfilled."
       },
-      "render_duration_s": 14.916666666666666,
+      "render_duration_s": 17.583333333333332,
       "build": {
         "status": "VIDEO",
         "src": "media/B36.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1780,7 +1787,7 @@
         "status": "VIDEO",
         "src": "media/B37.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1822,7 +1829,7 @@
         "status": "VIDEO",
         "src": "media/B38.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1864,7 +1871,7 @@
         "status": "VIDEO",
         "src": "media/B39.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1906,7 +1913,7 @@
         "status": "VIDEO",
         "src": "media/B40.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1947,7 +1954,7 @@
         "status": "VIDEO",
         "src": "media/B41.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -1965,11 +1972,14 @@
             "greeting": "Your turn.",
             "topic": "ONE BOUNDED CHANGE",
             "segment": "Predict First, Then Test",
-            "command": "Use Walker to improve the music box's silhouette from behind. Keep the same six-shape and 320-triangle limits. Before editing, propose one specific geometry change and predict how it will read from behind and from the left in Godot. Build it through the Blender MCP, export the `.glb`, run `check_assets.gd`, and compare real editor views from both angles. Report what improved and what still does not read."
+            "command": "Use Walker to improve the music box's silhouette from behind. Keep the same six-shape and 320-triangle limits. Before editing, propose one specific geometry change and predict how it will read from behind and from the left in Godot. Build it through the Blender MCP, export the `.glb`, run `check_assets.gd`, and compare real editor views from both angles. Report what improved and what still does not read.",
+            "modelLabel": "Opus 5.5",
+            "folderLabel": "walker-houseghost-narasimha-v",
+            "runningText": "working…"
           },
           "rendered": {
             "out": "media/B42.mp4",
-            "at": "2026-10-15T19:17:53.591497+00:00"
+            "at": "2026-10-15T20:47:23.195400+00:00"
           }
         }
       },
@@ -1981,7 +1991,7 @@
         "status": "VIDEO",
         "src": "media/B42.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     },
     {
@@ -2014,7 +2024,7 @@
         "status": "VIDEO",
         "src": "media/B43.mp4",
         "filled_by": "remotion:ClaudeTitleOutro",
-        "at": "2026-10-15T16:19:19"
+        "at": "2026-10-15T16:52:39"
       }
     }
   ]
