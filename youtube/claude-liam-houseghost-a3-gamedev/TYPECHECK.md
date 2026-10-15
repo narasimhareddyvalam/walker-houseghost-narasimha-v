@@ -1,6 +1,6 @@
 # TYPECHECK.md — GATE T
 
-Reel: `claude-liam-houseghost-a3-gamedev`  |  Checked: 2026-10-15T18:35  |  Overall: PASS  |  Beats checked: 44  |  FAILs: 0
+Reel: `claude-liam-houseghost-a3-gamedev`  |  Checked: 2026-10-15T19:20  |  Overall: PASS  |  Beats checked: 44  |  FAILs: 0
 
 Spec: `skills/make/kerning/reference/type-spec.md` §8.  Floor: 1.9% frame-height.  Contrast: 4.5:1 WCAG.  Kern threshold: 3.5× expected advance.  Wordy budget: 2 elements.
 

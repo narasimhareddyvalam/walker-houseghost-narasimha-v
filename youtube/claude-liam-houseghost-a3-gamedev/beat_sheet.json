@@ -23,7 +23,15 @@
     "blender_version": "5.2.2 LTS",
     "mcp": "mcp-for-blender 2.1.9 (add-on 1.8)",
     "teaching_contract": "code-then-result-v1",
-    "script": "SCRIPT.md"
+    "script": "SCRIPT.md",
+    "build": {
+      "at": "2026-10-15T19:29:13",
+      "cut": "master",
+      "filled": 44,
+      "of": 44,
+      "slates": [],
+      "skin_warnings": []
+    }
   },
   "beats": [
     {
@@ -54,7 +62,14 @@
       },
       "estimated_duration_s": 12.69,
       "actual_duration_s": 11.39,
-      "audio_file": "mp3/beat-B00.mp3"
+      "audio_file": "mp3/beat-B00.mp3",
+      "render_duration_s": 11.4,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B00.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B01",
@@ -91,7 +106,14 @@
         "sparse_reason": "The Walker hesitant-writer overview: the text is typed and corrected in front of the viewer, so mid-beat frames are sparse on purpose."
       },
       "actual_duration_s": 11.01,
-      "audio_file": "mp3/beat-B01.mp3"
+      "audio_file": "mp3/beat-B01.mp3",
+      "render_duration_s": 11.033333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B01.mp4",
+        "filled_by": "remotion:BrutalistHesitantWriter",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B02",
@@ -117,6 +139,13 @@
       "qc": {
         "full_bleed": true,
         "full_bleed_reason": "Real footage fitted to the whole frame, edge to edge, by design: the recording is the content."
+      },
+      "render_duration_s": 13.966666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-10-15T19:29:13"
       }
     },
     {
@@ -160,7 +189,14 @@
       },
       "estimated_duration_s": 15.38,
       "actual_duration_s": 12.82,
-      "audio_file": "mp3/beat-B03.mp3"
+      "audio_file": "mp3/beat-B03.mp3",
+      "render_duration_s": 12.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B04",
@@ -199,7 +235,14 @@
       },
       "estimated_duration_s": 16.92,
       "actual_duration_s": 13.18,
-      "audio_file": "mp3/beat-B04.mp3"
+      "audio_file": "mp3/beat-B04.mp3",
+      "render_duration_s": 13.2,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B05",
@@ -242,7 +285,14 @@
       },
       "estimated_duration_s": 18.46,
       "actual_duration_s": 16.32,
-      "audio_file": "mp3/beat-B05.mp3"
+      "audio_file": "mp3/beat-B05.mp3",
+      "render_duration_s": 16.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B06",
@@ -281,7 +331,14 @@
       },
       "estimated_duration_s": 13.46,
       "actual_duration_s": 13.06,
-      "audio_file": "mp3/beat-B06.mp3"
+      "audio_file": "mp3/beat-B06.mp3",
+      "render_duration_s": 13.066666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B07",
@@ -327,7 +384,14 @@
       },
       "estimated_duration_s": 17.69,
       "actual_duration_s": 14.89,
-      "audio_file": "mp3/beat-B07.mp3"
+      "audio_file": "mp3/beat-B07.mp3",
+      "render_duration_s": 14.9,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B08",
@@ -372,7 +436,14 @@
       },
       "estimated_duration_s": 16.92,
       "actual_duration_s": 17.17,
-      "audio_file": "mp3/beat-B08.mp3"
+      "audio_file": "mp3/beat-B08.mp3",
+      "render_duration_s": 17.2,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B09",
@@ -421,7 +492,14 @@
       },
       "estimated_duration_s": 23.46,
       "actual_duration_s": 22.38,
-      "audio_file": "mp3/beat-B09.mp3"
+      "audio_file": "mp3/beat-B09.mp3",
+      "render_duration_s": 22.4,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B09.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B10",
@@ -468,7 +546,14 @@
       },
       "estimated_duration_s": 16.15,
       "actual_duration_s": 14.98,
-      "audio_file": "mp3/beat-B10.mp3"
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 15.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B10.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B11",
@@ -515,7 +600,14 @@
       },
       "estimated_duration_s": 17.69,
       "actual_duration_s": 15.02,
-      "audio_file": "mp3/beat-B11.mp3"
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 15.033333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B11.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B12",
@@ -558,7 +650,14 @@
       },
       "estimated_duration_s": 14.23,
       "actual_duration_s": 15.55,
-      "audio_file": "mp3/beat-B12.mp3"
+      "audio_file": "mp3/beat-B12.mp3",
+      "render_duration_s": 15.566666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B12.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B13",
@@ -597,7 +696,14 @@
       },
       "estimated_duration_s": 21.15,
       "actual_duration_s": 18.97,
-      "audio_file": "mp3/beat-B13.mp3"
+      "audio_file": "mp3/beat-B13.mp3",
+      "render_duration_s": 19.0,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B13.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B14",
@@ -640,7 +746,14 @@
       },
       "estimated_duration_s": 15.77,
       "actual_duration_s": 15.64,
-      "audio_file": "mp3/beat-B14.mp3"
+      "audio_file": "mp3/beat-B14.mp3",
+      "render_duration_s": 15.666666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B14.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B15",
@@ -666,6 +779,13 @@
       "qc": {
         "full_bleed": true,
         "full_bleed_reason": "Real footage fitted to the whole frame, edge to edge, by design: the recording is the content."
+      },
+      "render_duration_s": 12.633333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B15.mp4",
+        "filled_by": "media",
+        "at": "2026-10-15T19:29:13"
       }
     },
     {
@@ -692,7 +812,14 @@
         "full_bleed_reason": "Real footage fitted to the whole frame, edge to edge, by design: the recording is the content."
       },
       "actual_duration_s": 13.21,
-      "audio_file": "mp3/beat-B16.mp3"
+      "audio_file": "mp3/beat-B16.mp3",
+      "render_duration_s": 13.233333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B16.mp4",
+        "filled_by": "media",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B17",
@@ -735,7 +862,14 @@
       },
       "estimated_duration_s": 30.0,
       "actual_duration_s": 21.12,
-      "audio_file": "mp3/beat-B17.mp3"
+      "audio_file": "mp3/beat-B17.mp3",
+      "render_duration_s": 21.133333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B17.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B18",
@@ -778,7 +912,14 @@
       },
       "estimated_duration_s": 20.0,
       "actual_duration_s": 18.69,
-      "audio_file": "mp3/beat-B18.mp3"
+      "audio_file": "mp3/beat-B18.mp3",
+      "render_duration_s": 18.7,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B18.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B19",
@@ -804,7 +945,14 @@
         "full_bleed_reason": "Real footage fitted to the whole frame, edge to edge, by design: the recording is the content."
       },
       "actual_duration_s": 18.86,
-      "audio_file": "mp3/beat-B19.mp3"
+      "audio_file": "mp3/beat-B19.mp3",
+      "render_duration_s": 18.866666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B19.mp4",
+        "filled_by": "media",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B20",
@@ -847,7 +995,14 @@
       },
       "estimated_duration_s": 16.92,
       "actual_duration_s": 13.67,
-      "audio_file": "mp3/beat-B20.mp3"
+      "audio_file": "mp3/beat-B20.mp3",
+      "render_duration_s": 13.7,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B20.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B21",
@@ -886,7 +1041,14 @@
       },
       "estimated_duration_s": 16.92,
       "actual_duration_s": 16.17,
-      "audio_file": "mp3/beat-B21.mp3"
+      "audio_file": "mp3/beat-B21.mp3",
+      "render_duration_s": 16.2,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B21.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B22",
@@ -929,7 +1091,14 @@
       },
       "estimated_duration_s": 15.38,
       "actual_duration_s": 14.36,
-      "audio_file": "mp3/beat-B22.mp3"
+      "audio_file": "mp3/beat-B22.mp3",
+      "render_duration_s": 14.366666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B22.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B23",
@@ -968,7 +1137,14 @@
       },
       "estimated_duration_s": 12.31,
       "actual_duration_s": 12.5,
-      "audio_file": "mp3/beat-B23.mp3"
+      "audio_file": "mp3/beat-B23.mp3",
+      "render_duration_s": 12.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B23.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B24",
@@ -1009,7 +1185,14 @@
       },
       "estimated_duration_s": 14.23,
       "actual_duration_s": 13.08,
-      "audio_file": "mp3/beat-B24.mp3"
+      "audio_file": "mp3/beat-B24.mp3",
+      "render_duration_s": 13.1,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B24.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B25",
@@ -1044,7 +1227,14 @@
       },
       "estimated_duration_s": 11.15,
       "actual_duration_s": 9.79,
-      "audio_file": "mp3/beat-B25.mp3"
+      "audio_file": "mp3/beat-B25.mp3",
+      "render_duration_s": 9.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B25.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B26",
@@ -1087,7 +1277,14 @@
       },
       "estimated_duration_s": 27.31,
       "actual_duration_s": 20.89,
-      "audio_file": "mp3/beat-B26.mp3"
+      "audio_file": "mp3/beat-B26.mp3",
+      "render_duration_s": 20.9,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B26.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B27",
@@ -1126,7 +1323,14 @@
       },
       "estimated_duration_s": 25.38,
       "actual_duration_s": 21.25,
-      "audio_file": "mp3/beat-B27.mp3"
+      "audio_file": "mp3/beat-B27.mp3",
+      "render_duration_s": 21.266666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B27.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B28",
@@ -1173,7 +1377,14 @@
       },
       "estimated_duration_s": 15.0,
       "actual_duration_s": 13.78,
-      "audio_file": "mp3/beat-B28.mp3"
+      "audio_file": "mp3/beat-B28.mp3",
+      "render_duration_s": 13.8,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B28.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B29",
@@ -1214,7 +1425,14 @@
       },
       "estimated_duration_s": 6.92,
       "actual_duration_s": 7.15,
-      "audio_file": "mp3/beat-B29.mp3"
+      "audio_file": "mp3/beat-B29.mp3",
+      "render_duration_s": 7.166666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B29.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B30",
@@ -1262,7 +1480,14 @@
       },
       "estimated_duration_s": 11.15,
       "actual_duration_s": 10.11,
-      "audio_file": "mp3/beat-B30.mp3"
+      "audio_file": "mp3/beat-B30.mp3",
+      "render_duration_s": 10.133333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B30.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B31",
@@ -1304,7 +1529,14 @@
       },
       "estimated_duration_s": 21.54,
       "actual_duration_s": 17.3,
-      "audio_file": "mp3/beat-B31.mp3"
+      "audio_file": "mp3/beat-B31.mp3",
+      "render_duration_s": 17.3,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B31.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B32",
@@ -1345,7 +1577,14 @@
       },
       "estimated_duration_s": 10.0,
       "actual_duration_s": 8.81,
-      "audio_file": "mp3/beat-B32.mp3"
+      "audio_file": "mp3/beat-B32.mp3",
+      "render_duration_s": 8.833333333333334,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B32.mp4",
+        "filled_by": "remotion:GodotDevWorkbench",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B33",
@@ -1371,6 +1610,13 @@
       "qc": {
         "full_bleed": true,
         "full_bleed_reason": "Real footage fitted to the whole frame, edge to edge, by design: the recording is the content."
+      },
+      "render_duration_s": 8.5,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B33.mp4",
+        "filled_by": "media",
+        "at": "2026-10-15T19:29:13"
       }
     },
     {
@@ -1410,7 +1656,14 @@
       },
       "estimated_duration_s": 13.08,
       "actual_duration_s": 13.03,
-      "audio_file": "mp3/beat-B34.mp3"
+      "audio_file": "mp3/beat-B34.mp3",
+      "render_duration_s": 13.033333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B34.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B35",
@@ -1453,7 +1706,14 @@
       },
       "estimated_duration_s": 21.15,
       "actual_duration_s": 17.64,
-      "audio_file": "mp3/beat-B35.mp3"
+      "audio_file": "mp3/beat-B35.mp3",
+      "render_duration_s": 17.666666666666668,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B35.mp4",
+        "filled_by": "remotion:GodotDesignFigure",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B36",
@@ -1488,6 +1748,13 @@
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "The course's verdict card: short numbered lines on a white card, which the gate's ink detector cannot see against the cream stage, so it measures only the text. Not underfilled."
+      },
+      "render_duration_s": 17.566666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B36.mp4",
+        "filled_by": "remotion:ClaudeVerdictArtifact",
+        "at": "2026-10-15T19:29:13"
       }
     },
     {
@@ -1523,6 +1790,13 @@
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "The course's verdict card: short numbered lines on a white card, which the gate's ink detector cannot see against the cream stage, so it measures only the text. Not underfilled."
+      },
+      "render_duration_s": 18.333333333333332,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B37.mp4",
+        "filled_by": "remotion:ClaudeVerdictArtifact",
+        "at": "2026-10-15T19:29:13"
       }
     },
     {
@@ -1558,7 +1832,14 @@
         "sparse_reason": "The course's verdict card: short numbered lines on a white card, which the gate's ink detector cannot see against the cream stage, so it measures only the text. Not underfilled."
       },
       "actual_duration_s": 24.11,
-      "audio_file": "mp3/beat-B38.mp3"
+      "audio_file": "mp3/beat-B38.mp3",
+      "render_duration_s": 24.133333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B38.mp4",
+        "filled_by": "remotion:ClaudeVerdictArtifact",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B39",
@@ -1593,6 +1874,13 @@
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "The course's verdict card: short numbered lines on a white card, which the gate's ink detector cannot see against the cream stage, so it measures only the text. Not underfilled."
+      },
+      "render_duration_s": 16.633333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B39.mp4",
+        "filled_by": "remotion:ClaudeVerdictArtifact",
+        "at": "2026-10-15T19:29:13"
       }
     },
     {
@@ -1628,6 +1916,13 @@
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "The course's verdict card: short numbered lines on a white card, which the gate's ink detector cannot see against the cream stage, so it measures only the text. Not underfilled."
+      },
+      "render_duration_s": 17.6,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B40.mp4",
+        "filled_by": "remotion:ClaudeVerdictArtifact",
+        "at": "2026-10-15T19:29:13"
       }
     },
     {
@@ -1662,6 +1957,13 @@
       "qc": {
         "sparse_by_design": true,
         "sparse_reason": "The course's verdict card: short numbered lines on a white card, which the gate's ink detector cannot see against the cream stage, so it measures only the text. Not underfilled."
+      },
+      "render_duration_s": 8.766666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B41.mp4",
+        "filled_by": "remotion:ClaudeVerdictArtifact",
+        "at": "2026-10-15T19:29:13"
       }
     },
     {
@@ -1692,7 +1994,14 @@
       },
       "estimated_duration_s": 35.0,
       "actual_duration_s": 27.34,
-      "audio_file": "mp3/beat-B42.mp3"
+      "audio_file": "mp3/beat-B42.mp3",
+      "render_duration_s": 27.366666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B42.mp4",
+        "filled_by": "remotion:ClaudeComposerAsk",
+        "at": "2026-10-15T19:29:13"
+      }
     },
     {
       "beat_id": "B43",
@@ -1718,7 +2027,14 @@
       "estimated_duration_s": 5.38,
       "kind": "outro_voice",
       "actual_duration_s": 5.65,
-      "audio_file": "mp3/beat-B43.mp3"
+      "audio_file": "mp3/beat-B43.mp3",
+      "render_duration_s": 5.666666666666667,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B43.mp4",
+        "filled_by": "remotion:ClaudeTitleOutro",
+        "at": "2026-10-15T19:29:13"
+      }
     }
   ]
 }

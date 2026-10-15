@@ -25,3 +25,12 @@ youtube/**/mp3/
 
 # Python bytecode left by Blender importing tools/blender/asset_lib.py
 __pycache__/
+
+# Brutalist toolkit build intermediates, regenerated on every compile
+youtube/**/clips/
+youtube/**/build-state.json
+youtube/**/STATUS.md
+youtube/**/ToDo.md
+youtube/**/todo.json
+youtube/**/qc-sheet.png
+youtube/**/_qc/contact_sheet.png
