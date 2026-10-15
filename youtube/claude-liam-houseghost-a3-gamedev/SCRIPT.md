@@ -107,7 +107,7 @@
 
 *Visual: open on `capture/blender-musicbox-turntable.mp4` (**Capture of my Blender session, camera driven via the MCP** — the final asset turning 360°, its numbers in the N sidebar). Then `stills/final-musicbox-4view.png` (**Captured in my Blender session via the MCP** — final version), `design/ref-musicbox-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `tools/blender/build_musicbox.py` excerpt with path and line numbers, then `evidence/a3-stats-musicbox.png`. Earlier versions are narrated, not shown.*
 
-**Liam:** “The first music box was within the limits: five basic shapes, 252 triangles, and a lid opened eighteen degrees. But it was too generic. It met the numbers without delivering the presence I wanted.”
+**Liam:** “This is the final music box. The first version was within the limits: five basic shapes, 252 triangles, and a lid opened eighteen degrees. But it was too generic. It met the numbers without delivering the presence I wanted.”
 
 “I used a generated image as a design reference, not as a mesh. The assignment allows six basic shapes, and my budget was 320 triangles, so we kept only what fits: a hollow body with a darker cavity, a raised plinth, the opened lid, a clasp, and a key with a simple oval bow in line with its shaft. The hinges, the tray-shaped lid and the holes in the key were left out to stay within those limits.”
 
@@ -119,9 +119,9 @@
 
 *Visual: open on `capture/blender-lamp-turntable.mp4` (**Capture of my Blender session, camera driven via the MCP** — the final asset turning 360°, its numbers in the N sidebar). Then `stills/final-lamp-4view.png` (**Captured in my Blender session via the MCP** — final version), `design/ref-lamp-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `tools/blender/asset_lib.py` excerpt showing the final `"emission": 0.4`, then the final lamp in `evidence/a3-showcase.png` (**Godot render**). Earlier versions are narrated, not shown.*
 
-**Liam:** “The first lamp followed the original painting: a traditional base and cone shade. I replaced it with a quieter modern silhouette — ceramic base, brass collar and broad drum shade. I revised its triangle budget from 340 to 420 before building, documenting why the curved base needed more geometry.”
+**Liam:** “This is the final lamp. The first one followed the original painting: a traditional base and cone shade. I replaced it with a quieter modern silhouette — ceramic base, brass collar and broad drum shade. I revised its triangle budget from 340 to 420 before building, documenting why the curved base needed more geometry.”
 
-“The showcase scene allows one light, so an internal lamp light was ruled out, and the lamp’s glow lives in its shade material instead.”
+“The modern reference set its shape; within six shapes, its open top became a closed shade with a brass finial. The showcase scene allows one light, so an internal lamp light was ruled out, and the lamp’s glow lives in its shade material instead.”
 
 “The first Godot import exposed a problem the Blender numbers could not: emission at 1.0 pushed the cream shade to clipped white. We lowered the source emission to 0.4, rebuilt, re-exported and re-imported. The cream returned, and the source, export and rendered result agreed.”
 
@@ -177,7 +177,7 @@
 
 “The scene uses Godot's Compatibility renderer, consistent with the main 2D project. The sky lighting was adjusted when the brass appeared almost black. That was a presentation issue the geometry checks would never catch.”
 
-“Finally, I inspected each object from the front, behind, below and at an angle. The bookshelf reads correctly, and the lamp keeps its intended silhouette and colour. The music box has no missing faces, but from behind its small key disappears visually, so it can read as an ordinary box. That remains a real design limitation.”
+“Finally, I inspected each object from behind, from below and at an angle. The bookshelf reads correctly, and the lamp keeps its intended silhouette and colour. The music box has no missing faces, but from behind its small key disappears visually, so it can read as an ordinary box. That remains a real design limitation.”
 
 ---
 
@@ -189,7 +189,7 @@
 
 “I verified the sizes, orientations, origins, object scales and colours across Blender, the exported files and Godot. I also inspected the actual renders and the assets from multiple angles. Those checks agree on the measurable properties; they cannot certify that an object reads correctly under every lighting condition.”
 
-“The revisions were substantive. I redesigned a too-simple music box, replaced the lamp silhouette, fixed a shade that clipped to white, recovered the bookshelf's rounded corners, and cleaned up my manual shelf edit. Claude also made errors in geometry selection, normals logic, exporter validation and the Godot check itself. I kept the specific failures and corrections in the test report rather than presenting the final pass as if it happened on the first try.”
+“The revisions were substantive. I redesigned a too-simple music box, replaced the lamp silhouette, fixed a shade that clipped to white, recovered the bookshelf's rounded corners, and Claude cleaned up my manual shelf edit. Claude also made errors in geometry selection, normals logic, exporter validation and the Godot check itself. I kept the specific failures and corrections in the test report rather than presenting the final pass as if it happened on the first try.”
 
 “My role was to define the game context and brief, choose and reject designs, approve builds, edit geometry in Blender, inspect the visual results and decide which tradeoffs to keep. Claude wrote and executed the modeling and checking code under that direction, with its outputs preserved for review.”
 

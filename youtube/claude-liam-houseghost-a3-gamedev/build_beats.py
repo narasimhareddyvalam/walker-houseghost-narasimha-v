@@ -122,8 +122,8 @@ add("B03", "RESULT", narr("B01", 1), figure("Three props, one remembered room",
 add("B04", "GAME", narr("B02", 0), figure("A room in two states", "My A2 art",
     "env_room_memory.png", "the remembered bedroom", "godot/assets/art/env_room_memory.png",
     [{"label": "Game", "text": "side-on 2D, Godot 4.7"}, {"label": "Verb", "text": "turn the world over"}]))
-add("B05", "GAME", narr("B02", 1), figure("Each prop has a job", "Captured in my Blender session via the MCP — final versions",
-    "final-musicbox-4view.png", "final music box", "stills/final-musicbox-4view.png",
+add("B05", "GAME", narr("B02", 1), figure("Each prop has a job", "Godot render",
+    "a3-showcase.png", "the three final props, side by side", "evidence/a3-showcase.png",
     [{"label": "Music box", "text": "calls from out of reach"}, {"label": "Lamp", "text": "warmth of memory"},
      {"label": "Bookshelf", "text": "blocks the way"}]))
 add("B06", "GAME", narr("B02", 2), figure("A separate 3D showcase", "Godot render",
@@ -197,18 +197,20 @@ add("B18", "MUSICBOX", narr("B06", 2), figure("Twelve-millimetre walls", "Captur
 add("B19", "LAMP", narr("B07", 0), clip("capture/blender-lamp-turntable.mp4",
     "Capture of my Blender session — camera driven via the MCP"))
 add("B20", "LAMP", narr("B07", 1), figure("One scene light", "ChatGPT reference — image only",
-    "ref-lamp-chatgpt.png", "the modern reference", "design/ref-lamp-chatgpt.png",
-    [{"label": "Scene", "text": "exactly one light"}, {"label": "Glow", "text": "in the shade material"}]))
+    "compare-lamp.png", "left: the reference · right: my final lamp", "design/ref-lamp-chatgpt.png · stills/final-lamp-4view.png",
+    [{"label": "Kept", "text": "pill base, drum shade, collar, foot"}, {"label": "Changed", "text": "closed top, brass finial"},
+     {"label": "Scene", "text": "one light; glow in the shade"}]))
 s, e, _ = find_lines("tools/blender/asset_lib.py", '"M_Shade_Cream":', 2)
 ex = '"M_Shade_Cream": {"hex": "#F0DCA8", …, "emission": 0.4}'
 add("B21", "LAMP", narr("B07", 2), figure("Emission 1.0 → 0.4", "Godot render",
     "a3-showcase.png", "the final lamp, cream restored", f"abbreviated from tools/blender/asset_lib.py lines {s}–{e}",
-    [{"label": "Before", "text": "clipped to white"}, {"label": "After", "text": "cream visible"}], ex))
+    [{"label": "Emission", "text": "1.0 → 0.4"}, {"label": "Result", "text": "cream visible"}], ex))
 
 # ---- B08 Bookshelf -----------------------------------------------------------------
 add("B22", "BOOKSHELF", narr("B08", 0), figure("Six boards, rounded corners", "ChatGPT reference — image only",
-    "ref-bookshelf-chatgpt.png", "the modern reference", "design/ref-bookshelf-chatgpt.png",
-    [{"label": "Boards", "text": "six"}, {"label": "Detail", "text": "rounded top corners"}]))
+    "compare-bookshelf-ref.png", "left: the reference · right: my final bookshelf", "design/ref-bookshelf-chatgpt.png · stills/final-bookshelf-4view.png",
+    [{"label": "Kept", "text": "six boards, rounded corners"}, {"label": "Changed", "text": "third shelf, back removed"},
+     {"label": "Why", "text": "my hand edit, six-board limit"}]))
 s, e, _ = find_lines("tools/blender/build_bookshelf.py", "bmesh.ops.bevel(bm, geom=top_corners", 2)
 ex = "bevel(top_corners, offset=0.03, segments=4) — before the front-edge bevel"
 add("B23", "BOOKSHELF", narr("B08", 1), figure("Order of operations", "Captured in my Blender session via the MCP — final version",

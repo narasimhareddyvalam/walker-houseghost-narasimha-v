@@ -48,6 +48,13 @@ save(side_by_side((Image.open(REPO / "design/ref-musicbox-chatgpt.png"), "ChatGP
                   (Image.open(REEL / "stills/final-musicbox-4view.png"), "My final build in Blender")),
      "compare-musicbox.png")
 
+save(side_by_side((Image.open(REPO / "design/ref-bookshelf-chatgpt.png"), "ChatGPT reference — image only"),
+                  (Image.open(REEL / "stills/final-bookshelf-4view.png"), "My final build (A3-8)")),
+     "compare-bookshelf-ref.png")
+save(side_by_side((Image.open(REPO / "design/ref-lamp-chatgpt.png"), "ChatGPT reference — image only"),
+                  (Image.open(REEL / "stills/final-lamp-4view.png"), "My final build (A3-4)")),
+     "compare-lamp.png")
+
 # Orbit check: each of my nine Godot screenshots cropped to the middle of its 3D viewport.
 f = ImageFont.truetype(FONT, 40)
 W, H = 1120, 520
