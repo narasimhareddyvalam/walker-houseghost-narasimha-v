@@ -165,3 +165,61 @@ with no teleporting and no seeded state, carrying the game's own audio. Every cl
 labelled on screen as a scripted-input capture, and the stretches that hold a final
 frame say so. The capture's SHA-256 and the hash of every source file it displays are
 in `youtube/claude-liam-houseghost-gamedev/`.
+
+---
+
+# Assignment 3 — first 3D assets
+
+**Blender** 5.2.2 LTS · **Godot** 4.7.2.stable.official.ed1daf0bf (Compatibility renderer) · **MCP** `mcp-for-blender` 2.1.9 · macOS 26.6.2, Apple Silicon · branch `a3-first-3d-assets`
+
+Every number below comes from a command run in this session; the raw outputs are in `evidence/a3-check-assets.txt` and `evidence/a3-inspect-glb.txt`.
+
+| # | Check | Result | Evidence |
+|---|---|---|---|
+| 1 | Interface notes | **Not done yet** — `BLENDER-NOTES.md` and my own Blender screenshot are still to be made | — |
+| 2 | Size | **Pass.** Brief, Blender and Godot agree to the millimetre for all three (table below) | `get_scene_info` after every object; `check_assets.gd` |
+| 3 | Upright and scale | **Pass.** Height lies along Y for all three; every node's scale is 1, 1, 1 in Godot; no rotation or scale on any node in the `.glb` | `check_assets.gd`; `inspect_glb.py` |
+| 4 | Origin | **Pass.** Lowest point y = 0.0000 for all three; in the render each stands on the floor with its contact shadow at its base | `check_assets.gd`; `evidence/a3-showcase.png` |
+| 5 | Triangle count | **Pass.** 312 / 320, 406 / 420, 296 / 360 — all under the course's 500. Counted from mesh data and from the exported index buffers, which agree; not read from Blender's status bar | build-script output; `inspect_glb.py` |
+| 6 | Imports and appears | **Pass.** `--import` exits 0 with no errors or warnings; the scene loads with all nine nodes and exactly one `Light3D`, and all three render | `evidence/a3-showcase.png` |
+| 7 | HUMAN CHECK: look | **Not done yet** — orbiting each asset from behind and below in the editor is mine to do | — |
+| 8 | What Claude got wrong | Ten things, all caught before they shipped (list below) | `FRICTIONAL.md` |
+
+### Size: three sources side by side (metres, W × D × H)
+
+| Asset | Brief (as revised) | Blender | Godot bounding box (x × z × y) |
+|---|---|---|---|
+| MusicBox | 0.316 × 0.190 × 0.297 (A3-2) | 0.316 × 0.19 × 0.2968 | 0.3160 × 0.1900 × 0.2968 |
+| BedsideLamp | 0.28 × 0.28 × 0.42 (A3-4) | 0.28 × 0.28 × 0.42 | 0.2800 × 0.2800 × 0.4200 |
+| Bookshelf | 0.64 × 0.30 × 1.00 (A3-5) | 0.64 × 0.30 × 1.00 | 0.6400 × 0.3000 × 1.0000 |
+
+### What the automated check does and does not show
+
+`check_assets.gd` shows that each asset arrived at the size, orientation and scale measured in Blender, with its origin at its base. It was run against a deliberately wrong expected height and reported FAIL with exit 1, so it can fail. It does **not** show that anything looks right: colour on screen, shading, or whether an asset reads as what it is. "Lowest point at y = 0" is a property of the mesh bounds, not a test of contact with a floor. The first version of the check failed all three assets for a reason that had nothing to do with them (below), which is the clearest evidence that a check proves only what it measures.
+
+### What Claude got wrong
+
+1. Proposed a key bow at right angles to the shaft, like a T-handle; a butterfly key's bow lies in the plane of its shaft. Fixed in revision A3-2.
+2. Its test for the music box's inner walls caught only the floor (`cavity faces 1`). Replaced with a bounds test (`cavity faces 5`) before the live build.
+3. Its normals check assumed convex parts and would have failed the hollow box's correctly inward-facing walls. Replaced with consistent winding plus positive signed volume.
+4. Its lamp-shade check read the wrong face as the cap ("cap normal z +0.20"), then miscounted sides (24 / 25) by comparing Blender faces by identity. Both fixed before the live build.
+5. Proposed a light inside the lamp, which would have broken the scene's one-light rule. Withdrawn before building.
+6. Logged the live calls only by reference at first; the assignment asks for every call body in the build script. Added verbatim, retroactively for the music box.
+7. Its exporter guard read the glTF format list before export, which is always empty; the script stopped itself. Removed.
+8. Its first Godot check used `global_transform` outside the scene tree and failed all nine assertions on correct assets. Rewritten to compose transforms itself.
+9. Chose emission 1.0 for the lamp shade, which clipped to white in Godot. Lowered to 0.4 (A3-6).
+10. Its first showcase light was too orange and its camera framed the assets badly. Retuned.
+
+### Inspect-and-revise cycles driven by observation
+
+- **The lamp shade (A3-6).** Observation: in the first render the shade was pure white and its cream was gone. Cause: emission plus lighting above white. Change: emission 1.0 → 0.4 in the shared library; lamp rebuilt, re-exported, re-imported. Result: the cream shows in the second render.
+- **The brass.** Observation: the key, collar and finial read near-black. Cause: metal shows its colour by reflection and the sky was too dim to reflect. Change: sky reflection energy raised; the background stays dark. Result: the brass reads gold.
+- **The music box's key (A3-1).** Observation in Blender: a 35 mm bow on a 268 mm box, about 9 px at game scale. Change: bow enlarged to 50 × 40 mm at no triangle cost.
+
+### Honest limitations
+
+- Checks 1 and 7 are not done; both are mine.
+- Compatibility renderer: no ambient occlusion or screen-space reflections. The brighter sky lifts the woods slightly above their hex values.
+- The music box's key is hidden from behind and to the left.
+- No other person has looked at the scene; no viewer is invented here.
+

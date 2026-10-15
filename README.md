@@ -8,6 +8,50 @@
 
 You play the ghost of a boy the world believes ran away, in the bedroom a new family has just emptied out. Flip between the room as they see it — stripped, grey, boxed up — and the room as you remember it, upside down and lamplit, to reach across and be seen. Every contact tears a day off the calendar toward the anniversary of the night you "ran," and the only adult in the house who believes in ghosts is the man who made you one.
 
+## Assignment 3 — first 3D assets
+
+**CSYE 7270 Assignment 3 — Your First 3D Game Assets with Claude, the Blender MCP, and Blender.**
+**Godot** 4.7.2.stable.official.ed1daf0bf · **Blender** 5.2.2 LTS · **MCP** `mcp-for-blender` 2.1.9 (add-on 1.8) · macOS 26.6.2, Apple Silicon
+
+Three props from the game's remembered bedroom, built from Blender primitives through the MCP, exported as binary glTF and placed side by side in a Godot 3D scene at true scale (1 m = 250 px, anchored on the boy).
+
+| Asset | What it is for in the game | Size (m) | Shapes | Triangles |
+|---|---|---|---|---|
+| **MusicBox** | The first relic — visible from spawn, calling across the level | 0.316 × 0.190 × 0.297 | 6 | 312 / 320 |
+| **BedsideLamp** | The warm light that makes the remembered room look safe | 0.28 × 0.28 × 0.42 | 6 | 406 / 420 |
+| **Bookshelf** | His bookshelf — solid only in the memory, the half of the mechanic that forces the flip | 0.64 × 0.30 × 1.00 | 6 | 296 / 360 |
+
+**Open the scene:** `godot/scenes/AssetShowcase.tscn` — floor, one light, one camera, the three assets, a 1 m reference cube and the boy's 1.00 m collision capsule.
+
+**Run the check** (on macOS `godot` is `/Applications/Godot.app/Contents/MacOS/Godot`; `timeout` is Homebrew coreutils):
+
+```bash
+godot --headless --path godot --import
+timeout 120 godot --headless --path godot --script res://tests/check_assets.gd --fixed-fps 60
+```
+
+It prints, per asset, the bounding-box size beside the brief, every node's scale, the axis its height lies along and its lowest point, then `RESULT: PASS` and exit 0 — or the failures and exit 1. What it does **not** prove is written at the top of the script: nothing about how an asset looks, and nothing about floor contact.
+
+**Rebuild an asset from nothing** (the script route, no window):
+
+```bash
+/Applications/Blender.app/Contents/MacOS/Blender -b --factory-startup --python-exit-code 1 --python tools/blender/build_musicbox.py
+/Applications/Blender.app/Contents/MacOS/Blender -b blender/musicbox.blend --python-exit-code 1 --python tools/blender/export_glb.py -- godot/assets/models/musicbox.glb
+```
+
+(`build_lamp.py` and `build_bookshelf.py` the same way.) `python3 tools/inspect_glb.py godot/assets/models/*.glb` reads the exported files directly and prints their nodes, bounds, triangles and colours as sRGB hex.
+
+**What this assignment added:** `blender/` (one `.blend` per asset), `tools/blender/` (one build script per asset, every live call body logged verbatim at its end, the shared five-material library and the exporter), `godot/assets/models/` (three `.glb` with their `.import` files), `godot/scenes/AssetShowcase.tscn`, `godot/tests/check_assets.gd`, and the change brief, test report, Frictional log and sources sections for Assignment 3.
+
+**Known limitations**
+- The lamp is modern and 0.28 m wide; the lamp in my 2D painting is traditional. Recorded in revision A3-4.
+- The project uses Godot's Compatibility renderer (chosen for the 2D game): no ambient occlusion, no screen-space reflections. The brighter sky that makes the brass read also lifts the woods slightly above their hex values.
+- The music box's key is on its right side; from behind and to the left it is hidden.
+- Close up, the 12-sided lamp base shows facets on its outline.
+- The art disagrees with itself about scale (250 px/m on the boy, ~300 px/m on the door); the assets follow the boy.
+
+**Final film:** to be linked here with its filename and SHA-256 once rendered and watched.
+
 ## Run it
 
 Requires Godot 4.7.x. No plugins, no .NET, no downloaded dependencies.

@@ -177,6 +177,17 @@ README.md and SUBMISSION.md.
 No generated imagery appears in the film that is not already an asset of the game or
 a rejected take of one.
 
+## Assignment 3 — tools and versions
+
+| Tool | Version | Used for |
+|---|---|---|
+| Blender | 5.2.2 LTS (build 2026-09-15), macOS Apple Silicon | Building all three assets; headless rebuilds and exports |
+| MCP for Blender | `mcp-for-blender` 2.1.9 (server, via `uvx`), add-on 1.8, protocol 13 | Driving my live Blender from Claude Code: `get_scene_info`, `execute_blender_code`, `look`. Every download and generation service left off; `generate_3d`, `search_assets` and `import_asset` never called |
+| glTF exporter | Khronos glTF Blender I/O v5.2.40 (bundled with Blender) | Binary `.glb`, +Y Up, `tools/blender/export_glb.py` |
+| Godot | 4.7.2.stable.official.ed1daf0bf, Compatibility renderer | Import, the showcase scene, the headless check |
+| Claude Code | Claude Opus 5.5 | Build scripts, checks, documents and prompts, working with me; every commit carries its co-author line |
+| uv / coreutils | uv 0.13.1; GNU coreutils `timeout` | Running the MCP server; stopping a check that hangs |
+
 ## Assignment 3 — 3D asset references
 
 Generated images used as **visual references only**. No mesh in this assignment was generated,
