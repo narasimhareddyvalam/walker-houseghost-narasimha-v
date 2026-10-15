@@ -39,6 +39,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | Which lamp reference to use | Wrote the first ChatGPT prompt: a realistically lit lamp from at most six simple shapes, flat colours | "chatgpt didnt give me what i like, it gave me too old styles" — **I rejected those results, regenerated it myself, and chose the one I liked** | **My call, made outside this session.** The chosen image becomes REF-LAMP-3D once it is in the repository; the rejected takes are recorded as rejected, as the A2 asset log does |
 | The lamp's triangle budget | The modern design needs ~406; offered raising the budget to 420 before building, or fitting 340 by dropping the collar and the rounding | **Raise to 420** | **My choice.** Declared in revision A3-4 before building, with the reason; still under the course limit of 500 |
 | Committing the ChatGPT screenshot | Recorded the two follow-up prompts from it as text, and did not commit the image | — | It shows unrelated personal browser tabs and chat titles; the prompts are what `SOURCES.md` needs |
+| The bookshelf's sixth shape | A back panel, reading the art's dark interior as a back in shadow; the brief had kept the spare for a plinth | "Yes go ahead with the bookshelf" | **Approved.** Recorded as revision A3-5; the brief's size is kept exactly |
 
 ## Entries
 
@@ -361,4 +362,29 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** I am happy with it. It matches the reference well enough to move on.
 
 - **Evidence and next step:** Evidence: `design/ref-lamp-chatgpt.png`; `SOURCES.md` rows REF-LAMP-3D-01, -02 and REF-LAMP-3D; `CHANGE-BRIEF.md` revision A3-4; `tools/blender/build_lamp.py` with its call log; `blender/lamp.blend`. Next step: the bookshelf.
+
+### 2026-10-14 — The bookshelf, built to the brief's exact size
+
+- **Date and what I was working on:** 2026-10-14, the third and last asset.
+
+- **I tried / expected:** The bookshelf from my own A2 art at the brief's size, with the same standard as the music box and lamp.
+
+- **What happened:** It built cleanly, first time, at exactly the specified size:
+
+  ```
+  asset min [-0.32, -0.15, 0.0] max [0.32, 0.15, 1.0] size [0.64, 0.3, 1.0]
+  tris 296 / 360 | objects 6 / 6
+  every part: rot (0,0,0) scale (1,1,1) non-manifold 0 inconsistent-winding 0 signed volume outward
+  coplanar faces between parts: 11, all facing each other (hidden joints), 0 facing the same way
+  ```
+
+  Two things in the first images looked like faults and were checked rather than assumed. A zig-zag along the low shelf's front edge was the image being scaled down — close up the edge is clean. Lighter rectangles on the back panel were Material Preview's reflections. A scan of every pair of faces found no two in the same plane facing the same way, which is what z-fighting needs.
+
+- **What I did:** Approved the build with a back panel as the sixth shape, holding it to the same checks as the other two assets.
+
+- **What Claude or another person contributed:** Claude read the art's dark interior as a back panel and proposed it, built the six boards, checked for a hand edit before clearing the lamp, and wrote the coplanar-face scan to rule out z-fighting.
+
+- **What I understand now / still do not understand:** All three assets are now built. What none of the Blender checks can show is how they look at game scale beside each other and lit — that is the Godot scene.
+
+- **Evidence and next step:** Evidence: `tools/blender/build_bookshelf.py` with its call log; `blender/bookshelf.blend`; `CHANGE-BRIEF.md` revision A3-5; the four-view `look` image. Next step: export all three as binary glTF.
 

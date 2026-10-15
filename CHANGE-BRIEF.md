@@ -347,3 +347,19 @@ design does not fit 340. I chose to raise the budget to 420 **before building**,
 recorded, rather than drop the collar and the rounding to stay under it. It remains under the
 course limit of 500. This is a design revision, not the overshoot that prediction 4 is about.
 
+**A3-5 — 2026-10-14, Bookshelf: built to the brief's size, with a back panel as the sixth shape.**
+The overall size is exactly as specified, **0.64 × 0.30 × 1.00 m**, and the height is still the
+boy's 1.00 m collision capsule. The reference stays my own `prop_shelf.png`.
+
+| | Original spec | A3-5 | Why |
+|---|---|---|---|
+| Shapes | 5, open-backed, one spare | **6**: top, two sides, two shelves, **`BS_Back`** | The "dark interior" in the art is a back panel in shadow. A back also makes it read as furniture from behind, which is where the Godot orbit check looks from |
+| Top | 0.64 wide, 2 cm overhang each side | Same, plus 1 cm front and back; 0.025 thick, 2-segment bevel | The most-seen edge |
+| Sides | — | 0.02 × 0.28 × 0.975 m, standing on the floor | Their lower ends are the legs |
+| Shelves | Two interior shelves | 0.56 × 0.264 × 0.02 m at **6 cm** and **50 cm**, set back 1 cm, `M_Wood_Dark` | The art shows the lowest shelf raised off the floor on the sides |
+| Triangles | Estimate 306, budget 360 | **296**, budget unchanged | — |
+
+Where boards meet, their faces touch exactly; a check over every face of every part found
+eleven such contacts, all facing each other and hidden inside the joints, and no two faces
+in the same plane facing the same way — so nothing can z-fight.
+
