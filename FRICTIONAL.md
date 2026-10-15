@@ -56,6 +56,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | The 24 images for submission | Listed every A3 image with what it shows, which requirement it serves and who captured it; opened them in Preview | Reviewed them: "photos are good i guess" | **Approved by me** for the repository and the film, before any push |
 | One hand edit or three | One meets the requirement ("at least one change by hand"); more earns nothing and costs a re-export and re-check per asset | Asked whether all three assets needed one | **One — the third shelf.** The music box's weak back view stays a recorded limitation |
 | A prompt to Claude, and what it built | My terminal screenshot of "yes go ahead with the bookshelf" and Claude's build plan, paired with Blender's four-view image of the bookshelf that prompt produced (A3-5, before my rebuild and hand edit) | Took the screenshot myself | **For the film's prompt-and-result beat.** `evidence/a3-prompt-to-claude-own.png`, `evidence/a3-prompt-result-bookshelf-a3-5.png` |
+| The film's script, before any video | Drafted `SCRIPT.md` against the assignment's film requirements, with a requirement-to-beat table, every image labelled by who made it, and every claim traced to a file or command | "Before generating the video, I want the video script … professional and technical and add our work properly" | **My review gate.** No narration or render until I approve the script |
 
 ## Entries
 
