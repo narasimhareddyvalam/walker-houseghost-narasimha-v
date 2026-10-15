@@ -342,6 +342,16 @@ if old_path.exists():
         ro, rn = (o or {}).get("shot", {}).get("remotion"), b["shot"].get("remotion")
         if ro and rn and "rendered" in ro and {k: v for k, v in ro.items() if k != "rendered"} == rn:
             rn["rendered"] = ro["rendered"]
+# Per-beat declarations for the course's visual gate (runtime/qc/final_frame_check.py), each
+# with its reason, so a reviewer can read why a check is waived for that beat and no other.
+FOOTAGE = "Real footage fitted to the whole frame, edge to edge, by design: the recording is the content."
+SPARSE = ("The course's verdict card: short numbered lines on a white card, which the gate's ink "
+          "detector cannot see against the cream stage, so it measures only the text. Not underfilled.")
+for b in beats:
+    if b["shot"]["type"] == "source-cut":
+        b["qc"] = {"full_bleed": True, "full_bleed_reason": FOOTAGE}
+    elif (b["shot"].get("remotion") or {}).get("pattern") == "ClaudeVerdictArtifact":
+        b["qc"] = {"sparse_by_design": True, "sparse_reason": SPARSE}
 old_path.write_text(json.dumps(sheet, indent=1, ensure_ascii=False) + "\n")
 words = sum(len(b["narration_text"].split()) for b in beats)
 print(f"{len(beats)} beats · {words} narrated words · ~{words / WPS / 60:.1f} min estimated")
