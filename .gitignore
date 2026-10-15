@@ -22,3 +22,6 @@ youtube/**/capture/*.avi
 youtube/**/media/
 youtube/**/exports/
 youtube/**/mp3/
+
+# Python bytecode left by Blender importing tools/blender/asset_lib.py
+__pycache__/
