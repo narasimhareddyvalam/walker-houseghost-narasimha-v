@@ -180,7 +180,7 @@ Every number below comes from a command run in this session; the raw outputs are
 | 2 | Size | **Pass.** Brief, Blender and Godot agree to the millimetre for all three (table below) | `get_scene_info` after every object; `check_assets.gd` |
 | 3 | Upright and scale | **Pass.** Height lies along Y for all three; every node's scale is 1, 1, 1 in Godot; no rotation or scale on any node in the `.glb` | `check_assets.gd`; `inspect_glb.py` |
 | 4 | Origin | **Pass.** Lowest point y = 0.0000 for all three; in the render each stands on the floor with its contact shadow at its base | `check_assets.gd`; `evidence/a3-showcase.png` |
-| 5 | Triangle count | **Pass.** 312 / 320, 406 / 420, 296 / 360 — all under the course's 500. Counted from mesh data and from the exported index buffers, which agree; not read from Blender's status bar | build-script output; `inspect_glb.py` |
+| 5 | Triangle count | **Pass.** 312 / 320, 406 / 420, 248 / 360 — all under the course's 500. Counted from mesh data and from the exported index buffers, which agree; not read from Blender's status bar | build-script output; `inspect_glb.py` |
 | 6 | Imports and appears | **Pass.** `--import` exits 0 with no errors or warnings; the scene loads with all nine nodes and exactly one `Light3D`, and all three render | `evidence/a3-showcase.png` |
 | 7 | HUMAN CHECK: look | **Not done yet** — orbiting each asset from behind and below in the editor is mine to do | — |
 | 8 | What Claude got wrong | Ten things, all caught before they shipped (list below) | `FRICTIONAL.md` |
@@ -191,7 +191,7 @@ Every number below comes from a command run in this session; the raw outputs are
 |---|---|---|---|
 | MusicBox | 0.316 × 0.190 × 0.297 (A3-2) | 0.316 × 0.19 × 0.2968 | 0.3160 × 0.1900 × 0.2968 |
 | BedsideLamp | 0.28 × 0.28 × 0.42 (A3-4) | 0.28 × 0.28 × 0.42 | 0.2800 × 0.2800 × 0.4200 |
-| Bookshelf | 0.64 × 0.30 × 1.00 (A3-5) | 0.64 × 0.30 × 1.00 | 0.6400 × 0.3000 × 1.0000 |
+| Bookshelf | 0.64 × 0.30 × 1.00 (A3-7) | 0.64 × 0.30 × 1.00 | 0.6400 × 0.3000 × 1.0000 |
 
 ### What the automated check does and does not show
 
@@ -209,11 +209,14 @@ Every number below comes from a command run in this session; the raw outputs are
 8. Its first Godot check used `global_transform` outside the scene tree and failed all nine assertions on correct assets. Rewritten to compose transforms itself.
 9. Chose emission 1.0 for the lamp shade, which clipped to white in Godot. Lowered to 0.4 (A3-6).
 10. Its first showcase light was too orange and its camera framed the assets badly. Retuned.
+11. Its first filter for the bookshelf's corner edges also matched the edges running front-to-back across the top; its own assertion stopped the build before any geometry was made.
+12. It bevelled the bookshelf's front edges before rounding the corners, so Blender's overlap clamp shrank the 3 cm rounding to about 3 mm and the corners came out square — with every numeric check still passing. Caught only by looking at the views; the corners are now rounded first, and a check asserts the front face stops at 0.97 m.
 
 ### Inspect-and-revise cycles driven by observation
 
 - **The lamp shade (A3-6).** Observation: in the first render the shade was pure white and its cream was gone. Cause: emission plus lighting above white. Change: emission 1.0 → 0.4 in the shared library; lamp rebuilt, re-exported, re-imported. Result: the cream shows in the second render.
 - **The brass.** Observation: the key, collar and finial read near-black. Cause: metal shows its colour by reflection and the sky was too dim to reflect. Change: sky reflection energy raised; the background stays dark. Result: the brass reads gold.
+- **The bookshelf's corners (A3-7).** Observation: in the first views of the rebuild the side panels' top corners were square, though every numeric check passed. Cause: bevel order. Change: corners rounded first, plus a check that the front face stops 3 cm below the top. Result: rounded corners, front face top at 0.9700 m.
 - **The music box's key (A3-1).** Observation in Blender: a 35 mm bow on a 268 mm box, about 9 px at game scale. Change: bow enlarged to 50 × 40 mm at no triangle cost.
 
 ### Honest limitations

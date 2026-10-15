@@ -43,6 +43,8 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | Fixing the white-out shade | Lower the emission at the source and rebuild, rather than override the material in Godot | — | So the `.blend`, its build script and the `.glb` still agree. Revision A3-6 |
 | Renderer for the showcase | Leave the project on Godot's Compatibility renderer, which has no SSAO or screen-space reflections | — | Changing it would change the whole 2D game. The realism comes from sky reflections, shadows and tonemapping instead; recorded as a limitation |
 | How the Blender-window screenshot was taken | macOS refused a terminal capture (no Screen Recording permission), so the shot was taken inside my own running session with Blender's own Window › Save Screenshot operator, `bpy.ops.screen.screenshot`, after selecting `BS_Shelf_Mid` | Asked for it to be taken for me | **Recorded as taken through the MCP, in my session**, and kept as `evidence/a3-blender-window-mcp.png`. I then took my own screenshot with the N sidebar open on its Item tab showing the shelf's dimensions; that one is `evidence/a3-blender-window.png`. The hand edit and the orbit check are kept for the end, by my choice |
+| A more realistic bookshelf | A ChatGPT prompt for a modern piece built from exactly six boards, then a follow-up asking for small realistic details within that limit | "I want more realistic, let's generate a photo", then "tell it to add small realistic details unique style, modern" | **My direction.** I sent the follow-up and chose the image |
+| The bookshelf's design | Thick sides rising above an inset top, rounded corners, shelves at a third and two-thirds, open bottom bay, inset back — all six boards, 248 triangles | "Yes, build it" | **Approved.** Revision A3-7; the overall size and the 1.00 m height are unchanged |
 
 ## Entries
 
@@ -414,4 +416,30 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** A check that passes proves only what it measures, and this one nearly proved the opposite of the truth. What it cannot show at all is whether the assets read as what they are from behind and below; that is the orbit check, still to be done in the editor.
 
 - **Evidence and next step:** Evidence: `evidence/a3-inspect-glb.txt`, `evidence/a3-check-assets.txt`, `evidence/a3-showcase.png`; `godot/tests/check_assets.gd`; `godot/scenes/AssetShowcase.tscn`; `CHANGE-BRIEF.md` revision A3-6. Next step: the test report and the remaining documents.
+
+### 2026-10-14 — The bookshelf rebuilt as a modern piece: a passing check that was still wrong
+
+- **Date and what I was working on:** 2026-10-14, the third asset, rebuilt from a modern reference to match the standard of the other two.
+
+- **I tried / expected:** A bookshelf like `design/ref-bookshelf-chatgpt.png`: thick sides with rounded top corners rising above the top board, two shelves, an open bottom bay, a darker inset back.
+
+- **What happened:** The final build matches it:
+
+  ```
+  asset min [-0.32, -0.15, 0.0] max [0.32, 0.15, 1.0] size [0.64, 0.3, 1.0]
+  tris 248 / 360 | objects 6 / 6
+  every part: rot (0,0,0) scale (1,1,1) non-manifold 0 inconsistent-winding 0 signed volume outward
+  side panels: rounded corners 2, front edges 2, front face top z = 0.9700 (expect 0.9700)
+  Godot: bbox (0.6400, 1.0000, 0.3000), height along Y, lowest point 0.0000 — RESULT: PASS
+  ```
+
+  Getting there took three corrections, all Claude's, all caught before the result was accepted. Its first filter for the corner edges matched the wrong edges, and its own assertion stopped the build. Then the first live build **passed every numeric check with square corners** — the signature detail of the reference was missing, and only the views showed it. The cause was bevel order: softening the front edges first let Blender's overlap clamp shrink the 3 cm rounding to about 3 mm. With the corners rounded first, a new check asserts the front face stops 3 cm below the top; on its first run that check failed on its own arithmetic (it compared a centred mesh's local height with a world height), and was corrected to read 0.9700 m.
+
+- **What I did:** Asked for a more realistic bookshelf, directed the reference toward small realistic details and a unique modern style within six boards, and approved the design.
+
+- **What Claude or another person contributed:** Both ChatGPT prompts; reading the reference into six boards; the build; the three fixes; the export, the re-check in Godot and the new showcase render.
+
+- **What I understand now / still do not understand:** This is the clearest case so far of a check proving less than it seems to. Size, scale, orientation and normals were all correct, and the asset was still not the one specified. Looking at it is a check in its own right.
+
+- **Evidence and next step:** Evidence: `design/ref-bookshelf-chatgpt.png`; `SOURCES.md` row REF-BOOKSHELF-3D; `CHANGE-BRIEF.md` revision A3-7; `tools/blender/build_bookshelf.py` and its call log; `blender/bookshelf.blend`; `godot/assets/models/bookshelf.glb`; `evidence/a3-check-assets.txt`, `evidence/a3-inspect-glb.txt`, `evidence/a3-showcase.png`.
 
