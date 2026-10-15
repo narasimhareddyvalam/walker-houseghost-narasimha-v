@@ -4,7 +4,7 @@
 
 The method is the one I set on the first day of Assignment 2 and have not changed: **Claude proposes, I attack, and whatever survives is the game.** I ask it to argue back rather than agree, because an assistant that agrees with everything is worth nothing on a project I have to defend myself.
 
-Entries are dated and in order, written as the work happened. Nothing is rewritten after the fact; where a decision is reversed later, the reversal is its own entry rather than an edit to the original. Claude drafts the factual spine of an entry from the session it was present for; the judgements are mine, and anything still marked `[TO FILL]` is a gap I have not closed rather than a claim I am making.
+Entries are dated and in order, written as the work happened. Nothing is rewritten after the fact; where a decision is reversed later, the reversal is its own entry rather than an edit to the original. Claude drafts the factual spine of an entry from the session it was present for; the judgements are mine, and anything still marked `[TO FILL]` is a gap I have not closed rather than a claim I am making. Where I gave a judgement by choosing between options Claude put to me, Claude wrote the sentence from my choice; the choice is mine.
 
 **Assignment 2's log** stays in the course repository at `fall-2026/narasimha-v/assignment-2/FRICTIONAL.md`. It did not travel when this game moved into its own repository on 2026-10-14. This file begins at Assignment 3.
 
@@ -56,7 +56,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
   Two things went wrong on the way. Claude created the new repository under `narasimhareddyvalamm` because that was the account `gh` reported as active; it should have asked, and I deleted the empty repo myself. Then the split exposed a gap I did not know existed: the game folder's own `.gitignore` never excluded `*.wav`, because the *course* repository's root ignore file had quietly been doing that job the whole time. Standing alone, the game would have begun committing WAV audio immediately, and `.blend1` backups the moment Assignment 3 starts — which the brief explicitly says not to commit.
 
-- **What I did:** I set the two constraints that shaped the session before anything ran: do not lose Assignment 2, and never commit the assignment prompt. I rejected the account Claude had chosen. And when it started executing a plan I had agreed to without restating what the command would do, I stopped it mid-action and made stating intent first the rule — an agreed plan is not a standing permission to act unannounced. `[TO FILL — anything else you pushed back on today]`
+- **What I did:** I set the two constraints that shaped the session before anything ran: do not lose Assignment 2, and never commit the assignment prompt. I rejected the account Claude had chosen. And when it started executing a plan I had agreed to without restating what the command would do, I stopped it mid-action and made stating intent first the rule — an agreed plan is not a standing permission to act unannounced. Nothing else: those were all the points I pushed back on that day.
 
 - **What Claude or another person contributed:** Claude found the tag-collision argument, which is the reason the move was necessary rather than merely tidy. It offered both seeding routes with the trade-off stated and recommended `git subtree split`, which carried all 73 commits across with the game at the root. It took the 432 MB backup bundle unprompted once I raised the risk, used read-only operations throughout, pushed only to the new repository, and verified afterwards that the course repo was untouched. It caught the `*.wav` and `*.blend1` ignore gap. It read the Assignment 2 Godot project to recover the scale anchors below. And it argued itself out of its own first instinct on the asset list. The constraints, the account correction and the acceptances were mine.
 
@@ -110,7 +110,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
   Worth recording separately: **that command exited 0.** It printed a failure and reported success to the shell. The brief warns about exactly this shape of trap with Blender's `--python-exit-code 1`, and it turns out to apply here too — a script that chained these steps would have carried on as though the add-on were installed.
 
-- **What I did:** I did not reach for `BLENDERMCP_ADDONS_DIR` or install `addon.py` by hand, which is what the error suggests. Both would have papered over a one-line cause. The fix is to open Blender once, which I have to do anyway for the "Learn the window" session, and then re-run the installer. `[TO FILL — your own reaction to the chapter's commands not working]`
+- **What I did:** I did not reach for `BLENDERMCP_ADDONS_DIR` or install `addon.py` by hand, which is what the error suggests. Both would have papered over a one-line cause. The fix is to open Blender once, which I have to do anyway for the "Learn the window" session, and then re-run the installer. I was not surprised. Tools change between versions, and I expected some of the chapter's setup to break on a newer machine than the one it was written on.
 
 - **What Claude or another person contributed:** Claude ran both commands, read `claude mcp add --help` rather than guessing at the syntax, diagnosed the variadic `-e` as the cause of the first failure, checked for the Blender user directory rather than assuming the add-on installer was broken, and noticed the exit-0 behaviour. The decision not to force the add-on path manually was mine.
 
@@ -168,7 +168,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
   Blender   79619  narasimhareddyvalam 8u  IPv4  TCP 127.0.0.1:9876 (LISTEN)
   ```
 
-  Bound to `127.0.0.1`, not `0.0.0.0` — reachable only from this machine. `[TO FILL — your own note on running an unauthenticated socket, and when you intend to switch the add-on off]`
+  Bound to `127.0.0.1`, not `0.0.0.0` — reachable only from this machine. I will switch the add-on off in Preferences at the end of every session, as the brief's safety note advises, and turn it on again only when I am working with Claude in Blender.
 
 - **What Claude or another person contributed:** Claude refused to act on the plausible explanation. It queried `bpy.utils.script_paths(subdir='addons')` to establish where Blender looks before arguing about whether the path was wrong, then ran `addon_utils.enable()` in a headless Blender to separate "the add-on is broken" from "my session is stale". Two commands, and the answer came back unambiguous. The decision to stop and check rather than start moving files was its call, and the right one.
 
@@ -280,7 +280,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **What Claude or another person contributed:** Claude identified that "realistic" in the textured sense would break the flat-colour rule, wrote both ChatGPT prompts, chose what to take from the image and what to leave and why, proposed baking weighted normals for rounded-edge shading at no triangle cost, corrected its own key-bow orientation (the first bow was at right angles to the shaft, like a T-handle), and found and fixed both of its own check errors before the live build. The judgement that the first build was too plain was mine.
 
-- **What I understand now / still do not understand:** After orbiting the rebuild in Blender: "yes lets go to next. i am happy with this one." `[TO FILL — optional: whether "realistic through lighting" is what you meant; this is judged again once the box is lit in Godot]`
+- **What I understand now / still do not understand:** After orbiting the rebuild in Blender: "yes lets go to next. i am happy with this one." Realism through lighting and shape, inside the rules, is what I meant. I will judge it again once the box is lit in Godot.
 
 - **Evidence and next step:** Evidence: `design/ref-musicbox-chatgpt.png`; `CHANGE-BRIEF.md` revision A3-2; `SOURCES.md` row REF-MUSICBOX-3D; `tools/blender/build_musicbox.py`, which the live calls executed directly; `blender/musicbox.blend`. Next step: the bedside lamp.
 
@@ -312,7 +312,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **What Claude or another person contributed:** The design changes and their reasons; the catch on the one-light rule; the shared library, with a before/after diff proving it changed nothing; the session-file safeguard; finding and fixing both of its own check errors.
 
-- **What I understand now / still do not understand:** After orbiting it in Blender: "i want more realsitc one, give me prompt to give to chatgpt." `[TO FILL — optional: what specifically looked unrealistic to you]`
+- **What I understand now / still do not understand:** After orbiting it in Blender: "i want more realsitc one, give me prompt to give to chatgpt." It looked old-fashioned, and too plain — closer to a game placeholder than to a real lamp.
 
 - **Evidence and next step:** Evidence: `tools/blender/build_lamp.py` with its `LIVE_CALLS` log; `tools/blender/asset_lib.py`; `blender/lamp.blend`; `CHANGE-BRIEF.md` revision A3-3; the four-view `look` image including two views from below. Next step: the bookshelf.
 
@@ -322,13 +322,13 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **I tried / expected:** I expected the prompt to give me a realistic lamp I could build from.
 
-- **What happened:** In my words: "chatgpt didnt give me what i like, it gave me too old styles." The prompt described a gourd-shaped ceramic base, a brass neck and a cone shade — a traditional bedside lamp, because that is what the painting in `env_room_memory.png` shows — and the results read as dated rather than realistic. `[TO FILL — how many takes you rejected, and whether you kept any of them]`
+- **What happened:** In my words: "chatgpt didnt give me what i like, it gave me too old styles." The prompt described a gourd-shaped ceramic base, a brass neck and a cone shade — a traditional bedside lamp, because that is what the painting in `env_room_memory.png` shows — and the results read as dated rather than realistic. Two rounds were rejected before the one I chose: the result of the first prompt, and an 18-lamp grid from the follow-up "give more diff shapes". I kept neither; the only image downloaded is the one used.
 
 - **What I did:** Rejected those results, kept generating in ChatGPT myself, and downloaded the one I liked. Two follow-ups, verbatim from the ChatGPT conversation: "give more diff shapes", which returned an 18-lamp grid of traditional shapes, then "give me modern, realistic one", which returned the image I chose.
 
 - **What Claude or another person contributed:** Claude wrote the original prompt. The rejection, the regeneration and the choice of image were mine, done in ChatGPT outside this session. Claude has not seen the chosen image yet.
 
-- **What I understand now / still do not understand:** `[TO FILL — what "realistic" means to you for this lamp, now that you have seen what you did not want]` Still open: the lamp in my painting is a traditional one, so a modern reference moves the 3D lamp away from the 2D art. That may be the right call, but it should be stated in revision A3-4 when the lamp is rebuilt.
+- **What I understand now / still do not understand:** Both things together: a shape that looks like a lamp you could buy today, and light that falls on it convincingly. Still open: the lamp in my painting is a traditional one, so a modern reference moves the 3D lamp away from the 2D art. That may be the right call, but it should be stated in revision A3-4 when the lamp is rebuilt.
 
 - **Evidence and next step:** Evidence: the chosen image, to be added as `design/ref-lamp-chatgpt.png` with a `SOURCES.md` row REF-LAMP-3D. Next step: share the image, then Claude checks it against the six-shape and triangle limits and proposes revision A3-4 before building.
 
@@ -358,7 +358,7 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **What Claude or another person contributed:** Read the reference into six buildable shapes, used the neck as the finial to stay within six, priced the rounded base and offered the two budget options, kept the screenshot out of the repository, and checked for a hand edit before clearing the scene.
 
-- **What I understand now / still do not understand:** `[TO FILL — your view of the modern lamp against the reference]`
+- **What I understand now / still do not understand:** I am happy with it. It matches the reference well enough to move on.
 
 - **Evidence and next step:** Evidence: `design/ref-lamp-chatgpt.png`; `SOURCES.md` rows REF-LAMP-3D-01, -02 and REF-LAMP-3D; `CHANGE-BRIEF.md` revision A3-4; `tools/blender/build_lamp.py` with its call log; `blender/lamp.blend`. Next step: the bookshelf.
 
