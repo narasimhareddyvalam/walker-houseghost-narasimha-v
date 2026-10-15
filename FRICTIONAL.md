@@ -45,7 +45,8 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | How the Blender-window screenshot was taken | macOS refused a terminal capture (no Screen Recording permission), so the shot was taken inside my own running session with Blender's own Window › Save Screenshot operator, `bpy.ops.screen.screenshot`, after selecting `BS_Shelf_Mid` | Asked for it to be taken for me | **Recorded as taken through the MCP, in my session**, and kept as `evidence/a3-blender-window-mcp.png`. I then took my own screenshot with the N sidebar open on its Item tab showing the shelf's dimensions; that one is `evidence/a3-blender-window.png`. The hand edit and the orbit check are kept for the end, by my choice |
 | A more realistic bookshelf | A ChatGPT prompt for a modern piece built from exactly six boards, then a follow-up asking for small realistic details within that limit | "I want more realistic, let's generate a photo", then "tell it to add small realistic details unique style, modern" | **My direction.** I sent the follow-up and chose the image |
 | The bookshelf's design | Thick sides rising above an inset top, rounded corners, shelves at a third and two-thirds, open bottom bay, inset back — all six boards, 248 triangles | "Yes, build it" | **Approved.** Revision A3-7; the overall size and the 1.00 m height are unchanged |
-| Writing `BLENDER-NOTES.md` | Asked how I had used each of the six parts, then wrote the note from my answers, saying only what I said I did | "Do the blender notes" | **My usage, Claude's sentences.** Orbit, select and Material Preview in the viewport; the Outliner for the hierarchy and for selecting; the N sidebar's Item tab for every number; Object Mode throughout, with a brief look at Edit Mode |
+| Writing `BLENDER-NOTES.md` | Asked how I had used each of the six parts, then wrote the note from my answers, saying only what I said I did | "Do the blender notes" | **First draft: my usage, Claude's sentences.** Replaced on 2026-10-15 by my own rewrite (next row) |
+| Rewriting `BLENDER-NOTES.md` in my own words | Recapped what I had done by hand in Blender and what Claude had done through the MCP, so I could write from my own memory | Wrote the whole note myself and pasted it in | **My words.** Claude kept the required header and my screenshot, and changed one sentence to match this log: the darker shelves were Claude's suggestion that I accepted, not my request |
 | My hand edit | Suggested moving one shelf, then a two-tone recolour for something more visible on video | "I think the easiest thing I can do is to add a third shelf" | **My edit, made with the mouse.** Revision A3-8 |
 | Seven boards | Laid out the choices: drop the back panel, undo the shelf, or keep seven and break the limit | First asked for the back slab as well, then: "keep how it is now without back its fine" | **My decision.** Open-backed, six boards |
 | Tidying the edit | Re-centred the shelves at my heights in even bays, renamed the copies, merged the `.001` material back, made the shelves dark wood | Accepted | **Claude's tidy-up of my edit**, logged as such, in one recorded call |
@@ -545,3 +546,18 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **Evidence and next step:** Evidence: `youtube/claude-liam-houseghost-a3-gamedev/CAPTURE.md` (four recordings, formats, SHA-256); `godot/tests/capture_orbit.gd`; the crash report's Python line, which matched the call; `godot/scenes/AssetShowcase.tscn`; `evidence/a3-showcase.png`, `evidence/a3-check-assets.txt`. Next step: the beat sheet and narration.
 
+### 2026-10-15 — Rewriting my Blender notes in my own words
+
+- **Date and what I was working on:** 2026-10-15, `BLENDER-NOTES.md`, which the assignment asks for in my own words.
+
+- **I tried / expected:** The first version was written by Claude from my answers about how I used each part of the window. It was accurate, but the sentences were not mine.
+
+- **What happened:** I asked Claude to remind me of everything we did in Blender, split into what I did by hand and what Claude did through the MCP. From that recap and my own memory I wrote the note myself: getting started, the six parts of the window and how I used each, my hand edit, materials, the crash, working with Claude, the problems I hit and what I learned.
+
+- **What I did:** Wrote the whole note.
+
+- **What Claude or another person contributed:** The recap, keeping the version line and my screenshot at the top, and one correction to a sentence of mine: I had written that I wanted the shelves darker, but the log shows that was Claude's suggestion during the tidy-up, which I accepted.
+
+- **What I understand now / still do not understand:** Writing it from memory showed me which parts of the window I actually used and which I had only looked at, like the material settings.
+
+- **Evidence and next step:** Evidence: `BLENDER-NOTES.md`; `evidence/a3-blender-window.png`. Next step: finish the film render.
