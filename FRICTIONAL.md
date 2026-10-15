@@ -60,6 +60,8 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | The film's tone | Recast each problem as a short caught-and-fixed moment and kept every required statement (what is uncertain, what Claude got wrong, one next step) to one line each; nothing omitted or made untrue, since the rubric requires defensible claims | "Make sure the video looks like we are doing everything correct and … not give out too many negative things about us" | **My direction, within the rubric.** The full detail stays in `TEST-REPORT.md` and this log |
 | The production script | Adopted my revised script as `SCRIPT.md`. Every number, file, version and label in it checked out against the repository; 16 lines were changed where they credited me with work Claude did under my direction (the lid gap, the corner assertion, the emission change, the Godot check fix, the sky, the hand-edit clean-up) or misstated the bookshelf approval | Wrote it myself and asked for it to be the production script, "accurately acknowledging Claude's contributions" | **My script, fact-checked.** Claude's first draft kept as `SCRIPT-draft-v1.md` |
 | What the film shows of each asset | Proposed a re-render of the old emission 1.0 lamp for a before/after; the difference proved subtle. Then captured fresh four-view images of all three final assets from the committed `.blend` files | "Use only assets I generated, I mean my final versions … for doing before and all it's fine maybe" | **Final versions only.** The re-render and the earlier-version stills were deleted; earlier versions are narrated, not shown, except the hand edit and the prompt-and-result pair |
+| Screen recordings for the film | Explained that I could not record the screen without permission; offered my own recordings, an engine capture, or granting VS Code the permission | "You do all the screen recordings for me" — granted VS Code Screen Recording and restarted | **Recorded.** Blender turntables of all three final assets captured from inside my session, a native 4K Godot engine orbit, hashes in `CAPTURE.md` |
+| The boy in the showcase | Advised against generating him in 3D: an AI-generated mesh does not count and the generators must stay off, and a primitive figure would look worse; he is not required, because my character is 2D | "The character is not 3D and it looks bad … we don't need it in assignment requirements?" | **Removed.** The scene is now exactly the assignment's minimum; `char_remembered.png.import` restored byte-for-byte to its A2 original |
 
 ## Entries
 
@@ -519,4 +521,26 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** This is the result the brief predicted in failure 7, and it only showed up by looking: every automated check passes for the music box. The key was already enlarged once (revision A3-1) for the same reason, and it is still not enough from behind. I have left it as a limitation rather than change the asset after the checks.
 
 - **Evidence and next step:** Evidence: `evidence/a3-orbit-bookshelf-*-own.png`, `a3-orbit-lamp-*-own.png`, `a3-orbit-musicbox-*-own.png`, `a3-godot-editor-own.png`, `a3-godot-inspector-bookshelf-own.png`; `TEST-REPORT.md` check 7; `CHANGE-BRIEF.md` prediction 7. Next step: the film.
+
+### 2026-10-15 — Recording the film footage: a crash, a lost setting, and a 4K workaround
+
+- **Date and what I was working on:** 2026-10-15, real footage for the film — my Blender session and the Godot scene in motion, instead of stills.
+
+- **I tried / expected:** I gave VS Code Screen Recording permission so the recordings could be made for me, expecting a straightforward desktop recording.
+
+- **What happened:** Four things.
+  1. **A desktop recording would not work,** even with permission: my VS Code was full-screen in its own macOS Space, and macOS 26 would not bring Blender in front of it from a script. The Blender footage was captured from inside Blender instead — its own *Save Screenshot* operator, frame by frame, while the view turned 360°. Those are Blender's own renders of its window, labelled as a capture driven via the MCP.
+  2. **Blender crashed once, and the cause was Claude's code.** One call opened the music box file and then, in the same call, changed a viewport setting through a reference to the window layout that the file load had just replaced. The crash report pointed at that exact line. Nothing on disk was affected; from then on each file was opened in its own call.
+  3. **After the restart the MCP add-on was gone,** because enabling it on the 14th had never been saved to my Blender preferences. I re-enabled it, saved the preferences and reconnected; every download and generation service stayed off.
+  4. **Godot's Movie Maker recorded only 1920×1080,** because it records at the window's size and macOS will not open a window larger than the screen. A capture script now renders the scene into a 3840×2160 off-screen viewport and saves every frame the engine draws; its first run logged an error from aiming the camera before the scene was in the tree, so it was fixed and re-run cleanly.
+
+  Watching the orbit, I found the boy's flat sprite looked wrong as the camera moved round it. He was not required, so he was removed and the three assets were re-spaced; the headless check still passes.
+
+- **What I did:** Granted the permission, restarted VS Code, re-enabled and reconnected the add-on, judged the footage and decided to remove the boy.
+
+- **What Claude or another person contributed:** The capture method for both programs, diagnosing the crash from Blender's crash report and the missing add-on from my saved preferences, the 4K workaround, the capture record with hashes, and the scene and document updates.
+
+- **What I understand now / still do not understand:** A setting that is not saved lasts exactly as long as the program stays open — the same lesson as the stale Blender session on the 14th, from the other side. And a flat character in a 3D scene works only from the one angle it was drawn for.
+
+- **Evidence and next step:** Evidence: `youtube/claude-liam-houseghost-a3-gamedev/CAPTURE.md` (four recordings, formats, SHA-256); `godot/tests/capture_orbit.gd`; the crash report's Python line, which matched the call; `godot/scenes/AssetShowcase.tscn`; `evidence/a3-showcase.png`, `evidence/a3-check-assets.txt`. Next step: the beat sheet and narration.
 

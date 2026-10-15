@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="PackedScene" path="res://assets/models/musicbox.glb" id="1_musicbox"]
 [ext_resource type="PackedScene" path="res://assets/models/lamp.glb" id="2_lamp"]
 [ext_resource type="PackedScene" path="res://assets/models/bookshelf.glb" id="3_bookshelf"]
-[ext_resource type="Texture2D" path="res://assets/art/char_remembered.png" id="4_boy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="Sky_mat"]
 sky_top_color = Color(0.16, 0.13, 0.11, 1)
@@ -49,7 +48,7 @@ light_energy = 1.0
 shadow_enabled = true
 
 [node name="Camera" type="Camera3D" parent="."]
-position = Vector3(-0.2, 0.9, 2.5)
+position = Vector3(-0.1, 0.85, 2.2)
 rotation = Vector3(-0.17, 0, 0)
 fov = 40.0
 current = true
@@ -58,17 +57,10 @@ current = true
 mesh = SubResource("Floor_mesh")
 
 [node name="Bookshelf" parent="." instance=ExtResource("3_bookshelf")]
-position = Vector3(-1.05, 0, 0)
-
-[node name="Boy" type="Sprite3D" parent="."]
-position = Vector3(-0.4, 0.84, 0)
-pixel_size = 0.004
-billboard = 2
-alpha_cut = 1
-texture = ExtResource("4_boy")
+position = Vector3(-0.8, 0, 0)
 
 [node name="BedsideLamp" parent="." instance=ExtResource("2_lamp")]
-position = Vector3(0.15, 0, 0)
+position = Vector3(0.0, 0, 0)
 
 [node name="MusicBox" parent="." instance=ExtResource("1_musicbox")]
-position = Vector3(0.7, 0, 0)
+position = Vector3(0.55, 0, 0)

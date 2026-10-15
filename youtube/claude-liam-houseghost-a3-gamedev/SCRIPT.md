@@ -101,7 +101,7 @@
 
 ## B06 — Music box: shape carries identity
 
-*Visual: `stills/final-musicbox-4view.png` (**Captured in my Blender session via the MCP** — final version), `design/ref-musicbox-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `tools/blender/build_musicbox.py` excerpt with path and line numbers, then `evidence/a3-stats-musicbox.png`. Earlier versions are narrated, not shown.*
+*Visual: open on `capture/blender-musicbox-turntable.mp4` (**Capture of my Blender session, camera driven via the MCP** — the final asset turning 360°, its numbers in the N sidebar). Then `stills/final-musicbox-4view.png` (**Captured in my Blender session via the MCP** — final version), `design/ref-musicbox-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `tools/blender/build_musicbox.py` excerpt with path and line numbers, then `evidence/a3-stats-musicbox.png`. Earlier versions are narrated, not shown.*
 
 **Liam:** “The first music box was within the limits: five basic shapes, 252 triangles, and a lid opened eighteen degrees. But it was too generic. It met the numbers without delivering the presence I wanted.”
 
@@ -113,7 +113,7 @@
 
 ## B07 — Lamp: light is a material decision
 
-*Visual: `stills/final-lamp-4view.png` (**Captured in my Blender session via the MCP** — final version), `design/ref-lamp-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `tools/blender/asset_lib.py` excerpt showing the final `"emission": 0.4`, then the final lamp in `evidence/a3-showcase.png` (**Godot render**). Earlier versions are narrated, not shown.*
+*Visual: open on `capture/blender-lamp-turntable.mp4` (**Capture of my Blender session, camera driven via the MCP** — the final asset turning 360°, its numbers in the N sidebar). Then `stills/final-lamp-4view.png` (**Captured in my Blender session via the MCP** — final version), `design/ref-lamp-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `tools/blender/asset_lib.py` excerpt showing the final `"emission": 0.4`, then the final lamp in `evidence/a3-showcase.png` (**Godot render**). Earlier versions are narrated, not shown.*
 
 **Liam:** “The first lamp followed the original painting: a traditional base and cone shade. I replaced it with a quieter modern silhouette — ceramic base, brass collar and broad drum shade. I revised its triangle budget from 340 to 420 before building, documenting why the curved base needed more geometry.”
 
@@ -125,7 +125,7 @@
 
 ## B08 — Bookshelf: the silhouette beats the spreadsheet
 
-*Visual: `design/ref-bookshelf-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `side_bm()` excerpt from `tools/blender/build_bookshelf.py` with line numbers, then `stills/final-bookshelf-4view.png` (**Captured in my Blender session via the MCP** — final version; the side view shows the rounded corners). The square-corner version is narrated, not shown.*
+*Visual: open on `capture/blender-bookshelf-turntable.mp4` (**Capture of my Blender session, camera driven via the MCP** — the final asset turning 360°, its numbers in the N sidebar). Then `design/ref-bookshelf-chatgpt.png` (**ChatGPT reference — image only**), a verbatim `side_bm()` excerpt from `tools/blender/build_bookshelf.py` with line numbers, then `stills/final-bookshelf-4view.png` (**Captured in my Blender session via the MCP** — final version; the side view shows the rounded corners). The square-corner version is narrated, not shown.*
 
 **Liam:** “The bookshelf was deliberately simple: six boards, warm wood, a modern profile with rounded top corners. Its first version passed the dimensional and transform checks. It still missed the feature that made the design recognizable: the upper corners were square.”
 
@@ -167,9 +167,9 @@
 
 ## B11 — See the assets in Godot
 
-*Visual: `a3-showcase.png` (**Godot render**), `a3-godot-editor-own.png`, `a3-godot-inspector-bookshelf-own.png` (**My screenshots**), then genuine rear/below/angled orbit screenshots for each asset. Show each asset clearly before introducing limitations.*
+*Visual: `capture/godot-showcase-orbit-4k.mp4` (**Godot engine capture, scripted camera, native 4K**), `a3-showcase.png` (**Godot render**), `a3-godot-editor-own.png`, `a3-godot-inspector-bookshelf-own.png` (**My screenshots**), then genuine rear/below/angled orbit screenshots for each asset. Show each asset clearly before introducing limitations.*
 
-**Liam:** “This is the assembled showcase: a floor, one light, a camera and all three props together at game scale. I also placed the boy's sprite alongside them to judge proportion. His standing art reads 1.36 metres at the working scale, while his one-metre collision capsule is what matters for the bookshelf's gameplay height.”
+**Liam:** “This is the assembled showcase: a floor, one light, a camera and all three props together at game scale — exactly the scene the assignment specifies. I briefly placed the boy's flat sprite beside them to judge proportion; it was 2D and turned to face the camera, so I removed it from the scene.”
 
 “The scene uses Godot's Compatibility renderer, consistent with the main 2D project. The sky lighting was adjusted when the brass appeared almost black. That was a presentation issue the geometry checks would never catch.”
 
