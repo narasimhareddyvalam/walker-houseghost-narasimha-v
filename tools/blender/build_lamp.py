@@ -1,4 +1,4 @@
-"""Build the BedsideLamp asset (CHANGE-BRIEF.md, Assignment 3, asset 2, as revised by A3-3).
+"""Build the BedsideLamp asset (CHANGE-BRIEF.md, Assignment 3, asset 2, as revised by A3-4).
 
 Every execute_blender_code body run for this asset is logged verbatim in LIVE_CALLS
 at the end of this file. Run headless from an empty scene with:
@@ -25,12 +25,12 @@ import asset_lib as lib
 importlib.reload(lib)  # a live Blender session keeps old module versions otherwise
 
 ROOT = "BedsideLamp"
-BUDGET = 340
+BUDGET = 420  # revision A3-4; the original brief budget was 340
 MAX_SHAPES = 6
 
 
 def finish(name, bm, mat_names, location, weighted=False):
-    # Every lamp part is curved; weighted normals would only distort a curved surface.
+    # weighted=True only for parts with large flat caps next to rounded edges.
     return lib.finish(name, bm, mat_names, location, ROOT, weighted=weighted)
 
 
@@ -46,46 +46,59 @@ def step_clear(path):
     print("session file:", bpy.data.filepath)
 
 
-# ==== STEP 1: foot — 12-sided disc, r 0.055 x 0.012, on the floor ================
+# ==== STEP 1: foot — 16-sided walnut disc, r 0.078 x 0.018, on the floor ========
 def step_foot():
-    bm = lib.cylinder(0.055, 0.012, segments=12)
-    bmesh.ops.translate(bm, vec=(0, 0, 0.006), verts=bm.verts)  # underside on z = 0
-    report(finish("LP_Foot", bm, ["M_Wood_Dark"], (0, 0, 0)))
+    bm = lib.cylinder(0.078, 0.018, segments=16)
+    bmesh.ops.translate(bm, vec=(0, 0, 0.009), verts=bm.verts)  # underside on z = 0
+    report(finish("LP_Foot", bm, ["M_Wood_Dark"], (0, 0, 0), weighted=True))
 
 
-# ==== STEP 2: base — UV sphere 12 x 6, r 0.07, squashed to 0.8 on Z ===============
-# 0.14 wide x 0.112 tall. Its lowest point sits 8 mm into the foot, so it is seated on
-# a ring of contact rather than balanced on its pole.
+# ==== STEP 2: base — 12-sided glossy ceramic drum, r 0.07 x 0.14, rounded rims ===
+# Both rim edge loops get a 2-segment, 25 mm bevel: the pill shape in the reference.
+# Sunk 2 mm into the foot: z = 0.016 .. 0.156.
 def step_base():
-    bm = lib.uv_sphere(0.07, segments=12, rings=6)
-    bmesh.ops.scale(bm, vec=(1.0, 1.0, 0.8), verts=bm.verts)
-    report(finish("LP_Base", bm, ["M_Ceramic_Amber"], (0, 0, 0.060)))
+    bm = lib.cylinder(0.07, 0.14, segments=12)
+    rims = [e for e in bm.edges
+            if all(abs(abs(v.co.z) - 0.07) < 1e-6 for v in e.verts) and len(e.link_faces) == 2
+            and any(abs(f.normal.z) > 0.99 for f in e.link_faces)]
+    bmesh.ops.bevel(bm, geom=rims, offset=0.025, offset_type="OFFSET", segments=2,
+                    profile=0.5, affect="EDGES", clamp_overlap=True)
+    print("rim edges bevelled:", len(rims), "(expect 24)")
+    bmesh.ops.translate(bm, vec=(0, 0, 0.07), verts=bm.verts)  # origin at its underside
+    report(finish("LP_Base", bm, ["M_Ceramic_Amber"], (0, 0, 0.016), weighted=True))
 
 
-# ==== STEP 3: neck — 12-sided brass rod, r 0.008, base to the shade's top =========
-# Runs z = 0.110 .. 0.419: 6 mm into the base, ending 1 mm under the shade's cap,
-# so from below the shade is visibly held by it.
+# ==== STEP 3: collar — 12-sided brass disc, r 0.032 x 0.008, on top of the base ===
+def step_collar():
+    bm = lib.cylinder(0.032, 0.008, segments=12)
+    bmesh.ops.translate(bm, vec=(0, 0, 0.004), verts=bm.verts)
+    report(finish("LP_Collar", bm, ["M_Brass"], (0, 0, 0.156), weighted=True))
+
+
+# ==== STEP 4: neck — 12-sided brass rod, r 0.009, from the collar through the shade ==
+# Runs z = 0.160 .. 0.420 and passes 15 mm through the shade's top: its tip is the
+# finial, so the finial costs no seventh shape.
 def step_neck():
-    bm = lib.cylinder(0.008, 0.309, segments=12)
-    bmesh.ops.translate(bm, vec=(0, 0, 0.1545), verts=bm.verts)  # origin at its foot
-    report(finish("LP_Neck", bm, ["M_Brass"], (0, 0, 0.110)))
+    bm = lib.cylinder(0.009, 0.26, segments=12)
+    bmesh.ops.translate(bm, vec=(0, 0, 0.13), verts=bm.verts)  # origin at its foot
+    report(finish("LP_Neck", bm, ["M_Brass"], (0, 0, 0.160)))
 
 
-# ==== STEP 4: bulb — UV sphere 8 x 4, r 0.028, on the neck inside the shade =======
+# ==== STEP 5: bulb — UV sphere 8 x 4, r 0.032, on the neck inside the shade =======
 def step_bulb():
-    bm = lib.uv_sphere(0.028, segments=8, rings=4)
+    bm = lib.uv_sphere(0.032, segments=8, rings=4)
     report(finish("LP_Bulb", bm, ["M_Shade_Cream"], (0, 0, 0.290)))
 
 
-# ==== STEP 5: shade — 24-sided truncated cone, open bottom, closed top ============
-# r 0.10 at the bottom to r 0.065 at the top, z = 0.25 .. 0.42: wider at the bottom,
-# as the painting shows. A single surface; the material is double-sided.
+# ==== STEP 6: shade — 24-sided drum, open bottom, closed top =====================
+# r 0.14 at the bottom to r 0.13 at the top, z = 0.245 .. 0.405. A single surface;
+# the material is double-sided.
 def step_shade():
-    bm = lib.cylinder(0.10, 0.17, segments=24, radius_top=0.065)
+    bm = lib.cylinder(0.14, 0.16, segments=24, radius_top=0.13)
     bottom = min(bm.faces, key=lambda f: f.calc_center_median().z)
     bmesh.ops.delete(bm, geom=[bottom], context="FACES_ONLY")
-    bmesh.ops.translate(bm, vec=(0, 0, 0.085), verts=bm.verts)  # origin at the rim
-    obj = finish("LP_Shade", bm, ["M_Shade_Cream"], (0, 0, 0.25))
+    bmesh.ops.translate(bm, vec=(0, 0, 0.08), verts=bm.verts)  # origin at the rim
+    obj = finish("LP_Shade", bm, ["M_Shade_Cream"], (0, 0, 0.245))
     report(obj)
     cap = max(obj.data.polygons, key=lambda p: p.center.z)
     sides = [p for p in obj.data.polygons if p.index != cap.index]
@@ -95,7 +108,7 @@ def step_shade():
           f" | double-sided {not obj.data.materials[0].use_backface_culling}")
 
 
-# ==== STEP 6: whole-asset check and save =========================================
+# ==== STEP 7: whole-asset check and save =========================================
 def step_check_and_save(path):
     lib.check_and_save(path, BUDGET, MAX_SHAPES, open_meshes=("LP_Shade",))
 
@@ -108,6 +121,7 @@ if __name__ == "__main__":
     step_clear(out)
     step_foot()
     step_base()
+    step_collar()
     step_neck()
     step_bulb()
     step_shade()
@@ -118,7 +132,7 @@ if __name__ == "__main__":
 # Every execute_blender_code body run for this asset, verbatim, in order. Kept as data
 # so that git shows exactly what ran in the live session.
 LIVE_CALLS = r"""
---- Build 1 (revision A3-3), 2026-10-14 ---
+--- Build 1 (revision A3-3, superseded by A3-4), 2026-10-14; the file as committed at d8caf4b ---
 [step 0]
 path = "/Users/narasimhareddyvalam/Desktop/walker-houseghost-narasimha-v/tools/blender/build_lamp.py"
 ns = {"__name__": "build_lamp", "__file__": path}
@@ -136,5 +150,40 @@ path = "/Users/narasimhareddyvalam/Desktop/walker-houseghost-narasimha-v/tools/b
 ns = {"__name__": "build_lamp", "__file__": path}
 exec(compile(open(path).read(), path, "exec"), ns)
 ns["step_check_and_save"]("/Users/narasimhareddyvalam/Desktop/walker-houseghost-narasimha-v/blender/lamp.blend")
+
+--- Build 2 (revision A3-4), 2026-10-14 ---
+[read-only check before clearing: had the open lamp been hand-edited?]
+import bpy
+print("unsaved changes:", bpy.data.is_dirty)
+for o in bpy.data.objects:
+    print(o.name, "loc", tuple(round(v, 4) for v in o.location),
+          "rot", tuple(round(v, 4) for v in o.rotation_euler),
+          "scale", tuple(round(v, 4) for v in o.scale),
+          "dims", tuple(round(v, 4) for v in o.dimensions))
+for m in bpy.data.materials:
+    print(m.name, tuple(round(c, 4) for c in m.diffuse_color))
+
+[step 0, steps 1-6 and step 7: the same three-line exec bodies as build 1, with NAME in
+ step_foot, step_base, step_collar, step_neck, step_bulb, step_shade]
+
+--- View-only calls after build 1 (changed no geometry) ---
+[deselect, Material Preview, three-quarter view]
+import bpy, math
+from mathutils import Euler
+for window in bpy.context.window_manager.windows:
+    for area in window.screen.areas:
+        if area.type == "VIEW_3D":
+            region = next(r for r in area.regions if r.type == "WINDOW")
+            with bpy.context.temp_override(window=window, area=area, region=region):
+                bpy.ops.object.select_all(action="DESELECT")
+            space = area.spaces.active
+            space.shading.type = "MATERIAL"
+            space.overlay.show_relationship_lines = False
+            r3d = space.region_3d
+            r3d.view_perspective = "PERSP"
+            r3d.view_rotation = Euler((math.radians(75), 0, math.radians(30)), "XYZ").to_quaternion()
+            r3d.view_location = (0.0, 0.0, 0.21)
+            r3d.view_distance = 0.9
+            area.tag_redraw()
 """
 

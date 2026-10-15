@@ -37,6 +37,8 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | One shared library | Moved the five materials and helpers into `tools/blender/asset_lib.py` | Approved | Verified harmless: the music box's headless geometry report is identical before and after |
 | Making the lamp more realistic | Same route as the music box: a ChatGPT prompt asking for a realistically lit render of a lamp built from at most six spheres, cylinders and cones in flat colours — a larger base and a short neck as in the painting, a view from below, the lamp switched on — so the result stays buildable | After orbiting the built lamp in Blender: "i want more realsitc one, give me prompt to give to chatgpt" | **My decision; the outcome is pending.** The reference image is to be recorded as REF-LAMP-3D and any changes as revision A3-4, proposed before building |
 | Which lamp reference to use | Wrote the first ChatGPT prompt: a realistically lit lamp from at most six simple shapes, flat colours | "chatgpt didnt give me what i like, it gave me too old styles" — **I rejected those results, regenerated it myself, and chose the one I liked** | **My call, made outside this session.** The chosen image becomes REF-LAMP-3D once it is in the repository; the rejected takes are recorded as rejected, as the A2 asset log does |
+| The lamp's triangle budget | The modern design needs ~406; offered raising the budget to 420 before building, or fitting 340 by dropping the collar and the rounding | **Raise to 420** | **My choice.** Declared in revision A3-4 before building, with the reason; still under the course limit of 500 |
+| Committing the ChatGPT screenshot | Recorded the two follow-up prompts from it as text, and did not commit the image | — | It shows unrelated personal browser tabs and chat titles; the prompts are what `SOURCES.md` needs |
 
 ## Entries
 
@@ -322,11 +324,41 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **What happened:** In my words: "chatgpt didnt give me what i like, it gave me too old styles." The prompt described a gourd-shaped ceramic base, a brass neck and a cone shade — a traditional bedside lamp, because that is what the painting in `env_room_memory.png` shows — and the results read as dated rather than realistic. `[TO FILL — how many takes you rejected, and whether you kept any of them]`
 
-- **What I did:** Rejected those results, kept generating in ChatGPT myself, and downloaded the one I liked. `[TO FILL — what you changed in the prompt to get away from the old style]`
+- **What I did:** Rejected those results, kept generating in ChatGPT myself, and downloaded the one I liked. Two follow-ups, verbatim from the ChatGPT conversation: "give more diff shapes", which returned an 18-lamp grid of traditional shapes, then "give me modern, realistic one", which returned the image I chose.
 
 - **What Claude or another person contributed:** Claude wrote the original prompt. The rejection, the regeneration and the choice of image were mine, done in ChatGPT outside this session. Claude has not seen the chosen image yet.
 
 - **What I understand now / still do not understand:** `[TO FILL — what "realistic" means to you for this lamp, now that you have seen what you did not want]` Still open: the lamp in my painting is a traditional one, so a modern reference moves the 3D lamp away from the 2D art. That may be the right call, but it should be stated in revision A3-4 when the lamp is rebuilt.
 
 - **Evidence and next step:** Evidence: the chosen image, to be added as `design/ref-lamp-chatgpt.png` with a `SOURCES.md` row REF-LAMP-3D. Next step: share the image, then Claude checks it against the six-shape and triangle limits and proposes revision A3-4 before building.
+
+### 2026-10-14 — The lamp rebuilt as a modern ceramic lamp
+
+- **Date and what I was working on:** 2026-10-14, rebuilding the lamp from the modern reference I chose.
+
+- **I tried / expected:** A lamp that looks like `design/ref-lamp-chatgpt.png`: a glossy pill-shaped ceramic base, a wide drum shade, brass details.
+
+- **What happened:** Built in seven calls after `get_scene_info`, and it checks:
+
+  ```
+  asset min [-0.14, -0.14, 0.0] max [0.14, 0.14, 0.42] size [0.28, 0.28, 0.42]
+  tris 406 / 420 | objects 6 / 6
+  every part: rot (0,0,0) scale (1,1,1) non-manifold 0 inconsistent-winding 0
+  closed parts: signed volume outward | LP_Shade: 24 open edges (open bottom, intended)
+  base: rim edges bevelled 24 (expect 24) | shade: 24 / 24 sides outward, cap +1.00, double-sided
+  ```
+
+  It follows the reference closely from the front and three-quarter views, and from below the bulb and neck show inside the shade. The neck passes 15 mm through the shade's top and becomes the finial, so the six-shape limit held. The shade's top is closed where the reference's is open on a wire fitter, which six shapes cannot build. At close range the 12-sided base shows facets on its outline, and the glossy ceramic only reads properly once something is there to reflect, which is Godot's job.
+
+  Before clearing the A3-3 lamp, Claude checked whether I had hand-edited it — the hand edit is one of my deliverables and clearing the scene would have destroyed it. Every value matched the saved build; the "unsaved changes" flag came from view and selection changes.
+
+  The lamp is now 0.28 m wide rather than the original brief's 0.20, and modern rather than the traditional lamp in my painting. Both are stated in revision A3-4.
+
+- **What I did:** Chose the modern reference, raised the budget to 420 before building, and provided the ChatGPT conversation so the prompts could be recorded.
+
+- **What Claude or another person contributed:** Read the reference into six buildable shapes, used the neck as the finial to stay within six, priced the rounded base and offered the two budget options, kept the screenshot out of the repository, and checked for a hand edit before clearing the scene.
+
+- **What I understand now / still do not understand:** `[TO FILL — your view of the modern lamp against the reference]`
+
+- **Evidence and next step:** Evidence: `design/ref-lamp-chatgpt.png`; `SOURCES.md` rows REF-LAMP-3D-01, -02 and REF-LAMP-3D; `CHANGE-BRIEF.md` revision A3-4; `tools/blender/build_lamp.py` with its call log; `blender/lamp.blend`. Next step: the bookshelf.
 

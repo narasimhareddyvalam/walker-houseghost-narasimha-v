@@ -324,3 +324,26 @@ reference stays my own `env_room_memory.png`.
 **Noted, not changed:** the visible neck (0.116 to 0.25 m) is longer and thinner than in the
 painting, and the 12-segment base shows facets at close range.
 
+**A3-4 — 2026-10-14, BedsideLamp: rebuilt as a modern lamp, six shapes, budget raised to 420.**
+After the A3-3 lamp I wanted it more realistic. The first ChatGPT references read as old-fashioned,
+and the one I chose (`design/ref-lamp-chatgpt.png`, row REF-LAMP-3D) is a modern ceramic table
+lamp. **This moves the 3D lamp away from my own painting**, which shows a traditional one; the
+painting stays the reference for colour, not for shape.
+
+| | A3-3 | A3-4 |
+|---|---|---|
+| Shapes | 5 | **6**: foot, base, `LP_Collar` (new), neck, bulb, shade |
+| Foot | 12-sided, r 0.055 × 0.012 | **16-sided**, r 0.078 × 0.018, walnut (`M_Wood_Dark`) |
+| Base | UV sphere 12 × 6, squashed | **12-sided drum r 0.07 × 0.14 with both rims rounded** (2-segment, 25 mm bevel): the glossy pill shape |
+| Collar | — | Brass disc, r 0.032 × 0.008, on top of the base |
+| Neck | r 0.008, ends under the shade's cap | r 0.009, **runs 15 mm through the cap to form the finial**, so the finial costs no seventh shape |
+| Bulb | r 0.028 | r 0.032 |
+| Shade | Cone r 0.10 → 0.065, 0.17 tall | **Drum** r 0.14 → 0.13, 0.16 tall, z 0.245 → 0.405; still open at the bottom and closed on top |
+| Overall size | 0.20 × 0.20 × 0.42 m | **0.28 × 0.28 × 0.42 m** — a drum shade this wide is what makes it read as modern, and 28 cm is an ordinary bedside lamp |
+| Triangles | 326 / 340 | **406 / 420** |
+
+**The budget change, stated plainly.** The rounded base costs 140 triangles on its own, and the
+design does not fit 340. I chose to raise the budget to 420 **before building**, with this reason
+recorded, rather than drop the collar and the rounding to stay under it. It remains under the
+course limit of 500. This is a design revision, not the overshoot that prediction 4 is about.
+
