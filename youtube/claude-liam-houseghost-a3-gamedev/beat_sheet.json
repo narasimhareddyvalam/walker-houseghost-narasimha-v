@@ -30,7 +30,7 @@
       "beat_id": "B00",
       "act": "ASK",
       "role_note": "Reconstruction of the Claude composer; the opening prompt, typed, under a short spoken intro",
-      "narration_text": "This is HOUSEGHOST: three props from my game's remembered bedroom, built with Claude through the Blender MCP and checked in Godot. It starts with one prompt.",
+      "narration_text": "Namaste, this is Liam, in for Bear. Today we take apart three props for HOUSEGHOST, a Godot game by Narasimha Reddy Valam, built with Claude through the Blender MCP and checked in Godot.",
       "shot": {
         "type": "GRAPHIC",
         "source": "remotion",
@@ -41,55 +41,57 @@
             "greeting": "Namaste, Liam",
             "topic": "CLAUDE CODE · BLENDER MCP · GODOT 4.7",
             "segment": "Building Three Game Props",
-            "command": "Use Walker to turn my HOUSEGHOST bedroom design into three simple 3D props: the wind-up music box, bedside lamp and memory-only bookshelf. Work in my running Blender session through the Blender MCP. Read my committed change brief first, propose each build before executing it, keep the geometry and material budgets, then export the assets to Godot and verify their dimensions, orientation and origins. Show me what the automated checks cannot establish.",
+            "command": "Please use Walker to convert my game design document about HOUSEGHOST's remembered bedroom into three simple 3D props: the wind-up music box, bedside lamp and memory-only bookshelf. Work in my running Blender session through the Blender MCP, propose each build before executing it, keep the geometry and material budgets, then export to Godot and verify dimensions, orientation and origins.",
             "modelLabel": "Opus 5.5",
             "folderLabel": "walker-houseghost-narasimha-v",
             "runningText": "working…"
           },
           "rendered": {
             "out": "media/B00.mp4",
-            "at": "2026-10-15T20:56:34.211877+00:00"
+            "at": "2026-10-15T22:23:06.697583+00:00"
           }
         }
       },
-      "estimated_duration_s": 10.0,
-      "actual_duration_s": 9.15,
+      "estimated_duration_s": 12.69,
+      "actual_duration_s": 11.39,
       "audio_file": "mp3/beat-B00.mp3"
     },
     {
       "beat_id": "B01",
       "act": "ASK",
-      "role_note": "Hesitant-writer summary, read aloud from SCRIPT.md Bookend 2 (its struck line omitted)",
-      "narration_text": "Three objects from a remembered bedroom. Designed to a scale, built through a live Blender session, revised by Narasimha, and tested in Godot. The numbers tell me whether they arrived correctly. The scene tells me whether they read correctly.",
+      "role_note": "Hesitant-writer overview from SCRIPT.md Bookend 2; its one correction, numbers → scene, is my struck line",
+      "narration_text": "Three props from a remembered bedroom, built in Blender, revised by Narasimha, and tested in Godot. The checks say they arrived correctly. Only the scene can say whether they read correctly.",
       "shot": {
         "type": "GRAPHIC",
         "source": "remotion",
         "motion": "type-on",
         "remotion": {
-          "pattern": "ClaudeVerdictArtifact",
+          "pattern": "BrutalistHesitantWriter",
           "props": {
-            "artifactTitle": "What got built",
-            "artifactHeading": "Three props from a remembered bedroom",
-            "artifactLines": [
-              "Designed to a scale, built through a live Blender session.",
-              "Revised by Narasimha, and tested in Godot.",
-              "The numbers tell me whether they arrived correctly.",
-              "The scene tells me whether they read correctly."
-            ]
+            "text": "Three props, built in Blender, revised by Narasimha.\nThe checks say they arrived.\nOnly the numbers can say they read.",
+            "triggerWords": "numbers",
+            "replacementWords": "scene",
+            "fontSize": 72,
+            "seed": "houseghost-a3-bookend2",
+            "charMs": 12,
+            "hesitateBetween": 0,
+            "hesitateWithin": 0,
+            "mistakeRate": 0,
+            "jitter": 10
           },
           "rendered": {
             "out": "media/B01.mp4",
-            "at": "2026-10-15T20:40:55.490599+00:00"
+            "at": "2026-10-15T22:29:16.989211+00:00"
           }
         }
       },
-      "estimated_duration_s": 15.0,
-      "actual_duration_s": 13.5,
-      "audio_file": "mp3/beat-B01.mp3",
+      "estimated_duration_s": 11.92,
       "qc": {
         "sparse_by_design": true,
-        "sparse_reason": "The course's verdict card: short numbered lines on a white card, which the gate's ink detector cannot see against the cream stage, so it measures only the text. Not underfilled."
-      }
+        "sparse_reason": "The Walker hesitant-writer overview: the text is typed and corrected in front of the viewer, so mid-beat frames are sparse on purpose."
+      },
+      "actual_duration_s": 11.01,
+      "audio_file": "mp3/beat-B01.mp3"
     },
     {
       "beat_id": "B02",
@@ -1658,7 +1660,7 @@
       "beat_id": "B42",
       "act": "YOUR_TURN",
       "role_note": "",
-      "narration_text": "Your turn. Find the place where the numbers pass but the design still needs work. Make one controlled change, predict the result, then test it twice: with measurements and with your own eyes. That's where the next iteration begins.",
+      "narration_text": "Your turn. Please use Walker to improve my music box's silhouette from behind, within the same six shapes and 320 triangles. Predict how it will read before you build it, then compare real Godot editor views from behind and from the left. It aims at the one thing this film found the checks could not: a box that passes every number but does not read from behind. Take this prompt to your own model, and test the result twice — with measurements, and with your own eyes. Liam, in for Bear.",
       "shot": {
         "type": "GRAPHIC",
         "source": "remotion",
@@ -1669,19 +1671,19 @@
             "greeting": "Your turn.",
             "topic": "ONE BOUNDED CHANGE",
             "segment": "Predict First, Then Test",
-            "command": "Use Walker to improve the music box's silhouette from behind. Keep the same six-shape and 320-triangle limits. Before editing, propose one specific geometry change and predict how it will read from behind and from the left in Godot. Build it through the Blender MCP, export the `.glb`, run `check_assets.gd`, and compare real editor views from both angles. Report what improved and what still does not read.",
+            "command": "Please use Walker to improve my music box's silhouette from behind, within the same six shapes and 320 triangles. Predict how it will read before you build it, then compare real Godot editor views from behind and from the left.",
             "modelLabel": "Opus 5.5",
             "folderLabel": "walker-houseghost-narasimha-v",
             "runningText": "working…"
           },
           "rendered": {
             "out": "media/B42.mp4",
-            "at": "2026-10-15T20:47:23.195400+00:00"
+            "at": "2026-10-15T22:25:14.144202+00:00"
           }
         }
       },
-      "estimated_duration_s": 15.0,
-      "actual_duration_s": 11.95,
+      "estimated_duration_s": 35.0,
+      "actual_duration_s": 27.34,
       "audio_file": "mp3/beat-B42.mp3"
     },
     {

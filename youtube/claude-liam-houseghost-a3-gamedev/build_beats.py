@@ -97,18 +97,18 @@ b00 = add("B00", "ASK", b00_say, {"type": "GRAPHIC", "source": "remotion", "moti
         "segment": "Building Three Game Props", "command": b00_cmd, **COMPOSER}}},
     "Reconstruction of the Claude composer; the opening prompt, typed, under a short spoken intro")
 
-add("B01", "ASK",
-    "Three objects from a remembered bedroom. Designed to a scale, built through a live Blender "
-    "session, revised by Narasimha, and tested in Godot. The numbers tell me whether they arrived "
-    "correctly. The scene tells me whether they read correctly.",
+b01_say = re.search(r"## Bookend 2.*?\*\*Liam:\*\* “(.+?)”", (REEL / "SCRIPT.md").read_text(), re.S).group(1)
+b01 = add("B01", "ASK", b01_say,
     {"type": "GRAPHIC", "source": "remotion", "motion": "type-on",
-     "remotion": {"pattern": "ClaudeVerdictArtifact", "props": {
-         "artifactTitle": "What got built", "artifactHeading": "Three props from a remembered bedroom",
-         "artifactLines": ["Designed to a scale, built through a live Blender session.",
-                           "Revised by Narasimha, and tested in Godot.",
-                           "The numbers tell me whether they arrived correctly.",
-                           "The scene tells me whether they read correctly."]}}},
-    "Hesitant-writer summary, read aloud from SCRIPT.md Bookend 2 (its struck line omitted)")
+     "remotion": {"pattern": "BrutalistHesitantWriter", "props": {
+         "text": "Three props, built in Blender, revised by Narasimha.\nThe checks say they arrived.\n"
+                 "Only the numbers can say they read.",
+         "triggerWords": "numbers", "replacementWords": "scene",
+         "fontSize": 72, "seed": "houseghost-a3-bookend2",
+         "charMs": 12, "hesitateBetween": 0, "hesitateWithin": 0, "mistakeRate": 0, "jitter": 10}}},
+    "Hesitant-writer overview from SCRIPT.md Bookend 2; its one correction, numbers → scene, is my struck line")
+b01["qc"] = {"sparse_by_design": True, "sparse_reason":
+             "The Walker hesitant-writer overview: the text is typed and corrected in front of the viewer, so mid-beat frames are sparse on purpose."}
 
 # ---- B01 Open on the result --------------------------------------------------------
 add("B02", "RESULT", narr("B01", 0), clip("capture/godot-showcase-orbit-4k.mp4",

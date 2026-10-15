@@ -29,17 +29,19 @@
 
 *Visual: Claude composer typing at readable speed. Label **Reconstruction**. A short spoken intro over the typing (added at my review so the film does not open in silence).*
 
-> Use Walker to turn my HOUSEGHOST bedroom design into three simple 3D props: the wind-up music box, bedside lamp and memory-only bookshelf. Work in my running Blender session through the Blender MCP. Read my committed change brief first, propose each build before executing it, keep the geometry and material budgets, then export the assets to Godot and verify their dimensions, orientation and origins. Show me what the automated checks cannot establish.
+> Please use Walker to convert my game design document about HOUSEGHOST's remembered bedroom into three simple 3D props: the wind-up music box, bedside lamp and memory-only bookshelf. Work in my running Blender session through the Blender MCP, propose each build before executing it, keep the geometry and material budgets, then export to Godot and verify dimensions, orientation and origins.
 
-**Liam:** “This is HOUSEGHOST: three props from my game's remembered bedroom, built with Claude through the Blender MCP and checked in Godot. It starts with one prompt.”
+**Liam:** “Namaste, this is Liam, in for Bear. Today we take apart three props for HOUSEGHOST, a Godot game by Narasimha Reddy Valam, built with Claude through the Blender MCP and checked in Godot.”
 
 ---
 
 ## Bookend 2 — Hesitant-writer summary
 
-*Visual: short text composing, with one revision shown.*
+*Visual: `BrutalistHesitantWriter` types the overview and corrects one word: “numbers” → “scene” — my struck line, “The numbers tell me whether they work”, made the writer's correction.*
 
-> Three objects from a remembered bedroom. Designed to a scale, built through a live Blender session, revised by Narasimha, and tested in Godot. The numbers tell me whether they arrived correctly. ~~The numbers tell me whether they work.~~ **The scene tells me whether they read correctly.**
+> Three props, built in Blender, revised by Narasimha. The checks say they arrived. Only the ~~numbers~~ **scene** can say they read.
+
+**Liam:** “Three props from a remembered bedroom, built in Blender, revised by Narasimha, and tested in Godot. The checks say they arrived correctly. Only the scene can say whether they read correctly.”
 
 ---
 
@@ -201,9 +203,9 @@
 
 *Visual: composer prompt typed. Label **Reconstruction**.*
 
-> Use Walker to improve the music box's silhouette from behind. Keep the same six-shape and 320-triangle limits. Before editing, propose one specific geometry change and predict how it will read from behind and from the left in Godot. Build it through the Blender MCP, export the `.glb`, run `check_assets.gd`, and compare real editor views from both angles. Report what improved and what still does not read.
+> Please use Walker to improve my music box's silhouette from behind, within the same six shapes and 320 triangles. Predict how it will read before you build it, then compare real Godot editor views from behind and from the left.
 
-**Liam:** “Your turn. Find the place where the numbers pass but the design still needs work. Make one controlled change, predict the result, then test it twice: with measurements and with your own eyes. That's where the next iteration begins.”
+**Liam:** “Your turn. Please use Walker to improve my music box's silhouette from behind, within the same six shapes and 320 triangles. Predict how it will read before you build it, then compare real Godot editor views from behind and from the left. It aims at the one thing this film found the checks could not: a box that passes every number but does not read from behind. Take this prompt to your own model, and test the result twice — with measurements, and with your own eyes. Liam, in for Bear.”
 
 ---
 
