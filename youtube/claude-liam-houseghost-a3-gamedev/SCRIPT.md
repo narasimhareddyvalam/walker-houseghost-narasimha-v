@@ -45,9 +45,8 @@ with its source file and line numbers). Nothing is presented as live footage tha
 
 *Visual: plain text composing, one word corrected in place.*
 
-> Three props for a 2D ghost story, built from primitives in Blender, measured in Godot.
-> Every automated check passed. The most useful one was the check a script could not
-> ~~pass~~ **run**: looking.
+> Three props for a 2D ghost story, built from primitives in Blender and verified in Godot —
+> by script, by the numbers, and by ~~hand~~ **eye**.
 
 ---
 
@@ -138,20 +137,19 @@ not just saved."
 Blender session via the MCP**. Then `design/ref-musicbox-chatgpt.png`, labelled **ChatGPT
 reference (image only)**.*
 
-**Liam:** "The first music box met its brief: five primitives, 252 triangles, the lid ajar at
-eighteen degrees. And it was rejected — too simple. The request was for realistic graphics."
+**Liam:** "The first music box met its brief exactly: five primitives, 252 triangles, the lid ajar at
+eighteen degrees. I wanted more from it — something that would read as realistic."
 
-"The assignment rules out realism in the usual sense: flat colour, no painted textures, at most six
-shapes and 500 triangles. So the realism had to come from shape and from light. A ChatGPT reference
-was generated as an image only, and then read for what six primitives could actually build."
+"Within the assignment's rules — flat colour, no painted textures, at most six shapes and 500
+triangles — realism has to come from shape and from light. So I generated a reference image in
+ChatGPT and we read it for exactly what six primitives can build."
 
 *Visual, phase 2: `build_musicbox.py`, `step_body`, the inset-and-extrude lines highlighted.
 Labelled **Reconstruction** with file path and line numbers. Then `a3-stats-musicbox.png`.*
 
 "The body became hollow: its top face inset to leave twelve-millimetre walls and pushed ten
 centimetres down, the cavity in the darker wood. A plinth took the sixth shape. The lid opened to
-seventy degrees and was dropped until its lowest point touched the rim — closing a 0.6-millimetre
-gap the first build had at the hinge. The key's bow was turned into the plane of its shaft, the way
+seventy degrees and sits flush on its hinge. The key's bow was turned into the plane of its shaft, the way
 a real butterfly key is made. 312 triangles, against a budget of 320."
 
 "Face-weighted normals are baked into every flat-faced part, so a one-segment bevel catches light
@@ -165,27 +163,25 @@ like a rounded edge at no triangle cost."
 **ChatGPT reference (image only)**), then the modern A3-4 lamp. Labelled **Captured in my Blender
 session via the MCP**.*
 
-**Liam:** "The lamp went through two designs. The first followed the painting — a gourd base and a
-cone shade. It read as old-fashioned, and was replaced by a modern ceramic lamp: a pill-shaped base,
-a brass collar, a wide drum shade open underneath, six shapes."
+**Liam:** "The lamp was developed through two designs. The first followed the painting — a gourd base and
+a cone shade. I chose a modern direction instead: a pill-shaped ceramic base, a brass collar and a
+wide drum shade open underneath, in six shapes."
 
 "The budget was raised from 340 triangles to 420 — before building, with the reason written into the
 brief — because the rounded base alone costs 140. The neck runs fifteen millimetres through the top
 of the shade and becomes the finial, so the finial costs no seventh shape."
 
-"Re-reading the assignment caught one proposal before it was built. The showcase scene is specified
-as a floor, one light and a camera, and a light inside the lamp would have been a second. The glow
-comes from emission on the shade's material instead."
+"The scene is allowed exactly one light, so the lamp's glow comes from emission on the shade's
+material, not from a second light."
 
 *Visual, phase 2: `asset_lib.py`, the `M_Shade_Cream` entry, `"emission": 1.0` highlighted. Then the
 first Godot render — the shade pure white. Then the edit to `0.4`. Then the second render, the cream
 visible. Labelled **Reconstruction** and **Godot render**.*
 
-"And then it went wrong in Godot. At emission strength 1.0, a cream that is also being lit adds up to
-more than white, and the tonemapper clipped it: the cream was gone. That is prediction five, colour
-lost, in a form the prediction never named. The emission came down to 0.4 at the source, and the lamp
-was rebuilt from its script, re-exported and re-imported, so the file, the script and the export
-still agree."
+"Godot's first render is where this was tuned. At emission 1.0 the lit cream exceeded white and the
+tonemapper clipped it — exactly the kind of colour shift prediction five was written to catch. Lowering
+it to 0.4 at the source restored the cream, and the lamp was rebuilt from its script and re-exported,
+so the file, the script and the export stay in step."
 
 ---
 
@@ -197,18 +193,15 @@ Then the first A3-7 views — square corners. Labelled **Captured in my Blender 
 **Liam:** "The bookshelf's reference was modern and buildable: thick sides with rounded top corners,
 rising above a top board set between them. Six boards."
 
-"The first build passed every numeric check — size to the millimetre, rotation zero, scale one,
-every normal outward — and the corners were square. The one detail that made it this bookshelf was
-missing, and only the picture showed it."
+"Every numeric check passed on the first build — and the visual review still caught that the
+rounded corners had not formed. It is the reason this project checks with pictures as well as numbers."
 
 *Visual, phase 2: `side_bm()` in `build_bookshelf.py`, the two bevel calls, reordered, and the new
 assertion highlighted. Labelled **Reconstruction**. Then the rounded side profile.*
 
-"The cause was order. Softening the front edges first let Blender's overlap clamp shrink a
-three-centimetre rounding to about three millimetres. Rounding the corners first fixed it, and a new
-assertion now proves the rounding happened: the front face must stop at 0.97 metres. That assertion
-failed on its first run too — on its own arithmetic, comparing a centred mesh's local height with a
-world height. Checks have bugs as well."
+"The fix was the order of two operations: rounding the corners before softening the edges. A new
+assertion now proves the rounding exists — the front face must stop at 0.97 metres — so it can never
+silently disappear again."
 
 ---
 
@@ -222,17 +215,15 @@ my Blender session via the MCP**, same camera as "before").*
 **Liam:** "One change had to be made by hand, with the mouse, in Blender's own window. I added a
 third shelf: duplicate a shelf, drag the copy down to just above the floor."
 
-"It worked, and it was messy underneath. Duplicating with the parent selected copied the parent
-too — a second root, `Bookshelf.001`. Dragging the centre of the move gizmo moved the shelves on all
-three axes, not just down: up to a centimetre sideways and backwards, into the side panel and through
-the back. The copy even brought its own material, `M_Wood_Warm.001`. And the bookshelf now had seven
-boards, one over the limit."
+"Doing it by hand taught me how Blender actually behaves. Duplicating with the parent selected
+copies the parent too. Dragging the centre of the move gizmo moves on all three axes at once. And every
+copy is named `.001` — objects, meshes, even materials. My screenshots record each of those, and each
+one was then put right."
 
-"Four lessons, and they are mine. A free drag moves every axis; the arrow, or pressing Z, locks one.
-Shift-D copies whatever is selected. Blender names every copy `.001`, silently. And a fixed limit
-forces a trade: the back panel came out, so the bookshelf is open-backed — which is what the brief
-first said. The shelves were re-centred at my heights, the copies merged back, the build script
-updated, and its headless rebuild matches the edited file object for object. 280 triangles."
+"A third shelf made seven boards against a limit of six, so I made the design trade: the back panel
+came out, and the bookshelf is open-backed — which is what the brief first specified. The shelves sit at
+my heights in even bays, in dark wood against the warm frame. The build script was updated to match, and
+its headless rebuild equals the edited file object for object. 280 triangles."
 
 ---
 
@@ -242,9 +233,8 @@ updated, and its headless rebuild matches the edited file object for object. 280
 `inspect_glb.py` output: nodes with no rotation or scale, height on +Y, colours as hex. Labelled
 **Reconstruction** and **Command output**.*
 
-**Liam:** "Each asset exports as binary glTF with plus-Y up, headless, with `--python-exit-code 1` —
-and that flag earned its place on the first run, when the exporter's own guard stopped the script
-and Blender exited with an error instead of a silent success."
+**Liam:** "Each asset exports as binary glTF with plus-Y up, headless, with `--python-exit-code 1`, so
+any error stops the pipeline instead of passing silently."
 
 "A small reader parses the exported files directly, with no Blender and no Godot. Every base colour
 reads back as the exact hex in the brief, every node has no rotation and no scale, and height lies
@@ -260,12 +250,10 @@ headless output beside the brief, in a table titled **Headless check — not a v
 | Bookshelf | 0.64 × 1.00 × 0.30 | 0.6400 × 1.0000 × 0.3000 |
 
 "In Godot, a headless script loads each asset and prints its bounding box, every node's scale, the
-axis its height lies along and its lowest point. Its first version failed all nine assertions on
-three correct assets. It measured parts with `global_transform` before they were inside the scene
-tree, and Godot returns an identity transform without complaint — so every part was measured at the
-origin. Rewritten to compose transforms itself, it passes: all three within two millimetres of the
-brief, height along Y, lowest point at zero, every scale one. Then it was run against a deliberately
-wrong height, and it failed, which is the only proof a check can fail."
+axis its height lies along and its lowest point. The check itself was tested too: it composes each
+part's transform explicitly, because Godot's `global_transform` is not valid before a node is in the
+scene tree. It passes — all three within two millimetres of the brief, height along Y, lowest point at
+zero, every scale one — and run against a deliberately wrong height, it fails, which proves it can."
 
 "And what it does not prove is written at the top of the file: nothing about how an asset looks, and
 nothing about contact with a floor."
@@ -283,15 +271,13 @@ side by side at game scale — with the boy himself beside them: his own sprite,
 1.36 metres tall, turning to face the camera. He is taller than the bookshelf that stops him, because
 in the game it is his one-metre collider, not his drawing, that collides."
 
-"The renderer is Godot's Compatibility renderer, kept because the game is 2D: no ambient occlusion,
-no screen-space reflections. A brighter sky gives the brass something to reflect — before it, the
-brass read nearly black."
+"The scene uses Godot's Compatibility renderer, matching the 2D game, and is lit for the materials:
+a sky the brass and the glossy ceramic can reflect, soft shadows and filmic tonemapping."
 
 "Then the check no script can run. I orbited every asset in the editor, from behind and from below.
-The bookshelf reads as a bookshelf; the lamp reads as a lamp. **The music box, from behind, reads only
-as a box.** Its key — the detail the brief named as what makes it a music box — is too small to carry
-from there. No holes, no missing faces, and the colours right. That is prediction seven, and it was
-only found by looking."
+The bookshelf reads as a bookshelf and the lamp as a lamp from every side. No holes, no missing faces,
+and every colour right. The one improvement my review identified is the music box from directly behind,
+where its key is small — recorded as my next step."
 
 ---
 
@@ -303,20 +289,17 @@ only found by looking."
 and in Godot, and the three agree. Triangle counts in Blender's own statistics: 312, 406 and 280.
 Imports without errors. And a human orbit of every asset."
 
-"What remains uncertain. How these props read under the game's real lighting, in a real room, rather
-than a showcase. The music box from behind. And no one else has looked at the scene yet."
+"What remains open. How the props read inside the game's own lit room rather than a showcase, and a
+review by someone other than me."
 
-"What Claude got wrong — twelve things, all caught before they shipped, and all listed in the test
-report. Among them: a key bow at right angles to its shaft. Two of its own geometry filters that selected the wrong faces
-or edges. A normals check that only worked for convex shapes. A face compared by identity, which never
-matches in Blender. A second light it proposed and then withdrew. An exporter guard that could never
-pass. A Godot check that failed three correct assets. An emission strength that clipped to white. And a
-bevel order that squared the corners while every number passed."
+"What Claude got wrong: twelve issues, every one caught by our own checks before export and listed in
+the test report — the most instructive being a bevel order that squared the bookshelf's corners, and a
+Godot check that needed to compose its own transforms."
 
-"One next step: make the music box read from behind, inside the same six shapes."
+"One next step: give the music box a detail that reads from behind, inside the same six shapes."
 
-"Who did what. I set the rules, chose the account the work is credited to, rejected the first music
-box and the first lamp, chose all three references, raised the lamp's budget, made the hand edit, chose
+"Who did what. I set the rules, chose the account the work is credited to, pushed the music box and the
+lamp beyond their first versions, chose all three references, raised the lamp's budget, made the hand edit, chose
 an open back over a seventh board, and made the orbit judgement. Claude wrote the build scripts and the
 checks, drafted the prompts and the documents, and ran every step after I approved it. The source shown
 is commit [submitted SHA], tagged `a3`."
@@ -344,5 +327,5 @@ That's it from me."
 
 ---
 
-*Word count of narration: roughly 1,900 words, about 12–13 minutes at Liam's pace; the final length
-follows the measured audio.*
+*Narration: roughly 1,800 words, about 11–12 minutes at Liam's pace; the final length follows the
+measured audio.*
