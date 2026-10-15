@@ -28,6 +28,9 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 | Where the `.blend` lives | `blender/musicbox.blend`, outside `godot/` | Did not overrule | Godot 4 tries to import any `.blend` inside its project folder; only the `.glb` belongs there |
 | The music box's key, and its back view | Enlarge the key at no triangle cost; add nothing to the back, because extra parts are the over-building that prediction 4 exists to catch | Left it to Claude: "whatever will help us add details to it more nicely" | **Its call, taken.** Recorded as revision A3-1 in `CHANGE-BRIEF.md`, not as an edit to the original spec. The key now shows from directly behind; from behind-left it still does not |
 | "Realistic graphics" for the music box | The brief forbids painted textures and allows six flat-colour shapes, so realism has to come from lighting and material response — environment reflections, shadows, ambient occlusion, tonemapping in Godot — plus a plinth, softer bevels and proportions closer to the painting | "It's too simple, I want it to be more visually appealing", then "it should be realistic graphics". Offered three routes — realism through light, a second textured variant outside the rules, or breaking the limits on the graded asset — **I chose realism through light** | **My choice, inside the rules.** A ChatGPT reference image is to be generated from a prompt that asks for a realistically lit render of a buildable object, not a textured one; it becomes revision A3-2 and a `SOURCES.md` row when it arrives |
+| What to take from the ChatGPT image | The hollow box, wide lid, plinth, round key bow and dark interior; not the hinges (shapes 7 and 8), the tray lid (triangles) or the redder wood (palette) | "Follow assignment requirements and follow best practices and they should be realistic and creative to get me full marks" | **Accepted as proposed.** Recorded as revision A3-2 |
+| Hollowing the body | Two edit operations on one cube; not sculpting; within "built mainly from basic shapes" | Accepted | **A judgement call, stated in the brief so it can be disputed** |
+| How the live calls carry the code | Each call `exec`s the saved build script and runs one step from it, instead of pasting a copy | Did not overrule | The code that ran in Blender is the file, so rule 8 is proven rather than asserted |
 
 ## Entries
 
@@ -244,3 +247,32 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 - **What I understand now / still do not understand:** The decision changed proportion, not structure, which is why it cost nothing. Whether 50 mm is enough is still a guess until the box is seen at game scale in Godot.
 
 - **Evidence and next step:** Evidence: `CHANGE-BRIEF.md` revision A3-1; `tools/blender/build_musicbox.py` steps 3 and 4 with the revision noted inline; the second four-view `look` image (front, three-quarter, back, behind-left). Next step: the bedside lamp.
+
+### 2026-10-14 — The music box rebuilt: hollow, on a plinth, six shapes
+
+- **Date and what I was working on:** 2026-10-14. After seeing the first music box in Blender I said it was "too simple" and that I wanted it "more visually appealing" and "realistic graphics".
+
+- **I tried / expected:** I wanted to generate a reference in ChatGPT and have Claude build from it. My first instinct was realism in the textured sense.
+
+- **What happened:** Claude pointed out that the assignment requires flat colour and no painted textures, at most six shapes and 500 triangles, and offered three routes. I chose realism through lighting and shape. ChatGPT produced `design/ref-musicbox-chatgpt.png` from a prompt Claude wrote for exactly that. The rebuild came out at:
+
+  ```
+  asset min [-0.13, -0.095, 0.0] max [0.186, 0.095, 0.2968] size [0.316, 0.19, 0.2968]
+  tris 312 / 320 | objects 6 / 6
+  every part: rot (0,0,0) scale (1,1,1) non-manifold 0 inconsistent-winding 0 signed volume outward
+  ```
+
+  The hinge gap from the first build is gone: the lid's lowest point is at exactly 0.135 m, the top of the rim. The key is visible from the front, from the three-quarter view and from directly behind. From behind and to the left it is still hidden.
+
+  **Two things went wrong on the way and were caught before anything ran live.** The first headless run reported `cavity faces 1`: only the floor of the box took the dark material, because Claude's test for which faces were inner walls was wrong. It was replaced with a plain bounds test and re-run (`cavity faces 5`). Separately, the original normals check — "does each face point away from the object's centre" — is only valid for convex parts; the inner walls of a hollow box correctly point *toward* the centre, so it would have reported a false failure. It was replaced with two checks that hold for any closed mesh: every edge consistently wound, and a positive signed volume.
+
+  One rendered `look` came back almost black. That was not a fault: the build deletes the scene's light so the `.blend` holds only the asset, and Rendered mode uses scene lights. Material Preview was used instead.
+
+- **What I did:** Rejected the first build as too plain; generated the reference image; chose the inside-the-rules route to realism; set the goal as following the assignment requirements and best practice while being realistic and creative.
+
+- **What Claude or another person contributed:** Claude identified that "realistic" in the textured sense would break the flat-colour rule, wrote both ChatGPT prompts, chose what to take from the image and what to leave and why, proposed baking weighted normals for rounded-edge shading at no triangle cost, corrected its own key-bow orientation (the first bow was at right angles to the shaft, like a T-handle), and found and fixed both of its own check errors before the live build. The judgement that the first build was too plain was mine.
+
+- **What I understand now / still do not understand:** `[TO FILL — what you think of the rebuild against the reference, and whether "realistic through lighting" is what you meant]`
+
+- **Evidence and next step:** Evidence: `design/ref-musicbox-chatgpt.png`; `CHANGE-BRIEF.md` revision A3-2; `SOURCES.md` row REF-MUSICBOX-3D; `tools/blender/build_musicbox.py`, which the live calls executed directly; `blender/musicbox.blend`. Next step: the bedside lamp.
+

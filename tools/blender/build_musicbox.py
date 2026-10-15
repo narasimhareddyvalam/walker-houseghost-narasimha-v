@@ -1,4 +1,4 @@
-"""Build the MusicBox asset (CHANGE-BRIEF.md, Assignment 3, asset 1).
+"""Build the MusicBox asset (CHANGE-BRIEF.md, Assignment 3, asset 1, as revised by A3-2).
 
 Every live execute_blender_code call during the build sent HELPERS plus exactly one
 step_* function from this file, followed by a call to it. Run headless from an empty
@@ -9,8 +9,8 @@ scene with:
 Default output: blender/musicbox.blend (relative to the repository root).
 
 Units are metres. +Z is up, -Y is the front. The root empty MusicBox sits at the world
-origin, which is the centre of the underside. Meshes are built at their final size and
-orientation in bmesh, so no object carries rotation or scale to apply.
+origin, which is the centre of the underside of the plinth. Meshes are built at their
+final size and orientation in bmesh, so no object carries rotation or scale to apply.
 """
 
 # ==== HELPERS ===================================================================
@@ -25,10 +25,11 @@ LIBRARY = {
     "M_Ceramic_Amber": ("#A15A26", 0.0, 0.35),
     "M_Shade_Cream":   ("#F0DCA8", 0.0, 0.8),
 }
-# 12 segments put 30 degrees between neighbouring faces; 40 keeps them smooth while
-# 1-segment bevels (45) and caps (90) stay sharp.
-SMOOTH_ANGLE = math.radians(40)
+# Edges sharper than this stay hard: cylinder caps (90). Bevel chamfers (45) and
+# 12-segment cylinder sides (30) shade smooth; weighted normals keep big faces flat.
+SMOOTH_ANGLE = math.radians(60)
 ROOT = "MusicBox"
+PLINTH_H = 0.015  # the box stands on the plinth; every part above it is offset by this
 
 
 def srgb_to_linear(c):
@@ -79,7 +80,31 @@ def box(size, bevel=0.0, segments=0):
     return bm
 
 
-def finish(name, bm, mat_name, location):
+def cylinder(radius, depth, segments=12):
+    """Capped cylinder along Z, centred. Segment count is always explicit."""
+    bm = bmesh.new()
+    bmesh.ops.create_cone(bm, cap_ends=True, cap_tris=False, segments=segments,
+                          radius1=radius, radius2=radius, depth=depth)
+    return bm
+
+
+def weighted_normals(obj):
+    """Face-area weighted normals, baked into the mesh: chamfers shade round, big faces flat."""
+    mod = obj.modifiers.new("WeightedNormal", "WEIGHTED_NORMAL")
+    mod.mode = "FACE_AREA"
+    mod.keep_sharp = True
+    bpy.context.view_layer.update()
+    dg = bpy.context.evaluated_depsgraph_get()
+    baked = bpy.data.meshes.new_from_object(obj.evaluated_get(dg),
+                                            preserve_all_data_layers=True, depsgraph=dg)
+    old = obj.data
+    obj.modifiers.remove(mod)
+    obj.data = baked
+    bpy.data.meshes.remove(old)
+    baked.name = obj.name
+
+
+def finish(name, bm, mat_names, location):
     """bmesh -> named mesh + named object, parented to the root, normals outside."""
     remove_existing(name)
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
@@ -88,11 +113,13 @@ def finish(name, bm, mat_name, location):
     bm.free()
     me.shade_smooth()
     me.set_sharp_from_angle(angle=SMOOTH_ANGLE)
-    me.materials.append(material(mat_name))
+    for m in mat_names:
+        me.materials.append(material(m))
     obj = bpy.data.objects.new(name, me)
     bpy.context.scene.collection.objects.link(obj)
     obj.parent = bpy.data.objects[ROOT]
     obj.location = location
+    weighted_normals(obj)
     return obj
 
 
@@ -135,55 +162,78 @@ def step_clear():
           "| meshes:", len(bpy.data.meshes), "| materials:", len(bpy.data.materials))
 
 
-# ==== STEP 1: body — 0.24 W x 0.17 D x 0.12 H, 2-segment bevel ====================
+# ==== STEP 1: plinth — 0.26 x 0.19 x 0.015, 1 cm overhang, 1-segment chamfer =====
+def step_plinth():
+    bm = box((0.26, 0.19, PLINTH_H), bevel=0.004, segments=1)
+    bmesh.ops.translate(bm, vec=(0, 0, PLINTH_H / 2), verts=bm.verts)  # underside on z = 0
+    report(finish("MB_Plinth", bm, ["M_Wood_Dark"], (0, 0, 0)))
+
+
+# ==== STEP 2: body — 0.24 x 0.17 x 0.12, 2-segment bevel, hollowed ===============
+# The flat top is inset to leave 12 mm walls and pushed 0.10 m down, leaving a 20 mm
+# floor. The cavity's faces take material slot 1 (dark wood), so the inside reads deep.
 def step_body():
     bm = box((0.24, 0.17, 0.12), bevel=0.006, segments=2)
     bmesh.ops.translate(bm, vec=(0, 0, 0.06), verts=bm.verts)  # underside on z = 0
-    report(finish("MB_Body", bm, "M_Wood_Warm", (0, 0, 0)))
+    top = max(bm.faces, key=lambda f: (f.normal.z > 0.99, f.calc_area()))
+    inset = bmesh.ops.inset_individual(bm, faces=[top], thickness=0.006, depth=0.0)
+    ext = bmesh.ops.extrude_face_region(bm, geom=[top])
+    floor_verts = [e for e in ext["geom"] if isinstance(e, bmesh.types.BMVert)]
+    bmesh.ops.translate(bm, vec=(0, 0, -0.10), verts=floor_verts)
+    bmesh.ops.delete(bm, geom=[top], context="FACES_ONLY")  # extrude leaves the old face
+    # A cavity face has every vertex inside the opening (|x| <= 0.108, |y| <= 0.073);
+    # every outside face reaches the 0.114 / 0.079 flat-top edge or beyond.
+    cavity = [f for f in bm.faces
+              if all(abs(v.co.x) < 0.110 and abs(v.co.y) < 0.075 for v in f.verts)]
+    for f in cavity:
+        f.material_index = 1
+    print("inset faces", len(inset["faces"]), "| cavity faces", len(cavity), "(expect 5)")
+    report(finish("MB_Body", bm, ["M_Wood_Warm", "M_Wood_Dark"], (0, 0, PLINTH_H)))
 
 
-# ==== STEP 2: lid — 0.008 thick, hinged on the body's back top edge, open 18 deg ===
-# 0.12 + 0.17*sin(18) + 0.008*cos(18) = 0.180 m overall, as the brief specifies.
+# ==== STEP 3: lid — 0.24 x 0.17 x 0.012, hinged at the back, open 70 deg ==========
+# The hinge sits at y = 0.079, where the body's flat top begins inside its 6 mm bevel,
+# and the lid is dropped until its lowest point touches the rim: no gap at the hinge.
 def step_lid():
-    bm = box((0.24, 0.17, 0.008), bevel=0.002, segments=1)
-    # Back-bottom edge of the lid onto the origin, so the origin is the hinge line.
-    bmesh.ops.translate(bm, vec=(0, -0.085, 0.004), verts=bm.verts)
-    # Negative about X lifts the front (-Y) edge.
-    bmesh.ops.rotate(bm, cent=(0, 0, 0), matrix=Matrix.Rotation(math.radians(-18), 3, "X"),
-                     verts=bm.verts)
-    report(finish("MB_Lid", bm, "M_Wood_Dark", (0, 0.085, 0.12)))
+    bm = box((0.24, 0.17, 0.012), bevel=0.003, segments=1)
+    bmesh.ops.translate(bm, vec=(0, -0.085, 0.006), verts=bm.verts)  # back-bottom edge at 0
+    bmesh.ops.rotate(bm, cent=(0, 0, 0), matrix=Matrix.Rotation(math.radians(-70), 3, "X"),
+                     verts=bm.verts)  # negative about X lifts the front (-Y) edge
+    low = min(v.co.z for v in bm.verts)
+    bmesh.ops.translate(bm, vec=(0, 0, -low), verts=bm.verts)
+    report(finish("MB_Lid", bm, ["M_Wood_Dark"], (0, 0.079, PLINTH_H + 0.12)))
 
 
-# ==== STEP 3: key shaft — 12-vertex cylinder along +X out of the right face =======
-# Origin on the right face at z = 0.05, on the shaft's axis: the point a key turns on.
-# Revised 2026-10-14 from r 0.005 x 0.025: see CHANGE-BRIEF.md, revision A3-1.
+# ==== STEP 4: key shaft — 12-vertex cylinder along +X out of the right face =======
+# Origin on the right face, on the shaft's axis: the point a key turns on.
 def step_key_shaft():
-    bm = bmesh.new()
-    bmesh.ops.create_cone(bm, cap_ends=True, cap_tris=False, segments=12,
-                          radius1=0.006, radius2=0.006, depth=0.030)
+    bm = cylinder(0.006, 0.030)
     bmesh.ops.rotate(bm, cent=(0, 0, 0), matrix=Matrix.Rotation(math.radians(90), 3, "Y"),
                      verts=bm.verts)
     # Runs x = -0.002 .. 0.028 from the face: 2 mm sunk into the body, no visible seam.
     bmesh.ops.translate(bm, vec=(0.013, 0, 0), verts=bm.verts)
-    report(finish("MB_KeyShaft", bm, "M_Brass", (0.12, 0, 0.05)))
+    report(finish("MB_KeyShaft", bm, ["M_Brass"], (0.12, 0, PLINTH_H + 0.05)))
 
 
-# ==== STEP 4: key handle — flat bow, 0.008 x 0.050 x 0.040, 1-segment bevel ========
-# Revised 2026-10-14 from 0.006 x 0.035 x 0.025: see CHANGE-BRIEF.md, revision A3-1.
-def step_key_handle():
-    bm = box((0.008, 0.050, 0.040), bevel=0.0015, segments=1)
-    # Centred on the shaft axis, overlapping the shaft end by 1 mm.
-    report(finish("MB_KeyHandle", bm, "M_Brass", (0.151, 0, 0.05)))
+# ==== STEP 5: key bow — upright oval, 0.040 x 0.056, 5 mm thick, in line with shaft ==
+# A butterfly key's bow lies in the plane of its shaft, so it faces the front (-Y).
+def step_key_bow():
+    bm = cylinder(0.020, 0.005)
+    bmesh.ops.rotate(bm, cent=(0, 0, 0), matrix=Matrix.Rotation(math.radians(90), 3, "X"),
+                     verts=bm.verts)  # disc axis along Y
+    bmesh.ops.scale(bm, vec=(1.0, 1.0, 1.4), verts=bm.verts)  # oval, taller than wide
+    # Centre 0.166: overlaps the shaft end (0.148) by 2 mm.
+    report(finish("MB_KeyBow", bm, ["M_Brass"], (0.166, 0, PLINTH_H + 0.05)))
 
 
-# ==== STEP 5: clasp — 0.024 x 0.004 x 0.022, front face, top centre, no bevel ======
+# ==== STEP 6: clasp — 0.024 x 0.004 x 0.022, front face, hanging from the rim =====
 def step_clasp():
     bm = box((0.024, 0.004, 0.022))
-    # Sunk 0.5 mm into the front face (y = -0.085).
-    report(finish("MB_Clasp", bm, "M_Brass", (0, -0.0865, 0.107)))
+    # Sunk 0.5 mm into the front face (y = -0.085); top 2 mm below the rim.
+    report(finish("MB_Clasp", bm, ["M_Brass"], (0, -0.0865, PLINTH_H + 0.107)))
 
 
-# ==== STEP 6: whole-asset check and save =========================================
+# ==== STEP 7: whole-asset check and save =========================================
 def step_check_and_save(path):
     bpy.context.view_layer.update()
     meshes = [o for o in bpy.data.objects if o.type == "MESH"]
@@ -191,17 +241,19 @@ def step_check_and_save(path):
     lo = [round(min(p[i] for p in pts), 4) for i in range(3)]
     hi = [round(max(p[i] for p in pts), 4) for i in range(3)]
     print("asset min", lo, "max", hi, "size", [round(hi[i] - lo[i], 4) for i in range(3)])
-    print("tris", sum(tris(o) for o in meshes), "/ 320 | objects", len(meshes), "/ 5")
+    print("tris", sum(tris(o) for o in meshes), "/ 320 | objects", len(meshes), "/ 6")
     for o in meshes:
         bm = bmesh.new()
         bm.from_mesh(o.data)
         non_manifold = sum(1 for e in bm.edges if not e.is_manifold)
-        centre = sum((f.calc_center_median() for f in bm.faces), Vector()) / len(bm.faces)
-        inward = sum(1 for f in bm.faces
-                     if f.normal.dot(f.calc_center_median() - centre) < 0)
+        flipped = sum(1 for e in bm.edges if e.is_manifold and not e.is_contiguous)
+        bmesh.ops.triangulate(bm, faces=bm.faces)
+        volume = sum(f.verts[0].co.dot(f.verts[1].co.cross(f.verts[2].co))
+                     for f in bm.faces) / 6
         bm.free()
         print(f"  {o.name}: rot {tuple(o.rotation_euler)} scale {tuple(o.scale)}"
-              f" non-manifold {non_manifold} inward-facing {inward}")
+              f" non-manifold {non_manifold} inconsistent-winding {flipped}"
+              f" signed-volume {volume:+.2e} ({'outward' if volume > 0 else 'INWARD'})")
     print("data names:", sorted(o.name for o in bpy.data.objects),
           sorted(m.name for m in bpy.data.meshes), sorted(m.name for m in bpy.data.materials))
     bpy.ops.wm.save_as_mainfile(filepath=path)
@@ -215,9 +267,10 @@ if __name__ == "__main__":
     out = os.path.abspath(argv[0]) if argv else os.path.join(repo, "blender", "musicbox.blend")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     step_clear()
+    step_plinth()
     step_body()
     step_lid()
     step_key_shaft()
-    step_key_handle()
+    step_key_bow()
     step_clasp()
     step_check_and_save(out)

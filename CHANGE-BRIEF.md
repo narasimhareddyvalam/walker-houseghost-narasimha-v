@@ -272,3 +272,33 @@ whatever the result.
 Appended after building began. The specification above is left as it was written.
 
 **A3-1 — 2026-10-14, MusicBox: the wind-up key enlarged.** Shaft r 0.005 × 0.025 m → r 0.006 × 0.030 m; handle 0.006 × 0.035 × 0.025 m → 0.008 × 0.050 × 0.040 m. **Why:** as built to the original numbers the bow was 35 mm on a 268 mm box, about 9 px tall at 250 px/m, and smaller in proportion than in `relic_musicbox.png`. This brief names the key as the detail that makes the object read as a music box, and at that size it could not do that job. **Cost:** none in triangles (still 252 / 320) and none in primitives (still 5). The overall width grows from 0.268 m to 0.275 m; the body is unchanged at 0.24 × 0.17 × 0.12 m. **What it did not fix:** seen from behind and to the left, the key is on the far side and the box still reads as a plain chest. That is left for the Godot orbit check (prediction 7), not solved by adding parts.
+
+**A3-2 — 2026-10-14, MusicBox: rebuilt from a second reference, six shapes.** I judged the
+first build "too simple" and asked for it to look more realistic. Realistic textures are
+outside the assignment (flat colour, no painted textures, at most six basic shapes and 500
+triangles), so the realism is to come from lighting and material response in Godot, and the
+geometry was revised against a ChatGPT reference image, `design/ref-musicbox-chatgpt.png`
+(asset log row REF-MUSICBOX-3D). **This changes the Reference section above:** my A2 art is
+no longer the only reference for this asset.
+
+| | Original spec | A3-2 |
+|---|---|---|
+| Shapes | 5: body, lid, key shaft, key handle, clasp | **6**: adds `MB_Plinth`; the handle becomes `MB_KeyBow` |
+| Plinth | — | 0.26 × 0.19 × 0.015 m, 1 cm overhang, chamfered, `M_Wood_Dark` |
+| Body | Solid, 0.24 × 0.17 × 0.12 m | Same size, **hollowed**: 12 mm walls, 20 mm floor, cavity in `M_Wood_Dark` |
+| Lid | 0.008 m thick, open ~18° | **0.012 m** thick, open **70°**, hinge at y = 0.079, flush on the rim |
+| Key bow | Box, at right angles to the shaft | **Upright oval disc** 0.040 × 0.056 × 0.005 m, in the plane of the shaft as on a real butterfly key |
+| Overall size | 0.24 × 0.17 × 0.18 m (body + lid) | **0.316 × 0.19 × 0.297 m** with plinth, key and open lid |
+| Origin | Centre of the body's underside | Centre of the **plinth's** underside — still the point that sits on the shelf |
+| Triangles | 252 built (estimate 274), budget 320 | **312**, budget unchanged at 320 |
+
+**Two judgement calls, stated so they can be disputed.** Hollowing the body is two edit
+operations (inset, push down) on one cube. It goes beyond "moved, scaled and combined", but
+it is not sculpting, and I read it as within "built mainly from basic shapes". Face-area
+weighted normals are baked into every mesh, so the 1-segment bevels shade as rounded edges
+while the large faces stay flat; this costs no triangles and is a standard low-poly technique.
+
+**What A3-2 leaves for later.** Seen from behind and to the left, the key is still on the far
+side. Whether the box reads as a music box from there, and whether the colours survive
+export, are predictions 7 and 5 and are tested in Godot.
+

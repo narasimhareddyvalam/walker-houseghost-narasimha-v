@@ -176,3 +176,14 @@ README.md and SUBMISSION.md.
 
 No generated imagery appears in the film that is not already an asset of the game or
 a rejected take of one.
+
+## Assignment 3 — 3D asset references
+
+Generated images used as **visual references only**. No mesh in this assignment was generated,
+downloaded or imported: every one is built from Blender primitives by the scripts in
+`tools/blender/`. Tool and version rows for Blender and the MCP are added with the export.
+
+| Asset ID | Model + version | Prompt + settings | Outcome | Edits | Where used |
+|---|---|---|---|---|---|
+| REF-MUSICBOX-3D | ChatGPT image generation, chatgpt.com, 2026-10-14 | Prompt written by Claude at my request, asking for a "photorealistic studio render of a simple low-poly 3D game prop" where "the realism must come entirely from LIGHTING and MATERIAL RESPONSE, not from surface detail": three views on a warm-grey backdrop, at most six boxes and cylinders, solid uniform colours with no grain or texture, a plinth, the lid propped open with no gap at the hinge, a generously sized brass key on the right side, colours `#6B4428` / `#4A2E19` / `#9A7B3F`, no green, no bright yellow | **Accepted as a reference, used selectively.** Taken: the hollow open box, the wide lid angle, the plinth, the round key bow, the darker interior. Not taken, with reasons: two brass hinges (shapes 7 and 8, over the course limit of six, and about 3 px at game scale); a tray-shaped lid (triangle budget); holes in the key bow (geometry); the render's redder wood and same-colour lid (the shipped palette is sampled from my own A2 art and kept) | Renamed from `Three-View Wooden Music Box Render.png`; otherwise unedited | `design/ref-musicbox-chatgpt.png` — reference for revision A3-2 of the music box |
+
