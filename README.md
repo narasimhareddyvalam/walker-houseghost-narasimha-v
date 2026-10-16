@@ -55,7 +55,7 @@ It prints, per asset, the bounding-box size beside the brief, every node's scale
 | | |
 |---|---|
 | File | `houseghost-a3-film-4k.mp4` — 3840×2160, 30 fps, 11 min 6 s, 90.9 MB |
-| Link | [Course media storage (OneDrive) — HOUSEGHOST – Building Three Game Props (Assignment 3)](https://northeastern-my.sharepoint.com/:v:/r/personal/valam_n_northeastern_edu/Documents/HOUSEGHOST%20%E2%80%93%20Building%20Three%20Game%20Props%20(Assignment%203)/houseghost-a3-film-4k.mp4?d=wdd2c822f966245fba95e670242b5e5c5&csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=TTX6bO) |
+| Link | [Course media storage (OneDrive) — HOUSEGHOST – Building Three Game Props (Assignment 3)](https://northeastern-my.sharepoint.com/:v:/g/personal/valam_n_northeastern_edu/IQAvgizdYpb7RaleZwJCteXFAb5mpYS870HQTczkDWeEz5o?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=rdfnMX) |
 | SHA-256 | `7e72d75080f0ad672031ce600ac9b8884abf4b98404c5fe36adbd3eb67d9335c` |
 
 Everything behind it is in `youtube/claude-liam-houseghost-a3-gamedev/`: the script (`SCRIPT.md`), the beat sheet, the shot list, a fact check of every number spoken, the prompts shown, the capture record with SHA-256 for every recording, the sources, and the scripts that rebuild it (`BUILD-PROMPT.md`).

@@ -603,3 +603,19 @@ Entries are dated and in order, written as the work happened. Nothing is rewritt
 
 - **Evidence and next step:** Evidence: `youtube/claude-liam-houseghost-a3-gamedev/` — `SCRIPT.md`, `beat_sheet.json`, `build_beats.py`, `prepare_clips.py`, `build_evidence.py`, `CAPTURE.md`, `FACTCHECK.md`, `SHOTLIST.md`, `PROMPTS.md`, `SOURCES.md`, `BUILD-PROMPT.md`. Next step: the evidence ledger, the skill's checks, the review cut and my watch of the final export.
 
+### 2026-10-15 — Pushing, the clone check, and the film link
+
+- **Date and what I was working on:** 2026-10-15, publishing the submission.
+
+- **I tried / expected:** To push under my single-m account and have the film's link open for the grader.
+
+- **What happened:** Two things were wrong and were caught before submission. **The GitHub CLI's active account was `narasimhareddyvalamm` (double m)**, so a push would have gone out under the wrong account; it was switched to `narasimhareddyvalam` and checked (`gh api user`) before pushing. All 59 commits being pushed were authored and committed as `valam.n@northeastern.edu`, with no trace of the other account. `main` was fast-forwarded and tagged `a3`. The clone check then ran on a fresh clone of the tag in an empty `../a3-check`: import exit 0, `check_assets.gd` PASS, the A2 test 13 / 13, `AssetShowcase.tscn` opened with one light and the three props, and `git diff d331a4a a3 -- godot blender tools` empty. **The film link I first recorded was a `/:v:/r/` path link, which opens only for people who already have access**; the file still showed as Private. I created a real "People in Northeastern University · Can view" sharing link (`/:v:/g/`), it replaced the old one in `README.md` and `SUBMISSION.md`, and `a3` was moved to that commit — before submitting, which the brief allows; it must not move after.
+
+- **What I did:** Asked for the push and the account check, watched the final, uploaded the film, fixed its sharing.
+
+- **What Claude or another person contributed:** The account and author audit, the push, the clone check, the ZIP, and spotting why the link failed.
+
+- **What I understand now / still do not understand:** "Copy link" on an open file gives a path that works only for me; a sharing link has to be created deliberately.
+
+- **Evidence and next step:** Evidence: the `a3` tag on GitHub; the clone-check results above; `README.md` and `SUBMISSION.md`. Next step: submit on Canvas.
+
